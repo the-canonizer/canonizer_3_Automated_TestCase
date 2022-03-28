@@ -4,7 +4,6 @@ from CanonizerHomePage import *
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
-from datetime import datetime
 
 class TestPages(unittest.TestCase):
 

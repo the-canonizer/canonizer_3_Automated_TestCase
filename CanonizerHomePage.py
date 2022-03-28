@@ -4,9 +4,6 @@ from Identifiers import *
 import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-import requests
-import urllib.request
-import urllib.error
 
 from datetime import datetime
 from time import time
