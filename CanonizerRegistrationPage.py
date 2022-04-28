@@ -86,7 +86,9 @@ class CanonizerRegisterPage(Page):
         return CanonizerRegisterPage(self.driver)
 
     def registration_title_identification(self):
+        self.click_register_button()
         self.hover(*RegisterPageIdentifiers.TITLE)
+        sleep(3)
         title = self.find_element(*RegisterPageIdentifiers.TITLE).text
         print(title)
         if title == 'Register Now on Canonizer':
@@ -108,26 +110,72 @@ class CanonizerRegisterPage(Page):
 
     def verify_all_fields_empty(self):
         self.click_register_button()
-        sleep(2)
-        self.find_element(*RegisterPageIdentifiers.Register_now).click()
+        self.find_element(*RegisterPageIdentifiers.REGISTER_NOW).click()
         self.hover(*RegisterPageIdentifiers.error)
         err = self.find_element(*RegisterPageIdentifiers.error).text
         print(err)
         if err == 'Please input your first name!':
             return CanonizerRegisterPage(self.driver)
 
-    def verify_invalid_password_format(self,fname,lname,email,password):
+    def verify_invalid_password_format(self, fname, lname, email, password):
         self.click_register_button()
         self.hover(*RegisterPageIdentifiers.FNAME_HEADING)
         self.find_element(*RegisterPageIdentifiers.FIRST_NAME).send_keys(fname)
         self.find_element(*RegisterPageIdentifiers.LAST_NAME).send_keys(lname)
         self.find_element(*RegisterPageIdentifiers.EMAIL).send_keys(email)
         self.find_element(*RegisterPageIdentifiers.PASSWORD).send_keys(password)
-        self.find_element(*RegisterPageIdentifiers.Register_now).click()
-        time.sleep(2)
+        self.find_element(*RegisterPageIdentifiers.REGISTER_NOW).click()
         # self.hover(*RegisterPageIdentifiers.INVALID_PASSWORD_ERROR)
         err = self.find_element(*RegisterPageIdentifiers.INVALID_PASSWORD_ERROR).text
         print("1234----")
         print(err)
         if err == 'Password must be contain small, capital letter, number and special character like Abc@1234.':
             return CanonizerRegisterPage(self.driver)
+
+    def verify_invalid_confirm_password(self, fname, lname, email, password, confirm_password, ):
+        self.click_register_button()
+        self.hover(*RegisterPageIdentifiers.FNAME_HEADING)
+        self.find_element(*RegisterPageIdentifiers.FIRST_NAME).send_keys(fname)
+        self.find_element(*RegisterPageIdentifiers.LAST_NAME).send_keys(lname)
+        self.find_element(*RegisterPageIdentifiers.EMAIL).send_keys(email)
+        self.find_element(*RegisterPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*RegisterPageIdentifiers.CONFIRM_PASSWORD).send_keys(confirm_password)
+        self.find_element(*RegisterPageIdentifiers.REGISTER_NOW).click()
+        # self.hover(*RegisterPageIdentifiers.INVALID_CONFIRM_PASSWORD_ERROR)
+        err = self.find_element(*RegisterPageIdentifiers.INVALID_CONFIRM_PASSWORD_ERROR).text
+        print(err)
+        if err == 'Confirm Password does not match!.':
+            return CanonizerRegisterPage(self.driver)
+
+    def verify_invalid_email_format(self, fname, lname, email, password, confirm_password):
+        self.click_register_button()
+        self.hover(*RegisterPageIdentifiers.FNAME_HEADING)
+        self.find_element(*RegisterPageIdentifiers.FIRST_NAME).send_keys(fname)
+        self.find_element(*RegisterPageIdentifiers.LAST_NAME).send_keys(lname)
+        self.find_element(*RegisterPageIdentifiers.EMAIL).send_keys(email)
+        self.find_element(*RegisterPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*RegisterPageIdentifiers.CONFIRM_PASSWORD).send_keys(confirm_password)
+        self.find_element(*RegisterPageIdentifiers.REGISTER_NOW).click()
+        # self.hover(*RegisterPageIdentifiers.INVALID_CONFIRM_PASSWORD_ERROR)
+        err = self.find_element(*RegisterPageIdentifiers.EMAIL_INVALID_ERROR).text
+        print(err)
+        if err == 'The input is not valid E-mail!.':
+            return CanonizerRegisterPage(self.driver)
+
+    def verify_captcha_field(self, fname, lname, email, password, confirm_password):
+        self.click_register_button()
+        self.hover(*RegisterPageIdentifiers.FNAME_HEADING)
+        self.find_element(*RegisterPageIdentifiers.FIRST_NAME).send_keys(fname)
+        self.find_element(*RegisterPageIdentifiers.LAST_NAME).send_keys(lname)
+        self.find_element(*RegisterPageIdentifiers.EMAIL).send_keys(email)
+        self.find_element(*RegisterPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*RegisterPageIdentifiers.CONFIRM_PASSWORD).send_keys(confirm_password)
+        self.find_element(*RegisterPageIdentifiers.REGISTER_NOW).click()
+        err = self.find_element(*RegisterPageIdentifiers.CAPTCHA_ERROR_MESSAGE).text
+        print(err)
+        if err == 'Please check the captcha!.':
+            return CanonizerRegisterPage(self.driver)
+
+
+
+
