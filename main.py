@@ -122,8 +122,8 @@ class TestPages(unittest.TestCase):
         #print("\n" + str(test_cases('TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK')))
         result = CanonizerRegisterPage(self.driver).check_login_page_open_click_login_here_link()
 
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTERATION_WITH_MANDATORY_FIELDS
-    def test_Verify_the_functionality_of_registeration_with_entering_data_in_mandatory_fields(self):
+    # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS
+    def test_Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTERATION_WITH_MANDATORY_FIELDS')))
         result = CanonizerRegisterPage(self.driver).click_register_button().Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(
             REG_LIST_15)

@@ -8,7 +8,7 @@ Set All Basic Configuration required for testing Framework
 DEFAULT_BASE_URL = "https://canonizer3.canonizer.com/"
 
 """
-    Identify the Default Chrome Binary Location for different OS
+    Identify the Default Chrome Binary Location for different OS 
 """
 DEFAULT_BINARY_LOCATION = ''
 
@@ -25,7 +25,133 @@ else:
     print("Unknown OS")
     exit(1)
 
+DEFAULT_USER = "saideekshith@zibtek.in"
+DEFAULT_PASS = "Sai@1998"
 
-DEFAULT_USER = "example@example.com"
-DEFAULT_PASS = "123456"
+# Registration Page Configuration Parameters
+DEFAULT_FIRST_NAME = "kumar"
+DEFAULT_LAST_NAME = "file"
+DEFAULT_EMAIL = "saideekshith@zibtek"
+DEFAULT_PASSWORD = "Sai@1998"
+DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
 
+
+REG_LIST_1 = [
+    "first  @123",
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_2 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_3 = [
+    '',
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_4 = [
+    DEFAULT_FIRST_NAME,
+    '',
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_5 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    '',
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_6 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    '',
+    'DEFAULT_PASS',
+    ''
+]
+REG_LIST_7 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    '123',
+    '12345',
+    ''
+]
+REG_LIST_8 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    'Test@1234567',
+    'Test@123456',
+    ''
+]
+REG_LIST_9 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_10 = [
+    "first @##$#$$$23",
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_11 = [
+    DEFAULT_FIRST_NAME,
+    "sai@@@@###@@",
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_12 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_13 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    'INVALID'
+]
+REG_LIST_14 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+REG_LIST_15 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]

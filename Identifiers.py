@@ -37,7 +37,6 @@ class RegistrationPageIdentifiers(object):
     ERROR_CONFIRMATION = (By.XPATH, '//div[text()="Confirm Password does not match!"]')
     ERROR_EMAIL = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[3]/div/div[2]/div[2]/div')
     ERROR_CAPTCHA = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[7]/div/div/div[2]/div')
-
     LOGIN_TITTLE = (By.XPATH, '//h2[text() ="Log in to Canonizer"]')
 
 
