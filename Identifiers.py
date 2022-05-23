@@ -11,44 +11,34 @@ Objects are Separated in this module
 """
 
 
-class HomePageIdentifiers(object):
+class RegistrationPageIdentifiers(object):
     """
-    This Class holds the Home Page Element Identifiers.
+    This class holds the User Registration Page Identifiers
     """
-    BODY = (By.ID, 'mainNav')
-    LOGIN = (By.XPATH, '//*[@id="navbarResponsive"]/ul[1]/li[2]/a[2]')
-    REGISTER = (By.XPATH, '//*[@id="navbarResponsive"]/ul[1]/li[2]/a[3]')
-    WHATISCANONIZER = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[2]/a')
-    WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
-    CANONIZER_LOGO = (By.XPATH, '//*[@id="__next"]/div/header/div[1]/a/span/img')
-
-
-class RegisterPageIdentifiers(object):
-    CLICK_REGISTER_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[2]/span')
+    REGISTER = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[2]/span')
     FIRST_NAME = (By.XPATH, '//*[@id="registration_first_name"]')
     LAST_NAME = (By.ID, 'registration_last_name')
+    ERROR_LAST_NAME =(By.XPATH,'//*[@id="registration"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
     EMAIL = (By.ID, 'registration_email')
     PASSWORD = (By.ID, 'registration_password')
     CONFIRM_PASSWORD = (By.ID, 'registration_confirm')
-    REGISTER_NOW = (By.XPATH, '//button[@class="ant-btn ant-btn-primary ant-btn-block login-form-button"]')
     CLOSE_ICON = (By.XPATH, '//*[@id="registration"]/button')
-    CAPTCHA = (By.XPATH, '//div[@class="rc-anchor-logo-img rc-anchor-logo-img-portrait"]')
+    CAPTCHA = (By.XPATH, '//*[@id="recaptcha-anchor"]/div[1]')
     ERROR = (By.XPATH, '//div[@class="ant-form-item-explain-error"]')
-    LOGIN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
+    LOGIN = (By.XPATH, '//*[@id="registration"]/span/a')
     FORGET_PASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
     TITLE = (By.XPATH, '//h2[text()="Register Now on Canonizer"]')
     FNAME = (By.XPATH, '//label[@title="First Name (Limit 100 Chars)"]')
     FNAME_HEADING = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[1]/label')
-    ERROR_FIRST_NAME = (By.XPATH, '//div[@class="ant-form-item-explain-error"]')
-    error = (By.XPATH, '//div[@class="ant-form-item-explain ant-form-item-explain-connected"]')
-    FIRST_NAME_ERROR = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[2]/div[2]/div')
-    REGISTER_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[2]/span')
-    INVALID_PASSWORD_ERROR = (By.XPATH,
-                              '//div[text()="Password must be contain small, capital letter, number and special '
-                              'character like Abc@1234."]')
-    INVALID_CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text()="Confirm Password does not match!"]')
-    EMAIL_INVALID_ERROR = (By.XPATH, '//div[text()="The input is not valid E-mail!"]')
-    CAPTCHA_ERROR_MESSAGE = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[7]/div/div/div[2]/div')
+    ERROR_FIRST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[2]/div[2]/div')
+    CREATE_ACCOUNT = (By.XPATH, '//span[text()="Register Now "]')
+    ERROR_PASSWORD = (By.XPATH,
+                      '//*[@id="registration"]/div[1]/div/div[5]/div/div[2]/div[2]/div')
+    ERROR_CONFIRMATION = (By.XPATH, '//div[text()="Confirm Password does not match!"]')
+    ERROR_EMAIL = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[3]/div/div[2]/div[2]/div')
+    ERROR_CAPTCHA = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[7]/div/div/div[2]/div')
+
+    LOGIN_TITTLE = (By.XPATH, '//h2[text() ="Log in to Canonizer"]')
 
 
 class LoginPageIdentifiers(object):
@@ -70,6 +60,7 @@ class LoginPageIdentifiers(object):
 
 class AccountSettingPageIdentifier(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
+    #CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
     PROFILE_BUTTON = (By.XPATH, '//*[@id="rc-tabs-1-tab-profile_info"]')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
     SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[2]')
@@ -88,4 +79,31 @@ class AccountSettingPageIdentifier(object):
         By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[2]/div[3]/div[2]/div/div/span/div[1]/div/div/div/div')
     UPDATE_BUTTON = (By.XPATH, '//span[text() = "Update"]')
     LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
+    CURRENT_PASSWORD = (By.ID, 'changePassword_current_password')
+    NEW_PASSWORD = (By.ID, 'changePassword_new_password')
+    CONFIRM_PASSWORD = (By.ID, 'changePassword_confirm_password')
+    SAVE_BUTTON = (By.XPATH, '//*[@id="changePassword"]/div[2]/div/div/div/button/span')
+    CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
+    CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
+    NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
+    SERIAL_NUMBER = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[1])')
+    NICK_NAME_ID = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[2])')
+    NICK_NAME1 = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[3])')
+    VISIBILITY_STATUS = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[4])')
+    ADD_NEW_NICK_NAME = (By.XPATH, '//button[@class="ant-btn ant-btn-primary ant-btn ant-btn-orange ant-btn-lg"]')
+    ADD_NEW_NICK_NAME_TITTLE = (By.XPATH, '//div[text()="Add New Nick Name"]')
+    POP_UP_NICK_NAME = (By.ID, 'add_edit_form_nick_name')
+    POPO_UP_CREATE_BUTTON = (By.XPATH, '//*[@id="add_edit_form"]/div[3]/div/div/div/button')
+    POP_UP_NICK_NAME_ERROR = (By.XPATH, '//div[text()="Please Enter Nick Name!"]')
 
+
+class BrowsePageIdentifiers(object):
+    CLICK_ON_BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
+    SELECT_NAME_SPACE = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div/div/div/div/div/div[1]/div/div['
+                                   '1]/div/span[2]')
+    ONLY_MY_TOPICS = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div/div/div/div/div/div[1]/div/label/span['
+                                '1]/input')
+
+
+class HomePageIdentifiers:
+    pass
