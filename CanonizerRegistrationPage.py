@@ -147,7 +147,6 @@ class CanonizerRegisterPage(Page):
 
     def Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self,REG_LIST_15):
         self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4])
-
         return CanonizerRegisterPage(self.driver)
 
 
