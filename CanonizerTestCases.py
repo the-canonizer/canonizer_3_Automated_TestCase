@@ -42,7 +42,7 @@ testCases = {
                                                                                    'fields on register page,'
                                                                                    'user able to create a accounton '
                                                                                    'canonizer'],
-    ''
+
     'TC_VERIFYING_ACCOUNT_PROFILE': [Critical, 'When user should click on login dropdown button,user should see '
                                                'account setting page option'],
     'TC_CLICK_ON_LOGIN_BUTTON': [Critical, 'When user should click on login button with valid email and password,'
@@ -70,6 +70,16 @@ testCases = {
                                                                            'verification code with invalid email,user '
                                                                            'should see proper error message'],
     'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
+    'Tc_verifying_facebook_link':[Critical, 'when user click on facebook link on login page ,user should see it '
+                                            'redirect to facebook page'],
+    'TC_VERIFYING_GOOGLE_LINK': [Critical, 'when user click on google link on login page, user should see it redirect '
+                                           'to google chrome site'],
+    'TC_VERIFYING_TWITTER_LINK': [Critical,'when user click on twitter link on login page , user should see it '
+                                           'redirect to twitter page'],
+    'TC_VERIFYING_LINKEDIN_LINK' :[Critical, 'when user click on linkedin link on login page, user should see it '
+                                             'redirect to linkedin page'],
+    'TC_VERIFYING_GITHUB_LINK' : [Critical, 'when user should click on github link, user should see it redirect to '
+                                            'github page'],
     'TC_VERIFYING_ACCOUNT_PROFILE_PAGE': [Critical, 'When user should click on login drop down button ,user should '
                                                     'redirect to account setting page'],
     'TC-VERIFYING_SOCIAL_OAUTH_VERIFICATION': [Critical, 'when user click on account setting page, user should see '
@@ -144,5 +154,6 @@ testCases = {
     'Tc_VERIFY_THE_FUNCTIONALITY_OF_ADD_NICKNAME_BUTTON': [Critical, 'when user click on add nick name button,user '
                                                                      'should see pop-up to fil the details of nick'
                                                                      '(or) create new nick name'],
+
 
 }

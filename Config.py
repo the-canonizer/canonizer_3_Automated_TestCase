@@ -35,7 +35,6 @@ DEFAULT_EMAIL = "saideekshith@zibtek"
 DEFAULT_PASSWORD = "Sai@1998"
 DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
 
-
 REG_LIST_1 = [
     "first  @123",
     DEFAULT_LAST_NAME,
@@ -155,3 +154,23 @@ REG_LIST_15 = [
     DEFAULT_PASS,
     ''
 ]
+# Login Page Configuration Parameters
+UNVERIFY_EMAIL = "meghana@zibtek.in"
+UNVERIFY_PASS = "Pooja@123456"
+# DEFAULT_USER = ""
+# DEFAULT_PASS = ""
+DEFAULT_USER = "saideekshith@zibtek.in"
+DEFAULT_PASS = "Sai@1998"
+# DEFAULT_USER = "r_canonizer_user@yopmail.com"
+# DEFAULT_PASS = "Rupali@12345"
+DEFAULT_INVALID_USER = 'invaliduser@gmail.com'
+DEFAULT_INVALID_PASSWORD = "invalid_password"
+DEFAULT_UNVERIFIED_PHONE_NUMBER = "1234567890"
+DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
+DEFAULT_VALID_PHONE_NUMBER = ""
+DEFAULT_INVALID_OTP = "123456789"
+DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
+VERIFY_EMAIL = "anil.podi@zibtek.in"
+VERIFY_PASS = "Zibtek#2455"
+PASS_UPPERCASE = "POOJA@123456"
+PASS_LOWERCASE = "pooja@123456"

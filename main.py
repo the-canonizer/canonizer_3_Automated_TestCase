@@ -40,7 +40,7 @@ class TestPages(unittest.TestCase):
         :return:
         """
         result = CanonizerLoginPage(self.driver).click_login_page_button().login_with_valid_user(DEFAULT_USER,
-                                                                                        DEFAULT_PASS).get_url()
+                                                                                                 DEFAULT_PASS).get_url()
         self.assertIn("", result)
 
     # TC_CLICK_ON_REGISTER_BUTTON
@@ -85,7 +85,7 @@ class TestPages(unittest.TestCase):
     def test_registration_with_different_confirmation_password(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_DIFFERENT_CONFIRM_PASSWORD')))
         result = CanonizerRegisterPage(
-                self.driver).click_register_button().registration_with_different_confirmation_password(
+            self.driver).click_register_button().registration_with_different_confirmation_password(
             REG_LIST_8)
 
     # TC_REGISTER_WITH_BLANK_SPACES_FIRST_NAME
@@ -119,17 +119,15 @@ class TestPages(unittest.TestCase):
 
     # TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK
     def test_check_login_page_open_click_login_here_link(self):
-        #print("\n" + str(test_cases('TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK')))
+        # print("\n" + str(test_cases('TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK')))
         result = CanonizerRegisterPage(self.driver).check_login_page_open_click_login_here_link()
 
     # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS
     def test_Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTERATION_WITH_MANDATORY_FIELDS')))
-        result = CanonizerRegisterPage(self.driver).click_register_button().Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(
+        result = CanonizerRegisterPage(
+            self.driver).click_register_button().Verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(
             REG_LIST_15)
-
-
-
 
     # TC_VERIFYING_ACCOUNT_PROFILE
     def test_click_on_account_setting_page(self):
@@ -161,24 +159,24 @@ class TestPages(unittest.TestCase):
     # TC_LOGIN_WITH_REGISTERED_CREDENTIALS
     def test_login_with_registered_credentials(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_REGISTERED_CREDENTIALS')))
-        result = CanonizerLoginPage(self.driver).Verify_the_Login_Functionality_by_entering_the_registered_credential(
-            "saideekshith@zibtek.in", "Sai@1998").get_url()
+        result = CanonizerLoginPage(self.driver).verify_the_Login_Functionality_by_entering_the_registered_credential(
+            DEFAULT_USER, DEFAULT_PASS).get_url()
         print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_LOGIN_WITH_INVALID_EMAIL
     def test_login_with_invalid_email(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_INVALID_EMAIL')))
-        result = CanonizerLoginPage(self.driver).verify_the_login_with_invalid_email_format("sai@zibtek.in",
-                                                                                            "Sai@1998").get_url()
+        result = CanonizerLoginPage(self.driver).verify_the_login_with_invalid_email_format(DEFAULT_INVALID_USER,
+                                                                                            DEFAULT_INVALID_PASSWORD).get_url()
         print(result)
-        self.assertIn("", result)
+        self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_VERIFYING_REMEMBER_CHECK_BOX
     def test_click_on_remember_check_box(self):
         print("\n" + str(test_cases('TC_VERIFYING_REMEMBER_CHECK_BOX')))
-        result = CanonizerLoginPage(self.driver).verify_the_Remember_me_checkbox("saideekshith@zibtek.in",
-                                                                                 "Sai@1998").get_url()
+        result = CanonizerLoginPage(self.driver).verify_the_Remember_me_checkbox(DEFAULT_USER,
+                                                                                 DEFAULT_PASS).get_url()
         print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
@@ -186,7 +184,7 @@ class TestPages(unittest.TestCase):
     def test_verify_login_button_with_empty_space(self):
         print("\n" + str(test_cases('TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED')))
         result = CanonizerLoginPage(self.driver).verify_the_login_button_by_entering_the_empty_space("",
-                                                                                                     "Sai@1998").get_url()
+                                                                                                     DEFAULT_PASS).get_url()
         print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
@@ -226,6 +224,37 @@ class TestPages(unittest.TestCase):
         print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
+    # TC_VERIFYING_FACEBOOK_LINK
+    def test_verifying_facebook_link(self):
+        print("\n" + str(test_cases('Tc_verifying_facebook_link')))
+        result = CanonizerLoginPage(self.driver).verifying_facebook_icon().get_url()
+        self.assertIn("", result)
+
+    # TC_VERIFYING_GOOGLE_LINK
+    def test_verify_google_link(self):
+        print("\n" + str(test_cases('TC_VERIFYING_GOOGLE_LINK')))
+        result = CanonizerLoginPage(self.driver).verifying_google_link().get_url()
+        self.assertIn("", result)
+
+    # TC_VERIFYING_TWITTER_LINK
+    def test_verify_twitter_link(self):
+        print("\n" + str(test_cases('TC_VERIFYING_TWITTER_LINK')))
+        result = CanonizerLoginPage(self.driver).verifying_twitter_link().get_url()
+        self.assertIn("", result)
+
+    # TC_VERIFYING_LINKEDIN_LINK
+    def test_verify_linkedin_link(self):
+        print("\n" + str(test_cases('TC_VERIFYING_LINKEDIN_LINK')))
+        result = CanonizerLoginPage(self.driver).verifying_linkedin_link().get_url()
+        self.assertIn("", result)
+
+    # TC_VERIFYING_GITHUB_LINK
+    def test_verify_github_link(self):
+        print("\n" + str(test_cases('TC_VERIFYING_GITHUB_LINK')))
+        result = CanonizerLoginPage(self.driver).verifying_github_link().get_url()
+        self.assertIn("", result)
+
+    # ACCOUNT_SETTING_PAGE:
     # TC_VERIFYING_ACCOUNT_PROFILE_PAGE
     def test_verifying_account_profile_page(self):
         self.login_to_canonizer_app()
@@ -446,9 +475,6 @@ class TestPages(unittest.TestCase):
 
     # TC_CLICK_ON_BROWSE_PAGE
     def test_click_on_browse_page(self):
-        self.login_to_canonizer_app()
-        result = CanonizerBrowsePage.CanonizerBrowsePage(
-            self.driver).Verify_Browse_page_is_opening_when_you_click_on_Browse().get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_ALL_THE_SPECIFIED_FIELDS_ARE_PRESENT_ON_THE_BROWSE_PAGE

@@ -18,7 +18,7 @@ class RegistrationPageIdentifiers(object):
     REGISTER = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[2]/span')
     FIRST_NAME = (By.XPATH, '//*[@id="registration_first_name"]')
     LAST_NAME = (By.ID, 'registration_last_name')
-    ERROR_LAST_NAME =(By.XPATH,'//*[@id="registration"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
+    ERROR_LAST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
     EMAIL = (By.ID, 'registration_email')
     PASSWORD = (By.ID, 'registration_password')
     CONFIRM_PASSWORD = (By.ID, 'registration_confirm')
@@ -55,11 +55,20 @@ class LoginPageIdentifiers(object):
     EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
     LOGIN_TITTLE = (By.XPATH, '//h2[text() = "Log in to Canonizer"]')
     SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
+    FACEBOOK_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[1]')
+    FACEBOOK_TITTLE = (By.XPATH, '//div[text()="Log in to Facebook"]')
+    GOOGLE_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[2]')
+    TWITTER_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[3]')
+    TWITTER_TITTLE = (By.XPATH, '//h2[text() = "Authorize the_canonizer to access your account?"]')
+    LINKEDIN_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[4]')
+    LINKEDIN_TITTLE = (By.XPATH, '//*[@id="app__container"]/main/div[2]/div[2]')
+    GITHUB_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[5]')
+    GITHUB_TITTLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
 
 
 class AccountSettingPageIdentifier(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
-    #CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
+    # CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
     PROFILE_BUTTON = (By.XPATH, '//*[@id="rc-tabs-1-tab-profile_info"]')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
     SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[2]')
@@ -106,3 +115,5 @@ class BrowsePageIdentifiers(object):
 
 class HomePageIdentifiers:
     pass
+
+
