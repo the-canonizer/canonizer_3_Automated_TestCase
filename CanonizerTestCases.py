@@ -38,10 +38,10 @@ testCases = {
                                                                     'user should see login link ,when user click on '
                                                                     'login link ,user should redirect to canonizer '
                                                                     'login page'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTERATION_WITH_MANDATORY_FIELDS':[Critical,'when user fill all mandatary '
-                                                                                   'fields on register page,'
-                                                                                   'user able to create a accounton '
-                                                                                   'canonizer'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTERATION_WITH_MANDATORY_FIELDS': [Critical, 'when user fill all mandatary '
+                                                                                     'fields on register page,'
+                                                                                     'user able to create a accounton '
+                                                                                     'canonizer'],
 
     'TC_VERIFYING_ACCOUNT_PROFILE': [Critical, 'When user should click on login dropdown button,user should see '
                                                'account setting page option'],
@@ -70,16 +70,18 @@ testCases = {
                                                                            'verification code with invalid email,user '
                                                                            'should see proper error message'],
     'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
-    'Tc_verifying_facebook_link':[Critical, 'when user click on facebook link on login page ,user should see it '
-                                            'redirect to facebook page'],
+    'Tc_verifying_facebook_link': [Critical, 'when user click on facebook link on login page ,user should see it '
+                                             'redirect to facebook page'],
     'TC_VERIFYING_GOOGLE_LINK': [Critical, 'when user click on google link on login page, user should see it redirect '
                                            'to google chrome site'],
-    'TC_VERIFYING_TWITTER_LINK': [Critical,'when user click on twitter link on login page , user should see it '
-                                           'redirect to twitter page'],
-    'TC_VERIFYING_LINKEDIN_LINK' :[Critical, 'when user click on linkedin link on login page, user should see it '
+    'TC_VERIFYING_TWITTER_LINK': [Critical, 'when user click on twitter link on login page , user should see it '
+                                            'redirect to twitter page'],
+    'TC_VERIFYING_LINKEDIN_LINK': [Critical, 'when user click on linkedin link on login page, user should see it '
                                              'redirect to linkedin page'],
-    'TC_VERIFYING_GITHUB_LINK' : [Critical, 'when user should click on github link, user should see it redirect to '
-                                            'github page'],
+    'TC_VERIFYING_GITHUB_LINK': [Critical, 'when user should click on github link, user should see it redirect to '
+                                           'github page'],
+    'TC_VERIFYING_LOGIN_PLACEHOLDERS': [Critical, 'when  user used verify place holder on login page, suer should see '
+                                                  'proper verfing place holders'],
     'TC_VERIFYING_ACCOUNT_PROFILE_PAGE': [Critical, 'When user should click on login drop down button ,user should '
                                                     'redirect to account setting page'],
     'TC-VERIFYING_SOCIAL_OAUTH_VERIFICATION': [Critical, 'when user click on account setting page, user should see '
@@ -154,6 +156,5 @@ testCases = {
     'Tc_VERIFY_THE_FUNCTIONALITY_OF_ADD_NICKNAME_BUTTON': [Critical, 'when user click on add nick name button,user '
                                                                      'should see pop-up to fil the details of nick'
                                                                      '(or) create new nick name'],
-
 
 }

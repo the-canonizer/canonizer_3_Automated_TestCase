@@ -1,7 +1,15 @@
 import sys
 from datetime import time
+from lib2to3.pgen2 import driver
 from pydoc import text
+from telnetlib import EC
 from time import sleep
+
+import self
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from CanonizerBase import Page
 from Identifiers import HomePageIdentifiers, LoginPageIdentifiers
@@ -97,13 +105,6 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_canonizer_login_page(self):
-        self.click_on_login_button()
-        tittle = self.find_element(*LoginPageIdentifiers.LOGIN_TITTLE).text
-        print(tittle)
-        if tittle == 'Log in to Canonizer':
-            return CanonizerLoginPage(self.driver)
-
     def click_on_close_icon_button(self):
         self.click_on_login_button()
         self.hover(*LoginPageIdentifiers.CLOSE_BUTTON)
@@ -128,7 +129,6 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         self.find_element(*LoginPageIdentifiers.TITTLE).click()
         tittle1 = self.find_element(*LoginPageIdentifiers.TITTLE)
-        print(tittle1)
         if tittle1 == 'Your session has expired. Please log in again!':
             return CanonizerLoginPage(self.driver)
 
@@ -158,7 +158,6 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD).click()
         self.find_element(*LoginPageIdentifiers.TITTLE1).click()
         tittle1 = self.find_element(*LoginPageIdentifiers.TITTLE1).text
-        print(tittle1)
         if tittle1 == 'Forgot your password?':
             return CanonizerLoginPage(self.driver)
 
@@ -174,7 +173,6 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys()
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
         tittle2 = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
-        print(tittle2)
         if tittle2 == 'Please input your Email / Phone Number!':
             return CanonizerLoginPage(self.driver)
 
@@ -185,7 +183,6 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
         tittle3 = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
-        print(tittle3)
         if tittle3 == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
 
@@ -197,8 +194,9 @@ class CanonizerLoginPage(Page):
 
     def verifying_facebook_icon(self):
         self.click_on_login_button()
+        #self.hover(*LoginPageIdentifiers.FACEBOOK_LINK)
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
-        sleep(5)
+        self.hover(*LoginPageIdentifiers.FACEBOOK_TITTLE)
         tittle = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITTLE).text
         print(tittle)
         if tittle == 'Log in to Facebook':
@@ -213,9 +211,8 @@ class CanonizerLoginPage(Page):
     def verifying_twitter_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
-        sleep(5)
+        self.hover(*LoginPageIdentifiers.TWITTER_TITTLE)
         tittle = self.find_element(*LoginPageIdentifiers.TWITTER_TITTLE).text
-        print(tittle)
         if tittle == 'Authorize the_canonizer to access your account?':
             return CanonizerLoginPage(self.driver)
 
@@ -230,3 +227,13 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.GITHUB_LINK).click()
 
         return CanonizerLoginPage(self.driver)
+
+    def verify_login_placeholders(self):
+        self.click_login_page_button()
+        email = self.find_element(*LoginPageIdentifiers.EMAIL)
+        password = self.find_element(*LoginPageIdentifiers.PASSWORD)
+        email_placeholder = email.get_attribute('placeholder')
+        password_placeholder = password.get_attribute('placeholder')
+        if email_placeholder == 'Email / Phone Number' and password_placeholder == 'Password':
+            return CanonizerLoginPage(self.driver)
+

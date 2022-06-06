@@ -27,7 +27,7 @@ class RegistrationPageIdentifiers(object):
     ERROR = (By.XPATH, '//div[@class="ant-form-item-explain-error"]')
     LOGIN = (By.XPATH, '//*[@id="registration"]/span/a')
     FORGET_PASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
-    TITLE = (By.XPATH, '//h2[text()="Register Now on Canonizer"]')
+    TITTLE = (By.XPATH, '//h2[text()="Register Now on Canonizer"]')
     FNAME = (By.XPATH, '//label[@title="First Name (Limit 100 Chars)"]')
     FNAME_HEADING = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[1]/label')
     ERROR_FIRST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[2]/div[2]/div')
@@ -56,7 +56,7 @@ class LoginPageIdentifiers(object):
     LOGIN_TITTLE = (By.XPATH, '//h2[text() = "Log in to Canonizer"]')
     SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
     FACEBOOK_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[1]')
-    FACEBOOK_TITTLE = (By.XPATH, '//div[text()="Log in to Facebook"]')
+    FACEBOOK_TITTLE = (By.XPATH, '//*[@id="header_block"]/span/div')
     GOOGLE_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[2]')
     TWITTER_LINK = (By.XPATH, '//*[@id="login_form"]/div[5]/div/div/div/div/div/button[3]')
     TWITTER_TITTLE = (By.XPATH, '//h2[text() = "Authorize the_canonizer to access your account?"]')
@@ -94,15 +94,16 @@ class AccountSettingPageIdentifier(object):
     CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
     CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
     NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
-    SERIAL_NUMBER = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[1])')
     NICK_NAME_ID = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[2])')
     NICK_NAME1 = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[3])')
     VISIBILITY_STATUS = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[4])')
     ADD_NEW_NICK_NAME = (By.XPATH, '//button[@class="ant-btn ant-btn-primary ant-btn ant-btn-orange ant-btn-lg"]')
     ADD_NEW_NICK_NAME_TITTLE = (By.XPATH, '//div[text()="Add New Nick Name"]')
     POP_UP_NICK_NAME = (By.ID, 'add_edit_form_nick_name')
-    POPO_UP_CREATE_BUTTON = (By.XPATH, '//*[@id="add_edit_form"]/div[3]/div/div/div/button')
+    POP_UP_CREATE_BUTTON = (By.XPATH, '//*[@id="add_edit_form"]/div[3]/div/div/div/button')
     POP_UP_NICK_NAME_ERROR = (By.XPATH, '//div[text()="Please Enter Nick Name!"]')
+    SERIAL_NUMBER = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[1])')
+    NICK_NAME = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[4]')
 
 
 class BrowsePageIdentifiers(object):
@@ -113,7 +114,5 @@ class BrowsePageIdentifiers(object):
                                 '1]/input')
 
 
-class HomePageIdentifiers:
+class HomePageIdentifiers(object):
     pass
-
-

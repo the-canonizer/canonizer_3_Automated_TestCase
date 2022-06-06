@@ -26,7 +26,7 @@ else:
     exit(1)
 
 DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Sai@1998"
+DEFAULT_PASS = "Deekshith@123"
 
 # Registration Page Configuration Parameters
 DEFAULT_FIRST_NAME = "kumar"
@@ -160,7 +160,7 @@ UNVERIFY_PASS = "Pooja@123456"
 # DEFAULT_USER = ""
 # DEFAULT_PASS = ""
 DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Sai@1998"
+DEFAULT_PASS = "Deekshith@123"
 # DEFAULT_USER = "r_canonizer_user@yopmail.com"
 # DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduser@gmail.com'
@@ -174,3 +174,7 @@ VERIFY_EMAIL = "anil.podi@zibtek.in"
 VERIFY_PASS = "Zibtek#2455"
 PASS_UPPERCASE = "POOJA@123456"
 PASS_LOWERCASE = "pooja@123456"
+
+# Account Setting page Configuration Parameters
+DEFAULT_NICK_NAME = "saideekshith"
+DEFAULT_INVALID_NICK_NAME = "sai___   deekshith"
