@@ -127,9 +127,9 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
-        self.find_element(*LoginPageIdentifiers.TITTLE).click()
-        tittle1 = self.find_element(*LoginPageIdentifiers.TITTLE)
-        if tittle1 == 'Your session has expired. Please log in again!':
+        self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).click()
+        title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE)
+        if title == 'Your session has expired. Please log in again!':
             return CanonizerLoginPage(self.driver)
 
     def verify_the_Remember_me_checkbox(self, email, password):
@@ -156,9 +156,9 @@ class CanonizerLoginPage(Page):
         self.click_on_login_button()
         self.hover(*LoginPageIdentifiers.FORGET_PASSWORD)
         self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD).click()
-        self.find_element(*LoginPageIdentifiers.TITTLE1).click()
-        tittle1 = self.find_element(*LoginPageIdentifiers.TITTLE1).text
-        if tittle1 == 'Forgot your password?':
+        self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).click()
+        title = self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).text
+        if title == 'Forgot your password?':
             return CanonizerLoginPage(self.driver)
 
     def click_on_register_now_button_on_login_page(self):
@@ -172,8 +172,8 @@ class CanonizerLoginPage(Page):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys()
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
-        tittle2 = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
-        if tittle2 == 'Please input your Email / Phone Number!':
+        title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
+        if title == 'Please input your Email / Phone Number!':
             return CanonizerLoginPage(self.driver)
 
     def verify_one_time_request_code_with_invalid_email(self, email, password):
@@ -182,8 +182,8 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
-        tittle3 = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
-        if tittle3 == 'Input is not valid!':
+        title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
+        if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
 
     def verifying_social_account_links(self):
@@ -196,10 +196,9 @@ class CanonizerLoginPage(Page):
         self.click_on_login_button()
         #self.hover(*LoginPageIdentifiers.FACEBOOK_LINK)
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
-        self.hover(*LoginPageIdentifiers.FACEBOOK_TITTLE)
-        tittle = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITTLE).text
-        print(tittle)
-        if tittle == 'Log in to Facebook':
+        self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
+        title = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITLE).text
+        if title == 'Log in to Facebook':
             return CanonizerLoginPage(self.driver)
 
     def verifying_google_link(self):
@@ -211,9 +210,9 @@ class CanonizerLoginPage(Page):
     def verifying_twitter_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
-        self.hover(*LoginPageIdentifiers.TWITTER_TITTLE)
-        tittle = self.find_element(*LoginPageIdentifiers.TWITTER_TITTLE).text
-        if tittle == 'Authorize the_canonizer to access your account?':
+        self.hover(*LoginPageIdentifiers.TWITTER_TITLE)
+        title = self.find_element(*LoginPageIdentifiers.TWITTER_TITLE).text
+        if title == 'Authorize the_canonizer to access your account?':
             return CanonizerLoginPage(self.driver)
 
     def verifying_linkedin_link(self):

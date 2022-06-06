@@ -63,70 +63,60 @@ class CanonizerRegisterPage(Page):
         self.register(REG_LIST_3[0], REG_LIST_3[1], REG_LIST_3[2], REG_LIST_3[3], REG_LIST_3[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
         if error == 'Please input your first name!':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_blank_last_name(self, REG_LIST_4):
         self.register(REG_LIST_4[0], REG_LIST_4[1], REG_LIST_4[2], REG_LIST_4[3], REG_LIST_4[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_LAST_NAME).text
         if error == 'Please input your last name!':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_blank_email(self, REG_LIST_5):
         self.register(REG_LIST_5[0], REG_LIST_5[1], REG_LIST_5[2], REG_LIST_5[3], REG_LIST_5[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
         if error == 'Please input your E-mail!.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_blank_password(self, REG_LIST_6):
         self.register(REG_LIST_6[0], REG_LIST_6[1], REG_LIST_6[2], REG_LIST_6[3], REG_LIST_6[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
         if error == 'Please input your password!.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_invalid_password_length(self, REG_LIST_7):
         self.register(REG_LIST_7[0], REG_LIST_7[1], REG_LIST_7[2], REG_LIST_7[3], REG_LIST_7[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
         if error == 'Password must be contain small, capital letter, number and special character like Abc@1234.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_different_confirmation_password(self, REG_LIST_8):
         self.register(REG_LIST_8[0], REG_LIST_8[1], REG_LIST_8[2], REG_LIST_8[3], REG_LIST_8[4])
-        error = self.find_element(*RegistrationPageIdentifiers.ERROR_CONFIRMATION).text
+        error = self.find_element(*RegistrationPageIdentifiers.ERROR_CONFIRMATION_PASSWORD).text
         if error == 'Confirm Password does not match!':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_blank_spaces_first_name(self, REG_LIST_1):
         self.register(REG_LIST_1[0], REG_LIST_1[1], REG_LIST_1[2], REG_LIST_1[3], REG_LIST_1[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
         if error == 'Please input your first name!.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_invalid_first_name(self, REG_LIST_10):
         self.register(REG_LIST_10[0], REG_LIST_10[1], REG_LIST_10[2], REG_LIST_10[3], REG_LIST_10[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
         if error == 'The first name should only contain alphabets and spaces.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_invalid_last_name(self, REG_LIST_11):
         self.register(REG_LIST_11[0], REG_LIST_11[1], REG_LIST_11[2], REG_LIST_11[3], REG_LIST_11[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_LAST_NAME).text
         if error == 'The last name should only contain alphabets and space.':
-
             return CanonizerRegisterPage(self.driver)
 
     def registration_with_invalid_email(self, REG_LIST_14):
         self.register(REG_LIST_14[0], REG_LIST_14[1], REG_LIST_14[2], REG_LIST_14[3], REG_LIST_14[4])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
         if error == 'The input is not valid E-mail!':
-
             return CanonizerRegisterPage(self.driver)
 
     def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
@@ -136,18 +126,17 @@ class CanonizerRegisterPage(Page):
 
     def click_on_register_button(self):
         self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
-        self.hover(*RegistrationPageIdentifiers.TITTLE)
-        tittle = self.find_element(*RegistrationPageIdentifiers.TITTLE).text
-        if tittle == 'Register Now on Canonizer':
+        self.hover(*RegistrationPageIdentifiers.TITLE)
+        title = self.find_element(*RegistrationPageIdentifiers.TITLE).text
+        if title == 'Register Now on Canonizer':
             return CanonizerRegisterPage(self.driver)
 
     def check_login_page_open_click_login_here_link(self):
         self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
         self.hover(*RegistrationPageIdentifiers.LOGIN)
         self.find_element(*RegistrationPageIdentifiers.LOGIN).click()
-        tittle = self.find_element(*RegistrationPageIdentifiers.LOGIN_TITTLE).text
-        if tittle == 'Log in to Canonizer':
-
+        title = self.find_element(*RegistrationPageIdentifiers.LOGIN_TITLE).text
+        if title == 'Log in to Canonizer':
             return CanonizerRegisterPage(self.driver)
 
 

@@ -170,7 +170,6 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_REMEMBER_CHECK_BOX')))
         result = CanonizerLoginPage(self.driver).verify_the_Remember_me_checkbox(DEFAULT_USER,
                                                                                  DEFAULT_PASS).get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED
@@ -178,28 +177,24 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED')))
         result = CanonizerLoginPage(self.driver).verify_the_login_button_by_entering_the_empty_space("",
                                                                                                      DEFAULT_PASS).get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     #  TC_VERIFY_FORGET_PASSWORD
     def test_verify_forget_password_button(self):
         print("\n" + str(test_cases(' TC_VERIFY_FORGET_PASSWORD')))
         result = CanonizerLoginPage(self.driver).verify_the_forget_password_button().get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_CLICK_ON_REGISTER_NOW_LINK
     def test_click_on_register_now_link(self):
         print("\n" + str(test_cases('TC_CLICK_ON_REGISTER_NOW_LINK')))
         result = CanonizerLoginPage(self.driver).click_on_register_now_button_on_login_page().get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON
     def test_click_on_request_one_time_code(self):
         print("\n" + str(test_cases('TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON')))
         result = CanonizerLoginPage(self.driver).verify_one_time_request_code_without_entering_email().get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL
@@ -266,7 +261,6 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC-VERIFYING_SOCIAL_OAUTH_VERIFICATION')))
         self.login_to_canonizer_app()
         result = CanonizerAccountSettingPage(self.driver).verifying_social_oauth_verification().get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com/settings", result)
 
     # TC_VERIFICATION_CHANGE_PASSWORD
@@ -274,7 +268,6 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFICATION_CHANGE_PASSWORD')))
         self.login_to_canonizer_app()
         result = CanonizerAccountSettingPage(self.driver).verifying_change_password().get_url()
-        print(result)
         self.assertIn("canonizer3.canonizer.com/settings", result)
 
     # TC_VERIFYING_NICK_NAME
