@@ -15,6 +15,7 @@ class RegistrationPageIdentifiers(object):
     """
     This class holds the User Registration Page Identifiers
     """
+
     REGISTER = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[2]/span')
     FIRST_NAME = (By.XPATH, '//*[@id="registration_first_name"]')
     LAST_NAME = (By.ID, 'registration_last_name')
@@ -116,4 +117,44 @@ class BrowsePageIdentifiers(object):
 class HomePageIdentifiers:
     pass
 
+    BODY = (By.ID, 'mainNav')
+    LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
+    REGISTER = (By.XPATH, '//*[@id="navbarResponsive"]/ul[1]/li[2]/a[3]')
+    WHATISCANONIZER = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[2]/a')
+    WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
+    EMAILLOGIN = (By.XPATH, '//*[@id="login_form_username"]')
+    PASSWORD = (By.ID, 'login_form_password')
+    LOGIN_SUBMIT =(By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
+    ACCOUNT_HEADER =(By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
 
+
+class ForgotPasswordIdentifiers(object):
+    FORGOTPASSWORDLINK = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
+    LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
+    FORGOTPASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
+    TITLE = (By.XPATH, '//*[@id="forgotPassword"]/h2')
+    EMAIL = (By.ID, 'forgotPassword_email_id')
+    SUBMITBUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
+    OTPPAGETITLE = (By.XPATH, '//*[@id="otpverify"]/h2')
+    INVALIDEMAIL_ERROR = (By.XPATH, '//*[@id="forgotPassword"]/div[1]/div[2]/div[2]/div[2]/div')
+    SUBMIT_OTP_BUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
+    OTP_EMPTY_ERROR = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
+    OTP_ENTER = (By.XPATH, '//*[@id="otpverify_otp"]')
+    #UNREGSITERED_EMAIL_ERROR =
+    INVALID_OTP_ERROR = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
+    CROSS_ICON_FORGOT_MODAL = (By.XPATH, '//*[@id="forgotPassword"]/button')
+    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="otpverify"]/button')
+    CHANGE_PASSWORD_TITLE = (By.XPATH, '//h2[text()="Create new password"]')
+
+
+class CreateTopicIdentifiers(object):
+    CREATE_NEW_TOPIC = (By.XPATH, '(//span[text()=" Create New Topic"])[1]')
+    LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
+    TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
+    NICK_NAME = (By.XPATH, '//div[text()="sania_talentelgia"]')
+    TOPIC_NAME = (By.XPATH, '(//input[contains(@class,"ant-input ant-input-lg")])[2]')
+
+    NAMESPACE = (By.XPATH, '(//span[@class="ant-select-selection-item"])[2]')
+    EDIT_SUMMARY = (By.ID, 'create_new_topic_edit_summary')
+    CREATE_TOPIC = (By.XPATH, '(//span[text()="Create Topic"])[2]')
+    ERROR_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')

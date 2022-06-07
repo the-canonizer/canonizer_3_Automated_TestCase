@@ -155,5 +155,20 @@ testCases = {
                                                                      'should see pop-up to fil the details of nick'
                                                                      '(or) create new nick name'],
 
+    'TC_CLICK_FORGOT_PASSWORD_LINK': [Critical, 'user should see forgot password link'],
+    'TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN': [Critical, 'User must see OTP screen on submit button'],
+    'TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL': [Critical, 'user must see error message with invalid email'],
+    'TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL': [Critical, 'user must see error message when email is left empty'],
+    'TC_SUBMIT_EMPTY_OTP': [Critical, 'user must see error message when OTP is left empty'],
+    'TC_SUBMIT_INVALID_LENGTH_OTP': [Critical, 'user must see error message when submit invalid length OTP'],
+    'TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL': [Critical, 'user must see error message for email which is unregistered'],
+    'TC_CROSS_ICON_ON_FORGOT_MODAL': [Critical, ' user must be able to click cross icon and modal should close'],
+    'TC_CROSS_ICON_ON_OTP_MODAL': [Critical, 'user must be able to click cross icon and modal should close'],
+    'TC_ENTER_VALID_OTP': [Critical, ' user must enter valid OTP and must see change password page'],
+    'TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN': [Critical, 'user must be able to click Create topic button on login'],
+    'TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN': [Critical, 'user must see login page when click create topic button'
+                                                           'when not logged in'],
+    'TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME': [Critical, ' User must not be able to create topic with blank name']
+
 
 }

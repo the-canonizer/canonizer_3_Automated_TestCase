@@ -1,19 +1,18 @@
 import unittest
 from unittest import result
-
-import self as self
-from selenium.webdriver.remote.webelement import WebElement
-
-import CanonizerAcoountSettingPage
 import CanonizerBrowsePage
 from CanonizerAcoountSettingPage import CanonizerAccountSettingPage
+from CanonizerCreateNewTopic import CanonizerCreateNewTopic
 from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
-
+from ForgotPassword import *
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestPages(unittest.TestCase):
@@ -40,7 +39,7 @@ class TestPages(unittest.TestCase):
         :return:
         """
         result = CanonizerLoginPage(self.driver).click_login_page_button().login_with_valid_user(DEFAULT_USER,
-                                                                                                 DEFAULT_PASS).get_url()
+                                                                                                 DEFAULT_PASSWORD).get_url()
         self.assertIn("", result)
 
     # TC_CLICK_ON_REGISTER_BUTTON
@@ -487,9 +486,133 @@ class TestPages(unittest.TestCase):
     # TC_CHECK_FOR_THE_VALIDATION_OF_SELECT_NAMESPACE_DROP_DOWN
     def test_Check_for_the_validation_of_Select_Namespace_drop_down(self):
         self.login_to_canonizer_app()
-        result = CanonizerBrowsePage.CanonizerBrowsePage(
-            self.driver).Check_for_the_validation_of_Select_Namespace_drop_down().get_url()
+        result = CanonizerBrowsePage.CanonizerBrowsePage(self.driver).Check_for_the_validation_of_Select_Namespace_drop_down().get_url()
         self.assertIn("", result)
+
+    # 01
+    def test_canonizer_home_page_load(self):
+        print("\n" + str(test_cases(0)))
+        self.assertTrue(CanonizerMainPage(self.driver).check_home_page_loaded())
+
+    # ----- FORGOT PASSWORD Test Cases Start -----
+    # 02 TC_CLICK_FORGOT_PASSWORD_LINK
+    def test_click_forgot_password_link(self):
+        print("\n" + str(test_cases('TC_CLICK_FORGOT_PASSWORD_LINK')))
+        result = CanonizerForgotPage(self.driver).click_forgot_password_link()
+        print(result)
+
+    # 03 TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
+    def test_click_submit_button_with_valid_email(self):
+        print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).click_submit_button_with_valid_email(DEFAULT_USER)
+        print(result)
+
+        # 04 TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL
+    def test_click_submit_button_with_invalid_email(self):
+        print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).click_submit_button_with_invalid_email(DEFAULT_USER_INVALID)
+        self.assertIn('The input is not valid E-mail!', result)
+
+        # 05 TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL
+    def test_click_submit_button_with_empty_email(self):
+        print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).click_submit_button_with_invalid_email(" ")
+        self.assertIn('Please input your E-mail!', result)
+
+        # 06 TC_SUBMIT_EMPTY_OTP
+    def test_submit_empty_OTP(self):
+        print("\n" + str(test_cases('TC_SUBMIT_EMPTY_OTP')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).submit_empty_otp(DEFAULT_USER)
+        self.assertIn('Please input your OTP!', result)
+
+        # 07 TC_SUBMIT_INVALID_LENGTH_OTP
+    def test_invalid_otp(self):
+        print("\n" + str(test_cases('TC_SUBMIT_INVALID_LENGTH_OTP')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).submit_invalid_otp(DEFAULT_USER, INVALID_LONG_OTP)
+        self.assertIn('OTP should be min/max 6 characters long!', result)
+
+        # 08 TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL
+    def test_submit_unregistered_email(self):
+        print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).submit_unregsitered_email(UNREGISTERED_EMAIL)
+        self.assertIn('Invalid Email Id!', result)
+
+        # 09 TC_CROSS_ICON_ON_FORGOT_MODAL
+    def test_cross_icon_on_forgot_page(self):
+        print("\n" + str(test_cases('TC_CROSS_ICON_ON_FORGOT_MODAL')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).cross_icon_on_forgot_page().get_url()
+        print(result)
+
+    def test_enter_valid_otp(self):
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+
+        # 10 TC_CROSS_ICON_ON_OTP_MODAL
+    def test_cross_icon_on_otp_page(self):
+        print("\n" + str(test_cases('TC_CROSS_ICON_ON_OTP_MODAL')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).cross_icon_on_otp_page().get_url()
+        print(result)
+
+        # 11 TC_ENTER_VALID_OTP
+    def test_enter_valid_otp(self):
+        print("\n" + str(test_cases('TC_ENTER_VALID_OTP')))
+        CanonizerForgotPage(self.driver).login_and_forgot_password()
+        result = CanonizerForgotPage(self.driver).enter_valid_otp(DEFAULT_USER)
+        self.assertIn("/reset-password", result.get_url())
+
+        # ----- FORGOT PASSWORD Test Cases end -----
+        # ----- CREATE TOPIC Test Cases Start -----
+        # TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN
+    def test_click_create_new_topic_page_button(self):
+        print("\n" + str(test_cases('TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN')))
+        # Click on the Login Page and Create a Login Session and for further actions.
+        self.login_to_canonizer_app()
+        # Click on the Create New Topic link and check topic/create in URL Name
+        result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button().get_url()
+        self.assertIn("/create/topic", result)
+
+    # TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN
+    def test_click_create_topic_without_user_login(self):
+        print("\n" + str(test_cases('TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN')))
+        # Click on the Create New Topic link and check topic/create in URL Name
+        result = CanonizerCreateNewTopic(self.driver).click_create_topic_without_user_login().get_url()
+        self.assertIn("/login?returnUrl=%2Fcreate%2Ftopic", result)
+
+    # TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME
+    def test_create_topic_with_blank_topic_name(self):
+        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME')))
+        # Click on the Login Page and Create a Login Session and for further actions.
+        self.login_to_canonizer_app()
+        # Click on the Create New Topic link and check if topic name is blank
+        result = CanonizerCreateNewTopic(
+            self.driver).click_create_new_topic_page_button().create_topic_with_blank_topic_name(
+            DEFAULT_NICK_NAME,
+            DEFAULT_NAMESPACE,
+            DEFAULT_SUMMARY).get_url()
+        self.assertIn("create/topic", result)
+
+    # TC_CREATE_NEW_TOPIC_WITH_ENTER_KEY
+    def test_create_topic_name_with_enter_key(self):
+        self.login_to_canonizer_app()
+        result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button().create_topic_with_valid_data(
+            DEFAULT_NICK_NAME,
+            DEFAULT_TOPIC_NAME,
+            DEFAULT_NAMESPACE,
+            DEFAULT_SUMMARY
+            ).get_url()
+        self.assertIn("topic", result)
+
+
+
+
+
 
     def tearDown(self):
         self.driver.close()

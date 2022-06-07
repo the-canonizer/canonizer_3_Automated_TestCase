@@ -4,7 +4,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
 import datetime
-
 from CanonizerBase import Page
 from Identifiers import AccountSettingPageIdentifier
 
@@ -21,10 +20,9 @@ class CanonizerAccountSettingPage(Page):
         :return:
             Return the result to the main page.
         """
-        # sleep(10)
         self.hover(*AccountSettingPageIdentifier.CLICK_ON_DROPDOWN)
         self.find_element(*AccountSettingPageIdentifier.CLICK_ON_DROPDOWN).click()
-        # sleep(6)
+        self.hover(*AccountSettingPageIdentifier.ACCOUNT_SETTING_BUTTON)
         self.find_element(*AccountSettingPageIdentifier.ACCOUNT_SETTING_BUTTON).click()
         return CanonizerAccountSettingPage(self.driver)
 
@@ -312,6 +310,7 @@ class CanonizerAccountSettingPage(Page):
         print(tittle)
         if tittle == 'Please Enter Nick Name!': 
             return CanonizerAccountSettingPage(self.driver)
+
 
 
 

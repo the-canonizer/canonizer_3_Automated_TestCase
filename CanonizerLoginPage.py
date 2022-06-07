@@ -27,7 +27,6 @@ class CanonizerLoginPage(Page):
             Return the result to the main page.
         """
 
-        self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
         title = self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).text
         if title == 'Log in':
@@ -61,6 +60,7 @@ class CanonizerLoginPage(Page):
         :return:
             Once the page is loaded, return result to the main program.
         """
+        self.hover(*LoginPageIdentifiers.SUBMIT)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
     def login(self, user, password):
@@ -92,7 +92,6 @@ class CanonizerLoginPage(Page):
         return CanonizerLoginPage(self.driver)
 
     def click_on_login_button(self):
-        self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
 
         return CanonizerLoginPage(self.driver)

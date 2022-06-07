@@ -14,7 +14,7 @@ DEFAULT_BINARY_LOCATION = ''
 
 if platform.system() == 'Darwin':
     DEFAULT_BINARY_LOCATION = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver_mac_m1"
+    DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver"
 elif platform.system() == 'Windows':
     DEFAULT_BINARY_LOCATION = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
     DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver"
@@ -25,15 +25,18 @@ else:
     print("Unknown OS")
     exit(1)
 
-DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Sai@1998"
-
 # Registration Page Configuration Parameters
 DEFAULT_FIRST_NAME = "kumar"
 DEFAULT_LAST_NAME = "file"
-DEFAULT_EMAIL = "saideekshith@zibtek"
-DEFAULT_PASSWORD = "Sai@1998"
+DEFAULT_EMAIL = "cano3@yopmail.com"
 DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
+DEFAULT_USER = "sania.mohan@talentelgia.in"
+DEFAULT_PASSWORD = "Test@123"
+DEFAULT_USER_INVALID = "xcvxc"
+DEFAULT_PASS = "123456"
+UNREGISTERED_EMAIL = "can@gmail.com"
+INVALID_LONG_OTP ="7272727722"
+
 
 REG_LIST_1 = [
     "first  @123",
@@ -155,12 +158,8 @@ REG_LIST_15 = [
     ''
 ]
 # Login Page Configuration Parameters
-UNVERIFY_EMAIL = "meghana@zibtek.in"
-UNVERIFY_PASS = "Pooja@123456"
-# DEFAULT_USER = ""
-# DEFAULT_PASS = ""
-DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Sai@1998"
+DEFAULT_USER = "sania.mohan@talentelgia.in"
+DEFAULT_PASSWORD = "Test@123"
 # DEFAULT_USER = "r_canonizer_user@yopmail.com"
 # DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduser@gmail.com'
@@ -174,3 +173,9 @@ VERIFY_EMAIL = "anil.podi@zibtek.in"
 VERIFY_PASS = "Zibtek#2455"
 PASS_UPPERCASE = "POOJA@123456"
 PASS_LOWERCASE = "pooja@123456"
+
+# Create New Topic Configuration Parameters
+DEFAULT_NICK_NAME = "sania_talentelgia"
+DEFAULT_TOPIC_NAME = "test111111"
+DEFAULT_NAMESPACE = ""
+DEFAULT_SUMMARY = "Default note"
