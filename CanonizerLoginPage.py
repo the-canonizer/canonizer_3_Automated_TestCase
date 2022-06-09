@@ -3,7 +3,7 @@ from datetime import time
 from lib2to3.pgen2 import driver
 from pydoc import text
 from telnetlib import EC
-from time import sleep
+
 
 import self
 from selenium.webdriver import ActionChains
@@ -112,7 +112,7 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_Login_Functionality_by_entering_the_registered_credential(self, email, password):
+    def verify_the_Login_functionality_by_entering_the_registered_credential(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)

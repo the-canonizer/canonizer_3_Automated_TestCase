@@ -5,7 +5,8 @@ import self as self
 from selenium.webdriver.remote.webelement import WebElement
 
 import CanonizerBrowsePage
-from CanonizerAcoountSettingPage import CanonizerAccountSettingPage, CanonizerManageNickNameTab, CanonizerSupportCamps
+from CanonizerAcoountSettingPage import CanonizerAccountSettingPage, CanonizerManageNickNameTab, CanonizerSupportCamps,CanonizerChangePasswordTab
+
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
@@ -144,7 +145,7 @@ class TestPages(unittest.TestCase):
     # TC_LOGIN_WITH_REGISTERED_CREDENTIALS
     def test_login_with_registered_credentials(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_REGISTERED_CREDENTIALS')))
-        result = CanonizerLoginPage(self.driver).verify_the_Login_Functionality_by_entering_the_registered_credential(
+        result = CanonizerLoginPage(self.driver).verify_the_Login_functionality_by_entering_the_registered_credential(
             DEFAULT_USER, DEFAULT_PASS).get_url()
         self.assertIn("canonizer3.canonizer.com", result)
 
@@ -358,30 +359,29 @@ class TestPages(unittest.TestCase):
     def test_Verify_when_user_click_on_change_password(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(
-            self.driver).verify_when_user_click_on_change_password_tab_its_navigating_to_change_Password_Page().get_url()
+        result = CanonizerChangePasswordTab(
+            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_Password_Page().get_url()
         self.assertIn("", result)
 
     # TC VERIFYING_CURRENT_PASSWORD_NEW_PASSWORD_CONFIRM_PASSWORD
-    def test_Verify_self_current_password_new_password_confirm_password_is_present_save_button(self):
+    def test_verify_click_on_change_password_tab_its_navigating_to_change_Password_Page(self):
         print("\n" + str(test_cases('TC VERIFYING_CURRENT_PASSWORD_NEW_PASSWORD_CONFIRM_PASSWORD')))
         self.login_to_canonizer_app()
-        CanonizerAccountSettingPage(
-            self.driver).verify_current_password_new_password_confirm_password_is_present_save_button()
+        CanonizerChangePasswordTab(
+            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_Password_Page()
 
     # TC VERIFY_KEEPING_ALL_THE_FIELDS_EMPTY_AND_CLICK_ON_SAVE
     def test_Verify_keeping_all_the_fields_empty_and_click_on_save(self):
         print("\n" + str(test_cases('TC VERIFY_KEEPING_ALL_THE_FIELDS_EMPTY_AND_CLICK_ON_SAVE')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).verify_keeping_all_the_fields_empty_and_click_on_save("", "",
-                                                                                                                "").get_url()
+        result = CanonizerChangePasswordTab(self.driver).verify_keeping_all_the_fields_empty_and_click_on_save().get_url()
         self.assertIn("", result)
 
     # TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD
     def test_Verify_entering_the_invalid_current_password(self):
         print("\n" + str(test_cases('TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).verify_entering_the_invalid_current_password(
+        result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_current_password(
             INVALID_CURRENT_PASSWORD,
         ).get_url()
         self.assertIn("", result)
@@ -390,7 +390,7 @@ class TestPages(unittest.TestCase):
     def test_Verify_entering_the_invalid_new_password(self):
         print("\n" + str(test_cases('TC_VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).verify_entering_the_invalid_new_password(
+        result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_new_password(
             INVALID_NEW_PASSWORD).get_url()
         self.assertIn("", result)
 
@@ -398,7 +398,7 @@ class TestPages(unittest.TestCase):
     def test_Verify_entering_the_invalid_confirm_password(self):
         print("\n" + str(test_cases('TC VERIFY_ENTERING_THE_INVALID_CONFIRM_PASSWORD')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).verify_entering_the_invalid_confirm_password(
+        result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_confirm_password(
             "DEFAULT_INVALID_CONFIRM_PASSWORD").get_url()
         self.assertIn("", result)
 
@@ -406,7 +406,7 @@ class TestPages(unittest.TestCase):
     def test_Verify_when_both_new_Password_and_confirm_Password_does_not_match(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_BOTH_NEW_PASSWORD_AND_CONFIRM_PASSWORD_DOES_NOT_MATCH')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(
+        result = CanonizerChangePasswordTab(
             self.driver).verify_when_both_new_Password_and_confirm_Password_does_not_match(DEFAULT_NEW_PASSWORD,
                                                                                            DEFAULT_CONFIRM_PASSWORD).get_url()
         self.assertIn("", result)

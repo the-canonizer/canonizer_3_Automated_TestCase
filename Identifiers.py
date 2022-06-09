@@ -84,13 +84,7 @@ class AccountSettingPageIdentifier(object):
         By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[2]/div[3]/div[2]/div/div/span/div[1]/div/div/div/div')
     UPDATE_BUTTON = (By.XPATH, '//span[text() = "Update"]')
     LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
-    CURRENT_PASSWORD = (By.ID, 'changePassword_current_password')
-    NEW_PASSWORD = (By.ID, 'changePassword_new_password')
-    CONFIRM_PASSWORD = (By.ID, 'changePassword_confirm_password')
-    SAVE_BUTTON = (By.XPATH, '//*[@id="changePassword"]/div[2]/div/div/div/button/span')
-    CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
-    CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
-    NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
+
 
 
 class CanonizerSupportCampIdentifiersPage(object):
@@ -106,6 +100,18 @@ class CanonizerSupportCampIdentifiersPage(object):
     CLICK_ON_REMOVE_SUPPORT = (By.XPATH, '//div[@class="ant-card-extra"]//child::div')
     REMOVE_ON_POP_UP_BUTTON = (By.XPATH, '(//div[@class="ant-form-item-control-input-content"]//child::button)[1]')
     REMOVE_TITLE = (By.XPATH, '//div[@class="ant-modal-title"]')
+
+class CanonizerChangePasswordIdentifierPage(object):
+    CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
+    ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
+    CHANGE_PASSWORD =  (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[3]')
+    CURRENT_PASSWORD = (By.XPATH, '//*[@id="currentPassword"]')
+    NEW_PASSWORD = (By.XPATH, '//*[@id="newPassword"]')
+    CONFIRM_PASSWORD = (By.XPATH, '//*[@id="confirmPassword"]')
+    SAVE_BUTTON = (By.XPATH, '//*[@id="changePassword"]/div[2]/div/div/div/button/span')
+    CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
+    CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
+    NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
 
 
 class CanonizerManageNickNameIdentifiersPage(object):

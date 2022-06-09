@@ -20,8 +20,7 @@ testCases = {
     'TC_REGISTRATION_WITH_BLANK_PASSWORD': [moderate, 'In User Registration Page, When user puts blank password, '
                                                       'user must see Error Message'],
     'TC_REGISTRATION_WITH_INVALID_PASSWORD_LENGTH': [moderate, 'In User Registration Page, when user puts invalid '
-                                                               'password,user must see Error Message'
-                                                               'error message'],
+                                                               'password,user must see Error Message'],
     'TC_REGISTRATION_WITH_DIFFERENT_CONFIRM_PASSWORD': [moderate,
                                                         'In User Registration Page, when user puts different password '
                                                         'for confirmation,user must see Error Message'],
@@ -156,5 +155,20 @@ testCases = {
     'Tc_VERIFY_THE_FUNCTIONALITY_OF_ADD_NICKNAME_BUTTON': [Critical, 'when user click on add nick name button,user '
                                                                      'should see pop-up to fil the details of nick'
                                                                      '(or) create new nick name'],
+    'TC_VERIFY_user_navigate_to_support_camp_page': [Critical, 'when user click on support camps in account setting '
+                                                               'page, User should be navigated to supported camp '
+                                                               'page'],
+    'TC_VERIFY_DIRECT_SUPPORTED_CAMPS': [Critical, 'when user click on supported camps tab , user should see direct '
+                                                   'supported and delegated supported camps tab it will be clickable'],
+    'TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB': [Critical, 'when user should click on supported '
+                                                                                 'camps tab, user should see search '
+                                                                                 'bar is present are not beside '
+                                                                                 'delegated supported camp tab'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP': ['when user click on direct support camp, user should see '
+                                                           'User directly supported camps list should be displayed  '
+                                                           'under Direct Supported camp tab'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP': ['when user click on delegate support camp, User delegated '
+                                                             'support camps list should be displayed  under Delegate '
+                                                             'Supported camp tab'],
 
 }

@@ -1,8 +1,3 @@
-import time
-from time import sleep
-
-import self
-from urllib3.util import url
 
 from CanonizerBase import Page
 from Identifiers import RegistrationPageIdentifiers
@@ -28,9 +23,6 @@ class CanonizerRegisterPage(Page):
         self.hover(*RegistrationPageIdentifiers.REGISTER)
         self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
 
-        url = self.driver.current_url
-        self.driver.get(url)
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
 
         return CanonizerRegisterPage(self.driver)
 
@@ -63,7 +55,6 @@ class CanonizerRegisterPage(Page):
         self.enter_email(args[2])
         self.enter_password(args[3])
         self.enter_confirm_password(args[4])
-        time.sleep(4)
         self.click_create_account_button()
 
     def registration_with_blank_first_name(self, REG_LIST_3):
