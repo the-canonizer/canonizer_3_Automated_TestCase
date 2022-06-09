@@ -36,7 +36,7 @@ DEFAULT_PASSWORD = "Sai@1998"
 DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
 
 REG_LIST_1 = [
-    "first  @123",
+    "           ",
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
     DEFAULT_PASS,
@@ -178,3 +178,14 @@ PASS_LOWERCASE = "pooja@123456"
 # Account Setting page Configuration Parameters
 DEFAULT_NICK_NAME = "saideekshith"
 DEFAULT_INVALID_NICK_NAME = "sai___   deekshith"
+DEFAULT_NEW_PASSWORD = "Sai@199828"
+DEFAULT_INVALID_CONFIRM_PASSWORD = "sai@   12333333"
+INVALID_NEW_PASSWORD = "sai@    123333"
+INVALID_CURRENT_PASSWORD = "sai@    12333"
+DEFAULT_CONFIRM_PASSWORD = "Sai@166666"
+DEFAULT_FIRST_NAME = "automation  testing"
+DEFAULT_LAST_NAME = "testing  cases"
+DEFAULT_MIDDLE_NAME = "test  case "
+
+# support camps tab Configuration Parameters
+DEFAULT_TOPIC_NAME = "automation 123"

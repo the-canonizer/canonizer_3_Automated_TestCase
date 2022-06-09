@@ -194,7 +194,6 @@ class CanonizerLoginPage(Page):
 
     def verifying_facebook_icon(self):
         self.click_on_login_button()
-        #self.hover(*LoginPageIdentifiers.FACEBOOK_LINK)
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
         self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
         title = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITLE).text
