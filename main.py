@@ -5,10 +5,14 @@ import self as self
 from selenium.webdriver.remote.webelement import WebElement
 
 import CanonizerBrowsePage
-from CanonizerAcoountSettingPage import CanonizerAccountSettingPage, CanonizerManageNickNameTab, CanonizerSupportCamps,CanonizerChangePasswordTab
+from CanonizerAccountSettingPage import CanonizerAccountSettingPage
 
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
+
+from CanonizerChangePasswordTab import CanonizerChangePasswordTab
+from CanonizerManageNickNameTab import CanonizerManageNickNameTab
+from CanonizerSupportCampsTab import CanonizerSupportCampsTab
 
 from CanonizerTestCases import test_cases
 from Config import *
@@ -145,7 +149,7 @@ class TestPages(unittest.TestCase):
     # TC_LOGIN_WITH_REGISTERED_CREDENTIALS
     def test_login_with_registered_credentials(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_REGISTERED_CREDENTIALS')))
-        result = CanonizerLoginPage(self.driver).verify_the_Login_functionality_by_entering_the_registered_credential(
+        result = CanonizerLoginPage(self.driver).verify_the_login_functionality_by_entering_the_registered_credential(
             DEFAULT_USER, DEFAULT_PASS).get_url()
         self.assertIn("canonizer3.canonizer.com", result)
 
@@ -159,14 +163,14 @@ class TestPages(unittest.TestCase):
     # TC_VERIFYING_REMEMBER_CHECK_BOX
     def test_click_on_remember_check_box(self):
         print("\n" + str(test_cases('TC_VERIFYING_REMEMBER_CHECK_BOX')))
-        result = CanonizerLoginPage(self.driver).verify_the_Remember_me_checkbox(DEFAULT_USER,
+        result = CanonizerLoginPage(self.driver).verify_the_remember_me_checkbox(DEFAULT_USER,
                                                                                  DEFAULT_PASS).get_url()
         self.assertIn("canonizer3.canonizer.com", result)
 
     # TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED
     def test_verify_login_button_with_empty_space(self):
         print("\n" + str(test_cases('TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED')))
-        result = CanonizerLoginPage(self.driver).verify_the_login_button_by_entering_the_empty_space("",
+        result = CanonizerLoginPage(self.driver).verify_the_login_button_by_entering_the_empty_email_space("",
                                                                                                      DEFAULT_PASS).get_url()
         self.assertIn("canonizer3.canonizer.com", result)
 
@@ -285,7 +289,7 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_VERIFY_BUTTON_WITH_BLANK_FIELDS')))
         self.login_to_canonizer_app()
         result = CanonizerAccountSettingPage(
-            self.driver).check_the_Functionality_of_verify_button_without_entering_the_data().get_url()
+            self.driver).check_the_functionality_of_verify_button_without_entering_the_data().get_url()
         self.assertIn("", result)
 
     # TC_VERIFYING_CLICK_ON_MOBILE_CARRIER_DROP_DOWN
@@ -336,7 +340,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN
-    def test_Verify_when_user_updated_the_Personal_Information_and_logs_out_and_logIn_again(self):
+    def test_verify_when_user_updated_the_personal_information_and_logs_out_and_logIn_again(self):
         print(
             "\n" + str(test_cases('TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN')))
         self.login_to_canonizer_app()
@@ -347,7 +351,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC_VERIFY_THE_SPACES_ARE_TRIMMED_IN_THE_FIRSTNAME_LASTNAME_MIDDLENAME_fields
-    def test_Verify_the_spaces_are_trimmed_in_the_firstname_lastname_middlename_fields(self):
+    def test_verify_the_spaces_are_trimmed_in_the_firstname_lastname_middlename_fields(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_SPACES_ARE_TRIMMED_IN_THE_FIRSTNAME_LASTNAME_MIDDLENAME_fields')))
         self.login_to_canonizer_app()
         result = CanonizerAccountSettingPage(
@@ -356,29 +360,23 @@ class TestPages(unittest.TestCase):
                                                                                                    DEFAULT_LAST_NAME).get_url()
 
     # TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD
-    def test_Verify_when_user_click_on_change_password(self):
+    def test_verify_when_user_click_on_change_password(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD')))
         self.login_to_canonizer_app()
         result = CanonizerChangePasswordTab(
-            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_Password_Page().get_url()
+            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_password_Page().get_url()
         self.assertIn("", result)
 
-    # TC VERIFYING_CURRENT_PASSWORD_NEW_PASSWORD_CONFIRM_PASSWORD
-    def test_verify_click_on_change_password_tab_its_navigating_to_change_Password_Page(self):
-        print("\n" + str(test_cases('TC VERIFYING_CURRENT_PASSWORD_NEW_PASSWORD_CONFIRM_PASSWORD')))
-        self.login_to_canonizer_app()
-        CanonizerChangePasswordTab(
-            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_Password_Page()
-
     # TC VERIFY_KEEPING_ALL_THE_FIELDS_EMPTY_AND_CLICK_ON_SAVE
-    def test_Verify_keeping_all_the_fields_empty_and_click_on_save(self):
+    def test_verify_keeping_all_the_fields_empty_and_click_on_save(self):
         print("\n" + str(test_cases('TC VERIFY_KEEPING_ALL_THE_FIELDS_EMPTY_AND_CLICK_ON_SAVE')))
         self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(self.driver).verify_keeping_all_the_fields_empty_and_click_on_save().get_url()
+        result = CanonizerChangePasswordTab(
+            self.driver).verify_keeping_all_the_fields_empty_and_click_on_save().get_url()
         self.assertIn("", result)
 
     # TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD
-    def test_Verify_entering_the_invalid_current_password(self):
+    def test_verify_entering_the_invalid_current_password(self):
         print("\n" + str(test_cases('TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD')))
         self.login_to_canonizer_app()
         result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_current_password(
@@ -387,7 +385,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD
-    def test_Verify_entering_the_invalid_new_password(self):
+    def test_verify_entering_the_invalid_new_password(self):
         print("\n" + str(test_cases('TC_VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD')))
         self.login_to_canonizer_app()
         result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_new_password(
@@ -395,7 +393,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC VERIFY_ENTERING_THE_INVALID_CONFIRM_PASSWORD
-    def test_Verify_entering_the_invalid_confirm_password(self):
+    def test_verify_entering_the_invalid_confirm_password(self):
         print("\n" + str(test_cases('TC VERIFY_ENTERING_THE_INVALID_CONFIRM_PASSWORD')))
         self.login_to_canonizer_app()
         result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_confirm_password(
@@ -403,22 +401,22 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC VERIFY_WHEN_BOTH_NEW_PASSWORD_AND_CONFIRM_PASSWORD_DOES_NOT_MATCH
-    def test_Verify_when_both_new_Password_and_confirm_Password_does_not_match(self):
+    def test_verify_when_both_new_password_and_confirm_password_does_not_match(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_BOTH_NEW_PASSWORD_AND_CONFIRM_PASSWORD_DOES_NOT_MATCH')))
         self.login_to_canonizer_app()
         result = CanonizerChangePasswordTab(
-            self.driver).verify_when_both_new_Password_and_confirm_Password_does_not_match(DEFAULT_NEW_PASSWORD,
+            self.driver).verify_when_both_new_password_and_confirm_password_does_not_match(DEFAULT_NEW_PASSWORD,
                                                                                            DEFAULT_CONFIRM_PASSWORD).get_url()
         self.assertIn("", result)
 
     # TC VERIFY_WHEN_USER_CLICK_ON_NICK_NAME_TAB
-    def test_Verify_when_user_click_on_Nick_Name_tab(self):
+    def test_verify_when_user_click_on_nick_name_tab(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_NICK_NAME_TAB')))
         self.login_to_canonizer_app()
-        CanonizerManageNickNameTab(self.driver).verify_when_user_click_on_Nick_Name_tab().get_url()
+        CanonizerManageNickNameTab(self.driver).verify_when_user_click_on_nick_name_tab().get_url()
 
     # TC_VERIFY_ALL_THE_HEADERS_IN_NICK_NAME_TAB
-    def test_Verify_all_the_headers_In_nick_name_tab(self):
+    def test_verify_all_the_headers_In_nick_name_tab(self):
         self.login_to_canonizer_app()
         result = CanonizerManageNickNameTab(self.driver).verify_all_the_headers_in_nick_name_tab().get_url()
         self.assertIn("canonizer3.canonizer.com/settings", result)
@@ -457,12 +455,12 @@ class TestPages(unittest.TestCase):
             DEFAULT_INVALID_NICK_NAME).get_url()
         self.assertIn("canonizer3.canonizer.com/settings", result)
 
-    # TC_VERIFY_user_navigate_to_support_camp_page
-    def test_verify_user_is_navigating_to_Supported_camp_page_when_clicks_on_supported_camps_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_user_navigate_to_support_camp_page')))
+    # TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE
+    def test_verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab(self):
+        print("\n" + str(test_cases('TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(
-            self.driver).verify_user_is_navigating_to_Supported_camp_page_when_clicks_on_supported_camps_tab() \
+        result = CanonizerSupportCampsTab(
+            self.driver).verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab() \
             .get_url()
         self.assertIn("", result)
 
@@ -470,57 +468,57 @@ class TestPages(unittest.TestCase):
     def test_verify_direct_supported_camps(self):
         print("\n" + str(test_cases('TC_VERIFY_DIRECT_SUPPORTED_CAMPS')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_direct_supported_camps().get_url()
+        result = CanonizerSupportCampsTab(self.driver).verify_direct_supported_camps().get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB
     def test_verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(
+        result = CanonizerSupportCampsTab(self.driver).verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(
         ).get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP
-    def test_verify_the_functionality_of_Direct_Support_Camp(self):
+    def test_verify_the_functionality_of_direct_support_camp(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_the_functionality_of_Direct_Support_Camp().get_url()
+        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_direct_support_camp().get_url()
         self.assertIn("", result)
 
     #  TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP
-    def test_verify_the_functionality_of_Delegate_support_camp_tab(self):
+    def test_verify_the_functionality_of_delegate_support_camp_tab(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_the_functionality_of_Direct_Support_Camp().get_url()
+        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_delegate_support_camp_tab().get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE
     def test_verify_the_search_functionality_in_supported_camps_page(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_the_search_functionality_in_supported_camps_page(
+        result = CanonizerSupportCampsTab(self.driver).verify_the_search_functionality_in_supported_camps_page(
             DEFAULT_TOPIC_NAME).get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP
-    def test_Verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
+    def test_verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
         print("\n" + str(test_cases('TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps \
-            (self.driver).Verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab().get_url()
+        result = CanonizerSupportCampsTab \
+            (self.driver).verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab().get_url()
         self.assertIn("", result)
 
     # TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE
     def test_topic_name_and_camp_name_is_clickable(self):
         print("\n" + str(test_cases('TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE')))
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).topic_name_and_camp_name_is_clickable().get_url()
+        result = CanonizerSupportCampsTab(self.driver).topic_name_and_camp_name_is_clickable().get_url()
         self.assertIn("", result)
 
-    def test_verify_Remove_Support_button_functionality(self):
+    def test_verify_remove_support_button_functionality(self):
         self.login_to_canonizer_app()
-        result = CanonizerSupportCamps(self.driver).verify_Remove_Support_button_functionality().get_url()
+        result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
         self.assertIn("", result)
 
 

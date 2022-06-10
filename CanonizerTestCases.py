@@ -138,7 +138,7 @@ testCases = {
     'TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD': [Critical, 'when user click on save button entering '
                                                                   'current password with invalid data , user should '
                                                                   'see proper error message'],
-    'TC VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD': [Critical, 'when user click on save button with invalid new '
+    'TC_VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD': [Critical, 'when user click on save button with invalid new '
                                                               'password data user should see proper error message'],
     'TC VERIFY_ENTERING_THE_INVALID_CONFIRM_PASSWORD': [Critical, 'when user click on save button with invalid confirm '
                                                                   'password data,user should see proper error message'],
@@ -164,11 +164,16 @@ testCases = {
                                                                                  'camps tab, user should see search '
                                                                                  'bar is present are not beside '
                                                                                  'delegated supported camp tab'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP': ['when user click on direct support camp, user should see '
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP': [Critical,'when user click on direct support camp, user '
+                                                                    'should see '
                                                            'User directly supported camps list should be displayed  '
                                                            'under Direct Supported camp tab'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP': ['when user click on delegate support camp, User delegated '
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP': [Critical,'when user click on delegate support camp, '
+                                                                      'User delegated '
                                                              'support camps list should be displayed  under Delegate '
                                                              'Supported camp tab'],
+    'TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE': [Critical, 'when user click on supported camp tab , user should see '
+                                                            'supported camp page'],
+    'TC_VERIFY_DIRECT_SUPPORTED_CAMPS': [Critical, '']
 
 }

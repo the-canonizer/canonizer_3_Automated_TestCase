@@ -1,6 +1,5 @@
 from time import sleep
 
-# import page as page
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
@@ -8,7 +7,7 @@ import datetime
 
 from CanonizerBase import Page
 from Identifiers import AccountSettingPageIdentifier, CanonizerManageNickNameIdentifiersPage, \
-    CanonizerSupportCampIdentifiersPage
+    CanonizerSupportCampIdentifiersPage , CanonizerChangePasswordIdentifierPage
 
 
 class CanonizerAccountSettingPage(Page):
@@ -172,77 +171,102 @@ class CanonizerAccountSettingPage(Page):
 
         return CanonizerAccountSettingPage(self.driver)
 
-    def verify_when_user_click_on_change_password_tab_its_navigating_to_change_Password_Page(self):
-        self.click_account_settings_page_button()
-        sleep(5)
-        self.hover(*AccountSettingPageIdentifier.CHANGE_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
+class CanonizerChangePasswordTab(Page):
+    def click_account_settings(self):
+        """
+        This function is to click on the Account Settings button
 
-        return CanonizerAccountSettingPage(self.driver)
+        -> Hover to the Account Settings button
+        -> Find the element and click it
+
+        :return:
+            Return the result to the main page.
+        """
+        self.hover(*AccountSettingPageIdentifier.CLICK_ON_DROPDOWN)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CLICK_ON_DROPDOWN).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.ACCOUNT_SETTING_BUTTON).click()
+        return CanonizerChangePasswordTab(self.driver)
+
+    def verify_click_on_change_password_tab_its_navigating_to_change_Password_Page(self):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+
+        return CanonizerChangePasswordTab(self.driver)
 
     def verify_current_password_new_password_confirm_password_is_present_save_button(self):
-        self.click_account_settings_page_button()
-        self.hover(*AccountSettingPageIdentifier.CHANGE_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.hover(*AccountSettingPageIdentifier.CURRENT_PASSWORD)
-        self.hover(*AccountSettingPageIdentifier.NEW_PASSWORD)
-        self.hover(*AccountSettingPageIdentifier.CONFIRM_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
+        self.hover(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD)
+        self.hover(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
 
-        return CanonizerAccountSettingPage(self.driver)
+        return CanonizerChangePasswordTab(self.driver)
 
-    def verify_keeping_all_the_fields_empty_and_click_on_save(self, current, new, confirm):
-        self.click_account_settings_page_button()
-        self.hover(*AccountSettingPageIdentifier.CHANGE_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.find_element(*AccountSettingPageIdentifier.CURRENT_PASSWORD).send_keys(current)
-        self.find_element(*AccountSettingPageIdentifier.NEW_PASSWORD).send_keys(new)
-        self.find_element(*AccountSettingPageIdentifier.CONFIRM_PASSWORD).send_keys(confirm)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
+    def verify_keeping_all_the_fields_empty_and_click_on_save(self):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
 
-        return CanonizerAccountSettingPage(self.driver)
+        return CanonizerChangePasswordTab(self.driver)
 
-    def verify_entering_the_invalid_current_password(self, current):
-        self.click_account_settings_page_button()
-        sleep(5)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.find_element(*AccountSettingPageIdentifier.CURRENT_PASSWORD).send_keys(current)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
-        title = self.find_element(*AccountSettingPageIdentifier.CURRENT_PASSWORD_ERROR).text
-        if title == 'Incorrect Current Password':
-            return CanonizerAccountSettingPage(self.driver)
+    def verify_entering_the_invalid_current_password(self, INVALID_CURRENT_PASSWORD):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).send_keys(INVALID_CURRENT_PASSWORD)
+        self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
 
-    def verify_entering_the_invalid_new_password(self, new):
-        self.click_account_settings_page_button()
-        sleep(5)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.find_element(*AccountSettingPageIdentifier.NEW_PASSWORD).send_keys(new)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
-        title = self.find_element(*AccountSettingPageIdentifier.NEW_PASSWORD_ERROR).text
+        return CanonizerChangePasswordTab(self.driver)
+
+    def verify_entering_the_invalid_new_password(self,INVALID_NEW_PASSWORD):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD).send_keys(INVALID_NEW_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+        title = self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD_ERROR).text
         if title == 'Password must be contain small, capital letter, number and special character like Abc@1234.':
-            return CanonizerAccountSettingPage(self.driver)
+            return CanonizerChangePasswordTab(self.driver)
+        else:
+            print('title not found')
 
     def verify_entering_the_invalid_confirm_password(self, DEFAULT_INVALID_CONFIRM_PASSWORD):
-        self.click_account_settings_page_button()
-        self.hover(*AccountSettingPageIdentifier.CHANGE_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.find_element(*AccountSettingPageIdentifier.CONFIRM_PASSWORD).send_keys(DEFAULT_INVALID_CONFIRM_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
-        title = self.find_element(*AccountSettingPageIdentifier.CONFIRM_PASSWORD_ERROR).text
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).send_keys(DEFAULT_INVALID_CONFIRM_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+        title = self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD_ERROR).text
         if title == 'Confirm Password does not match.':
-            return CanonizerAccountSettingPage(self.driver)
+            return CanonizerChangePasswordTab(self.driver)
+        else:
+            print('title not found')
 
     def verify_when_both_new_Password_and_confirm_Password_does_not_match(self, DEFAULT_NEW_PASSWORD, DEFAULT_CONFIRM_PASSWORD):
-        self.click_account_settings_page_button()
-        self.hover(*AccountSettingPageIdentifier.CHANGE_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CHANGE_PASSWORD).click()
-        self.find_element(*AccountSettingPageIdentifier.NEW_PASSWORD).send_keys(DEFAULT_NEW_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.CONFIRM_PASSWORD).send_keys(DEFAULT_CONFIRM_PASSWORD)
-        self.find_element(*AccountSettingPageIdentifier.SAVE_BUTTON).click()
-        title = self.find_element(*AccountSettingPageIdentifier.CONFIRM_PASSWORD_ERROR).text
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD).send_keys(DEFAULT_NEW_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).send_keys(DEFAULT_CONFIRM_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+        title = self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD_ERROR).text
         if title == 'Confirm Password does not match.':
-            return CanonizerAccountSettingPage(self.driver)
-
+            return CanonizerChangePasswordTab(self.driver)
+        else:
+            print('title not found')
 
 class CanonizerManageNickNameTab(Page):
     def click_account_settings_page(self):
@@ -395,7 +419,7 @@ class CanonizerSupportCamps(Page):
 
         return CanonizerSupportCamps(self.driver)
 
-    def Verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
+    def verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
         self.click_account_settings_page()
         self.click_on_supported_camp_tab()
         self.find_element(*CanonizerSupportCampIdentifiersPage.DIRECET_SUPPORTED_CAMPS).click()
