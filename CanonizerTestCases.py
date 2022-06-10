@@ -155,25 +155,36 @@ testCases = {
     'Tc_VERIFY_THE_FUNCTIONALITY_OF_ADD_NICKNAME_BUTTON': [Critical, 'when user click on add nick name button,user '
                                                                      'should see pop-up to fil the details of nick'
                                                                      '(or) create new nick name'],
-    'TC_VERIFY_user_navigate_to_support_camp_page': [Critical, 'when user click on support camps in account setting '
-                                                               'page, User should be navigated to supported camp '
-                                                               'page'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP': [Critical, 'when user click on support camps in account '
+                                                                     'setting '
+                                                                     'page, User should be navigated to supported camp '
+                                                                     'page'],
     'TC_VERIFY_DIRECT_SUPPORTED_CAMPS': [Critical, 'when user click on supported camps tab , user should see direct '
                                                    'supported and delegated supported camps tab it will be clickable'],
     'TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB': [Critical, 'when user should click on supported '
                                                                                  'camps tab, user should see search '
                                                                                  'bar is present are not beside '
                                                                                  'delegated supported camp tab'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP': [Critical,'when user click on direct support camp, user '
-                                                                    'should see '
-                                                           'User directly supported camps list should be displayed  '
-                                                           'under Direct Supported camp tab'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP': [Critical,'when user click on delegate support camp, '
-                                                                      'User delegated '
-                                                             'support camps list should be displayed  under Delegate '
-                                                             'Supported camp tab'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP': [Critical, 'when user click on delegate support camp, '
+                                                                       'User delegated '
+                                                                       'support camps list should be displayed  under '
+                                                                       'Delegate '
+                                                                       'Supported camp tab'],
     'TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE': [Critical, 'when user click on supported camp tab , user should see '
                                                             'supported camp page'],
-    'TC_VERIFY_DIRECT_SUPPORTED_CAMPS': [Critical, '']
+    'TC_VERIFY_REMOVE_SUPPORT_BUTTON': [Critical, 'when user click on direct are delegate support camp , user should '
+                                                  'see remove support button'],
+    'TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE' : [Critical, 'when user click on direct support  camp button , user '
+                                                         'should see topic name and it clickable'],
+    'TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP' : [Critical, 'when user should click on '
+                                                                                       'direct supported camp, '
+                                                                                       'user should see topic name '
+                                                                                       'and agreement camp name'],
+    'TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE': [Critical,'when user should click on supported '
+                                                                            'camps , user should see search bar, '
+                                                                            'user can search topic name in search '
+                                                                            'bar'],
+
+
 
 }

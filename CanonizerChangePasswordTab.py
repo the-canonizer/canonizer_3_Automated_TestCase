@@ -54,7 +54,7 @@ class CanonizerChangePasswordTab(Page):
 
         return CanonizerChangePasswordTab(self.driver)
 
-    def verify_entering_the_invalid_new_password(self, INVALID_NEW_PASSWORD):
+    def verify_entering_the_invalid_new_password(self,INVALID_NEW_PASSWORD):
         self.click_account_settings()
         self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
         self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()

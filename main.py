@@ -516,7 +516,9 @@ class TestPages(unittest.TestCase):
         result = CanonizerSupportCampsTab(self.driver).topic_name_and_camp_name_is_clickable().get_url()
         self.assertIn("", result)
 
+    # TC_VERIFY_REMOVE_SUPPORT_BUTTON
     def test_verify_remove_support_button_functionality(self):
+        print("\n" + str(test_cases('TC_VERIFY_REMOVE_SUPPORT_BUTTON')))
         self.login_to_canonizer_app()
         result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
         self.assertIn("", result)
