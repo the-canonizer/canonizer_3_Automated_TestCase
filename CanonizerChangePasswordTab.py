@@ -64,7 +64,7 @@ class CanonizerChangePasswordTab(Page):
         if title == 'Password must be contain small, capital letter, number and special character like Abc@1234.':
             return CanonizerChangePasswordTab(self.driver)
         else:
-            print('title not found')
+             print('title not found')
 
     def verify_entering_the_invalid_confirm_password(self, DEFAULT_INVALID_CONFIRM_PASSWORD):
         self.click_account_settings()

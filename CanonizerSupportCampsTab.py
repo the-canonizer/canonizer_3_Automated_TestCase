@@ -3,16 +3,8 @@ from Identifiers import CanonizerSupportCampIdentifiersPage
 
 
 class CanonizerSupportCampsTab(Page):
+
     def click_account_settings_page(self):
-        """
-        This function is to click on the Account Settings button
-
-        -> Hover to the Account Settings button
-        -> Find the element and click it
-
-        :return:
-            Return the result to the main page.
-        """
         self.hover(*CanonizerSupportCampIdentifiersPage.CLICK_ON_DROPDOWN)
         self.find_element(*CanonizerSupportCampIdentifiersPage.CLICK_ON_DROPDOWN).click()
         self.find_element(*CanonizerSupportCampIdentifiersPage.ACCOUNT_SETTING_BUTTON).click()
