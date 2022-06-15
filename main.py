@@ -1,12 +1,15 @@
 import unittest
 from unittest import result
+
+from selenium.common.exceptions import TimeoutException
+
 import CanonizerBrowsePage
 from CanonizerAcoountSettingPage import CanonizerAccountSettingPage
 from CanonizerCreateNewTopic import CanonizerCreateNewTopic
 from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
-from ForgotPassword import *
+from CanonizerForgotPassword import *
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
@@ -41,6 +44,11 @@ class TestPages(unittest.TestCase):
         result = CanonizerLoginPage(self.driver).click_login_page_button().login_with_valid_user(DEFAULT_USER,
                                                                                                  DEFAULT_PASSWORD).get_url()
         self.assertIn("", result)
+        try:
+            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located(
+                (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/h3')))
+        except TimeoutException:
+            pass
 
     # TC_CLICK_ON_REGISTER_BUTTON
     def test_canonizer_click_register_page(self, ):
@@ -598,8 +606,8 @@ class TestPages(unittest.TestCase):
             DEFAULT_SUMMARY).get_url()
         self.assertIn("create/topic", result)
 
-    # TC_CREATE_NEW_TOPIC_WITH_ENTER_KEY
-    def test_create_topic_name_with_enter_key(self):
+    # TC_CREATE_NEW_TOPIC
+    def test_create_topic_name_with_valid_data(self):
         self.login_to_canonizer_app()
         result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button().create_topic_with_valid_data(
             DEFAULT_NICK_NAME,

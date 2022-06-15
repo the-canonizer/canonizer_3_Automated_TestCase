@@ -151,7 +151,8 @@ class CreateTopicIdentifiers(object):
     CREATE_NEW_TOPIC = (By.XPATH, '(//span[text()=" Create New Topic"])[1]')
     LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
     TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
-    NICK_NAME = (By.XPATH, '//div[text()="sania_talentelgia"]')
+    #NICK_NAME = (By.XPATH, '//div[@class="ant-select-selector"]')
+    NICK_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[1]/div[2]/div[1]/div/div/div/span[2]')
     TOPIC_NAME = (By.XPATH, '(//input[contains(@class,"ant-input ant-input-lg")])[2]')
 
     NAMESPACE = (By.XPATH, '(//span[@class="ant-select-selection-item"])[2]')

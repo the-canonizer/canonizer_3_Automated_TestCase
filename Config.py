@@ -176,6 +176,6 @@ PASS_LOWERCASE = "pooja@123456"
 
 # Create New Topic Configuration Parameters
 DEFAULT_NICK_NAME = "sania_talentelgia"
-DEFAULT_TOPIC_NAME = "test111111"
+DEFAULT_TOPIC_NAME = "testing4546"
 DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
