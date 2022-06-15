@@ -5,11 +5,11 @@ from selenium.common.exceptions import TimeoutException
 
 import CanonizerBrowsePage
 from CanonizerAcoountSettingPage import CanonizerAccountSettingPage
-from CanonizerCreateNewTopic import CanonizerCreateNewTopic
+from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
 from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
-from CanonizerForgotPassword import *
+from CanonizerForgotPasswordPage import *
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
