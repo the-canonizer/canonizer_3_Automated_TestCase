@@ -7,7 +7,7 @@ import datetime
 
 from CanonizerBase import Page
 from Identifiers import AccountSettingPageIdentifier, CanonizerManageNickNameIdentifiersPage, \
-    CanonizerSupportCampIdentifiersPage , CanonizerChangePasswordIdentifierPage
+    CanonizerSupportCampIdentifiersPage, CanonizerChangePasswordIdentifierPage
 
 
 class CanonizerAccountSettingPage(Page):
@@ -70,7 +70,7 @@ class CanonizerAccountSettingPage(Page):
         if title == 'Supported Camps':
             return CanonizerAccountSettingPage(self.driver)
 
-    def check_the_validation_for_Phone_Number_field(self, number):
+    def check_the_validation_for_phone_number_field(self, number):
         self.click_account_settings_page_button()
         self.hover(*AccountSettingPageIdentifier.PROFILE_BUTTON)
         self.find_element(*AccountSettingPageIdentifier.PROFILE_BUTTON).click()
@@ -80,7 +80,7 @@ class CanonizerAccountSettingPage(Page):
         if title == 'Phone number must be at least 10 digits!':
             return CanonizerAccountSettingPage(self.driver)
 
-    def check_the_Functionality_of_verify_button_without_entering_the_data(self):
+    def check_the_functionality_of_verify_button_without_entering_the_data(self):
         self.click_account_settings_page_button()
         self.find_element(*AccountSettingPageIdentifier.PROFILE_BUTTON).click()
         self.hover(*AccountSettingPageIdentifier.PHONE_NUMBER)
@@ -98,7 +98,7 @@ class CanonizerAccountSettingPage(Page):
 
         return CanonizerAccountSettingPage(self.driver)
 
-    def verify_all_the_fields_are_present_in_Personal_Information_field(self):
+    def verify_all_the_fields_are_present_in_personal_information_field(self):
         self.click_account_settings_page_button()
         self.hover(*AccountSettingPageIdentifier.FIRST_NAME)
         self.hover(*AccountSettingPageIdentifier.MIDDLE_NAME)
@@ -133,18 +133,7 @@ class CanonizerAccountSettingPage(Page):
 
         return CanonizerAccountSettingPage(self.driver)
 
-    def verify_the_functionality_of_selecting_the_DOB(self, dob):
-        self.click_account_settings_page_button()
-        sleep(3)
-        self.find_element(*AccountSettingPageIdentifier.DATA_BIRTH).click()
-        sleep(3)
-        self.find_element(*AccountSettingPageIdentifier.DATA_BIRTH).clear()
-        self.find_element(*AccountSettingPageIdentifier.DATA_BIRTH).send_keys(dob)
-        self.find_element(*AccountSettingPageIdentifier.UPDATE_BUTTON).click()
-
-        return CanonizerAccountSettingPage(self.driver)
-
-    def verify_when_user_updated_the_Personal_Information_and_logs_out_and_logIn_again(self, first, middle, last):
+    def verify_when_user_updated_the_personal_information_and_logs_out_and_login_again(self, first, middle, last):
         self.click_account_settings_page_button()
         self.hover(*AccountSettingPageIdentifier.FIRST_NAME)
         self.find_element(*AccountSettingPageIdentifier.FIRST_NAME).send_keys(first)
@@ -159,7 +148,7 @@ class CanonizerAccountSettingPage(Page):
 
     def verify_the_spaces_are_trimmed_in_the_firstname_lastname_middlename_fields(self, first, middle, last):
         self.click_account_settings_page_button()
-        sleep(3)
+        self.hover(*AccountSettingPageIdentifier.FIRST_NAME)
         self.find_element(*AccountSettingPageIdentifier.FIRST_NAME).clear()
         self.find_element(*AccountSettingPageIdentifier.FIRST_NAME).send_keys(first)
         self.find_element(*AccountSettingPageIdentifier.MIDDLE_NAME).send_keys(middle)
@@ -170,3 +159,7 @@ class CanonizerAccountSettingPage(Page):
         self.find_element(*AccountSettingPageIdentifier.LOGOUT).click()
 
         return CanonizerAccountSettingPage(self.driver)
+
+    def verify_the_functionality_of_Algorithm_drop_down(self):
+        self.click_account_settings_page_button()
+

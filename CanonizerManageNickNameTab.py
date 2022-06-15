@@ -44,7 +44,7 @@ class CanonizerManageNickNameTab(Page):
 
         return CanonizerManageNickNameTab(self.driver)
 
-    def verify_validation_for_entering_nick_name_field(self,DEFAULT_NICK_NAME):
+    def verify_validation_for_entering_nick_name_field(self, DEFAULT_NICK_NAME):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
@@ -55,7 +55,7 @@ class CanonizerManageNickNameTab(Page):
 
         return CanonizerManageNickNameTab(self.driver)
 
-    def verify_validation_for_without_entering_nick_name_field(self,nick_name):
+    def verify_validation_for_without_entering_nick_name_field(self, nick_name):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
@@ -67,7 +67,7 @@ class CanonizerManageNickNameTab(Page):
         if title == 'Please Enter Nick Name!':
             return CanonizerManageNickNameTab(self.driver)
 
-    def verify_entering_the_nick_name_with_more_than_one_space(self,DEFAULT_INVALID_NICK_NAME):
+    def verify_entering_the_nick_name_with_more_than_one_space(self, DEFAULT_INVALID_NICK_NAME):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()

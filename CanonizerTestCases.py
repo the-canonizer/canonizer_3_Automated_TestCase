@@ -17,6 +17,10 @@ testCases = {
                                                    'user must see Error Message'],
     'TC_REGISTRATION_WITH_BLANK_EMAIL': [moderate, 'In User Registration Page, When user doesn\'t put Email, '
                                                    'user must see Error Message'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MOBILE_NUMBER_FIELDS' : [Critical,'when user click on register '
+                                                                                        'now button with invalid '
+                                                                                        'mobile number , user should '
+                                                                                        'see proper error message'],
     'TC_REGISTRATION_WITH_BLANK_PASSWORD': [moderate, 'In User Registration Page, When user puts blank password, '
                                                       'user must see Error Message'],
     'TC_REGISTRATION_WITH_INVALID_PASSWORD_LENGTH': [moderate, 'In User Registration Page, when user puts invalid '

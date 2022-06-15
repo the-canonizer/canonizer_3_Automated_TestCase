@@ -27,6 +27,11 @@ else:
 
 DEFAULT_USER = "saideekshith@zibtek.in"
 DEFAULT_PASS = "Deekshith@123"
+DEFAULT_NAME = "saideekshith"
+
+FIRST_NAME = "test"
+MIDDLE_NAME = "testing"
+LAST_NAME = "automation"
 
 # Registration Page Configuration Parameters
 DEFAULT_FIRST_NAME = "kumar"
@@ -34,11 +39,16 @@ DEFAULT_LAST_NAME = "file"
 DEFAULT_EMAIL = "saideekshith@zibtek"
 DEFAULT_PASSWORD = "Sai@1998"
 DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
+INVALID_MOBILE_NUMBER = "12345"
+#DEFAULT_MOBILE_NUMBER = "1992936545"
+DEFAULT_INVALID_EMAIL = "sai#222222gmail"
+
 
 REG_LIST_1 = [
     "           ",
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -47,6 +57,7 @@ REG_LIST_2 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -55,6 +66,7 @@ REG_LIST_3 = [
     '',
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -63,6 +75,7 @@ REG_LIST_4 = [
     DEFAULT_FIRST_NAME,
     '',
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -71,6 +84,7 @@ REG_LIST_5 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     '',
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -79,6 +93,7 @@ REG_LIST_6 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     '',
     'DEFAULT_PASS',
     ''
@@ -87,6 +102,7 @@ REG_LIST_7 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     '123',
     '12345',
     ''
@@ -95,6 +111,7 @@ REG_LIST_8 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     'Test@1234567',
     'Test@123456',
     ''
@@ -103,6 +120,7 @@ REG_LIST_9 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -111,6 +129,7 @@ REG_LIST_10 = [
     "first @##$#$$$23",
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -119,6 +138,7 @@ REG_LIST_11 = [
     DEFAULT_FIRST_NAME,
     "sai@@@@###@@",
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -127,6 +147,7 @@ REG_LIST_12 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
@@ -135,6 +156,7 @@ REG_LIST_13 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     'INVALID'
@@ -142,21 +164,33 @@ REG_LIST_13 = [
 REG_LIST_14 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
+    DEFAULT_INVALID_EMAIL,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
+
 ]
 REG_LIST_15 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
     DEFAULT_PASS,
     DEFAULT_PASS,
     ''
 ]
+REG_LIST_16 = [
+    DEFAULT_FIRST_NAME,
+    DEFAULT_LAST_NAME,
+    DEFAULT_USER,
+    INVALID_MOBILE_NUMBER,
+    DEFAULT_PASS,
+    DEFAULT_PASS,
+    ''
+]
+
 # Login Page Configuration Parameters
-UNVERIFY_EMAIL = "meghana@zibtek.in"
-UNVERIFY_PASS = "Pooja@123456"
 # DEFAULT_USER = ""
 # DEFAULT_PASS = ""
 DEFAULT_USER = "saideekshith@zibtek.in"
@@ -165,15 +199,6 @@ DEFAULT_PASS = "Deekshith@123"
 # DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduser@gmail.com'
 DEFAULT_INVALID_PASSWORD = "invalid_password"
-DEFAULT_UNVERIFIED_PHONE_NUMBER = "1234567890"
-DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
-DEFAULT_VALID_PHONE_NUMBER = ""
-DEFAULT_INVALID_OTP = "123456789"
-DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
-VERIFY_EMAIL = "anil.podi@zibtek.in"
-VERIFY_PASS = "Zibtek#2455"
-PASS_UPPERCASE = "POOJA@123456"
-PASS_LOWERCASE = "pooja@123456"
 
 # Account Setting page Configuration Parameters
 DEFAULT_NICK_NAME = "saideekshith"
@@ -187,5 +212,7 @@ DEFAULT_FIRST_NAME = "automation  testing"
 DEFAULT_LAST_NAME = "testing  cases"
 DEFAULT_MIDDLE_NAME = "test  case "
 
+
 # support camps tab Configuration Parameters
 DEFAULT_TOPIC_NAME = "automation 123"
+#//input [@aria-activedescendant = 'PlacesAutocomplete__suggestion-ChIJVaU9EY4UrjsRIrtCkznuBEc']
