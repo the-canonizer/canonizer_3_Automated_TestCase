@@ -26,8 +26,8 @@ class TestPages(unittest.TestCase):
             :return:
         """
         driver_location = DEFAULT_CHROME_DRIVER_LOCATION
-
         options = webdriver.ChromeOptions()
+
         options.binary_location = DEFAULT_BINARY_LOCATION
 
         options.add_argument("--start-maximized")
@@ -503,77 +503,45 @@ class TestPages(unittest.TestCase):
         self.assertTrue(CanonizerMainPage(self.driver).check_home_page_loaded())
 
     # ----- FORGOT PASSWORD Test Cases Start -----
-    # 02 TC_CLICK_FORGOT_PASSWORD_LINK
+    # TC_CLICK_FORGOT_PASSWORD_LINK
     def test_click_forgot_password_link(self):
         print("\n" + str(test_cases('TC_CLICK_FORGOT_PASSWORD_LINK')))
-        result = CanonizerForgotPage(self.driver).click_forgot_password_link()
-        print(result)
+        CanonizerForgotPasswordPage(self.driver).click_forgot_password_link()
 
-    # 03 TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
+    # TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
     def test_click_submit_button_with_valid_email(self):
         print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).click_submit_button_with_valid_email(DEFAULT_USER)
-        print(result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().click_submit_button_with_valid_email(DEFAULT_USER)
 
-        # 04 TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL
+    # TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL
     def test_click_submit_button_with_invalid_email(self):
         print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).click_submit_button_with_invalid_email(DEFAULT_USER_INVALID)
-        self.assertIn('The input is not valid E-mail!', result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().click_submit_button_with_invalid_email(DEFAULT_USER_INVALID)
 
-        # 05 TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL
+    # TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL
     def test_click_submit_button_with_empty_email(self):
         print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).click_submit_button_with_invalid_email(" ")
-        self.assertIn('Please input your E-mail!', result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().click_submit_button_with_empty_email(" ")
 
-        # 06 TC_SUBMIT_EMPTY_OTP
+    # TC_SUBMIT_EMPTY_OTP
     def test_submit_empty_OTP(self):
         print("\n" + str(test_cases('TC_SUBMIT_EMPTY_OTP')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).submit_empty_otp(DEFAULT_USER)
-        self.assertIn('Please input your OTP!', result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().submit_empty_otp(DEFAULT_USER)
 
-        # 07 TC_SUBMIT_INVALID_LENGTH_OTP
+    # TC_SUBMIT_INVALID_LENGTH_OTP
     def test_invalid_otp(self):
         print("\n" + str(test_cases('TC_SUBMIT_INVALID_LENGTH_OTP')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).submit_invalid_otp(DEFAULT_USER, INVALID_LONG_OTP)
-        self.assertIn('OTP should be min/max 6 characters long!', result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().submit_invalid_otp(DEFAULT_USER, INVALID_LONG_OTP)
 
-        # 08 TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL
-    def test_submit_unregistered_email(self):
-        print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).submit_unregsitered_email(UNREGISTERED_EMAIL)
-        self.assertIn('Invalid Email Id!', result)
-
-        # 09 TC_CROSS_ICON_ON_FORGOT_MODAL
+    # TC_CROSS_ICON_ON_FORGOT_MODAL
     def test_cross_icon_on_forgot_page(self):
         print("\n" + str(test_cases('TC_CROSS_ICON_ON_FORGOT_MODAL')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).cross_icon_on_forgot_page().get_url()
-        print(result)
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().cross_icon_on_forgot_page().get_url()
 
-    def test_enter_valid_otp(self):
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-
-        # 10 TC_CROSS_ICON_ON_OTP_MODAL
+    # TC_CROSS_ICON_ON_OTP_MODAL
     def test_cross_icon_on_otp_page(self):
         print("\n" + str(test_cases('TC_CROSS_ICON_ON_OTP_MODAL')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).cross_icon_on_otp_page().get_url()
-        print(result)
-
-        # 11 TC_ENTER_VALID_OTP
-    def test_enter_valid_otp(self):
-        print("\n" + str(test_cases('TC_ENTER_VALID_OTP')))
-        CanonizerForgotPage(self.driver).login_and_forgot_password()
-        result = CanonizerForgotPage(self.driver).enter_valid_otp(DEFAULT_USER)
-        self.assertIn("/reset-password", result.get_url())
+        CanonizerForgotPasswordPage(self.driver).login_and_forgot_password().cross_icon_on_otp_page(DEFAULT_USER)
 
         # ----- FORGOT PASSWORD Test Cases end -----
         # ----- CREATE TOPIC Test Cases Start -----
@@ -616,8 +584,6 @@ class TestPages(unittest.TestCase):
             DEFAULT_SUMMARY
             ).get_url()
         self.assertIn("topic", result)
-
-
 
 
 

@@ -135,15 +135,14 @@ class ForgotPasswordIdentifiers(object):
     TITLE = (By.XPATH, '//*[@id="forgotPassword"]/h2')
     EMAIL = (By.ID, 'forgotPassword_email_id')
     SUBMITBUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
-    OTPPAGETITLE = (By.XPATH, '//*[@id="otpverify"]/h2')
+    OTPPAGETITLE = (By.ID, 'forgot-password-title')
     INVALIDEMAIL_ERROR = (By.XPATH, '//*[@id="forgotPassword"]/div[1]/div[2]/div[2]/div[2]/div')
     SUBMIT_OTP_BUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
     OTP_EMPTY_ERROR = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
     OTP_ENTER = (By.XPATH, '//*[@id="otpverify_otp"]')
-    #UNREGSITERED_EMAIL_ERROR =
     INVALID_OTP_ERROR = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
     CROSS_ICON_FORGOT_MODAL = (By.XPATH, '//*[@id="forgotPassword"]/button')
-    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="otpverify"]/button')
+    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="forgot-modal-close-btn"]/span')
     CHANGE_PASSWORD_TITLE = (By.XPATH, '//h2[text()="Create new password"]')
 
 

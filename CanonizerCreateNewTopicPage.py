@@ -50,8 +50,8 @@ class CanonizerCreateNewTopic(Page):
         #select = Select(self.find_element(*CreateTopicIdentifiers.NICK_NAME))
         #select.select_by_value("1")
 
-
     def enter_topic_name(self, topic_name):
+        self.hover(CreateTopicIdentifiers.TOPIC_NAME)
         self.find_element(*CreateTopicIdentifiers.TOPIC_NAME).send_keys(topic_name)
 
     def enter_namespace(self, namespace):
