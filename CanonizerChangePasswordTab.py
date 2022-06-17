@@ -43,17 +43,6 @@ class CanonizerChangePasswordTab(Page):
 
         return CanonizerChangePasswordTab(self.driver)
 
-    def verify_entering_the_invalid_current_password(self, INVALID_CURRENT_PASSWORD):
-        self.click_account_settings()
-        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
-        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).send_keys(INVALID_CURRENT_PASSWORD)
-        self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
-
-        return CanonizerChangePasswordTab(self.driver)
-
     def verify_entering_the_invalid_new_password(self, INVALID_NEW_PASSWORD):
         self.click_account_settings()
         self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
@@ -65,6 +54,18 @@ class CanonizerChangePasswordTab(Page):
             return CanonizerChangePasswordTab(self.driver)
         else:
             print('title not found')
+
+        def verify_entering_the_invalid_current_password(self, INVALID_CURRENT_PASSWORD):
+            self.click_account_settings()
+            self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+            self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+            self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
+            self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).send_keys(
+                INVALID_CURRENT_PASSWORD)
+            self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
+            self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+
+            return CanonizerChangePasswordTab(self.driver)
 
     def verify_entering_the_invalid_confirm_password(self, DEFAULT_INVALID_CONFIRM_PASSWORD):
         self.click_account_settings()

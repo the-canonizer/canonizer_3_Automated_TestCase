@@ -1,13 +1,10 @@
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 from CanonizerBase import Page
 from Identifiers import RegistrationPageIdentifiers
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class CanonizerRegisterPage(Page):

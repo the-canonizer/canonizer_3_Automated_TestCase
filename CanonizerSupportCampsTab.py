@@ -67,6 +67,7 @@ class CanonizerSupportCampsTab(Page):
 
         return CanonizerSupportCampsTab(self.driver)
 
+
     def topic_name_and_camp_name_is_clickable(self):
         self.click_account_settings_page()
         self.click_on_supported_camp_tab()

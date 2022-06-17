@@ -88,6 +88,7 @@ class ProfileInfoIdentifiersPage(object):
     LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
     ADDRESS_LINE = (By.ID, 'profileInfo_address_1')
     ALGORITHM_FIELD = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
+    ALGORITHM_DROP_DOWN = (By.XPATH,'(//div[@class="ant-select-item-option-content"])[1]')
 
 
 class CanonizerSupportCampIdentifiersPage(object):

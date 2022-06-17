@@ -320,7 +320,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME
-    def test_Update_the_first_name_and_check_if_it_is_updating_same_for_username(self):
+    def test_update_the_first_name_and_check_if_it_is_updating_same_for_username(self):
         print("\n" + str(test_cases('TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME')))
         self.login_to_canonizer_app()
         result = CanonizerProfileInfoTab(
@@ -336,7 +336,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB
-    def test_verify_the_functionality_of_selecting_the_DOB(self):
+    def test_verify_the_functionality_of_selecting_the_dob(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB')))
         self.login_to_canonizer_app()
         result = CanonizerProfileInfoTab(self.driver).verify_the_functionality_of_selecting_the_dob(
@@ -426,7 +426,7 @@ class TestPages(unittest.TestCase):
         CanonizerManageNickNameTab(self.driver).verify_when_user_click_on_nick_name_tab().get_url()
 
     # TC_VERIFY_ALL_THE_HEADERS_IN_NICK_NAME_TAB
-    def test_verify_all_the_headers_In_nick_name_tab(self):
+    def test_verify_all_the_headers_in_nick_name_tab(self):
         self.login_to_canonizer_app()
         result = CanonizerManageNickNameTab(self.driver).verify_all_the_headers_in_nick_name_tab().get_url()
         self.assertIn("canonizer3.canonizer.com/settings", result)
