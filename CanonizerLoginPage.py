@@ -187,12 +187,6 @@ class CanonizerLoginPage(Page):
         if title == 'Log in to Facebook':
             return CanonizerLoginPage(self.driver)
 
-    def verifying_google_link(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
-
-        return CanonizerLoginPage(self.driver)
-
     def verifying_twitter_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
@@ -200,6 +194,12 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.TWITTER_TITLE).text
         if title == 'Authorize the_canonizer to access your account?':
             return CanonizerLoginPage(self.driver)
+
+    def verifying_google_link(self):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
+
+        return CanonizerLoginPage(self.driver)
 
     def verifying_linkedin_link(self):
         self.click_on_login_button()

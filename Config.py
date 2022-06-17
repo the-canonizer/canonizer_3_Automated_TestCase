@@ -28,7 +28,7 @@ else:
 DEFAULT_USER = "saideekshith@zibtek.in"
 DEFAULT_PASS = "Deekshith@123"
 DEFAULT_NAME = "saideekshith"
-INVALID_NAME = "sai deekshith"
+INVALID_NAME = "sai deekshith1"
 
 FIRST_NAME = "test"
 MIDDLE_NAME = "testing"

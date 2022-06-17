@@ -17,17 +17,6 @@ class CanonizerChangePasswordTab(Page):
 
         return CanonizerChangePasswordTab(self.driver)
 
-    def verify_current_password_new_password_confirm_password_is_present_save_button(self):
-        self.click_account_settings()
-        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
-        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
-        self.hover(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD)
-        self.hover(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
-
-        return CanonizerChangePasswordTab(self.driver)
-
     def verify_keeping_all_the_fields_empty_and_click_on_save(self):
         self.click_account_settings()
         self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
@@ -39,6 +28,17 @@ class CanonizerChangePasswordTab(Page):
         self.hover(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
         self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).click()
         self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+
+        return CanonizerChangePasswordTab(self.driver)
+
+    def verify_current_password_new_password_confirm_password_is_present_save_button(self):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD)
+        self.hover(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD)
+        self.hover(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
         self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
 
         return CanonizerChangePasswordTab(self.driver)

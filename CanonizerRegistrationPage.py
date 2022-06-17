@@ -157,15 +157,6 @@ class CanonizerRegisterPage(Page):
 
         return CanonizerRegisterPage(self.driver)
 
-    def click_on_register_button(self):
-        self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
-        self.hover(*RegistrationPageIdentifiers.TITLE)
-        title = self.find_element(*RegistrationPageIdentifiers.TITLE).text
-        if title == 'Register Now on Canonizer':
-            return CanonizerRegisterPage(self.driver)
-        else:
-            print("title not found")
-
     def check_login_page_open_click_login_here_link(self):
         self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
         try:
@@ -182,6 +173,15 @@ class CanonizerRegisterPage(Page):
             pass
         title = self.find_element(*RegistrationPageIdentifiers.LOGIN_TITLE).text
         if title == 'Login to Canonizer':
+            return CanonizerRegisterPage(self.driver)
+        else:
+            print("title not found")
+
+    def click_on_register_button(self):
+        self.find_element(*RegistrationPageIdentifiers.REGISTER).click()
+        self.hover(*RegistrationPageIdentifiers.TITLE)
+        title = self.find_element(*RegistrationPageIdentifiers.TITLE).text
+        if title == 'Register Now on Canonizer':
             return CanonizerRegisterPage(self.driver)
         else:
             print("title not found")

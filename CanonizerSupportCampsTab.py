@@ -45,18 +45,18 @@ class CanonizerSupportCampsTab(Page):
 
         return CanonizerSupportCampsTab(self.driver)
 
-    def verify_the_functionality_of_delegate_support_camp_tab(self):
-        self.click_account_settings_page()
-        self.click_on_supported_camp_tab()
-        self.find_element(*CanonizerSupportCampIdentifiersPage.DELEGATED_SUPPORT_CAMPS).click()
-
-        return CanonizerSupportCampsTab(self.driver)
-
     def verify_the_search_functionality_in_supported_camps_page(self, DEFAULT_TOPIC_NAME):
         self.click_account_settings_page()
         self.click_on_supported_camp_tab()
         self.find_element(*CanonizerSupportCampIdentifiersPage.SUPPORT_CAMP_SEARCH_BAR).click()
         self.find_element(*CanonizerSupportCampIdentifiersPage.SUPPORT_CAMP_SEARCH_BAR).send_keys(DEFAULT_TOPIC_NAME)
+
+        return CanonizerSupportCampsTab(self.driver)
+
+    def verify_the_functionality_of_delegate_support_camp_tab(self):
+        self.click_account_settings_page()
+        self.click_on_supported_camp_tab()
+        self.find_element(*CanonizerSupportCampIdentifiersPage.DELEGATED_SUPPORT_CAMPS).click()
 
         return CanonizerSupportCampsTab(self.driver)
 
@@ -66,7 +66,6 @@ class CanonizerSupportCampsTab(Page):
         self.find_element(*CanonizerSupportCampIdentifiersPage.DIRECET_SUPPORTED_CAMPS).click()
 
         return CanonizerSupportCampsTab(self.driver)
-
 
     def topic_name_and_camp_name_is_clickable(self):
         self.click_account_settings_page()
@@ -96,3 +95,4 @@ class CanonizerSupportCampsTab(Page):
             return CanonizerSupportCampsTab(self.driver)
         else:
             print('title not found')
+

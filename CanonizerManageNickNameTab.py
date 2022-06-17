@@ -10,12 +10,6 @@ class CanonizerManageNickNameTab(Page):
         self.find_element(*CanonizerManageNickNameIdentifiersPage.ACCOUNT_SETTING_BUTTON).click()
         return CanonizerManageNickNameTab(self.driver)
 
-    def verify_when_user_click_on_nick_name_tab(self):
-        self.click_account_settings_page()
-        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
-        return CanonizerManageNickNameTab(self.driver)
-
     def verify_all_the_headers_in_nick_name_tab(self):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
@@ -25,6 +19,12 @@ class CanonizerManageNickNameTab(Page):
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
         self.hover(*CanonizerManageNickNameIdentifiersPage.VISIBILITY_STATUS)
 
+        return CanonizerManageNickNameTab(self.driver)
+
+    def verify_when_user_click_on_nick_name_tab(self):
+        self.click_account_settings_page()
+        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
         return CanonizerManageNickNameTab(self.driver)
 
     def verify_the_functionality_of_add_nickname_button(self):
