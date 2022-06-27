@@ -37,6 +37,7 @@ testCases = {
                                                          'user must see Error Message'],
     'TC_REGISTRATION_WITH_INVALID_EMAIL': [moderate, 'In User Registration Page, When user put invalid email, '
                                                      'user must see Error Message'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS' : [moderate, 'when user click on register now,user fill all mandatary fields'],
     'TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK': [Critical, 'when user click on main page register but , '
                                                                     'user should see login link ,when user click on '
                                                                     'login link ,user should redirect to canonizer '
@@ -63,8 +64,8 @@ testCases = {
                                                   'marked with blue mark'],
     'TC_VERIFYING_EMPTY_SPACE_FOR_EMAIL_FILED': [Critical, 'When user should click on login button with empty fields, '
                                                            'user should see proper error message'],
-    'TC_VERIFY_FORGET_PASSWORD': [Critical, 'When user should verify tittle of "forget password, user should get '
-                                            'proper tittle'],
+    'TC_VERIFY_FORGET_PASSWORD': [Critical, 'When user should verify title of "forget password, user should get '
+                                            'proper title'],
     'TC_CLICK_ON_REGISTER_NOW_LINK': [Critical, 'When user should click register now link button on login page ,'
                                                 'user should redirect canonize register page'],
     'TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON': [Critical, 'When user should click one time verification code without '
@@ -188,6 +189,19 @@ testCases = {
                                                                             'camps , user should see search bar, '
                                                                             'user can search topic name in search '
                                                                             'bar'],
+    'TC_VERIFY_THE_FACEBOOK_LINK': [Critical, 'when user click on facebook link in home, user should see the page '
+                                              'redirect to facebook login page'],
+
+    'TC_VERIFY_THE_INSTA_LINK' : [Critical, 'when user click on insta_link, user should see after click on link it '
+                                            'redirect to insta login page'],
+    'TC_VERIFY_THE_TWITTER_LINK': [Critical, 'when user click on twitter link, user should redirect to twitter login '
+                                             'page'],
+    'TC_VERIFY_THE_YOUTUBE_LINK': [Critical, 'when user click on youtube link, user should redirect to youtube main '
+                                             'page'],
+    'Tc_verify_the_linkedin_link': [Critical, 'when user should click on linkedin link, user should redirect to '
+                                              'linkedin page'],
+
+
 
 
 

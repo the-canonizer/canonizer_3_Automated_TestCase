@@ -25,18 +25,22 @@ class RegistrationPageIdentifiers(object):
     CLOSE_ICON = (By.ID, 'register-modal-close-btn')
     CAPTCHA = (By.ID, 'rc-anchor-container')
     LOGIN_HERE = (By.ID, 'already-text-link')
-    TITLE = (By.XPATH, '//h2[text()="Register Now on Canonizer"]')
+    TITLE = (By.ID, 'registration-title')
     LOGIN_TITLE = (By.XPATH, '//h2[@class= "ant-typography Login_titles__nmC2y"]')
-    REGISTER_NOW = (By.XPATH, '//span[text()="Register Now "]')
+    REGISTER_NOW = (By.ID, 'register-btn')
     ERROR_FIRST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[2]/div[2]/div')
     ERROR_LAST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
     ERROR = (By.XPATH, '//div[@class="ant-form-item-explain-error"]')
-    ERROR_PASSWORD = (By.XPATH,
-                      '//*[@id="registration"]/div[1]/div/div[5]/div/div[2]/div[2]/div')
+    ERROR_PASSWORD = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[5]/div/div[2]/div[2]/div')
     ERROR_MOBILE_NUMBER = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[4]/div/div[2]/div[2]/div')
-    ERROR_CONFIRMATION_PASSWORD = (By.XPATH, '//div[text()="Confirm Password does not match!"]')
+    ERROR_CONFIRMATION_PASSWORD = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[6]/div/div[2]/div[2]/div')
     ERROR_EMAIL = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[3]/div/div[2]/div[2]/div')
     ERROR_CAPTCHA = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[7]/div/div/div[2]/div')
+    FIRST_NAME_ASTRK = (By.XPATH, '(//span[@class = "required"])[1]')
+    LAST_NAME_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
+    EMAIL_ASTRK = (By.XPATH, '(//span[@class = "required"])[3]')
+    PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[4]')
+    CONFIRM_PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[5]')
 
 
 class LoginPageIdentifiers(object):
@@ -46,12 +50,12 @@ class LoginPageIdentifiers(object):
     SUBMIT = (By.ID, 'login-btn')
     CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
     CHECK_BOX = (By.ID, 'login_form_remember')
-    INVALID_EMAIL_TITLE = (By.XPATH, '(//div[@class="ant-message-custom-content ant-message-error"]//child::span)[1]')
+    INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
     FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
     FORGET_PASSWORD_TITLE = (By.XPATH, '//h2[text()= "Forgot your password?"]')
     REGISTER_NOW_LINK = (By.ID, 'dont-account-link-tag')
     REQUEST_CODE = (By.ID, 'request-otp-btn')
-    EMAIL_ERROR_MESSAGE = (By.ID, 'username')
+    EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
     LOGIN_TITLE = (By.XPATH, '//h2[text() = "Log in to Canonizer"]')
     SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
     FACEBOOK_LINK = (By.ID, 'facebook-link')
@@ -88,7 +92,7 @@ class ProfileInfoIdentifiersPage(object):
     LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
     ADDRESS_LINE = (By.ID, 'profileInfo_address_1')
     ALGORITHM_FIELD = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
-    ALGORITHM_DROP_DOWN = (By.XPATH,'(//div[@class="ant-select-item-option-content"])[1]')
+    ALGORITHM_DROP_DOWN = (By.XPATH, '(//div[@class="ant-select-item-option-content"])[1]')
 
 
 class CanonizerSupportCampIdentifiersPage(object):
@@ -142,4 +146,19 @@ class BrowsePageIdentifiers(object):
 
 
 class HomePageIdentifiers(object):
-    pass
+    FACEBOOK_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[1]/span/img')
+    INSTA_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[2]/span/img')
+    TWITTER_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[3]/span/img')
+    YOUTUBE_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[4]/span/img')
+    LINKEDIN_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[5]/span/img')
+    PRIVACY_POLICY = (By.XPATH, '//a[text() = "Privacy Policy"]')
+    TERMS_AND_SERVICES = (By.XPATH, '//a[text() = "Terms & Services"]')
+    BROWSE = (By.XPATH, '//i[@class = "icon-angle-right"]')
+    CREATE_NEW_TOPIC = (By.XPATH, '(//i[@class = "icon-angle-right"])[4]')
+    UPLOAD_FILE = (By.XPATH, '(//i[@class = "icon-angle-right"])[5]')
+    HELP = (By.XPATH, '(//i[@class = "icon-angle-right"])[6]')
+    WHITE_PAPER = (By.XPATH, '(//i[@class = "icon-angle-right"])[7]')
+    BLOG = (By.XPATH, '(//i[@class = "icon-angle-right"])[8]')
+    JOBS = (By.XPATH, '(//i[@class = "icon-angle-right"])[9]')
+    CANONIZER_LOGO = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[1]/div/a/span/img')
+    SUPPORT_CANONIZER = (By.XPATH, 'icon-envelope')

@@ -115,8 +115,8 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).click()
-        title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE)
-        if title == 'Your session has expired. Please log in again!':
+        title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).text
+        if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
 
     def verify_the_remember_me_checkbox(self, email, password):
