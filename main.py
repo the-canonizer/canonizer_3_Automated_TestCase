@@ -7,7 +7,7 @@ from selenium.common.exceptions import TimeoutException
 
 from CanonizerHomePage import CanonizerHomePage, CanonizerTermsAndPrivacyPolicy
 from CanonizerLoginPage import CanonizerLoginPage
-from CanonizerProfileInfoTab import CanonizerProfileInfoTab
+fr
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
@@ -424,141 +424,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
         self.assertIn("", result)
-
-    # ACCOUNT_SETTING_PAGE:
-    # TC_VERIFYING_ACCOUNT_PROFILE_PAGE
-    def test_verifying_account_profile_page(self):
-        self.login_to_canonizer_app()
-        print("\n" + str(test_cases('TC_VERIFYING_ACCOUNT_PROFILE_PAGE')))
-        result = CanonizerProfileInfoTab(self.driver).verifying_profile_button().get_url()
-        self.assertIn("", result)
-
-    # TC-VERIFYING_SOCIAL_OAUTH_VERIFICATION
-    def test_verifying_social_oauth_page(self):
-        print("\n" + str(test_cases('TC-VERIFYING_SOCIAL_OAUTH_VERIFICATION')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verifying_social_oauth_verification().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFICATION_CHANGE_PASSWORD
-    def test_verifying_change_password(self):
-        print("\n" + str(test_cases('TC_VERIFICATION_CHANGE_PASSWORD')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verifying_change_password().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFYING_NICK_NAME
-    def test_verifying_nick_name(self):
-        print("\n" + str(test_cases('TC_VERIFYING_NICK_NAME')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verifying_nick_name().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFYING_SUPPORTED_CHANGES
-    def test_verifying_supported_camps(self):
-        print("\n" + str(test_cases('TC_VERIFYING_SUPPORTED_CHANGES')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verifying_supported_camps().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFYING_VALIDATION_FOR_PROFILE_INFO_PHONE_NUMBER
-    def test_verifying_invalid_phone_number(self):
-        print("\n" + str(test_cases('TC_VERIFYING_VALIDATION_FOR_PROFILE_INFO_PHONE_NUMBER')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).check_the_validation_for_mobile_number_field(
-            INVALID_MOBILE_NUMBER).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFYING_VERIFY_BUTTON_WITH_BLANK_FIELDS
-    def test_verifying_verify_button_without_entering_data(self):
-        print("\n" + str(test_cases('TC_VERIFYING_VERIFY_BUTTON_WITH_BLANK_FIELDS')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).check_the_functionality_of_verify_button_without_entering_the_data().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFYING_CLICK_ON_MOBILE_CARRIER_DROP_DOWN
-    def test_click_on_mobile_carrier_drop_down(self):
-        print("\n" + str(test_cases('TC_VERIFYING_CLICK_ON_MOBILE_CARRIER_DROP_DOWN')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_the_functionality_of_mobile_carrier_drop_down().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFYING_ALL_THE_FIELDS_ARE_PERSONAL_INFORMATION
-    def test_verifying_all_the_feilds_are_personal_information(self):
-        print("\n" + str(test_cases('TC_VERIFYING_ALL_THE_FIELDS_ARE_PERSONAL_INFORMATION')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_all_the_fields_are_present_in_personal_information_field().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFYING_FIRST_NAME_FIELD_WITHOUT_ENTERING_DATA
-    def test_verifying_validation_for_first_name_fields(self):
-        print("\n" + str(test_cases('TC_VERIFYING_FIRST_NAME_FIELD_WITHOUT_ENTERING_DATA')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verify_the_validation_for_first_name(" ").get_url()
-        self.assertIn("", result)
-
-    # TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME
-    def test_update_the_first_name_and_check_if_it_is_updating_same_for_username(self):
-        print("\n" + str(test_cases('TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).update_the_first_name_and_check_if_it_is_updating_same_for_username(DEFAULT_NAME).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER
-    def test_verify_the_functionality_of_radio_button_in_selecting_the_gender(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_the_functionality_of_radio_button_in_selecting_the_gender().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB
-    def test_verify_the_functionality_of_selecting_the_dob(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(self.driver).verify_the_functionality_of_selecting_the_dob(
-            DEFAULT_USER).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN
-    def test_verify_when_user_updated_the_personal_information_and_logs_out_and_login_again(self):
-        print(
-            "\n" + str(
-                test_cases('TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_when_user_updated_the_personal_information_and_logs_out_and_login_again(FIRST_NAME,
-                                                                                                        MIDDLE_NAME,
-                                                                                                        LAST_NAME).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_SPACES_ARE_TRIMMED_IN_THE_FIRSTNAME_LASTNAME_MIDDLENAME_fields
-    def test_verify_the_spaces_are_trimmed_in_the_firstname_lastname_middlename_fields(self):
-        print(
-            "\n" + str(test_cases('TC_VERIFY_THE_SPACES_ARE_TRIMMED_IN_THE_FIRSTNAME_LASTNAME_MIDDLENAME_fields')))
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_the_spaces_are_trimmed_in_the_firstname_lastname_middlename_fields(
-            DEFAULT_FIRST_NAME,
-            DEFAULT_MIDDLE_NAME,
-            DEFAULT_LAST_NAME).get_url()
-
-    def test_verify_the_functionality_of_algorithm_drop_down(self):
-        self.login_to_canonizer_app()
-        result = CanonizerProfileInfoTab(
-            self.driver).verify_the_functionality_of_algorithm_drop_down().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFYING_ACCOUNT_PROFILE
-    def test_click_on_account_setting_page(self):
-        self.login_to_canonizer_app()
-        print("\n" + str(test_cases('TC_VERIFYING_ACCOUNT_PROFILE')))
-        CanonizerProfileInfoTab(self.driver).click_account_settings_page_button()
-
     # HOMEPAGE:
 
     # TC_VERIFY_THE_FACEBOOK_LINK
@@ -575,18 +440,18 @@ class TestPages(unittest.TestCase):
         result = CanonizerHomePage(self.driver).verify_the_insta_link().get_url()
         self.assertIn("", result)
 
-    # TC_VERIFY_THE_TWITTER_LINK
-    def test_verify_the_twitter_link(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_TWITTER_LINK')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_twitter_link().get_url()
-        self.assertIn("", result)
-
     # TC_VERIFY_THE_YOUTUBE_LINK
     def test_verify_the_youtube_link(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_YOUTUBE_LINK')))
         self.login_to_canonizer_app()
         result = CanonizerHomePage(self.driver).verify_the_youtube_link().get_url()
+        self.assertIn("", result)
+        # TC_VERIFY_THE_TWITTER_LINK
+
+    def test_verify_the_twitter_link(self):
+        print("\n" + str(test_cases('TC_VERIFY_THE_TWITTER_LINK')))
+        self.login_to_canonizer_app()
+        result = CanonizerHomePage(self.driver).verify_the_twitter_link().get_url()
         self.assertIn("", result)
 
     # Tc_verify_the_linkedin_link

@@ -113,14 +113,7 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_functionality_by_entering_the_registered_credential(self, email, password):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
-        self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
-        return CanonizerLoginPage(self.driver)
 
     def verify_the_login_with_invalid_email_format(self, email, password):
         self.click_on_login_button()
@@ -133,7 +126,17 @@ class CanonizerLoginPage(Page):
         if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
 
-    def verify_the_remember_me_checkbox(self, email, password):
+    def verify_the_login_functionality_by_entering_the_registered_credential(self, email, password):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.EMAIL).clear()
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.SUBMIT).click()
+
+        return CanonizerLoginPage(self.driver)
+
+
+    def verify_the_login_button_by_entering_the_empty_space(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
@@ -143,7 +146,7 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_button_by_entering_the_empty_space(self, email, password):
+    def verify_the_remember_me_checkbox(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
