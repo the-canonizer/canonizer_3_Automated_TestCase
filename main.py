@@ -7,7 +7,7 @@ from selenium.common.exceptions import TimeoutException
 
 from CanonizerHomePage import CanonizerHomePage, CanonizerTermsAndPrivacyPolicy
 from CanonizerLoginPage import CanonizerLoginPage
-fr
+
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
@@ -424,6 +424,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
         self.assertIn("", result)
+
     # HOMEPAGE:
 
     # TC_VERIFY_THE_FACEBOOK_LINK

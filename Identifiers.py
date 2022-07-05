@@ -9,35 +9,6 @@ Objects are Separated in this module
    if the there are any changes in the layout of the Web page.
 - Add the Identifiers in Tuple.
 """
-
-class LoginPageIdentifiers(object):
-    EMAIL_ASTRK = (By.XPATH, '//span[@class = "required"]')
-    PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
-    LOGIN_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
-    EMAIL = (By.ID, 'login_form_username')
-    PASSWORD = (By.ID, 'login_form_password')
-    SUBMIT = (By.ID, 'login-btn')
-    CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
-    CHECK_BOX = (By.ID, 'login_form_remember')
-    INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
-    FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
-    FORGET_PASSWORD_TITLE = (By.XPATH, '//h2[text()= "Forgot your password?"]')
-    REGISTER_NOW_LINK = (By.ID, 'dont-account-link-tag')
-    REQUEST_CODE = (By.ID, 'request-otp-btn')
-    EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
-    LOGIN_TITLE = (By.XPATH, '//h2[text() = "Log in to Canonizer"]')
-    SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
-    FACEBOOK_LINK = (By.ID, 'facebook-link')
-    FACEBOOK_TITLE = (By.ID, 'header_block')
-    GOOGLE_LINK = (By.ID, 'google-link')
-    TWITTER_LINK = (By.ID, 'twitter-link')
-    TWITTER_TITLE = (By.XPATH, '//h2[text() = "Authorize the_canonizer to access your account?"]')
-    LINKEDIN_LINK = (By.ID, 'linkedin-link')
-    LINKEDIN_TITLE = (By.XPATH, '//*[@id="app__container"]/main/div[2]/div[2]')
-    GITHUB_LINK = (By.ID, 'github-link')
-    GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
-
-
 class RegistrationPageIdentifiers(object):
     """
     This class holds the User Registration Page Identifiers
@@ -68,6 +39,36 @@ class RegistrationPageIdentifiers(object):
     EMAIL_ASTRK = (By.XPATH, '(//span[@class = "required"])[3]')
     PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[4]')
     CONFIRM_PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[5]')
+
+
+class LoginPageIdentifiers(object):
+    EMAIL_ASTRK = (By.XPATH, '//span[@class = "required"]')
+    PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
+    LOGIN_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
+    EMAIL = (By.ID, 'login_form_username')
+    PASSWORD = (By.ID, 'login_form_password')
+    SUBMIT = (By.ID, 'login-btn')
+    CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
+    CHECK_BOX = (By.ID, 'login_form_remember')
+    INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
+    FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
+    FORGET_PASSWORD_TITLE = (By.XPATH, '//h2[text()= "Forgot your password?"]')
+    REGISTER_NOW_LINK = (By.ID, 'dont-account-link-tag')
+    REQUEST_CODE = (By.ID, 'request-otp-btn')
+    EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
+    LOGIN_TITLE = (By.XPATH, '//h2[text() = "Log in to Canonizer"]')
+    SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
+    FACEBOOK_LINK = (By.ID, 'facebook-link')
+    FACEBOOK_TITLE = (By.ID, 'header_block')
+    GOOGLE_LINK = (By.ID, 'google-link')
+    TWITTER_LINK = (By.ID, 'twitter-link')
+    TWITTER_TITLE = (By.XPATH, '//h2[text() = "Authorize the_canonizer to access your account?"]')
+    LINKEDIN_LINK = (By.ID, 'linkedin-link')
+    LINKEDIN_TITLE = (By.XPATH, '//*[@id="app__container"]/main/div[2]/div[2]')
+    GITHUB_LINK = (By.ID, 'github-link')
+    GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
+
+
 
 
 class ProfileInfoIdentifiersPage(object):

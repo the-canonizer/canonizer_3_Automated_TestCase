@@ -146,6 +146,15 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
+    def verify_the_forget_password_button(self):
+        self.click_on_login_button()
+        self.hover(*LoginPageIdentifiers.FORGET_PASSWORD)
+        self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD).click()
+        self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).click()
+        title = self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).text
+        if title == 'Forgot your password?':
+            return CanonizerLoginPage(self.driver)
+
     def verify_the_remember_me_checkbox(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
@@ -155,15 +164,6 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
         return CanonizerLoginPage(self.driver)
-
-    def verify_the_forget_password_button(self):
-        self.click_on_login_button()
-        self.hover(*LoginPageIdentifiers.FORGET_PASSWORD)
-        self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD).click()
-        self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).click()
-        title = self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).text
-        if title == 'Forgot your password?':
-            return CanonizerLoginPage(self.driver)
 
     def click_on_register_now_button_on_login_page(self):
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)

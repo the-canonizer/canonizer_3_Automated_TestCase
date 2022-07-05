@@ -38,14 +38,6 @@ class CanonizerManageNickNameTab(Page):
         if title == 'Add New Nick Name':
             return CanonizerManageNickNameTab(self.driver)
 
-    def verify_the_functionality_of_add_nickname_button(self):
-        self.click_account_settings_page()
-        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.ADD_NEW_NICK_NAME).click()
-
-        return CanonizerManageNickNameTab(self.driver)
-
     def verify_validation_for_entering_nick_name_field(self, DEFAULT_NICK_NAME):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
@@ -56,6 +48,16 @@ class CanonizerManageNickNameTab(Page):
         self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON).click()
 
         return CanonizerManageNickNameTab(self.driver)
+
+    def verify_the_functionality_of_add_nickname_button(self):
+        self.click_account_settings_page()
+        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.ADD_NEW_NICK_NAME).click()
+
+        return CanonizerManageNickNameTab(self.driver)
+
+
 
     def verify_validation_for_without_entering_nick_name_field(self, nick_name):
         self.click_account_settings_page()

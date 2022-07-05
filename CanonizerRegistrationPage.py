@@ -108,14 +108,6 @@ class CanonizerRegisterPage(Page):
         if error == 'Please input your password!':
             return CanonizerRegisterPage(self.driver)
 
-    def registration_with_different_confirmation_password(self, REG_LIST_8):
-        self.register(REG_LIST_8[0], REG_LIST_8[1], REG_LIST_8[2], REG_LIST_8[3], REG_LIST_8[4], REG_LIST_8[5])
-        error = self.find_element(*RegistrationPageIdentifiers.ERROR_CONFIRMATION_PASSWORD).text
-        if error == 'Confirm Password does not match!':
-            return CanonizerRegisterPage(self.driver)
-        else:
-            print("title not found")
-
     def registration_with_invalid_password_length(self, REG_LIST_7):
         self.register(REG_LIST_7[0], REG_LIST_7[1], REG_LIST_7[2], REG_LIST_7[3], REG_LIST_7[4], REG_LIST_7[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
@@ -123,6 +115,14 @@ class CanonizerRegisterPage(Page):
             return CanonizerRegisterPage(self.driver)
         else:
             print('title not found')
+
+    def registration_with_different_confirmation_password(self, REG_LIST_8):
+        self.register(REG_LIST_8[0], REG_LIST_8[1], REG_LIST_8[2], REG_LIST_8[3], REG_LIST_8[4], REG_LIST_8[5])
+        error = self.find_element(*RegistrationPageIdentifiers.ERROR_CONFIRMATION_PASSWORD).text
+        if error == 'Confirm Password does not match!':
+            return CanonizerRegisterPage(self.driver)
+        else:
+            print("title not found")
 
     def registration_with_blank_spaces_first_name(self, REG_LIST_1):
         self.register(REG_LIST_1[0], REG_LIST_1[1], REG_LIST_1[2], REG_LIST_1[3], REG_LIST_1[4], REG_LIST_1[5])
