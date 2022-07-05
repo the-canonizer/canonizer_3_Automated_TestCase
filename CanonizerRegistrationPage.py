@@ -195,3 +195,16 @@ class CanonizerRegisterPage(Page):
         title = self.find_element(*RegistrationPageIdentifiers.TITLE).text
         if title == 'Register Now on Canonizer':
             return CanonizerRegisterPage(self.driver)
+
+
+
+
+
+
+
+
+
+
+
+
+

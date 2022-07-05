@@ -1,3 +1,10 @@
+import email
+from lib2to3.pgen2 import driver
+from time import sleep
+
+import self
+from selenium.webdriver.chrome import webdriver
+
 from CanonizerBase import Page
 from Identifiers import LoginPageIdentifiers
 
@@ -19,9 +26,8 @@ class CanonizerLoginPage(Page):
         -> Find the element and click it
 
         :return:
-            Return the result to the main page.
+        Return the result to the main page.
         """
-
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
         title = self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).text
@@ -86,6 +92,17 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
+    def login_page_mandatory_fields_are_marked_with_asterisk(self):
+        """
+        This Function checks, if Mandatory fields on Register Page Marked with *
+        First Name, Last Name, Email, Password, Confirm Password are Mandatory Fields
+
+        :return: the element value
+        """
+        return \
+            self.find_element(*LoginPageIdentifiers.EMAIL_ASTRK) and \
+            self.find_element(*LoginPageIdentifiers.PASSWORD_ASTRK)
+
     def click_on_login_button(self):
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
@@ -93,9 +110,6 @@ class CanonizerLoginPage(Page):
         return CanonizerLoginPage(self.driver)
 
     def click_on_close_icon_button(self):
-        self.click_on_login_button()
-        self.hover(*LoginPageIdentifiers.CLOSE_BUTTON)
-        self.find_element(*LoginPageIdentifiers.CLOSE_BUTTON).click()
 
         return CanonizerLoginPage(self.driver)
 
@@ -221,4 +235,3 @@ class CanonizerLoginPage(Page):
         password_placeholder = password.get_attribute('placeholder')
         if email_placeholder == 'Email / Phone Number' and password_placeholder == 'Password':
             return CanonizerLoginPage(self.driver)
-

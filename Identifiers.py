@@ -44,6 +44,8 @@ class RegistrationPageIdentifiers(object):
 
 
 class LoginPageIdentifiers(object):
+    EMAIL_ASTRK = (By.XPATH, '//span[@class = "required"]')
+    PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
     LOGIN_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
     EMAIL = (By.ID, 'login_form_username')
     PASSWORD = (By.ID, 'login_form_password')
@@ -114,10 +116,10 @@ class CanonizerChangePasswordIdentifierPage(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
     CHANGE_PASSWORD = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[3]')
-    CURRENT_PASSWORD = (By.XPATH, '//*[@id="currentPassword"]')
-    NEW_PASSWORD = (By.XPATH, '//*[@id="newPassword"]')
-    CONFIRM_PASSWORD = (By.XPATH, '//*[@id="confirmPassword"]')
-    SAVE_BUTTON = (By.XPATH, '//*[@id="changePassword"]/div[2]/div/div/div/button/span')
+    CURRENT_PASSWORD = (By.ID, 'currentPassword')
+    NEW_PASSWORD = (By.ID, 'newPassword')
+    CONFIRM_PASSWORD = (By.ID, 'confirmPassword')
+    SAVE_BUTTON = (By.ID, 'saveBtn')
     CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
     CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
     NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
@@ -132,7 +134,7 @@ class CanonizerManageNickNameIdentifiersPage(object):
     ADD_NEW_NICK_NAME = (By.XPATH, '//button[@class="ant-btn ant-btn-primary ant-btn ant-btn-orange ant-btn-lg"]')
     ADD_NEW_NICK_NAME_TITLE = (By.XPATH, '//div[text()="Add New Nick Name"]')
     POP_UP_NICK_NAME = (By.ID, 'add_edit_form_nick_name')
-    POP_UP_CREATE_BUTTON = (By.XPATH, '//*[@id="add_edit_form"]/div[3]/div/div/div/button')
+    POP_UP_CREATE_BUTTON = (By.ID, 'addEditBtn')
     POP_UP_NICK_NAME_ERROR = (By.XPATH, '//div[text()="Please Enter Nick Name!"]')
     SERIAL_NUMBER = (By.XPATH, '(//thead[@class="ant-table-thead"]//child::th[1])')
 
@@ -162,3 +164,4 @@ class HomePageIdentifiers(object):
     JOBS = (By.XPATH, '(//i[@class = "icon-angle-right"])[9]')
     CANONIZER_LOGO = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[1]/div/a/span/img')
     SUPPORT_CANONIZER = (By.XPATH, 'icon-envelope')
+    ALGORITHM_DROP_DOWN = (By.XPATH, '//div[@class="ant-select ant-select-lg topicListFilter_algoSelect__VRCVF ant-select-single ant-select-show-arrow"]')
