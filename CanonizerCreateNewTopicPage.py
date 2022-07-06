@@ -1,4 +1,4 @@
-from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -6,9 +6,6 @@ from selenium.webdriver.common.by import By
 
 from CanonizerBase import Page
 from Identifiers import CreateTopicIdentifiers
-
-
-from datetime import datetime
 from time import time
 import time
 
@@ -17,9 +14,9 @@ class CanonizerCreateNewTopic(Page):
 
     def click_create_new_topic_page_button(self):
         """
-        This function is to click on the login button
+        This function is to click on the create new topic button
 
-        -> Hover to the login button
+        -> Hover to the create new topic  button
         -> Find the element and click it
 
         :return:
@@ -45,13 +42,19 @@ class CanonizerCreateNewTopic(Page):
         else:
             print("Confirmation text is not matching")
 
-    def enter_nick_name(self,nick_name):
-        self.find_element(*CreateTopicIdentifiers.NICK_NAME).send_keys(nick_name)
-        #select = Select(self.find_element(*CreateTopicIdentifiers.NICK_NAME))
-        #select.select_by_value("1")
+    def select_dropdown_value(self):
+        self.hover(*CreateTopicIdentifiers.NICK_NAME)
+        self.find_element(*CreateTopicIdentifiers.NICK_NAME).click()
+
+    def select_value(self):
+        select = Select(self.find_element(*CreateTopicIdentifiers.NICK_NAME))
+        select.select_by_value("1")
+
+    def enter_nick_name(self, nickname):
+        self.find_element(*CreateTopicIdentifiers.NICK_NAME).send_keys(nickname)
 
     def enter_topic_name(self, topic_name):
-        self.hover(CreateTopicIdentifiers.TOPIC_NAME)
+        WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.ID, 'create_new_topic_topic_name')))
         self.find_element(*CreateTopicIdentifiers.TOPIC_NAME).send_keys(topic_name)
 
     def enter_namespace(self, namespace):
@@ -61,48 +64,120 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys(summary)
 
     def click_create_topic_button(self):
-        self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC).click()
+        self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).click()
 
-    def entering_data_fields(self, nick_name, topic_name, namespace, summary):
-        self.enter_nick_name(nick_name)
+    def entering_data_fields(self, nickname, topic_name, namespace, summary):
+        WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[1]/div[2]/div[2]')))
+        self.enter_nick_name(nickname)
         self.enter_topic_name(topic_name)
         self.enter_namespace(namespace)
         self.enter_summary(summary)
 
-    def create_topic(self, nick_name, topic_name, namespace, summary):
+    def create_topic(self, nickname, topic_name, namespace, summary):
         WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[1]/div[2]/div[2]')))
-        self.entering_data_fields(nick_name, topic_name, namespace, summary)
-        print(nick_name)
+        self.entering_data_fields(nickname, topic_name, namespace, summary)
         self.click_create_topic_button()
 
     def create_topic_with_blank_topic_name(self, nickname, namespace, note):
-        try:
-            nick_name1 = WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                                                             '#create_new_topic > div > div:nth-child(1) > div:nth-child(1) > div.ant-col.ant-form-item-control > div.ant-form-item-control-input > div > div > div > span.ant-select-selection-item')))
-            nick_name = nick_name1.text
-        except TimeoutException:
-            pass
-        print(nick_name)
-        self.create_topic(nick_name, '', namespace, note)
+        self.create_topic(nickname, '', namespace, note)
+        self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == "Please enter topic name":
+        if error == "Please enter topic name!":
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message is not correct")
 
     def create_topic_with_blank_spaces_topic_name(self, nickname, topic_name, namespace, summary):
         self.create_topic(nickname, "    ", namespace, summary)
+        self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == "Topic name is required.":
+        if error == "Please enter topic name!":
             return CanonizerCreateNewTopic(self.driver)
 
-    def create_topic_with_valid_data(self, nick_name, topic_name, namespace, summary):
-        try:
-            nick_name1 = WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                                                             '#create_new_topic > div > div:nth-child(1) > div:nth-child(1) > div.ant-col.ant-form-item-control > div.ant-form-item-control-input > div > div > div > span.ant-select-selection-item')))
-            nick_name = nick_name1.text
-        except TimeoutException:
-            pass
+    def create_topic_with_valid_data(self, nickname, topic_name, namespace, summary):
+        self.create_topic(nickname, topic_name, namespace, summary)
+        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
+        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Page not found")
+
+    def create_topic_name_with_enter_key(self, nickname, topic_name, namespace, summary):
+        self.entering_data_fields(nickname, topic_name, namespace, summary)
+        self.hover(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON)
+        self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).send_keys(Keys.ENTER)
+        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
+        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Page not found")
+
+    def create_topic_name_with_trailing_space(self, nickname, topic_name, namespace, summary):
+        self.create_topic(nickname, topic_name, namespace, summary)
+        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
+        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Page not found")
+
+    def create_topic_with_duplicate_topic_name(self, nick_name, topic_name, namespace, summary):
         self.create_topic(nick_name, topic_name, namespace, summary)
-        return CanonizerCreateNewTopic(self.driver)
+        self.hover(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME)
+        error = self.find_element(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME).text
+        if error == "The topic name has already been taken.":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Error message not found or is incorrect")
+
+    def create_topic_with_invalid_data(self, nickname, topic_name, namespace, summary):
+        self.create_topic(nickname, topic_name, namespace, summary)
+        self.hover(*CreateTopicIdentifiers.INVALID_TOPIC_NAME)
+        error = self.find_element(*CreateTopicIdentifiers.INVALID_TOPIC_NAME).text
+        if error == 'Topic name can only contain space and alphanumeric characters.':
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Error message not found or is incorrect")
+
+    def create_topic_without_entering_mandatory_fields(self, nickname, topic_name, namespace, summary):
+        self.create_topic('', '', '', '')
+        self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
+        error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
+        if error == 'Please enter topic name!':
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Error message not found or is incorrect")
+
+    def create_topic_with_entering_data_only_in_mandatory_fields(self, nickname, topic_name, namespace, summary):
+        self.create_topic(nickname, topic_name, namespace, '')
+        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
+        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Page not found")
+
+    def click_on_cancel_button(self):
+        self.hover(*CreateTopicIdentifiers.CANCEL_BUTTON)
+        self.find_element(*CreateTopicIdentifiers.CANCEL_BUTTON).click()
+        self.hover(*CreateTopicIdentifiers.MAIN_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.MAIN_PAGE).text
+        if topic_page_confirmation == "Select Namespace":
+            return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Page not found")
+
+    def topic_page_mandatory_fields_are_marked_with_asterisk(self):
+        """
+        This Function checks, if Mandatory fields on Create topic Page Marked with *
+        """
+        return \
+            self.find_element(*CreateTopicIdentifiers.NICK_NAME_ASTERISK) and \
+            self.find_element(*CreateTopicIdentifiers.TOPIC_NAME_ASTERISK) and \
+            self.find_element(*CreateTopicIdentifiers.NAMESPACE_ASTERISK)
+
+
+
 

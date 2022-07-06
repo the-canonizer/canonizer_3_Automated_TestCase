@@ -129,10 +129,10 @@ class HomePageIdentifiers:
 
 
 class ForgotPasswordIdentifiers(object):
-    FORGOTPASSWORDLINK = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
+    FORGOTPASSWORDLINK = (By.ID, 'forgot-password-link')
     LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
     FORGOTPASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
-    TITLE = (By.XPATH, '//*[@id="forgotPassword"]/h2')
+    FIELD_LABEL = (By.XPATH, '//*[@id="forgotPassword"]/div[1]/div[2]/div[1]/label')
     EMAIL = (By.ID, 'forgotPassword_email_id')
     SUBMITBUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
     OTPPAGETITLE = (By.ID, 'forgot-password-title')
@@ -142,7 +142,7 @@ class ForgotPasswordIdentifiers(object):
     OTP_ENTER = (By.XPATH, '//*[@id="otpverify_otp"]')
     INVALID_OTP_ERROR = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
     CROSS_ICON_FORGOT_MODAL = (By.XPATH, '//*[@id="forgotPassword"]/button')
-    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="forgot-modal-close-btn"]/span')
+    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="forgot-modal-close-btn"]/span/svg')
     CHANGE_PASSWORD_TITLE = (By.XPATH, '//h2[text()="Create new password"]')
 
 
@@ -150,11 +150,18 @@ class CreateTopicIdentifiers(object):
     CREATE_NEW_TOPIC = (By.XPATH, '(//span[text()=" Create New Topic"])[1]')
     LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
     TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
-    #NICK_NAME = (By.XPATH, '//div[@class="ant-select-selector"]')
-    NICK_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[1]/div[2]/div[1]/div/div/div/span[2]')
-    TOPIC_NAME = (By.XPATH, '(//input[contains(@class,"ant-input ant-input-lg")])[2]')
-
-    NAMESPACE = (By.XPATH, '(//span[@class="ant-select-selection-item"])[2]')
+    TOPIC_NAME = (By.ID, 'create_new_topic_topic_name')
+    NICK_NAME = (By.ID, 'create_new_topic_nick_name')
+    NAMESPACE = (By.ID, 'create_new_topic_namespace')
     EDIT_SUMMARY = (By.ID, 'create_new_topic_edit_summary')
-    CREATE_TOPIC = (By.XPATH, '(//span[text()="Create Topic"])[2]')
+    CREATE_TOPIC_BUTTON = (By.ID, 'create-topic-btn')
+    TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
     ERROR_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
+    ERROR_DUPLICATE_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
+    INVALID_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
+    CANCEL_BUTTON = (By.ID, 'cancel-btn')
+    MAIN_PAGE = (By.XPATH, '//h3[text()="Select Namespace"]')
+    NICK_NAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])')
+    TOPIC_NAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[2]')
+    NAMESPACE_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
+

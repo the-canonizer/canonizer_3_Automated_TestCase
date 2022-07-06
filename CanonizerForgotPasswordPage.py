@@ -1,21 +1,17 @@
 from CanonizerBase import Page
 from Identifiers import ForgotPasswordIdentifiers
-import time
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-
-from datetime import datetime
-from time import time
-import time
 
 
 class CanonizerForgotPasswordPage(Page):
 
     def click_forgot_password_link(self):
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()
-        self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORD).click()
-        confirmation_text = self.find_element(*ForgotPasswordIdentifiers.TITLE).text
-        if confirmation_text == 'Forgot your password?':
+        self.hover(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK)
+        self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK).click()
+        self.hover(*ForgotPasswordIdentifiers.FIELD_LABEL)
+        label = self.find_element(*ForgotPasswordIdentifiers.FIELD_LABEL).text
+        if label == 'Email ID*':
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Confirmation text is not matching")
@@ -23,8 +19,8 @@ class CanonizerForgotPasswordPage(Page):
     def login_and_forgot_password(self):
         self.hover(*ForgotPasswordIdentifiers.LOGIN)
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()
-        self.hover(*ForgotPasswordIdentifiers.FORGOTPASSWORD)
-        self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORD).click()
+        self.hover(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK)
+        self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK).click()
         return CanonizerForgotPasswordPage(self.driver)
 
     def enter_email(self, email):
