@@ -146,6 +146,11 @@ class CanonizerRegisterPage(Page):
         if error == 'The last name should only contain alphabets and spaces.':
             return CanonizerRegisterPage(self.driver)
 
+    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
+        self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4], REG_LIST_15[5])
+
+        return CanonizerRegisterPage(self.driver)
+
     def registration_with_invalid_email(self, REG_LIST_14):
         self.register(REG_LIST_14[0], REG_LIST_14[1], REG_LIST_14[2], REG_LIST_14[3], REG_LIST_14[4], REG_LIST_14[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
@@ -153,11 +158,6 @@ class CanonizerRegisterPage(Page):
             return CanonizerRegisterPage(self.driver)
         else:
             print("title not found")
-
-    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
-        self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4], REG_LIST_15[5])
-
-        return CanonizerRegisterPage(self.driver)
 
     def verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(self, REG_LIST_16):
         self.register(REG_LIST_16[0], REG_LIST_16[1], REG_LIST_16[2], REG_LIST_16[3], REG_LIST_16[4], REG_LIST_16[5])

@@ -76,10 +76,10 @@ testCases = {
     'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
     'Tc_verifying_facebook_link': [Critical, 'when user click on facebook link on login page ,user should see it '
                                              'redirect to facebook page'],
-    'TC_VERIFYING_GOOGLE_LINK': [Critical, 'when user click on google link on login page, user should see it redirect '
-                                           'to google chrome site'],
     'TC_VERIFYING_TWITTER_LINK': [Critical, 'when user click on twitter link on login page , user should see it '
                                             'redirect to twitter page'],
+    'TC_VERIFYING_GOOGLE_LINK': [Critical, 'when user click on google link on login page, user should see it redirect '
+                                           'to google chrome site'],
     'TC_VERIFYING_LINKEDIN_LINK': [Critical, 'when user click on linkedin link on login page, user should see it '
                                              'redirect to linkedin page'],
     'TC_VERIFYING_GITHUB_LINK': [Critical, 'when user should click on github link, user should see it redirect to '

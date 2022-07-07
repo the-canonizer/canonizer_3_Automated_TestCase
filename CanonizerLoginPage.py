@@ -113,8 +113,6 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-
-
     def verify_the_login_with_invalid_email_format(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
@@ -135,8 +133,17 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-
     def verify_the_login_button_by_entering_the_empty_space(self, email, password):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.EMAIL).clear()
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.CHECK_BOX).click()
+        self.find_element(*LoginPageIdentifiers.SUBMIT).click()
+
+        return CanonizerLoginPage(self.driver)
+
+    def verify_the_remember_me_checkbox(self, email, password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
         self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
@@ -155,30 +162,12 @@ class CanonizerLoginPage(Page):
         if title == 'Forgot your password?':
             return CanonizerLoginPage(self.driver)
 
-    def verify_the_remember_me_checkbox(self, email, password):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
-        self.find_element(*LoginPageIdentifiers.CHECK_BOX).click()
-        self.find_element(*LoginPageIdentifiers.SUBMIT).click()
-
-        return CanonizerLoginPage(self.driver)
-
     def click_on_register_now_button_on_login_page(self):
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
         self.find_element(*LoginPageIdentifiers.REGISTER_NOW_LINK).click()
 
         return CanonizerLoginPage(self.driver)
-
-    def verify_one_time_request_code_without_entering_email(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys()
-        self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
-        title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
-        if title == 'Please input your Email / Phone Number!':
-            return CanonizerLoginPage(self.driver)
 
     def verify_one_time_request_code_with_invalid_email(self, email, password):
         self.click_on_login_button()

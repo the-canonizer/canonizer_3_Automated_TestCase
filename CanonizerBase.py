@@ -13,12 +13,14 @@ class Page(object):
         self.driver = driver
         self.timeout = 30
 
-    def find_element(self, *locator):
-        return self.driver.find_element(*locator)
+
 
     def open(self, url):
         url = self.base_url + url
         self.driver.get(url)
+
+    def find_element(self, *locator):
+        return self.driver.find_element(*locator)
 
     def get_title(self):
         return self.driver.title

@@ -1,24 +1,14 @@
 import unittest
-from unittest import result
 
-import self as self
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.common.exceptions import TimeoutException
-
-from CanonizerHomePage import CanonizerHomePage, CanonizerTermsAndPrivacyPolicy
 from CanonizerLoginPage import CanonizerLoginPage
 
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
-from CanonizerManageNickNameTab import CanonizerManageNickNameTab
-from CanonizerSupportCampsTab import CanonizerSupportCampsTab
 
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
-
-from Identifiers import CanonizerManageNickNameIdentifiersPage
 
 
 class TestPages(unittest.TestCase):
@@ -206,12 +196,6 @@ class TestPages(unittest.TestCase):
         result = CanonizerLoginPage(self.driver).click_on_register_now_button_on_login_page().get_url()
         self.assertIn("canonizer3.canonizer.com", result)
 
-    # TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON
-    def test_click_on_request_one_time_code(self):
-        print("\n" + str(test_cases('TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON')))
-        result = CanonizerLoginPage(self.driver).verify_one_time_request_code_without_entering_email().get_url()
-        self.assertIn("canonizer3.canonizer.com", result)
-
     # TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL
     def test_click_on_request_one_time_code_with_invalid_email(self):
         print("\n" + str(test_cases('TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL')))
@@ -309,234 +293,6 @@ class TestPages(unittest.TestCase):
             self.driver).verify_when_both_new_password_and_confirm_password_does_not_match(DEFAULT_NEW_PASSWORD,
                                                                                            DEFAULT_CONFIRM_PASSWORD).get_url()
         self.assertIn("", result)
-
-    # TC VERIFY_WHEN_USER_CLICK_ON_NICK_NAME_TAB
-    def test_verify_when_user_click_on_nick_name_tab(self):
-        print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_NICK_NAME_TAB')))
-        self.login_to_canonizer_app()
-        CanonizerManageNickNameTab(self.driver).verify_when_user_click_on_nick_name_tab().get_url()
-
-    # TC_VERIFY_ALL_THE_HEADERS_IN_NICK_NAME_TAB
-    def test_verify_all_the_headers_in_nick_name_tab(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(self.driver).verify_all_the_headers_in_nick_name_tab().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_WITH_ADD_NICKNAME_BUTTON_IS_PRESENT0
-    def test_verify_with_add_nick_name_button_is_present(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(self.driver).verify_with_add_nick_name_button_is_present().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # Tc_VERIFY_THE_FUNCTIONALITY_OF_ADD_NICKNAME_BUTTON
-    def test_verify_the_functionality_of_add_nickname_button(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(
-            self.driver).verify_the_functionality_of_add_nickname_button().get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_VALIDATION_FOR_ENTERING_NICK_NAME_FIELDS
-    def test_verify_validation_for_entering_nick_name_field(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(self.driver).verify_validation_for_entering_nick_name_field(
-            DEFAULT_NICK_NAME).get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_VALIDATION_FOR_WITHOUT_ENTERING_NICK_NAME_FIELDS
-    def test_verify_validation_for_without_entering_nick_name_field(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(self.driver).verify_validation_for_without_entering_nick_name_field(
-            "").get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_ENTERING_THE_NICK_NAME_WITH_MORE_THAN_ONE_SPACE
-    def test_verify_entering_the_nick_name_with_more_than_one_space(self):
-        self.login_to_canonizer_app()
-        result = CanonizerManageNickNameTab(self.driver).verify_entering_the_nick_name_with_more_than_one_space(
-            DEFAULT_INVALID_NICK_NAME).get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE
-    def test_verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(
-            self.driver).verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab() \
-            .get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_DIRECT_SUPPORTED_CAMPS
-    def test_verify_direct_supported_camps(self):
-        print("\n" + str(test_cases('TC_VERIFY_DIRECT_SUPPORTED_CAMPS')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_direct_supported_camps().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB
-    def test_verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(
-            self.driver).verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(
-        ).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP
-    def test_verify_the_functionality_of_direct_support_camp(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DIRECT_SUPPORT_CAMP')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_direct_support_camp().get_url()
-        self.assertIn("", result)
-
-    #  TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP
-    def test_verify_the_functionality_of_delegate_support_camp_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_delegate_support_camp_tab().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE
-    def test_verify_the_search_functionality_in_supported_camps_page(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_the_search_functionality_in_supported_camps_page(
-            DEFAULT_TOPIC_NAME).get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP
-    def test_verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab \
-            (self.driver).verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab().get_url()
-        self.assertIn("", result)
-
-    # TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE
-    def test_topic_name_and_camp_name_is_clickable(self):
-        print("\n" + str(test_cases('TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).topic_name_and_camp_name_is_clickable().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_REMOVE_SUPPORT_BUTTON
-    def test_verify_remove_support_button_functionality(self):
-        print("\n" + str(test_cases('TC_VERIFY_REMOVE_SUPPORT_BUTTON')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
-        self.assertIn("", result)
-
-    # HOMEPAGE:
-
-    # TC_VERIFY_THE_FACEBOOK_LINK
-    def test_verify_the_facebook_link(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FACEBOOK_LINK')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_facebook_link().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_INSTA_LINK
-    def test_verify_the_insta_link(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_INSTA_LINK')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_insta_link().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_YOUTUBE_LINK
-    def test_verify_the_youtube_link(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_YOUTUBE_LINK')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_youtube_link().get_url()
-        self.assertIn("", result)
-        # TC_VERIFY_THE_TWITTER_LINK
-
-    def test_verify_the_twitter_link(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_TWITTER_LINK')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_twitter_link().get_url()
-        self.assertIn("", result)
-
-    # Tc_verify_the_linkedin_link
-    def test_verify_the_linkedin_link(self):
-        print("\n" + str(test_cases('Tc_verify_the_linkedin_link')))
-        self.login_to_canonizer_app()
-        result = CanonizerHomePage(self.driver).verify_the_linkedin_link().get_url()
-        self.assertIn("", result)
-
-    # TC_LOAD_PRIVACY_POLICY_PAGE
-    def test_load_privacy_policy_page(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_privacy_policy_page().get_url()
-        self.assertIn("", result)
-
-    # TC_LOAD_TERMS_AND_SERVICES_PAGE
-    def test_load_terms_and_services(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_terms_and_services_page().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_BROWSE_BUTTON
-    def test_verify_the_browse_button(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_browse_button().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_CREATE_NEW_TOPIC
-    def test_verify_the_create_new_topic(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_create_new_topic().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_UPLOAD_FILE
-    def test_verify_the_upload_file(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_upload_file().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_HELP
-    def test_verify_the_help(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_the_help().get_url()
-        self.assertIn("", result)
-
-    # TC_TEST_VERIFY_THE_WHITE_PAPER
-    def test_verify_the_white_paper(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_the_white_paper().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_BLOG
-    def test_verify_the_blog(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_the_blog().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_JOBS
-    def test_verify_the_jobs(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_the_jobs().get_url()
-        self.assertIn("", result)
-
-    # TC_CLICK_ON_CANONIZER_LOGO
-    def test_click_on_canonizer_logo(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).click_on_canonizer_logo().get_url()
-        self.assertIn("", result)
-
-    # TC_CLCIK_ON_SUPPORT_CANONIZER
-    def test_click_on_support_canonizer(self):
-        self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).click_on_support_canonizer().get_url()
-        self.assertIn("", result)
-
-    # TC_CLICK_ON_ALGORITHM_DROPDOWN_BUTTON
-    def test_click_on_algorithm_dropdown(self):
-        self.login_to_canonizer_app()
-        url = CanonizerTermsAndPrivacyPolicy(self.driver).click_on_algorithm_dropdown_button().get_url()
-        self.assertIn("", url)
-
-    def test_click_on_as_of_filter(self):
-        self.login_to_canonizer_app()
-        url = CanonizerTermsAndPrivacyPolicy(self.driver)
 
     def tearDown(self):
         self.driver.close()
