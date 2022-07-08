@@ -114,7 +114,7 @@ REG_LIST_8 = [
     DEFAULT_USER,
     DEFAULT_MOBILE_NUMBER,
     DEFAULT_PASS,
-    'Sai123',
+    'Sai@22222222222222',
     ''
 
 ]
@@ -204,8 +204,8 @@ DEFAULT_INVALID_PASSWORD = "invalid_password"
 
 # Account Setting page Configuration Parameters
 DEFAULT_NICK_NAME = "saideekshith"
-DEFAULT_INVALID_NICK_NAME = "sai___   deekshith"
 DEFAULT_NEW_PASSWORD = "Sai@199828"
+DEFAULT_INVALID_NICK_NAME = "saideekshith"
 DEFAULT_INVALID_CONFIRM_PASSWORD = "sai@   12333333"
 INVALID_NEW_PASSWORD = "sai@    123333"
 INVALID_CURRENT_PASSWORD = "sai@    12333"
