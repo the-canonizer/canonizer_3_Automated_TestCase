@@ -4,6 +4,18 @@ from Identifiers import CanonizerChangePasswordIdentifierPage
 
 class CanonizerChangePasswordTab(Page):
 
+    def verifying_astrk_present_in_change_password_tab(self):
+        """
+                This Function checks, if Mandatory fields on change password tab Page Marked with *
+                current password,new password, Confirm Password are Mandatory Fields
+
+                :return: the element value
+                """
+        return \
+            self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_ASTRK) and \
+            self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_ASTRK) and \
+            self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
+
     def click_account_settings(self):
         self.hover(*CanonizerChangePasswordIdentifierPage.CLICK_ON_DROPDOWN)
         self.find_element(*CanonizerChangePasswordIdentifierPage.CLICK_ON_DROPDOWN).click()
@@ -80,7 +92,6 @@ class CanonizerChangePasswordTab(Page):
         else:
             print('title not found')
 
-
     def verify_entering_the_invalid_confirm_password(self, DEFAULT_INVALID_CONFIRM_PASSWORD):
         self.click_account_settings()
         self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
@@ -93,6 +104,3 @@ class CanonizerChangePasswordTab(Page):
             return CanonizerChangePasswordTab(self.driver)
         else:
             print('title not found')
-
-
-

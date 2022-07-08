@@ -27,8 +27,6 @@ class CanonizerManageNickNameTab(Page):
 
         return CanonizerManageNickNameTab(self.driver)
 
-
-
     def verify_with_add_nick_name_button_is_present(self):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
@@ -57,15 +55,15 @@ class CanonizerManageNickNameTab(Page):
 
         return CanonizerManageNickNameTab(self.driver)
 
-
-
     def verify_validation_for_without_entering_nick_name_field(self, nick_name):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
         self.find_element(*CanonizerManageNickNameIdentifiersPage.ADD_NEW_NICK_NAME).click()
+        self.hover(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).click()
         self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).send_keys(nick_name)
+        self.hover(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON)
         self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON).click()
         title = self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME_ERROR).text
         if title == 'Please Enter Nick Name!':
@@ -81,3 +79,9 @@ class CanonizerManageNickNameTab(Page):
         self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON).click()
 
         return CanonizerManageNickNameTab(self.driver)
+
+
+
+
+
+

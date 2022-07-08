@@ -110,44 +110,47 @@ class CanonizerLoginPage(Page):
         return CanonizerLoginPage(self.driver)
 
     def click_on_close_icon_button(self):
+        self.click_on_login_button()
+        self.hover(*LoginPageIdentifiers.CLOSE_BUTTON)
+        self.find_element(*LoginPageIdentifiers.CLOSE_BUTTON).click()
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_with_invalid_email_format(self, email, password):
+    def verify_the_login_with_invalid_email_format(self, DEFAULT_INVALID_USER, DEFAULT_PASS):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_INVALID_USER)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).click()
         title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).text
         if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_functionality_by_entering_the_registered_credential(self, email, password):
+    def verify_the_login_functionality_by_entering_the_registered_credential(self, DEFAULT_USER, DEFAULT_PASS):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_button_by_entering_the_empty_space(self, email, password):
+    def verify_the_login_button_by_entering_the_empty_space(self, DEFAULT_USER, DEFAULT_PASS):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
         self.find_element(*LoginPageIdentifiers.CHECK_BOX).click()
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_remember_me_checkbox(self, email, password):
+    def verify_the_remember_me_checkbox(self, DEFAULT_USER, DEFAULT_PASS):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
         self.find_element(*LoginPageIdentifiers.CHECK_BOX).click()
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
@@ -169,11 +172,11 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_one_time_request_code_with_invalid_email(self, email, password):
+    def verify_one_time_request_code_with_invalid_email(self, DEFAULT_INVALID_USER, DEFAULT_PASS):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(email)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(password)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_INVALID_USER)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
         title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
         if title == 'Input is not valid!':

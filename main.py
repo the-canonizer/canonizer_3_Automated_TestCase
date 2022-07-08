@@ -242,6 +242,12 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_LOGIN_PLACEHOLDERS')))
         CanonizerLoginPage(self.driver).verify_login_placeholders()
 
+    # CGANGE PASSWORD TAB:-
+
+    def test_verifying_astrk_present_in_change_password_tab(self):
+        self.login_to_canonizer_app()
+        self.assertTrue(CanonizerChangePasswordTab(self.driver).verifying_astrk_present_in_change_password_tab())
+
     # TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD
     def test_verify_when_user_click_on_change_password(self):
         print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD')))
