@@ -1,9 +1,3 @@
-import email
-from lib2to3.pgen2 import driver
-from time import sleep
-
-import self
-from selenium.webdriver.chrome import webdriver
 
 from CanonizerBase import Page
 from Identifiers import LoginPageIdentifiers
@@ -126,6 +120,8 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).text
         if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
+        else:
+            print("Error message not found")
 
     def verify_the_login_functionality_by_entering_the_registered_credential(self, DEFAULT_USER, DEFAULT_PASS):
         self.click_on_login_button()
@@ -164,6 +160,8 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.FORGET_PASSWORD_TITLE).text
         if title == 'Forgot your password?':
             return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def click_on_register_now_button_on_login_page(self):
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
@@ -181,6 +179,8 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
         if title == 'Input is not valid!':
             return CanonizerLoginPage(self.driver)
+        else:
+            print("Error message not found")
 
     def verifying_social_account_links(self):
         self.click_on_login_button()
@@ -195,6 +195,8 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITLE).text
         if title == 'Log in to Facebook':
             return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def verifying_twitter_link(self):
         self.click_on_login_button()
@@ -203,6 +205,8 @@ class CanonizerLoginPage(Page):
         title = self.find_element(*LoginPageIdentifiers.TWITTER_TITLE).text
         if title == 'Authorize the_canonizer to access your account?':
             return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def verifying_google_link(self):
         self.click_on_login_button()
@@ -222,11 +226,3 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_login_placeholders(self):
-        self.click_login_page_button()
-        email = self.find_element(*LoginPageIdentifiers.EMAIL)
-        password = self.find_element(*LoginPageIdentifiers.PASSWORD)
-        email_placeholder = email.get_attribute('placeholder')
-        password_placeholder = password.get_attribute('placeholder')
-        if email_placeholder == 'Email / Phone Number' and password_placeholder == 'Password':
-            return CanonizerLoginPage(self.driver)

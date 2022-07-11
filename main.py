@@ -42,7 +42,8 @@ class TestPages(unittest.TestCase):
     # TC_CLICK_ON_REGISTER_BUTTON
     def test_click_on_register_button(self):
         print("\n" + str(test_cases('TC_CLICK_ON_REGISTER_BUTTON')))
-        CanonizerRegisterPage(self.driver).click_on_register_button()
+        result = CanonizerRegisterPage(self.driver).click_on_register_button().get_url()
+        self.assertIn("", result)
 
     # TC_REGISTER_PAGE_MANDATORY_FIELDS_MARKED_WITH_ASTERISK
     def test_register_page_mandatory_fields_are_marked_with_asterisk(self):
@@ -239,7 +240,7 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_LOGIN_PLACEHOLDERS')))
         CanonizerLoginPage(self.driver).verify_login_placeholders()
 
-    # CGANGE PASSWORD TAB:-
+    # CHANGE PASSWORD TAB:-
 
     def test_verifying_astrk_present_in_change_password_tab(self):
         self.login_to_canonizer_app()
