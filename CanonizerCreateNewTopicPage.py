@@ -90,6 +90,8 @@ class CanonizerCreateNewTopic(Page):
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
         if error == "Please enter topic name!":
             return CanonizerCreateNewTopic(self.driver)
+        else:
+            print("Error message is not correct")
 
     def create_topic_with_valid_data(self, nickname, topic_name, namespace, summary):
         self.create_topic(nickname, topic_name, namespace, summary)
