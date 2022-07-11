@@ -550,13 +550,6 @@ class TestPages(unittest.TestCase):
             .cross_icon_on_forgot_page().get_url()
         self.assertIn("", result)
 
-    # TC_CROSS_ICON_ON_OTP_MODAL
-    def test_cross_icon_on_otp_page(self):
-        print("\n" + str(test_cases('TC_CROSS_ICON_ON_OTP_MODAL')))
-        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password()\
-            .cross_icon_on_otp_page(DEFAULT_USER).get_url()
-        self.assertIn("", result)
-
         # ----- FORGOT PASSWORD Test Cases end -----
         # ----- CREATE TOPIC Test Cases Start -----
         # TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN

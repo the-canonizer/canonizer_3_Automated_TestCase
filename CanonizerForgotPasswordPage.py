@@ -9,9 +9,9 @@ class CanonizerForgotPasswordPage(Page):
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()
         self.hover(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK)
         self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORDLINK).click()
-        self.hover(*ForgotPasswordIdentifiers.FIELD_LABEL)
-        label = self.find_element(*ForgotPasswordIdentifiers.FIELD_LABEL).text
-        if label == 'Email ID*':
+        self.hover(*ForgotPasswordIdentifiers.FORGOTPASSWORD_TITLE)
+        label = self.find_element(*ForgotPasswordIdentifiers.FORGOTPASSWORD_TITLE).text
+        if label == 'Forgot your password?':
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Confirmation text is not matching")
@@ -102,17 +102,6 @@ class CanonizerForgotPasswordPage(Page):
         else:
             print("Text is not matching or not found")
 
-    def cross_icon_on_otp_page(self, email):
-        self.enter_email(email)
-        self.click_submit_button()
-        self.hover(*ForgotPasswordIdentifiers.CROSS_ICON_OTP_MODAL)
-        self.find_element(*ForgotPasswordIdentifiers.CROSS_ICON_OTP_MODAL).click()
-        self.hover(*ForgotPasswordIdentifiers.LOGIN)
-        confirmation_text = self.find_element(*ForgotPasswordIdentifiers.LOGIN).text
-        if confirmation_text == "Log in":
-            return CanonizerForgotPasswordPage(self.driver)
-        else:
-            print("Text is not matching or not found")
 
 
 
