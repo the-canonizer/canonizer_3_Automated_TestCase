@@ -165,3 +165,7 @@ class CreateTopicIdentifiers(object):
     TOPIC_NAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[2]')
     NAMESPACE_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
 
+
+class CampForumIdentifiers(object):
+    VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
+    CAMP_FORUM = (By.XPATH, '(//button[contains(@class,"ant-btn ant-btn-primary")])[2]')

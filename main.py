@@ -629,10 +629,12 @@ class TestPages(unittest.TestCase):
     def test_create_topic_name_with_trailing_space(self):
         print("\n", str(test_cases('TC_CREATE_NEW_TOPIC_WITH_TRAILING_SPACES')))
         self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
         result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button() \
             .create_topic_name_with_trailing_space(
             DEFAULT_NICK_NAME,
-            "        Topic with Trailing spaces",
+            "      New Topic " + add_name,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY
             ).get_url()
@@ -703,8 +705,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.assertTrue(CanonizerCreateNewTopic(
             self.driver).click_create_new_topic_page_button().topic_page_mandatory_fields_are_marked_with_asterisk())
-
-
 
 
 

@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
@@ -22,7 +23,11 @@ class CanonizerCreateNewTopic(Page):
         :return:
             Return the result to the main page.
         """
-        time.sleep(4)
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-btn ant-btn-default ant-btn-lg mb-3 btn')))
+        except TimeoutException:
+            pass
         self.hover(*CreateTopicIdentifiers.CREATE_NEW_TOPIC)
         self.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE_TITLE)
@@ -41,14 +46,6 @@ class CanonizerCreateNewTopic(Page):
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Confirmation text is not matching")
-
-    def select_dropdown_value(self):
-        self.hover(*CreateTopicIdentifiers.NICK_NAME)
-        self.find_element(*CreateTopicIdentifiers.NICK_NAME).click()
-
-    def select_value(self):
-        select = Select(self.find_element(*CreateTopicIdentifiers.NICK_NAME))
-        select.select_by_value("1")
 
     def enter_nick_name(self, nickname):
         self.find_element(*CreateTopicIdentifiers.NICK_NAME).send_keys(nickname)
@@ -173,6 +170,12 @@ class CanonizerCreateNewTopic(Page):
         """
         This Function checks, if Mandatory fields on Create topic Page Marked with *
         """
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-form-item-extra')))
+        except TimeoutException:
+            pass
+
         return \
             self.find_element(*CreateTopicIdentifiers.NICK_NAME_ASTERISK) and \
             self.find_element(*CreateTopicIdentifiers.TOPIC_NAME_ASTERISK) and \

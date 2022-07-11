@@ -87,6 +87,7 @@ class CanonizerForgotPasswordPage(Page):
         self.hover(*ForgotPasswordIdentifiers.OTP_ENTER)
         self.find_element(*ForgotPasswordIdentifiers.OTP_ENTER).send_keys(otp)
         self.click_otp_submit_button()
+        self.hover(*ForgotPasswordIdentifiers.INVALID_OTP_ERROR)
         error = self.find_element(*ForgotPasswordIdentifiers.INVALID_OTP_ERROR).text
         if error == 'OTP should be min/max 6 characters long!':
             return CanonizerForgotPasswordPage(self.driver)
@@ -106,6 +107,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_submit_button()
         self.hover(*ForgotPasswordIdentifiers.CROSS_ICON_OTP_MODAL)
         self.find_element(*ForgotPasswordIdentifiers.CROSS_ICON_OTP_MODAL).click()
+        self.hover(*ForgotPasswordIdentifiers.LOGIN)
         confirmation_text = self.find_element(*ForgotPasswordIdentifiers.LOGIN).text
         if confirmation_text == "Log in":
             return CanonizerForgotPasswordPage(self.driver)
