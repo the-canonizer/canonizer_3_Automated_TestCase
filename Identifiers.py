@@ -123,6 +123,9 @@ class CanonizerChangePasswordIdentifierPage(object):
     CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
     CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
     NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
+    CURRENT_ASTRK = (By.XPATH, '(//span[@class = "required"])[1]')
+    NEW_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
+    CONFIRM_ASTRK = (By.XPATH, '(//span[@class = "required"])[3]')
 
 
 class CanonizerManageNickNameIdentifiersPage(object):

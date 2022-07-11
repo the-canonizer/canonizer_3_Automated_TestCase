@@ -110,14 +110,6 @@ class CanonizerRegisterPage(Page):
         else:
             print("title not found")
 
-    def registration_with_invalid_password_length(self, REG_LIST_7):
-        self.register(REG_LIST_7[0], REG_LIST_7[1], REG_LIST_7[2], REG_LIST_7[3], REG_LIST_7[4], REG_LIST_7[5])
-        error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
-        if error == 'Password must contain small, capital letter, number and special character like Abc@1234.':
-            return CanonizerRegisterPage(self.driver)
-        else:
-            print('title not found')
-
     def registration_with_blank_spaces_first_name(self, REG_LIST_1):
         self.register(REG_LIST_1[0], REG_LIST_1[1], REG_LIST_1[2], REG_LIST_1[3], REG_LIST_1[4], REG_LIST_1[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
@@ -125,6 +117,14 @@ class CanonizerRegisterPage(Page):
             return CanonizerRegisterPage(self.driver)
         else:
             print("title not found")
+
+    def registration_with_invalid_password_length(self, REG_LIST_7):
+        self.register(REG_LIST_7[0], REG_LIST_7[1], REG_LIST_7[2], REG_LIST_7[3], REG_LIST_7[4], REG_LIST_7[5])
+        error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
+        if error == 'Password must contain small, capital letter, number and special character like Abc@1234.':
+            return CanonizerRegisterPage(self.driver)
+        else:
+            print('title not found')
 
     def registration_with_invalid_first_name(self, REG_LIST_10):
         self.register(REG_LIST_10[0], REG_LIST_10[1], REG_LIST_10[2], REG_LIST_10[3], REG_LIST_10[4], REG_LIST_10[5])
@@ -142,11 +142,6 @@ class CanonizerRegisterPage(Page):
         else:
             print("title not found")
 
-    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
-        self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4], REG_LIST_15[5])
-
-        return CanonizerRegisterPage(self.driver)
-
     def registration_with_invalid_email(self, REG_LIST_14):
         self.register(REG_LIST_14[0], REG_LIST_14[1], REG_LIST_14[2], REG_LIST_14[3], REG_LIST_14[4], REG_LIST_14[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
@@ -154,6 +149,11 @@ class CanonizerRegisterPage(Page):
             return CanonizerRegisterPage(self.driver)
         else:
             print("title not found")
+
+    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
+        self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4], REG_LIST_15[5])
+
+        return CanonizerRegisterPage(self.driver)
 
     def verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(self, REG_LIST_16):
         self.register(REG_LIST_16[0], REG_LIST_16[1], REG_LIST_16[2], REG_LIST_16[3], REG_LIST_16[4], REG_LIST_16[5])

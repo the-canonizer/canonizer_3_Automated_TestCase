@@ -55,6 +55,17 @@ class CanonizerManageNickNameTab(Page):
 
         return CanonizerManageNickNameTab(self.driver)
 
+    def verify_entering_the_nick_name_with_more_than_one_space(self, DEFAULT_INVALID_NICK_NAME):
+        self.click_account_settings_page()
+        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.ADD_NEW_NICK_NAME).click()
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).click()
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).send_keys(DEFAULT_INVALID_NICK_NAME)
+        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON).click()
+
+        return CanonizerManageNickNameTab(self.driver)
+
     def verify_validation_for_without_entering_nick_name_field(self, nick_name):
         self.click_account_settings_page()
         self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
@@ -68,20 +79,3 @@ class CanonizerManageNickNameTab(Page):
         title = self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME_ERROR).text
         if title == 'Please Enter Nick Name!':
             return CanonizerManageNickNameTab(self.driver)
-
-    def verify_entering_the_nick_name_with_more_than_one_space(self, DEFAULT_INVALID_NICK_NAME):
-        self.click_account_settings_page()
-        self.hover(*CanonizerManageNickNameIdentifiersPage.NICK_NAME)
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.NICK_NAME).click()
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.ADD_NEW_NICK_NAME).click()
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).click()
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_NICK_NAME).send_keys(DEFAULT_INVALID_NICK_NAME)
-        self.find_element(*CanonizerManageNickNameIdentifiersPage.POP_UP_CREATE_BUTTON).click()
-
-        return CanonizerManageNickNameTab(self.driver)
-
-
-
-
-
-

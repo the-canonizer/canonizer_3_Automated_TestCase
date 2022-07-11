@@ -210,15 +210,15 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verifying_linkedin_link(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
-
-        return CanonizerLoginPage(self.driver)
-
     def verifying_github_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.GITHUB_LINK).click()
+
+        return CanonizerLoginPage(self.driver)
+
+    def verifying_linkedin_link(self):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
 
         return CanonizerLoginPage(self.driver)
 

@@ -44,16 +44,6 @@ class CanonizerChangePasswordTab(Page):
 
         return CanonizerChangePasswordTab(self.driver)
 
-    def verify_current_password_new_password_confirm_password_is_present_save_button(self):
-        self.click_account_settings()
-        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).click()
-        self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD).click()
-        self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).click()
-        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
-
-        return CanonizerChangePasswordTab(self.driver)
 
     def verify_entering_the_invalid_new_password(self, INVALID_NEW_PASSWORD):
         self.click_account_settings()
@@ -66,6 +56,17 @@ class CanonizerChangePasswordTab(Page):
             return CanonizerChangePasswordTab(self.driver)
         else:
             print('title not found')
+
+    def verify_current_password_new_password_confirm_password_is_present_save_button(self):
+        self.click_account_settings()
+        self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD).click()
+        self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).click()
+
+        return CanonizerChangePasswordTab(self.driver)
 
     def verify_entering_the_invalid_current_password(self, INVALID_CURRENT_PASSWORD):
         self.click_account_settings()
