@@ -5,13 +5,6 @@ from selenium import webdriver
 
 
 class CanonizerForgotPasswordPage(Page):
-    forgot_password_heading = 'Forgot your password?'
-    password_verification_title = 'Create password verification code'
-    invalid_email_error = 'The input is not valid E-mail!'
-    empty_email_error = 'Please input your E-mail!'
-    empty_otp_error = 'Please input your OTP!'
-    invalid_otp_error = 'OTP should be min/max 6 characters long!'
-    title = 'Log in'
 
     def click_forgot_password_link(self):
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()

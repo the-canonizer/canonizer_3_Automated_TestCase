@@ -12,11 +12,6 @@ import time
 
 
 class CanonizerCreateNewTopic(Page):
-    CONSTANT_STRING_BLANK_TOPIC_ERROR = 'Please enter topic name!'
-    topic_page_title = 'Canonizer Sorted Camp Tree'
-    duplicate_topic_error = 'The topic name has already been taken.'
-    invalid_topic_error = 'Topic name can only contain space and alphanumeric characters.'
-    topic_label = 'Select Namespace'
 
     def click_create_new_topic_page_button(self):
         """
