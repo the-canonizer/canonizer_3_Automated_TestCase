@@ -1,10 +1,10 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import Keys
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
+import CanonizerValidationCheckMessages
 from CanonizerBase import Page
 from Identifiers import CreateTopicIdentifiers
 from time import time
@@ -12,6 +12,11 @@ import time
 
 
 class CanonizerCreateNewTopic(Page):
+    CONSTANT_STRING_BLANK_TOPIC_ERROR = 'Please enter topic name!'
+    topic_page_title = 'Canonizer Sorted Camp Tree'
+    duplicate_topic_error = 'The topic name has already been taken.'
+    invalid_topic_error = 'Topic name can only contain space and alphanumeric characters.'
+    topic_label = 'Select Namespace'
 
     def click_create_new_topic_page_button(self):
         """
@@ -32,7 +37,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE_TITLE)
         page_title = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE_TITLE).text
-        if page_title == 'Create New Topic':
+        if page_title == CanonizerValidationCheckMessages.NEW_TOPIC_PAGE_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Title not found or  is not matching")
@@ -42,7 +47,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.hover(*CreateTopicIdentifiers.LOGIN_PAGE)
         page_title = self.find_element(*CreateTopicIdentifiers.LOGIN_PAGE).text
-        if page_title == 'Login to Canonizer':
+        if page_title == CanonizerValidationCheckMessages.LOGIN_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Confirmation text is not matching")
@@ -79,7 +84,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, '', namespace, note)
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == "Please enter topic name!":
+        if error == CanonizerValidationCheckMessages.BLANK_TOPIC_ERROR:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message is not correct")
@@ -88,7 +93,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, "    ", namespace, summary)
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == "Please enter topic name!":
+        if error == CanonizerValidationCheckMessages.BLANK_TOPIC_ERROR:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message is not correct")
@@ -97,7 +102,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+        if topic_page_confirmation == CanonizerValidationCheckMessages.CREATE_TOPIC_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -108,7 +113,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).send_keys(Keys.ENTER)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+        if topic_page_confirmation == CanonizerValidationCheckMessages.CREATE_TOPIC_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -117,7 +122,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+        if topic_page_confirmation == CanonizerValidationCheckMessages.CREATE_TOPIC_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -126,7 +131,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nick_name, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME).text
-        if error == "The topic name has already been taken.":
+        if error == CanonizerValidationCheckMessages.DUPLICATE_TOPIC_ERROR:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message not found or is incorrect")
@@ -135,7 +140,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.INVALID_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.INVALID_TOPIC_NAME).text
-        if error == 'Topic name can only contain space and alphanumeric characters.':
+        if error == CanonizerValidationCheckMessages.INVALID_TOPIC_ERROR:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message not found or is incorrect")
@@ -144,7 +149,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic('', '', '', '')
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == 'Please enter topic name!':
+        if error == CanonizerValidationCheckMessages.BLANK_TOPIC_ERROR:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message not found or is incorrect")
@@ -153,7 +158,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, '')
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == "Canonizer Sorted Camp Tree":
+        if topic_page_confirmation == CanonizerValidationCheckMessages.CREATE_TOPIC_TITLE:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -163,7 +168,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CANCEL_BUTTON).click()
         self.hover(*CreateTopicIdentifiers.MAIN_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.MAIN_PAGE).text
-        if topic_page_confirmation == "Select Namespace":
+        if topic_page_confirmation == CanonizerValidationCheckMessages.TOPIC_LABEL:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")

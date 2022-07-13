@@ -25,138 +25,13 @@ else:
     print("Unknown OS")
     exit(1)
 
-# Registration Page Configuration Parameters
-DEFAULT_FIRST_NAME = "kumar"
-DEFAULT_LAST_NAME = "file"
-DEFAULT_EMAIL = "cano3@yopmail.com"
-DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
-DEFAULT_USER = "sania.mohan@talentelgia.in"
-DEFAULT_PASSWORD = "Test@123"
-DEFAULT_USER_INVALID = "xcvxc"
-DEFAULT_PASS = "123456"
+# Forgot Password  Page Configuration Parameters
 UNREGISTERED_EMAIL = "can@gmail.com"
 INVALID_LONG_OTP ="7272727722"
+DEFAULT_EMAIL = "cano3@yopmail.com"
+DEFAULT_USER_INVALID = "xcvxc"
+DEFAULT_PASS = "123456"
 
-
-REG_LIST_1 = [
-    "first  @123",
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_2 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_3 = [
-    '',
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_4 = [
-    DEFAULT_FIRST_NAME,
-    '',
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_5 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    '',
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_6 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    '',
-    'DEFAULT_PASS',
-    ''
-]
-REG_LIST_7 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    '123',
-    '12345',
-    ''
-]
-REG_LIST_8 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    'Test@1234567',
-    'Test@123456',
-    ''
-]
-REG_LIST_9 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_10 = [
-    "first @##$#$$$23",
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_11 = [
-    DEFAULT_FIRST_NAME,
-    "sai@@@@###@@",
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_12 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_13 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    'INVALID'
-]
-REG_LIST_14 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
-REG_LIST_15 = [
-    DEFAULT_FIRST_NAME,
-    DEFAULT_LAST_NAME,
-    DEFAULT_USER,
-    DEFAULT_PASS,
-    DEFAULT_PASS,
-    ''
-]
 # Login Page Configuration Parameters
 DEFAULT_USER = "sania.mohan@talentelgia.in"
 DEFAULT_PASSWORD = "Test@123"
@@ -169,10 +44,7 @@ DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
 DEFAULT_VALID_PHONE_NUMBER = ""
 DEFAULT_INVALID_OTP = "123456789"
 DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
-VERIFY_EMAIL = "anil.podi@zibtek.in"
-VERIFY_PASS = "Zibtek#2455"
-PASS_UPPERCASE = "POOJA@123456"
-PASS_LOWERCASE = "pooja@123456"
+
 
 # Create New Topic Configuration Parameters
 DEFAULT_NICK_NAME = "sania_talentelgia"
@@ -181,3 +53,10 @@ DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
+
+# Camp Forum Configuration Parameters
+DEFAULT_TOPIC = "Automated Topic"
+
+
+
+
