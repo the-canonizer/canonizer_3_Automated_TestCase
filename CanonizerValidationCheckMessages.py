@@ -17,7 +17,7 @@ TOPIC_LABEL = 'Select Namespace'
 # Canonizer Forgot Password Validation Check Messages Configuration
 FORGOT_PASSWORD_PAGE_HEADING = 'Forgot your password?'
 PASSWORD_VERIFICATION_TITLE = 'Create password verification code'
-INVALID_EMAIL_ERROR = 'The 3input is not valid E-mail!'
+INVALID_EMAIL_ERROR = 'The input is not valid E-mail!'
 EMPTY_EMAIL_ERROR = 'Please input your E-mail!'
 EMPTY_OTP_ERROR = 'Please input your OTP!'
 INVALID_OTP_ERROR = 'OTP should be min/max 6 characters long!'

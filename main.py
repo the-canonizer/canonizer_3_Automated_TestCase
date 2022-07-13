@@ -3,7 +3,6 @@ import unittest
 
 from selenium.common.exceptions import TimeoutException
 
-from CanonizerCampForumPage import CanonizerCampForum
 from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
 from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
