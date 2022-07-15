@@ -1,27 +1,24 @@
-import os
-import platform
 
-"""
-Set All Text Values in this class
-"""
+message = {
+    'Forgot_Password': {
+        'Title': 'Forgot your password?',
+        'Invalid_Email_Error': 'The input is not valid E-mail!',
+        'Password_Verify_Title': 'Create password verification code',
+        'Empty_Otp_Error': 'Please input your OTP!',
+        'Invalid_Otp_Error': 'OTP should be min/max 6 characters long!',
+        'Login_Page_Title': 'Log in'
+     },
+    'Create_Topic': {
+        'New_Topic_Page_Title': 'Create New Topic',
+        'Login_Title': 'Login to Canonizer',
+        'Blank_Topic_Error': 'Please enter topic name!',
+        'Create_Topic_Title': 'Canonizer Sorted Camp Tree',
+        'Duplicate_Topic_Error': 'The topic name has already been taken.',
+        'Invalid_Topic_Error': 'Topic name can only contain space and alphanumeric characters.',
+        'Topic_Label': 'Select Namespace'
+    }
 
-# Canonizer Create New Topic Page Validation Check Messages Configuration
-NEW_TOPIC_PAGE_TITLE = 'Create New Topic'
-LOGIN_TITLE = 'Login to Canonizer'
-BLANK_TOPIC_ERROR = 'Please enter topic name!'
-CREATE_TOPIC_TITLE = 'Canonizer Sorted Camp Tree'
-DUPLICATE_TOPIC_ERROR = 'The topic name has already been taken.'
-INVALID_TOPIC_ERROR = 'Topic name can only contain space and alphanumeric characters.'
-TOPIC_LABEL = 'Select Namespace'
-
-# Canonizer Forgot Password Validation Check Messages Configuration
-FORGOT_PASSWORD_PAGE_HEADING = 'Forgot your password?'
-PASSWORD_VERIFICATION_TITLE = 'Create password verification code'
-INVALID_EMAIL_ERROR = 'The input is not valid E-mail!'
-EMPTY_EMAIL_ERROR = 'Please input your E-mail!'
-EMPTY_OTP_ERROR = 'Please input your OTP!'
-INVALID_OTP_ERROR = 'OTP should be min/max 6 characters long!'
-LOGIN_BUTTON_LABEL = 'Log in'
+  }
 
 
 
