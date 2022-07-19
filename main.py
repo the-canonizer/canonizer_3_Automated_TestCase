@@ -1,9 +1,6 @@
 import unittest
-
 from CanonizerLoginPage import CanonizerLoginPage
-
 from CanonizerRegistrationPage import CanonizerRegisterPage
-
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
 from CanonizerManageNickNameTab import CanonizerManageNickNameTab
 
@@ -74,9 +71,9 @@ class TestPages(unittest.TestCase):
     # TC_REGISTRATION_WITH_BLANK_PASSWORD
     def test_registration_with_blank_password(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_BLANK_PASSWORD')))
-        result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_password(
+        url = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_password(
             REG_LIST_6).get_url()
-        self.assertIn("", result)
+        self.assertIn("", url)
 
     # TC_REGISTRATION_WITH_INVALID_PASSWORD_LENGTH
     def test_registration_with_invalid_password_length(self):
@@ -136,7 +133,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("", result)
 
     # LOGIN PAGE:
-    #
     def test_login_page_mandatory_fields_are_marked_with_asterisk(self):
         self.assertTrue(CanonizerLoginPage(
             self.driver).click_login_page_button().login_page_mandatory_fields_are_marked_with_asterisk())
@@ -144,7 +140,12 @@ class TestPages(unittest.TestCase):
     # TC_CLICK_ON_LOGIN_BUTTON
     def test_click_on_login_button(self):
         print("\n" + str(test_cases('TC_CLICK_ON_LOGIN_BUTTON')))
-        result = CanonizerLoginPage(self.driver).click_on_login_button()
+        CanonizerLoginPage(self.driver).click_on_login_button()
+
+    # TC_CLICK_ON_LOGIN_BUTTON_AND_VERIFY_LOGIN_PAGE_TITLE
+    def test_click_on_login_button_and_verifying_login_page_title(self):
+        result = CanonizerLoginPage(self.driver).click_on_login_button_and_verifying_login_page_title().get_url()
+        self.assertIn("", result)
 
     # TC_CLICK_CLOSE_ICON_ON_LOGIN_PAGE
     def test_click_close_icon_on_login_page(self):
@@ -162,9 +163,21 @@ class TestPages(unittest.TestCase):
     # TC_LOGIN_WITH_INVALID_EMAIL
     def test_login_with_invalid_email(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_INVALID_EMAIL')))
-        url = CanonizerLoginPage(self.driver).verify_the_login_with_invalid_email_format(DEFAULT_INVALID_USER,
-                                                                                         DEFAULT_PASS).get_url()
-        self.assertIn("", url)
+        result = CanonizerLoginPage(self.driver).verify_the_login_with_invalid_email_format(DEFAULT_INVALID_USER,
+                                                                                            DEFAULT_PASS).get_url()
+        self.assertIn("", result)
+
+    # TC_LOGIN_WITH_BLANK_EMAIL
+    def test_click_the_login_button_with_blank_email(self):
+        print("\n" + str(test_cases('TC_LOGIN_WITH_BLANK_EMAIL')))
+        result = CanonizerLoginPage(self.driver).click_the_login_button_with_blank_email("", DEFAULT_PASS).get_url()
+        self.assertIn("", result)
+
+    # TC_LOGIN_WITH_BLANK_PASSWORD
+    def test_click_on_login_button_with_blank_password(self):
+        print("\n" + str(test_cases('TC_LOGIN_WITH_BLANK_PASSWORD')))
+        result = CanonizerLoginPage(self.driver).click_on_login_button_with_blank_password(DEFAULT_USER, "").get_url()
+        self.assertIn("", result)
 
     # TC_VERIFYING_REMEMBER_CHECK_BOX
     def test_click_on_remember_check_box(self):
@@ -197,6 +210,13 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL')))
         result = CanonizerLoginPage(self.driver).verify_one_time_request_code_with_invalid_email(
             DEFAULT_INVALID_USER, DEFAULT_PASS).get_url()
+        self.assertIn("", result)
+
+    # TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_INVALID_PASSWORD
+    def test_verify_one_time_request_code_with_invalid_password(self):
+        print("\n" + str(test_cases('TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_INVALID_PASSWORD')))
+        result = CanonizerLoginPage(self.driver).verify_one_time_request_code_with_invalid_password(
+            DEFAULT_USER, DEFAULT_INVALID_PASSWORD).get_url()
         self.assertIn("", result)
 
     # TC_VERIFYING_SOCIAL LINKS
@@ -235,13 +255,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerLoginPage(self.driver).verifying_github_link().get_url()
         self.assertIn("", result)
 
-    # TC_VERIFYING_LOGIN_PLACEHOLDERS
-    def test_verify_login_placeholders(self):
-        print("\n" + str(test_cases('TC_VERIFYING_LOGIN_PLACEHOLDERS')))
-        CanonizerLoginPage(self.driver).verify_login_placeholders()
-
     # CHANGE PASSWORD TAB:-
-
     def test_verifying_astrk_present_in_change_password_tab(self):
         self.login_to_canonizer_app()
         self.assertTrue(CanonizerChangePasswordTab(self.driver).verifying_astrk_present_in_change_password_tab())
