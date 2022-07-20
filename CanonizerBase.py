@@ -1,7 +1,5 @@
-
-from selenium.webdriver.common.action_chains import ActionChains
-
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Config import DEFAULT_BASE_URL
@@ -12,8 +10,6 @@ class Page(object):
         self.base_url = base_url
         self.driver = driver
         self.timeout = 30
-
-
 
     def open(self, url):
         url = self.base_url + url
@@ -37,11 +33,3 @@ class Page(object):
 
     def get_attribute(self):
         return self.driver.attribute
-
-
-
-
-
-
-
-

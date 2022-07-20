@@ -17,7 +17,7 @@ testCases = {
                                                    'user must see Error Message'],
     'TC_REGISTRATION_WITH_BLANK_EMAIL': [moderate, 'In User Registration Page, When user doesn\'t put Email, '
                                                    'user must see Error Message'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MOBILE_NUMBER_FIELDS' : [Critical,'when user click on register '
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MOBILE_NUMBER_FIELDS': [Critical, 'when user click on register '
                                                                                         'now button with invalid '
                                                                                         'mobile number , user should '
                                                                                         'see proper error message'],
@@ -37,7 +37,8 @@ testCases = {
                                                          'user must see Error Message'],
     'TC_REGISTRATION_WITH_INVALID_EMAIL': [moderate, 'In User Registration Page, When user put invalid email, '
                                                      'user must see Error Message'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS' : [moderate, 'when user click on register now,user fill all mandatary fields'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS': [moderate,
+                                                                          'when user click on register now,user fill all mandatary fields'],
     'TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK': [Critical, 'when user click on main page register but , '
                                                                     'user should see login link ,when user click on '
                                                                     'login link ,user should redirect to canonizer '
@@ -58,6 +59,10 @@ testCases = {
                                                     'verified tittle'],
     'TC_LOGIN_WITH_REGISTERED_CREDENTIALS': [Critical, 'When user should try to login with registered credentials, '
                                                        'user should see main page'],
+    'TC_VERIFY_THE_LOGIN_WITH_BLANK_EMAIL': [Critical, 'when user should try to login with blank email, '
+                                                       'user should see proper error message'],
+    'TC_VERIFY_THE_LOGIN_WITH_BLANK_PASSWORD': [Critical, 'when user should try to login with blank password, '
+                                                          'user should see proper error message'],
     'TC_LOGIN_WITH_INVALID_EMAIL': [Critical, 'When user should try to login with invalid email, user should see '
                                               'proper error message'],
     'TC_VERIFYING_REMEMBER_CHECK_BOX': [Critical, 'When user should click on checkbox on login page, user should see '
@@ -73,6 +78,9 @@ testCases = {
     'TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL': [Critical, 'When user should click one time '
                                                                            'verification code with invalid email,user '
                                                                            'should see proper error message'],
+    'TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_VALID_CREDENTIALS': [Critical,'when user click on one time request code '
+                                                                        'with valid credentials, user should redirect'
+                                                                        ' to one time verification page'],
     'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
     'Tc_verifying_facebook_link': [Critical, 'when user click on facebook link on login page ,user should see it '
                                              'redirect to facebook page'],
@@ -180,30 +188,56 @@ testCases = {
                                                             'supported camp page'],
     'TC_VERIFY_REMOVE_SUPPORT_BUTTON': [Critical, 'when user click on direct are delegate support camp , user should '
                                                   'see remove support button'],
-    'TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE' : [Critical, 'when user click on direct support  camp button , user '
-                                                         'should see topic name and it clickable'],
-    'TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP' : [Critical, 'when user should click on '
-                                                                                       'direct supported camp, '
-                                                                                       'user should see topic name '
-                                                                                       'and agreement camp name'],
-    'TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE': [Critical,'when user should click on supported '
-                                                                            'camps , user should see search bar, '
-                                                                            'user can search topic name in search '
-                                                                            'bar'],
+    'TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE': [Critical, 'when user click on direct support  camp button , user '
+                                                        'should see topic name and it clickable'],
+    'TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP': [Critical, 'when user should click on '
+                                                                                      'direct supported camp, '
+                                                                                      'user should see topic name '
+                                                                                      'and agreement camp name'],
+    'TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE': [Critical, 'when user should click on supported '
+                                                                             'camps , user should see search bar, '
+                                                                             'user can search topic name in search '
+                                                                             'bar'],
     'TC_VERIFY_THE_FACEBOOK_LINK': [Critical, 'when user click on facebook link in home, user should see the page '
                                               'redirect to facebook login page'],
 
-    'TC_VERIFY_THE_INSTA_LINK' : [Critical, 'when user click on insta_link, user should see after click on link it '
-                                            'redirect to insta login page'],
+    'TC_VERIFY_THE_INSTA_LINK': [Critical, 'when user click on insta_link, user should see after click on link it '
+                                           'redirect to insta login page'],
     'TC_VERIFY_THE_TWITTER_LINK': [Critical, 'when user click on twitter link, user should redirect to twitter login '
                                              'page'],
     'TC_VERIFY_THE_YOUTUBE_LINK': [Critical, 'when user click on youtube link, user should redirect to youtube main '
                                              'page'],
     'Tc_verify_the_linkedin_link': [Critical, 'when user should click on linkedin link, user should redirect to '
                                               'linkedin page'],
-
-
-
-
+    'TC_CLICK_FORGOT_PASSWORD_LINK': [Critical, 'User should see forgot password link'],
+    'TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN': [Critical, 'User must see OTP screen on submit button'],
+    'TC_SUBMIT_BUTTON_WITH_INVALID_EMAIL': [Critical, 'User must see error message with invalid email'],
+    'TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL': [Critical, 'User must see error message when email is left empty'],
+    'TC_SUBMIT_EMPTY_OTP': [Critical, 'User must see error message when OTP is left empty'],
+    'TC_SUBMIT_INVALID_LENGTH_OTP': [Critical, 'User must see error message when submit invalid length OTP'],
+    'TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL': [Critical,
+                                                 'User must see error message for email which is unregistered'],
+    'TC_CROSS_ICON_ON_FORGOT_MODAL': [Critical, ' User must be able to click cross icon and modal should close'],
+    'TC_CROSS_ICON_ON_OTP_MODAL': [Critical, 'User must be able to click cross icon and modal should close'],
+    'TC_ENTER_VALID_OTP': [Critical, ' User must enter valid OTP and must see change password page'],
+    'TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN': [Critical, 'User must be able to click Create topic button on login'],
+    'TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN': [Critical, 'User must see login page when click create topic button '
+                                                           'when not logged in'],
+    'TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME': [Critical, ' User must not be able to create topic with blank name'],
+    'TC_CREATE_TOPIC_WITH_VALID_DATA': [Critical, 'User must be able to create a new topic with valid data'],
+    'TC_CREATE_TOPIC_WITH_BLANK_SPACES_TOPIC_NAME': [Critical, ' User must see error message when enter blank spaces'],
+    'TC_CREATE_NEW_TOPIC_WITH_ENTER_KEY': [Critical, 'User must be able to create new topi when press EnterKey'],
+    'TC_CREATE_NEW_TOPIC_WITH_TRAILING_SPACES': [Critical, 'Trailing spaces must be removed '
+                                                           'and new topic is created'],
+    'TC_CREATE_TOPIC_WITH_DUPLICATE_NAME': [Critical, 'Duplicate topic name must not be created'],
+    'TC_CREATE_NEW_TOPIC_WITH_INVALID_DATA': [Critical, 'Topic must not be created when invalid data is entered '],
+    'TC_CREATE_NEW_WITHOUT_MANDATORY_FIELDS_DATA': [Critical, 'User must not be able to create a topic '
+                                                              'when mandatory fields are blank'],
+    'TC_CREATE_NEW_TOPIC_ENTERING_DATA_ONLY_IN_MANDATORY_FIELDS': [Critical, ' User must be able to create a new '
+                                                                             'topic when enter data only in mandatory fields'],
+    'TC_CLICK_ON_CANCEL_BUTTON': [Critical, 'User must not be able to create a topic on click '
+                                            'cancel button instead redirect to home page'],
+    'TC_TOPIC_PAGE_MANDATORY_FIELDS_ARE_MARKED_WITH_ASTERISK': [Critical, 'User must see mandatory fields marked '
+                                                                          'with asterisk'],
 
 }

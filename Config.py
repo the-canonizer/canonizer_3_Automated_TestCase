@@ -14,7 +14,7 @@ DEFAULT_BINARY_LOCATION = ''
 
 if platform.system() == 'Darwin':
     DEFAULT_BINARY_LOCATION = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver_mac_m1"
+    DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver"
 elif platform.system() == 'Windows':
     DEFAULT_BINARY_LOCATION = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
     DEFAULT_CHROME_DRIVER_LOCATION = os.getcwd() + "/Webdrivers/chromedriver"
@@ -29,6 +29,7 @@ DEFAULT_USER = "saideekshith@zibtek.in"
 DEFAULT_PASS = "Deekshith@123"
 DEFAULT_NAME = "saideekshith"
 INVALID_NAME = "sai deekshith1"
+INVALID_PASSWORD ="sfagf@@3 sfg gdahg"
 
 FIRST_NAME = "test"
 MIDDLE_NAME = "testing"
@@ -43,7 +44,6 @@ DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
 INVALID_MOBILE_NUMBER = "12345"
 DEFAULT_MOBILE_NUMBER = "1992936545"
 DEFAULT_INVALID_EMAIL = "sai#222222gmail"
-
 
 REG_LIST_1 = [
     "           ",
@@ -197,6 +197,17 @@ REG_LIST_16 = [
 # DEFAULT_PASS = ""
 DEFAULT_USER = "saideekshith@zibtek.in"
 DEFAULT_PASS = "Deekshith@123"
+
+# Forgot Password  Page Configuration Parameters
+UNREGISTERED_EMAIL = "can@gmail.com"
+INVALID_LONG_OTP = "7272727722"
+# DEFAULT_EMAIL = "cano3@yopmail.com"
+DEFAULT_USER_INVALID = "xcvxc"
+# DEFAULT_PASS = "123456"
+
+# Login Page Configuration Parameters
+# DEFAULT_USER = "sania.mohan@talentelgia.in"
+DEFAULT_PASSWORD = "Test@123"
 # DEFAULT_USER = "r_canonizer_user@yopmail.com"
 # DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduser@gmail'
@@ -214,7 +225,22 @@ DEFAULT_FIRST_NAME = "automation  testing"
 DEFAULT_LAST_NAME = "testing  cases"
 DEFAULT_MIDDLE_NAME = "test  case "
 
-
 # support camps tab Configuration Parameters
 DEFAULT_TOPIC_NAME = "automation 123"
-#//input [@aria-activedescendant = 'PlacesAutocomplete__suggestion-ChIJVaU9EY4UrjsRIrtCkznuBEc']
+# //input [@aria-activedescendant = 'PlacesAutocomplete__suggestion-ChIJVaU9EY4UrjsRIrtCkznuBEc']
+DEFAULT_UNVERIFIED_PHONE_NUMBER = "1234567890"
+DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
+DEFAULT_VALID_PHONE_NUMBER = ""
+DEFAULT_INVALID_OTP = "123456789"
+DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
+
+# Create New Topic Configuration Parameters
+# DEFAULT_NICK_NAME = "sania_talentelgia"
+# DEFAULT_TOPIC_NAME = "testing4546"
+DEFAULT_NAMESPACE = ""
+DEFAULT_SUMMARY = "Default note"
+DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
+INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
+
+# Camp Forum Configuration Parameters
+DEFAULT_TOPIC = "Automated Topic"
