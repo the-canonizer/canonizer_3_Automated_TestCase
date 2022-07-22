@@ -2,11 +2,8 @@ import unittest
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
 # from unittest import result
-
 from selenium.common.exceptions import TimeoutException
-
 from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
-from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerForgotPasswordPage import *
 from CanonizerTestCases import test_cases
@@ -17,6 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import string
 import random
+
 
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -82,7 +80,7 @@ class TestPages(unittest.TestCase):
     # TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
     def test_click_submit_button_with_valid_email(self):
         print("\n" + str(test_cases('TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN')))
-        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password()\
+        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password() \
             .click_submit_button_with_valid_email(DEFAULT_USER).get_url()
         self.assertIn("", result)
 
@@ -269,26 +267,27 @@ class TestPages(unittest.TestCase):
     # TC_SUBMIT_EMPTY_OTP
     def test_submit_empty_OTP(self):
         print("\n" + str(test_cases('TC_SUBMIT_EMPTY_OTP')))
-        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password()\
+        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password() \
             .submit_empty_otp(DEFAULT_USER).get_url()
         self.assertIn("", result)
 
     # TC_SUBMIT_INVALID_LENGTH_OTP
     def test_invalid_otp(self):
         print("\n" + str(test_cases('TC_SUBMIT_INVALID_LENGTH_OTP')))
-        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password()\
+        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password() \
             .submit_invalid_otp(DEFAULT_USER, INVALID_LONG_OTP).get_url()
         self.assertIn("", result)
 
     # TC_CROSS_ICON_ON_FORGOT_MODAL
     def test_cross_icon_on_forgot_page(self):
         print("\n" + str(test_cases('TC_CROSS_ICON_ON_FORGOT_MODAL')))
-        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password()\
+        result = CanonizerForgotPasswordPage(self.driver).login_and_forgot_password() \
             .cross_icon_on_forgot_page().get_url()
         self.assertIn("", result)
 
         # ----- FORGOT PASSWORD Test Cases end -----
         # ----- CREATE TOPIC Test Cases Start -----
+
     # TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN
     def test_click_create_new_topic_page_button(self):
         print("\n" + str(test_cases('TC_CLICK_CREATE_TOPIC_WITH_USER_LOGIN')))
@@ -325,7 +324,7 @@ class TestPages(unittest.TestCase):
             "New Topic " + add_name,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY
-            ).get_url()
+        ).get_url()
         self.assertIn("topic", result)
 
     # TC_CREATE_NEW_TOPIC_WITH_ENTER_KEY
@@ -340,7 +339,7 @@ class TestPages(unittest.TestCase):
             "New Topic " + add_name,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY
-            ).get_url()
+        ).get_url()
         self.assertIn("topic", result)
 
     # TC_CREATE_TOPIC_WITH_BLANK_SPACES_TOPIC_NAME
@@ -367,7 +366,7 @@ class TestPages(unittest.TestCase):
             "      New Topic " + add_name,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY
-            ).get_url()
+        ).get_url()
         self.assertIn("topic", result)
 
     # TC_CREATE_TOPIC_WITH_DUPLICATE_NAME
@@ -376,7 +375,8 @@ class TestPages(unittest.TestCase):
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
         # Click on the Create New Topic link and check for duplicate topic name
-        result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button().create_topic_with_duplicate_topic_name(
+        result = CanonizerCreateNewTopic(
+            self.driver).click_create_new_topic_page_button().create_topic_with_duplicate_topic_name(
             DEFAULT_NICK_NAME,
             DUPLICATE_TOPIC_NAME,
             DEFAULT_NAMESPACE,
@@ -404,7 +404,7 @@ class TestPages(unittest.TestCase):
             "",
             "",
             "",
-            "",).get_url()
+            "", ).get_url()
         self.assertIn("create/topic", result)
 
     # TC_CREATE_NEW_TOPIC_ENTERING_DATA_ONLY_IN_MANDATORY_FIELDS
@@ -419,7 +419,7 @@ class TestPages(unittest.TestCase):
             "New Topic " + add_name,
             DEFAULT_NAMESPACE,
             "",
-            ).get_url()
+        ).get_url()
         self.assertIn("topic", result)
 
     # TC_CLICK_ON_CANCEL_BUTTON
@@ -437,10 +437,6 @@ class TestPages(unittest.TestCase):
             self.driver).click_create_new_topic_page_button().topic_page_mandatory_fields_are_marked_with_asterisk())
 
     # ----- CREATE TOPIC Test Cases end -----
-
-
-
-
 
     def tearDown(self):
         self.driver.close()
