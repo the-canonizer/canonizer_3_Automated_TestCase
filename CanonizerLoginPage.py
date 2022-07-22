@@ -205,12 +205,6 @@ class CanonizerLoginPage(Page):
         else:
             print("Title not found")
 
-    def verifying_social_account_links(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.SOCIAL_LINKS).click()
-
-        return CanonizerLoginPage(self.driver)
-
     def verifying_facebook_icon(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
@@ -220,6 +214,12 @@ class CanonizerLoginPage(Page):
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
+
+    def verifying_social_account_links(self):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.SOCIAL_LINKS).click()
+
+        return CanonizerLoginPage(self.driver)
 
     def verifying_twitter_link(self):
         self.click_on_login_button()
