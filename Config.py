@@ -45,8 +45,8 @@ INVALID_MOBILE_NUMBER = "12345"
 DEFAULT_MOBILE_NUMBER = "1992936545"
 DEFAULT_INVALID_EMAIL = "sai#222222gmail"
 
-REG_LIST_1 = [
-    "           ",
+reg_list_1 = [
+    "      ",
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
     INVALID_MOBILE_NUMBER,
@@ -54,7 +54,7 @@ REG_LIST_1 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_2 = [
+reg_list_2 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -63,7 +63,7 @@ REG_LIST_2 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_3 = [
+reg_list_3 = [
     '',
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -72,7 +72,7 @@ REG_LIST_3 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_4 = [
+reg_list_4 = [
     DEFAULT_FIRST_NAME,
     '',
     DEFAULT_USER,
@@ -81,7 +81,7 @@ REG_LIST_4 = [
     DEFAULT_CONFIRM_PASSWORD,
     ''
 ]
-REG_LIST_5 = [
+reg_list_5 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     '',
@@ -90,7 +90,7 @@ REG_LIST_5 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_6 = [
+reg_list_6 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -99,7 +99,7 @@ REG_LIST_6 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_7 = [
+reg_list_7 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -108,7 +108,7 @@ REG_LIST_7 = [
     '1234567',
     ''
 ]
-REG_LIST_8 = [
+reg_list_8 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -118,7 +118,7 @@ REG_LIST_8 = [
     ''
 
 ]
-REG_LIST_9 = [
+reg_list_9 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -127,8 +127,8 @@ REG_LIST_9 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_10 = [
-    "first @##$#$$$23",
+reg_list_10 = [
+    "first  @##$#$$$23",
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
     DEFAULT_MOBILE_NUMBER,
@@ -136,7 +136,7 @@ REG_LIST_10 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_11 = [
+reg_list_11 = [
     DEFAULT_FIRST_NAME,
     "sai@@@@###@@",
     DEFAULT_USER,
@@ -145,7 +145,7 @@ REG_LIST_11 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_12 = [
+reg_list_12 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -154,7 +154,7 @@ REG_LIST_12 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_13 = [
+reg_list_13 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -163,7 +163,7 @@ REG_LIST_13 = [
     DEFAULT_PASS,
     'INVALID'
 ]
-REG_LIST_14 = [
+reg_list_14 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_INVALID_EMAIL,
@@ -173,7 +173,7 @@ REG_LIST_14 = [
     ''
 
 ]
-REG_LIST_15 = [
+reg_list_15 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -182,7 +182,7 @@ REG_LIST_15 = [
     DEFAULT_PASS,
     ''
 ]
-REG_LIST_16 = [
+reg_list_16 = [
     DEFAULT_FIRST_NAME,
     DEFAULT_LAST_NAME,
     DEFAULT_USER,
@@ -200,17 +200,17 @@ DEFAULT_PASS = "Deekshith@123"
 
 # Forgot Password  Page Configuration Parameters
 UNREGISTERED_EMAIL = "can@gmail.com"
-INVALID_LONG_OTP ="7272727722"
-DEFAULT_EMAIL = "cano3@yopmail.com"
+INVALID_LONG_OTP = "7272727722"
+# DEFAULT_EMAIL = "cano3@yopmail.com"
 DEFAULT_USER_INVALID = "xcvxc"
-DEFAULT_PASS = "123456"
+# DEFAULT_PASS = "123456"
 
 # Login Page Configuration Parameters
-DEFAULT_USER = "sania.mohan@talentelgia.in"
-DEFAULT_PASSWORD = "Test@123"
+# DEFAULT_USER = "sania.mohan@talentelgia.in"
+# DEFAULT_PASSWORD = "Test@123"
 # DEFAULT_USER = "r_canonizer_user@yopmail.com"
 # DEFAULT_PASS = "Rupali@12345"
-DEFAULT_INVALID_USER = 'invaliduser@gmail.com'
+DEFAULT_INVALID_USER = 'invaliduse22rgmail.com'
 DEFAULT_INVALID_PASSWORD = "invalid_password"
 
 # Account Setting page Configuration Parameters
@@ -234,18 +234,15 @@ DEFAULT_VALID_PHONE_NUMBER = ""
 DEFAULT_INVALID_OTP = "123456789"
 DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
 
+# Camp Forum Configuration Parameters
+DEFAULT_TOPIC = "Automated Topic"
 
 # Create New Topic Configuration Parameters
-DEFAULT_NICK_NAME = "sania_talentelgia"
-DEFAULT_TOPIC_NAME = "testing4546"
+# DEFAULT_NICK_NAME = "sania_talentelgia"
+# DEFAULT_TOPIC_NAME = "testing4546"
 DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
-
-# Camp Forum Configuration Parameters
-DEFAULT_TOPIC = "Automated Topic"
-
-
 
 

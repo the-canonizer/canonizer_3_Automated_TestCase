@@ -134,11 +134,6 @@ class CanonizerRegisterPage(Page):
         else:
             print("Error message not found")
 
-    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, reg_list_15):
-        self.register(reg_list_15[0], reg_list_15[1], reg_list_15[2], reg_list_15[3], reg_list_15[4], reg_list_15[5])
-
-        return CanonizerRegisterPage(self.driver)
-
     def verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(self, reg_list_16):
         self.register(reg_list_16[0], reg_list_16[1], reg_list_16[2], reg_list_16[3], reg_list_16[4], reg_list_16[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_MOBILE_NUMBER).text
@@ -146,6 +141,11 @@ class CanonizerRegisterPage(Page):
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
+
+        return CanonizerRegisterPage(self.driver)
+
+    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, reg_list_15):
+        self.register(reg_list_15[0], reg_list_15[1], reg_list_15[2], reg_list_15[3], reg_list_15[4], reg_list_15[5])
 
         return CanonizerRegisterPage(self.driver)
 

@@ -222,6 +222,12 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
+    def verifying_google_link(self):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
+
+        return CanonizerLoginPage(self.driver)
+
     def verifying_twitter_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
@@ -231,12 +237,6 @@ class CanonizerLoginPage(Page):
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
-
-    def verifying_google_link(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
-
-        return CanonizerLoginPage(self.driver)
 
     def verifying_linkedin_link(self):
         self.click_on_login_button()
@@ -249,5 +249,3 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.GITHUB_LINK).click()
 
         return CanonizerLoginPage(self.driver)
-
-

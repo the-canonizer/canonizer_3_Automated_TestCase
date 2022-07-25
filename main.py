@@ -15,7 +15,6 @@ from selenium.webdriver.support import expected_conditions as EC
 import string
 import random
 
-
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -126,12 +125,6 @@ class TestPages(unittest.TestCase):
             reg_list_14).get_url()
         self.assertIn("", result)
 
-    # TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK
-    def test_check_login_page_open_click_login_here_link(self):
-        print("\n" + str(test_cases('TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK')))
-        result = CanonizerRegisterPage(self.driver).check_login_page_open_click_login_here_link().get_url()
-        self.assertIn("", result)
-
     # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS
     def test_verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MANDATORY_FIELDS')))
@@ -139,6 +132,12 @@ class TestPages(unittest.TestCase):
             self.driver).click_register_button(
         ).verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(
             reg_list_15).get_url()
+        self.assertIn("", result)
+        # TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK
+
+    def test_check_login_page_open_click_login_here_link(self):
+        print("\n" + str(test_cases('TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK')))
+        result = CanonizerRegisterPage(self.driver).check_login_page_open_click_login_here_link().get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MOBILE_NUMBER_FIELDS
