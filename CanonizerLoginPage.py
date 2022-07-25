@@ -1,3 +1,5 @@
+from time import sleep
+
 from CanonizerBase import Page
 from CanonizerValidationCheckMessages import message
 from Identifiers import LoginPageIdentifiers
@@ -106,11 +108,10 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_with_invalid_email_format(self, DEFAULT_INVALID_USER, DEFAULT_PASS):
+    def verify_the_login_with_invalid_email_format(self, default_invalid_user, default_pass):
         self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_INVALID_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_invalid_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).click()
         title = self.find_element(*LoginPageIdentifiers.INVALID_EMAIL_TITLE).text
@@ -119,41 +120,41 @@ class CanonizerLoginPage(Page):
         else:
             print("Error message not found")
 
-    def verify_the_login_with_blank_email(self, BLANK_EMAIL, DEFAULT_PASS):
+    def verify_the_login_with_blank_email(self, blank_email, default_pass):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(BLANK_EMAIL)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(blank_email)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         error = self.find_element(*LoginPageIdentifiers.BLANK_EMAIL_ERROR).text
         if error == message['Login_Page']['BLANK_EMAIL']:
             return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_with_blank_password(self, DEFAULT_USER, BLANK_PASS):
+    def verify_the_login_with_blank_password(self, default_user, blank_password):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(BLANK_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(blank_password)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
         self.hover(*LoginPageIdentifiers.BLANK_PASSWORD_ERROR)
         error = self.find_element(*LoginPageIdentifiers.BLANK_PASSWORD_ERROR).text
         if error == message['Login_Page']['BLANK_PASSWORD']:
             return CanonizerLoginPage(self.driver)
 
-    def verify_the_login_functionality_by_entering_the_registered_credential(self, DEFAULT_USER, DEFAULT_PASS):
+    def verify_the_login_functionality_by_entering_the_registered_credential(self, default_user, default_pass):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
         return CanonizerLoginPage(self.driver)
 
-    def verify_the_remember_me_checkbox(self, DEFAULT_USER, DEFAULT_PASS):
+    def verify_the_remember_me_checkbox(self, default_user, default_pass):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.CHECK_BOX).click()
         self.find_element(*LoginPageIdentifiers.SUBMIT).click()
 
@@ -180,11 +181,11 @@ class CanonizerLoginPage(Page):
         else:
             print("Title not found")
 
-    def verify_one_time_request_code_with_invalid_email(self, DEFAULT_INVALID_USER, DEFAULT_PASS):
+    def verify_one_time_request_code_with_invalid_email(self, default_invalid_user, default_pass):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_INVALID_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_invalid_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
         title = self.find_element(*LoginPageIdentifiers.EMAIL_ERROR_MESSAGE).text
         if title == message['Login_Page']['ONE_TIME_REQUEST_CODE_WITH_INVALID_EMAIL']:
@@ -192,15 +193,15 @@ class CanonizerLoginPage(Page):
         else:
             print("Title not found")
 
-    def verify_one_time_request_code_with_valid_credentials(self, DEFAULT_USER, DEFAULT_PASS):
+    def verify_one_time_request_code_with_valid_credentials(self, default_user, default_pass):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.EMAIL).clear()
-        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(DEFAULT_USER)
-        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(DEFAULT_PASS)
+        self.find_element(*LoginPageIdentifiers.EMAIL).send_keys(default_user)
+        self.find_element(*LoginPageIdentifiers.PASSWORD).send_keys(default_pass)
         self.find_element(*LoginPageIdentifiers.REQUEST_CODE).click()
         self.hover(*LoginPageIdentifiers.ONE_TIME_REQUEST_TITLE)
         title = self.find_element(*LoginPageIdentifiers.ONE_TIME_REQUEST_TITLE).text
-        if title == message['LoginPage']['ONE_TIME_REQUEST_CODE_WITH_VALID_PASSWORD']:
+        if title == message['Login_Page']['ONE_TIME_REQUEST_CODE_WITH_VALID_PASSWORD']:
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
@@ -210,7 +211,7 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
         self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
         title = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITLE).text
-        if title == message['LoginPage']['FACEBOOK_TITLE']:
+        if title == message['Login_Page']['FACEBOOK_TITLE']:
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
@@ -226,7 +227,7 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
         self.hover(*LoginPageIdentifiers.TWITTER_TITLE)
         title = self.find_element(*LoginPageIdentifiers.TWITTER_TITLE).text
-        if title == message['LoginPage']['TWITTER_TITLE']:
+        if title == message['Login_Page']['TWITTER_TITLE']:
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
@@ -237,14 +238,16 @@ class CanonizerLoginPage(Page):
 
         return CanonizerLoginPage(self.driver)
 
+    def verifying_linkedin_link(self):
+        self.click_on_login_button()
+        self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
+
+        return CanonizerLoginPage(self.driver)
+
     def verifying_github_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.GITHUB_LINK).click()
 
         return CanonizerLoginPage(self.driver)
 
-    def verifying_linkedin_link(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
 
-        return CanonizerLoginPage(self.driver)

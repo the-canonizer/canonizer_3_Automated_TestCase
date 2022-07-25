@@ -67,7 +67,7 @@ class TestPages(unittest.TestCase):
     def test_registration_with_blank_first_name(self, ):
         print("\n" + str(test_cases('TC_REGISTER_WITH_BLANK_FIRST_NAME')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_first_name(
-            REG_LIST_3).get_url()
+            reg_list_3).get_url()
         self.assertIn("", result)
 
     # ----- FORGOT PASSWORD Test Cases Start -----
@@ -88,56 +88,42 @@ class TestPages(unittest.TestCase):
     def test_registration_with_blank_email(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_BLANK_EMAIL')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_email(
-            REG_LIST_5).get_url()
+            reg_list_5).get_url()
         self.assertIn("", result)
 
     # TC_REGISTER_WITH_BLANK_LAST_NAME
     def test_registration_with_blank_last_name(self):
         print("\n" + str(test_cases('TC_REGISTER_WITH_BLANK_LAST_NAME')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_last_name(
-            REG_LIST_4).get_url()
+            reg_list_4).get_url()
         self.assertIn("", result)
 
     # TC_REGISTRATION_WITH_BLANK_PASSWORD
     def test_registration_with_blank_password(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_BLANK_PASSWORD')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_password(
-            REG_LIST_6).get_url()
+            reg_list_6).get_url()
         self.assertIn("", result)
 
     # TC_REGISTRATION_WITH_INVALID_PASSWORD_LENGTH
     def test_registration_with_invalid_password_length(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_INVALID_PASSWORD_LENGTH')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_invalid_password_length(
-            REG_LIST_7).get_url()
+            reg_list_7).get_url()
         self.assertIn("", result)
 
     # TC_REGISTER_WITH_BLANK_SPACES_FIRST_NAME
-    def test_registration_with_blank_spaces_first_name(self):
+    def test_registration_with_spaces_first_name(self):
         print("\n" + str(test_cases('TC_REGISTER_WITH_BLANK_SPACES_FIRST_NAME')))
-        result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_spaces_first_name(
-            REG_LIST_1).get_url()
-        self.assertIn("", result)
-
-    # TC_REGISTRATION_WITH_INVALID_FIRST_NAME
-    def test_registration_with_invalid_first_name(self):
-        print("\n" + str(test_cases('TC_REGISTRATION_WITH_INVALID_FIRST_NAME')))
-        result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_invalid_first_name(
-            REG_LIST_10).get_url()
-        self.assertIn("", result)
-
-    # TC_REGISTRATION_WITH_INVALID_LAST_NAME
-    def test_registration_with_invalid_last_name(self):
-        print("\n" + str(test_cases('TC_REGISTRATION_WITH_INVALID_LAST_NAME')))
-        result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_invalid_last_name(
-            REG_LIST_11).get_url()
+        result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_spaces_first_name(
+            reg_list_1).get_url()
         self.assertIn("", result)
 
     # TC_REGISTRATION_WITH_INVALID_EMAIL
     def test_registration_with_invalid_email(self):
         print("\n" + str(test_cases('TC_REGISTRATION_WITH_INVALID_EMAIL')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_invalid_email(
-            REG_LIST_14).get_url()
+            reg_list_14).get_url()
         self.assertIn("", result)
 
     # TC_CHECK_LOGIN_PAGE_OPEN_CLICK_ON_LOGIN_HERE_LINK
@@ -152,7 +138,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerRegisterPage(
             self.driver).click_register_button(
         ).verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(
-            REG_LIST_15).get_url()
+            reg_list_15).get_url()
         self.assertIn("", result)
 
     # TC_VERIFY_THE_FUNCTIONALITY_OF_REGISTRATION_WITH_MOBILE_NUMBER_FIELDS
@@ -161,7 +147,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerRegisterPage(
             self.driver).click_register_button(
         ).verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(
-            REG_LIST_16).get_url()
+            reg_list_16).get_url()
         self.assertIn("", result)
 
     # LOGIN PAGE:

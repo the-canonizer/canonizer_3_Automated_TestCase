@@ -1,4 +1,3 @@
-
 message = {
     'Forgot_Password': {
         'Title': 'Forgot your password?',
@@ -23,6 +22,7 @@ message = {
         'LAST_NAME_ERROR': 'Please input your last name!',
         'BLANK_EMAIL_ERROR': 'Please input your E-mail!',
         'BLANK_PASSWORD_ERROR': 'Please input your password!',
+        'ERROR_FIRST_NAME': 'Please input your first name!',
         'INVALID_PASSWORD_ERR0R': 'Password must contain small, capital letter, number and special character like '
                                   'Abc@1234.',
         'INVALID_FIRST_NAME_ERROR': 'The first name should only contain alphabets and spaces.',
@@ -56,8 +56,4 @@ message = {
 
     }
 
-  }
-
-
-
-
+}
