@@ -78,9 +78,9 @@ testCases = {
     'TC_CLICK_REQUEST_ONE_TIME_CODE_BUTTON_WITH_INVALID-EMAIL': [Critical, 'When user should click one time '
                                                                            'verification code with invalid email,user '
                                                                            'should see proper error message'],
-    'TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_VALID_CREDENTIALS': [Critical,'when user click on one time request code '
-                                                                        'with valid credentials, user should redirect'
-                                                                        ' to one time verification page'],
+    'TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_VALID_CREDENTIALS': [Critical, 'when user click on one time request code '
+                                                                         'with valid credentials, user should redirect'
+                                                                         ' to one time verification page'],
     'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
     'Tc_verifying_facebook_link': [Critical, 'when user click on facebook link on login page ,user should see it '
                                              'redirect to facebook page'],
@@ -152,6 +152,15 @@ testCases = {
     'TC VERIFY_ENTERING_THE_INVALID_CURRENT_PASSWORD': [Critical, 'when user click on save button entering '
                                                                   'current password with invalid data , user should '
                                                                   'see proper error message'],
+    'TC VERIFY_THE_CURRENT_PASSWORD_FIELDS_EMPTY_AND_CLICK_ON_SAVE': [Critical, 'when user click on save with empty '
+                                                                             'current password field, user should '
+                                                                             'see proper error message'],
+    'TC_VERIFY_THE_NEW_PASSWORD_FIELD_EMPTY_AND_CLICK_ON_SAVE': [Critical, 'when user click on save with empty new '
+                                                                           'password field, user should see proper '
+                                                                           'error message'],
+    'TC_VERIFY_THE_CONFIRM_PASSWORD_FIELD_EMPTY_AND_CLICK': [Critical, 'when user click on save with empty confirm '
+                                                                       'password field,user should see proper error '
+                                                                       'message'],
     'TC_VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD': [Critical, 'when user click on save button with invalid new '
                                                               'password data user should see proper error message'],
     'TC VERIFY_ENTERING_THE_INVALID_CONFIRM_PASSWORD': [Critical, 'when user click on save button with invalid confirm '
@@ -215,7 +224,8 @@ testCases = {
     'TC_SUBMIT_BUTTON_WITH_EMPTY_EMAIL': [Critical, 'User must see error message when email is left empty'],
     'TC_SUBMIT_EMPTY_OTP': [Critical, 'User must see error message when OTP is left empty'],
     'TC_SUBMIT_INVALID_LENGTH_OTP': [Critical, 'User must see error message when submit invalid length OTP'],
-    'TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL': [Critical, 'User must see error message for email which is unregistered'],
+    'TC_SUBMIT_BUTTON_WITH_UNREGISTERED_EMAIL': [Critical,
+                                                 'User must see error message for email which is unregistered'],
     'TC_CROSS_ICON_ON_FORGOT_MODAL': [Critical, ' User must be able to click cross icon and modal should close'],
     'TC_CROSS_ICON_ON_OTP_MODAL': [Critical, 'User must be able to click cross icon and modal should close'],
     'TC_ENTER_VALID_OTP': [Critical, ' User must enter valid OTP and must see change password page'],
@@ -227,21 +237,16 @@ testCases = {
     'TC_CREATE_TOPIC_WITH_BLANK_SPACES_TOPIC_NAME': [Critical, ' User must see error message when enter blank spaces'],
     'TC_CREATE_NEW_TOPIC_WITH_ENTER_KEY': [Critical, 'User must be able to create new topi when press EnterKey'],
     'TC_CREATE_NEW_TOPIC_WITH_TRAILING_SPACES': [Critical, 'Trailing spaces must be removed '
-                                                 'and new topic is created'],
+                                                           'and new topic is created'],
     'TC_CREATE_TOPIC_WITH_DUPLICATE_NAME': [Critical, 'Duplicate topic name must not be created'],
     'TC_CREATE_NEW_TOPIC_WITH_INVALID_DATA': [Critical, 'Topic must not be created when invalid data is entered '],
     'TC_CREATE_NEW_WITHOUT_MANDATORY_FIELDS_DATA': [Critical, 'User must not be able to create a topic '
-                                                    'when mandatory fields are blank'],
+                                                              'when mandatory fields are blank'],
     'TC_CREATE_NEW_TOPIC_ENTERING_DATA_ONLY_IN_MANDATORY_FIELDS': [Critical, ' User must be able to create a new '
-                                                                   'topic when enter data only in mandatory fields'],
+                                                                             'topic when enter data only in mandatory fields'],
     'TC_CLICK_ON_CANCEL_BUTTON': [Critical, 'User must not be able to create a topic on click '
-                                  'cancel button instead redirect to home page'],
+                                            'cancel button instead redirect to home page'],
     'TC_TOPIC_PAGE_MANDATORY_FIELDS_ARE_MARKED_WITH_ASTERISK': [Critical, 'User must see mandatory fields marked '
-                                                                'with asterisk'],
-
-
-
-
-
+                                                                          'with asterisk'],
 
 }

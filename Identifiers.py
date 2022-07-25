@@ -123,13 +123,12 @@ class CanonizerChangePasswordIdentifierPage(object):
     NEW_PASSWORD = (By.ID, 'newPassword')
     CONFIRM_PASSWORD = (By.ID, 'confirmPassword')
     SAVE_BUTTON = (By.ID, 'saveBtn')
-    CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Confirm Password does not match."]')
-    CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Incorrect Current Password"]')
-    NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
+    CONFIRM_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Please confirm your password!"]')
+    CURRENT_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Please enter current password!"]')
+    NEW_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Please enter new password!"]')
     CURRENT_ASTRK = (By.XPATH, '(//span[@class = "required"])[1]')
     NEW_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
     CONFIRM_ASTRK = (By.XPATH, '(//span[@class = "required"])[3]')
-
 
 
 class CanonizerManageNickNameIdentifiersPage(object):
@@ -160,8 +159,9 @@ class HomePageIdentifiers:
     WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
     EMAILLOGIN = (By.XPATH, '//*[@id="login_form_username"]')
     PASSWORD = (By.ID, 'login_form_password')
-    LOGIN_SUBMIT =(By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
-    ACCOUNT_HEADER =(By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
+    LOGIN_SUBMIT = (By.XPATH,
+                    '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
+    ACCOUNT_HEADER = (By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
 
 
 class ForgotPasswordIdentifiers(object):
@@ -169,11 +169,11 @@ class ForgotPasswordIdentifiers(object):
     LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
     FORGOT_PASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
     EMAIL = (By.ID, 'forgotPassword_email_id')
-    SUBMIT_BUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
+    SUBMIT_BUTTON = (By.XPATH, '(//span[text()="Submit "])[1]')
     OTP_PAGE_TITLE = (By.ID, 'forgot-password-title')
     FORGOT_PASSWORD_TITLE = (By.ID, 'forgot-password-title')
     INVALID_EMAIL = (By.XPATH, '//*[@id="forgotPassword"]/div[1]/div[2]/div[2]/div[2]/div')
-    SUBMIT_OTP_BUTTON =(By.XPATH,'(//span[text()="Submit "])[1]')
+    SUBMIT_OTP_BUTTON = (By.XPATH, '(//span[text()="Submit "])[1]')
     EMPTY_OTP = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
     OTP_ENTER = (By.XPATH, '//*[@id="otpverify_otp"]')
     INVALID_OTP = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')

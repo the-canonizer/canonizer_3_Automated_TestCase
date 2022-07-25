@@ -47,8 +47,9 @@ message = {
         'EMAIL_ERROR_MESSAGE': 'Please input your Email!'
 
     },
-    'ChangePassword': {
-        'CHANGE_PASSWORD_ERROR': 'Please enter current password!',
+    'Change_Password': {
+        'CURRENT_PASSWORD_ERROR': 'Please enter current password!',
+        'ERROR_CURRENT_PASSWORD': 'Please enter current password!',
         'NEW_PASSWORD_ERROR': 'Please enter new password!',
         'ERROR_CONFIRM_PASSWORD': 'Please confirm your password!',
         'ERROR_NEW_PASSWORD': 'Password must contain small, capital letter, number and special character like Abc@1234.',
