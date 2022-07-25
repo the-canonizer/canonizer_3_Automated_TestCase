@@ -57,8 +57,8 @@ class CanonizerRegisterPage(Page):
     def enter_password(self, password):
         self.find_element(*RegistrationPageIdentifiers.PASSWORD).send_keys(password)
 
-    def enter_confirm_password(self, confirmpassword):
-        self.find_element(*RegistrationPageIdentifiers.CONFIRM_PASSWORD).send_keys(confirmpassword)
+    def enter_confirm_password(self, confirm_password):
+        self.find_element(*RegistrationPageIdentifiers.CONFIRM_PASSWORD).send_keys(confirm_password)
 
     def click_register_now_button(self):
         try:
@@ -78,24 +78,24 @@ class CanonizerRegisterPage(Page):
         self.enter_confirm_password(args[5])
         self.click_register_now_button()
 
-    def registration_with_blank_first_name(self, REG_LIST_3):
-        self.register(REG_LIST_3[0], REG_LIST_3[1], REG_LIST_3[2], REG_LIST_3[3], REG_LIST_3[4], REG_LIST_3[5])
+    def registration_with_blank_first_name(self, reg_list_3):
+        self.register(reg_list_3[0], reg_list_3[1], reg_list_3[2], reg_list_3[3], reg_list_3[4], reg_list_3[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
         if error == message['Register_Page']['FIRST_NAME_ERROR']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
 
-    def registration_with_blank_last_name(self, REG_LIST_4):
-        self.register(REG_LIST_4[0], REG_LIST_4[1], REG_LIST_4[2], REG_LIST_4[3], REG_LIST_4[4], REG_LIST_4[5])
+    def registration_with_blank_last_name(self, reg_list_4):
+        self.register(reg_list_4[0], reg_list_4[1], reg_list_4[2], reg_list_4[3], reg_list_4[4], reg_list_4[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_LAST_NAME).text
         if error == message['Register_Page']['LAST_NAME_ERROR']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
 
-    def registration_with_blank_password(self, REG_LIST_6):
-        self.register(REG_LIST_6[0], REG_LIST_6[1], REG_LIST_6[2], REG_LIST_6[3], REG_LIST_6[4], REG_LIST_6[5])
+    def registration_with_blank_password(self, reg_list_6):
+        self.register(reg_list_6[0], reg_list_6[1], reg_list_6[2], reg_list_6[3], reg_list_6[4], reg_list_6[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
         if error == message['Register_Page']['BLANK_PASSWORD_ERROR']:
             return CanonizerRegisterPage(self.driver)
@@ -110,53 +110,37 @@ class CanonizerRegisterPage(Page):
         else:
             print("Error message not found")
 
-    def registration_with_blank_spaces_first_name(self, REG_LIST_1):
-        self.register(REG_LIST_1[0], REG_LIST_1[1], REG_LIST_1[2], REG_LIST_1[3], REG_LIST_1[4], REG_LIST_1[5])
+    def registration_with_spaces_first_name(self, reg_list_1):
+        self.register(reg_list_1[0], reg_list_1[1], reg_list_1[2], reg_list_1[3], reg_list_1[4], reg_list_1[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
-        if error == message['Register_Page']['FIRST_NAME_ERROR']:
+        if error == message['Register_Page']['ERROR_FIRST_NAME']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
 
-    def registration_with_invalid_password_length(self, REG_LIST_7):
-        self.register(REG_LIST_7[0], REG_LIST_7[1], REG_LIST_7[2], REG_LIST_7[3], REG_LIST_7[4], REG_LIST_7[5])
+    def registration_with_invalid_password_length(self, reg_list_7):
+        self.register(reg_list_7[0], reg_list_7[1], reg_list_7[2], reg_list_7[3], reg_list_7[4], reg_list_7[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_PASSWORD).text
         if error == message['Register_Page']['INVALID_PASSWORD_ERR0R']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
 
-    def registration_with_invalid_first_name(self, REG_LIST_10):
-        self.register(REG_LIST_10[0], REG_LIST_10[1], REG_LIST_10[2], REG_LIST_10[3], REG_LIST_10[4], REG_LIST_10[5])
-        error = self.find_element(*RegistrationPageIdentifiers.ERROR_FIRST_NAME).text
-        if error == message['Register_Page']['INVALID_FIRST_NAME_ERROR']:
-            return CanonizerRegisterPage(self.driver)
-        else:
-            print("Error message not found")
-
-    def registration_with_invalid_last_name(self, REG_LIST_11):
-        self.register(REG_LIST_11[0], REG_LIST_11[1], REG_LIST_11[2], REG_LIST_11[3], REG_LIST_11[4], REG_LIST_11[5])
-        error = self.find_element(*RegistrationPageIdentifiers.ERROR_LAST_NAME).text
-        if error == message['Register_Page']['INVALID_LAST_NAME_ERROR']:
-            return CanonizerRegisterPage(self.driver)
-        else:
-            print("Error message not found")
-
-    def registration_with_invalid_email(self, REG_LIST_14):
-        self.register(REG_LIST_14[0], REG_LIST_14[1], REG_LIST_14[2], REG_LIST_14[3], REG_LIST_14[4], REG_LIST_14[5])
+    def registration_with_invalid_email(self, reg_list_14):
+        self.register(reg_list_14[0], reg_list_14[1], reg_list_14[2], reg_list_14[3], reg_list_14[4], reg_list_14[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
         if error == message['Register_Page']['INVALID_EMAIL_ERROR']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Error message not found")
 
-    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, REG_LIST_15):
-        self.register(REG_LIST_15[0], REG_LIST_15[1], REG_LIST_15[2], REG_LIST_15[3], REG_LIST_15[4], REG_LIST_15[5])
+    def verify_the_functionality_of_registration_with_entering_data_in_mandatory_fields(self, reg_list_15):
+        self.register(reg_list_15[0], reg_list_15[1], reg_list_15[2], reg_list_15[3], reg_list_15[4], reg_list_15[5])
 
         return CanonizerRegisterPage(self.driver)
 
-    def verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(self, REG_LIST_16):
-        self.register(REG_LIST_16[0], REG_LIST_16[1], REG_LIST_16[2], REG_LIST_16[3], REG_LIST_16[4], REG_LIST_16[5])
+    def verify_the_functionality_0f_registration_with_entering_data_in_mobile_number_field(self, reg_list_16):
+        self.register(reg_list_16[0], reg_list_16[1], reg_list_16[2], reg_list_16[3], reg_list_16[4], reg_list_16[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_MOBILE_NUMBER).text
         if error == message['Register_Page']['MOBILE_NUMBER_ERROR']:
             return CanonizerRegisterPage(self.driver)
