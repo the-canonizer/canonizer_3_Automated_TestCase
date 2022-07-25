@@ -94,8 +94,8 @@ class CanonizerRegisterPage(Page):
         else:
             print("Error message not found")
 
-    def registration_with_blank_email(self, REG_LIST_5):
-        self.register(REG_LIST_5[0], REG_LIST_5[1], REG_LIST_5[2], REG_LIST_5[3], REG_LIST_5[4], REG_LIST_5[5])
+    def registration_with_blank_email(self, reg_list_5):
+        self.register(reg_list_5[0], reg_list_5[1], reg_list_5[2], reg_list_5[3], reg_list_5[4], reg_list_5[5])
         error = self.find_element(*RegistrationPageIdentifiers.ERROR_EMAIL).text
         if error == message['Register_Page']['BLANK_EMAIL_ERROR']:
             return CanonizerRegisterPage(self.driver)
