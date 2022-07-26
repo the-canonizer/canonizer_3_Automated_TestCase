@@ -1,6 +1,5 @@
 import unittest
 
-from CanonizerChangePasswordTab import CanonizerChangePasswordTab
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
 # from unittest import result
@@ -16,6 +15,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import string
 import random
+
 
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -424,60 +424,6 @@ class TestPages(unittest.TestCase):
             self.driver).click_create_new_topic_page_button().topic_page_mandatory_fields_are_marked_with_asterisk())
 
     # ----- CREATE TOPIC Test Cases end -----
-
-    # CHANGE PASSWORD TAB:-
-    def test_verifying_astrk_present_in_change_password_tab(self):
-        self.login_to_canonizer_app()
-        self.assertTrue(CanonizerChangePasswordTab(self.driver).verifying_astrk_present_in_change_password_tab())
-
-    # TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD
-    def test_verify_when_user_click_on_change_password(self):
-        print("\n" + str(test_cases('TC VERIFY_WHEN_USER_CLICK_ON_CHANGE_PASSWORD')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(
-            self.driver).verify_click_on_change_password_tab_its_navigating_to_change_password_page().get_url()
-        self.assertIn("", result)
-
-    # TC VERIFY_THE_CURRENT_PASSWORD_FIELDS_EMPTY_AND_CLICK_ON_SAVE
-    def test_verify_the_current_field_empty_and_click_on_save(self):
-        print("\n" + str(test_cases('TC VERIFY_THE_CURRENT_PASSWORD_FIELDS_EMPTY_AND_CLICK_ON_SAVE')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(
-            self.driver).verify_the_current_field_empty_and_click_on_save().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_NEW_PASSWORD_FIELD_EMPTY_AND_CLICK_ON_SAVE
-    def test_verify_the_new_password_field_empty_and_click_on_save(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_NEW_PASSWORD_FIELD_EMPTY_AND_CLICK_ON_SAVE')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(
-            self.driver).verify_the_new_password_field_empty_and_click_on_save().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_CONFIRM_PASSWORD_FIELD_EMPTY_AND_CLICK-ON_SAVE
-    def test_verify_the_confirm_password_field_empty_and_click_on_save(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_CONFIRM_PASSWORD_FIELD_EMPTY_AND_CLICK')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(
-            self.driver).verify_the_confirm_password_field_empty_and_click_on_save().get_url()
-        self.assertIn("", result)
-
-    # TC VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD
-    def test_verify_entering_the_invalid_new_password(self):
-        print("\n" + str(test_cases('TC_VERIFY_ENTERING_THE_INVALID_NEW_PASSWORD')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(self.driver).verify_entering_the_invalid_new_password(
-            INVALID_NEW_PASSWORD).get_url()
-        self.assertIn("", result)
-
-    # TC VERIFY_WHEN_BOTH_NEW_PASSWORD_AND_CONFIRM_PASSWORD_DOES_NOT_MATCH
-    def test_verify_when_both_new_password_and_confirm_password_does_not_match(self):
-        print("\n" + str(test_cases('TC VERIFY_WHEN_BOTH_NEW_PASSWORD_AND_CONFIRM_PASSWORD_DOES_NOT_MATCH')))
-        self.login_to_canonizer_app()
-        result = CanonizerChangePasswordTab(
-            self.driver).verify_when_both_new_password_and_confirm_password_does_not_match(DEFAULT_NEW_PASSWORD,
-                                                                                           DEFAULT_CONFIRM_PASSWORD).get_url()
-        self.assertIn("", result)
 
     def tearDown(self):
         self.driver.close()

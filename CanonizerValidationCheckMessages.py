@@ -44,7 +44,8 @@ message = {
         'ONE_TIME_REQUEST_CODE_WITH_VALID_PASSWORD': 'Log in One Time Verification Code',
         'FACEBOOK_TITLE': 'Log in to Facebook',
         'TWITTER_TITLE': 'Authorize the_canonizer to access your account?',
-        'EMAIL_ERROR_MESSAGE': 'Please input your Email!'
+        'EMAIL_ERROR_MESSAGE': 'Please input your Email!',
+        'LOGIN': 'Log in'
 
     },
     'Change_Password': {
