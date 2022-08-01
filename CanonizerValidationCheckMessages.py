@@ -56,6 +56,14 @@ message = {
         'ERROR_NEW_PASSWORD': 'Password must contain small, capital letter, number and special character like Abc@1234.',
         'CONFIRM_PASSWORD_ERROR': 'Confirm Password does not match.',
 
+    },
+    'Supported_camps': {
+        'REMOVE_BUTTON_TITLE': 'Remove Support'
+
+    },
+    'Nick_name_tab': {
+        'ADD_NEW_NICK_NAME_TITLE': 'Add New Nick Name',
+        'NICK_NAME_ERROR': 'Please Enter Nick Name!'
     }
 
 }

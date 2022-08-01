@@ -149,21 +149,6 @@ class CanonizerManageNickNameIdentifiersPage(object):
     TITTLE1 = (By.XPATH, '//h2[text()= "Forgot your password?"]')
 
 
-class HomePageIdentifiers:
-    pass
-
-    BODY = (By.ID, 'mainNav')
-    LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
-    REGISTER = (By.XPATH, '//*[@id="navbarResponsive"]/ul[1]/li[2]/a[3]')
-    WHATISCANONIZER = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[2]/a')
-    WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
-    EMAILLOGIN = (By.XPATH, '//*[@id="login_form_username"]')
-    PASSWORD = (By.ID, 'login_form_password')
-    LOGIN_SUBMIT = (By.XPATH,
-                    '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
-    ACCOUNT_HEADER = (By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
-
-
 class ForgotPasswordIdentifiers(object):
     FORGOT_PASSWORD_LINK = (By.ID, 'forgot-password-link')
     LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
@@ -211,3 +196,51 @@ class CampForumIdentifiers(object):
     TOPIC_CLICK = (By.XPATH, '//a[@href="/topic/1118-Automated-Topic/1-Agreement"]')
     CAMP_FORUM_TITLE = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div[2]/div/div/div[1]/div/div[1]')
     THREAD_BUTTON = (By.ID, 'all-thread-btn')
+
+
+class HomePageIdentifiers(object):
+    FACEBOOK_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[1]/span/img')
+    INSTA_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[2]/span/img')
+    TWITTER_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[3]/span/img')
+    YOUTUBE_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[4]/span/img')
+    LINKEDIN_LINK = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[3]/div[1]/div/a[5]/span/img')
+    PRIVACY_POLICY = (By.XPATH, '//a[text() = "Privacy Policy"]')
+    TERMS_AND_SERVICES = (By.XPATH, '//a[text() = "Terms & Services"]')
+    BROWSE = (By.XPATH, '//i[@class = "icon-angle-right"]')
+    CREATE_NEW_TOPIC = (By.XPATH, '(//i[@class = "icon-angle-right"])[4]')
+    UPLOAD_FILE = (By.XPATH, '(//i[@class = "icon-angle-right"])[5]')
+    HELP = (By.XPATH, '(//i[@class = "icon-angle-right"])[6]')
+    WHITE_PAPER = (By.XPATH, '(//i[@class = "icon-angle-right"])[7]')
+    BLOG = (By.XPATH, '(//i[@class = "icon-angle-right"])[8]')
+    JOBS = (By.XPATH, '(//i[@class = "icon-angle-right"])[9]')
+    CANONIZER_LOGO = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[1]/div/a/span/img')
+    SUPPORT_CANONIZER = (By.XPATH, 'icon-envelope')
+    ALGORITHM_DROP_DOWN = (By.XPATH,
+                           '//div[@class="ant-select ant-select-lg topicListFilter_algoSelect__VRCVF '
+                           'ant-select-single ant-select-show-arrow"]')
+
+    class ProfileInfoIdentifiersPage(object):
+        CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
+        # CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
+        PROFILE_BUTTON = (By.XPATH, '//*[@id="rc-tabs-1-tab-profile_info"]')
+        ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
+        SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[2]')
+        CHANGE_PASSWORD = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[3]')
+        SUPPORTED_CAMPS = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[5]')
+        NICK_NAME = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[4]')
+        PHONE_NUMBER = (By.ID, 'verifyNumber_phone_number')
+        PHONE_NUMBER_ERROR = (By.XPATH, '//div[text()="Phone number must be at least 10 digits!"]')
+        MOBILE_CARRIER = (By.XPATH, '//*[@id="verifyNumber"]/div/div[1]/div[2]/div/div[2]/div/div/div/div/span[2]')
+        VERIFY_BUTTON = (By.XPATH, '//*[@id="verifyNumber"]/div/div[2]/div/div/div/button')
+        FIRST_NAME = (By.ID, 'profileInfo_first_name')
+        MIDDLE_NAME = (By.ID, 'profileInfo_middle_name')
+        LAST_NAME = (By.ID, 'profileInfo_last_name')
+        GENDER = (By.XPATH, '//*[@id="profileInfo_gender"]/div/div[1]/label')
+        DATA_BIRTH = (
+            By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[2]/div[3]/div[2]/div/div/span/div[1]/div/div/div/div')
+        UPDATE_BUTTON = (By.XPATH, '//span[text() = "Update"]')
+        LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
+        ADDRESS_LINE = (By.ID, 'profileInfo_address_1')
+        ALGORITHM_FIELD = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
+        ALGORITHM_DROP_DOWN = (By.XPATH, '(//div[@class="ant-select-item-option-content"])[1]')
+
