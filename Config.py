@@ -52,10 +52,12 @@ DEFAULT_TOPIC_NAME = "testing4546"
 DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
-INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
+INVALID_TOPIC_NAME = "@#$%^&(!(!(!"
 
 # Camp Forum Configuration Parameters
 DEFAULT_TOPIC = "Automated Topic"
+DUPLICATE_THREAD_TITLE = "Automated thread"
+
 
 
 

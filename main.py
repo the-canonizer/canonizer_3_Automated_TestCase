@@ -3,6 +3,7 @@ import unittest
 
 from selenium.common.exceptions import TimeoutException
 
+from CanonizerCampForum import CanonizerCampForumPage
 from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
 from CanonizerHomePage import *
 from CanonizerLoginPage import CanonizerLoginPage
@@ -199,12 +200,12 @@ class TestPages(unittest.TestCase):
             DEFAULT_SUMMARY).get_url()
         self.assertIn("create/topic", result)
 
-    # TC_CREATE_NEW_TOPIC_WITH_INVALID_DATA
-    def test_create_topic_with_invalid_data(self):
-        print("\n", str(test_cases('TC_CREATE_NEW_TOPIC_WITH_INVALID_DATA')))
+    # TC_CREATE_NEW_TOPIC_WITH_SPECIAL_CHARS
+    def test_create_topic_with_special_chars(self):
+        print("\n", str(test_cases('TC_CREATE_NEW_TOPIC_WITH_SPECIAL_CHARS')))
         self.login_to_canonizer_app()
         result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button() \
-            .create_topic_with_invalid_data(
+            .create_topic_with_special_chars(
             DEFAULT_NICK_NAME,
             INVALID_TOPIC_NAME,
             DEFAULT_NAMESPACE,
@@ -253,6 +254,233 @@ class TestPages(unittest.TestCase):
             self.driver).click_create_new_topic_page_button().topic_page_mandatory_fields_are_marked_with_asterisk())
 
     # ----- CREATE TOPIC Test Cases end -----
+    # ----- CAMP FORUM Test Cases Start -----
+    # TC_CLICK_CAMP_FORUM_BUTTON
+    def test_load_camp_forum_page(self):
+        print("\n" + str(test_cases('TC_CLICK_CAMP_FORUM_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).get_url()
+        self.assertIn("/forum", result)
+
+        # TC_LOAD_ALL_THREADS_PAGE
+    def test_load_all_threads_page(self):
+        print("\n" + str(test_cases('TC_LOAD_ALL_THREADS_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_all_threads_page().get_url()
+        self.assertIn("/threads?by=all", result)
+
+        # TC_LOAD_MY_THREADS_PAGE
+    def test_load_my_threads_page(self):
+        print("\n" + str(test_cases('TC_LOAD_MY_THREADS_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_my_threads_page().get_url()
+        self.assertIn("/threads?by=my", result)
+
+        # TC_LOAD_MY_PARTICIPATION_PAGE
+    def test_load_my_participation_page(self):
+        print("\n" + str(test_cases('TC_LOAD_MY_PARTICIPATION_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .load_my_participation_page().get_url()
+        self.assertIn("/threads?by=participate", result)
+
+        # TC_LOAD_TOP_10_THREADS_PAGE
+    def test_load_top_10_threads_page(self):
+        print("\n" + str(test_cases('TC_LOAD_TOP_10_THREADS_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .load_top_10_threads_page().get_url()
+        self.assertIn("/threads?by=most_replies", result)
+
+        # TC_CHECK_NO_THREAD_AVAILABILITY
+    def test_check_no_thread_availability(self):
+        print("\n" + str(test_cases('TC_CHECK_NO_THREAD_AVAILABILITY')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).check_no_thread_availability().get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CLICK_CREATE_THREAD_BUTTON
+    def test_click_create_thread_button(self):
+        print("\n" + str(test_cases('TC_CLICK_CREATE_THREAD_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .click_create_thread_button().get_url()
+        self.assertIn("/threads/create", result)
+
+    # TC_CREATE_THREAD_WITH_VALID_DATA
+    def test_create_thread_with_valid_data(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_VALID_DATA')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()\
+            .create_thread_with_valid_data("New Thread " + add_name).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_BLANK_TITLE
+    def test_create_thread_with_blank_title(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_BLANK_TITLE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()\
+            .create_thread_with_blank_title_name("  ").get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_SPECIAL_CHARS
+    def test_create_thread_with_special_chars(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_SPECIAL_CHARS')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()\
+            .create_thread_with_special_chars("Thread&^%$@#@ " + add_name).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_BLANK_MANDATORY_FIELDS
+    def test_create_thread_with_blank_mandatory_fields(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_BLANK_MANDATORY_FIELDS')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()\
+            .create_thread_with_blank_mandatory_fields("").get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_DUPLICATE_TITLE
+    def test_create_thread_with_duplicate_title(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_DUPLICATE_TITLE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button() \
+            .create_thread_with_duplicate_title(DUPLICATE_THREAD_TITLE).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_VALID_DATA_WITH_ENTER_KEY
+    def test_create_thread_with_valid_data_with_enter_key(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_VALID_DATA_WITH_ENTER_KEY')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button() \
+            .create_thread_with_valid_data_with_enter_key("New Thread " + add_name).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CREATE_THREAD_WITH_TRAILING_SPACES
+    def test_create_thread_with_trailing_spaces(self):
+        print("\n" + str(test_cases('TC_CREATE_THREAD_WITH_TRAILING_SPACES')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button() \
+            .create_thread_with_trailing_spaces("      New Thread " + add_name).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_THREAD_PAGE_MANDATORY_FIELDS_ARE_MARKED_WITH_ASTERISK
+    def test_thread_page_mandatory_fields_are_marked_with_asterisk(self):
+        print("\n" + str(test_cases('TC_THREAD_PAGE_MANDATORY_FIELDS_ARE_MARKED_WITH_ASTERISK')))
+        self.login_to_canonizer_app()
+        self.assertTrue(CanonizerCampForumPage(
+            self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()
+                        .thread_page_mandatory_fields_are_marked_with_asterisk())
+
+    # TC_CLICK_ON_BACK_BUTTON
+    def test_click_on_back_button(self):
+        print("\n", str(test_cases('TC_CLICK_ON_BACK_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).click_create_thread_button()\
+            .click_on_back_button()
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_LOAD_EDIT_THREAD_PAGE
+    def test_load_edit_thread_page(self):
+        print("\n", str(test_cases('TC_LOAD_EDIT_THREAD_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_edit_thread_page()
+        self.assertIn("/1-Agreement/threads/edit", result.get_url())
+
+    # TC_UPDATE_THREAD
+    def test_update_thread_title(self):
+        print("\n", str(test_cases('TC_UPDATE_THREAD')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .update_thread_title("Edit Thread " + add_name)
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_EDIT_THREAD_WITH_DUPLICATE_TITLE
+    def test_edit_thread_with_duplicate_title(self):
+        print("\n", str(test_cases('TC_UPDATE_THREAD')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .edit_thread_with_duplicate_title(DUPLICATE_THREAD_TITLE)
+        self.assertIn("/1-Agreement/threads/edit", result.get_url())
+
+    # TC_EDIT_THREAD_WITH_SPECIAL_CHARS
+    def test_edit_thread_with_special_chars(self):
+        print("\n" + str(test_cases('TC_EDIT_THREAD_WITH_SPECIAL_CHARS')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC) \
+            .edit_thread_with_special_chars("Edit Thread&^%$@ " + add_name).get_url()
+        self.assertIn("/1-Agreement/threads", result)
+
+    # TC_CLICK_ON_EDIT_BACK_BUTTON
+    def test_click_on_edit_back_button(self):
+        print("\n", str(test_cases('TC_CLICK_ON_EDIT_BACK_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(
+                DEFAULT_TOPIC).click_on_edit_back_button()
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_LOAD_THREAD_POSTS_PAGE
+    def test_load_thread_posts_page(self):
+        print("\n" + str(test_cases('TC_LOAD_THREAD_POSTS_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(
+            DEFAULT_TOPIC).load_thread_posts_page()
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_THREAD_POST_WITH_VALID_DATA
+    def test_thread_post_with_valid_data(self):
+        print("\n" + str(test_cases('TC_THREAD_POST_WITH_VALID_DATA')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()\
+            .thread_post_with_valid_data("Test reply to a thread")
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_THREAD_POST_WITH_EMPTY_REPLY
+    def test_thread_post_with_empty_reply(self):
+        print("\n" + str(test_cases('TC_THREAD_POST_WITH_EMPTY_REPLY')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()\
+            .thread_post_with_empty_reply("")
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_CLICK_ON_POST_BACK_BUTTON
+    def test_click_on_post_back_button(self):
+        print("\n" + str(test_cases('TC_CLICK_ON_POST_BACK_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page() \
+            .click_on_post_back_button()
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_VERIFY_NICK_NAME_LINK_ON_POST_PAGE
+    def test_verify_nick_name_link_on_post_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_NICK_NAME_LINK_ON_POST_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page() \
+            .verify_nick_name_on_post_page()
+        self.assertIn("/user/supports/", result.get_url())
+
+    # TC_VERIFY_EDIT_REPLY_TO_THREAD
+    def test_edit_reply_to_thread(self):
+        print("\n" + str(test_cases('TC_VERIFY_EDIT_REPLY_TO_THREAD')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page() \
+            .edit_reply_to_thread("Edit thread reply")
+        self.assertIn("/1-Agreement/threads", result.get_url())
+
+
+
+
 
 
 

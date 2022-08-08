@@ -128,14 +128,14 @@ class CanonizerCreateNewTopic(Page):
         else:
             print("Error message not found or is incorrect")
 
-    def create_topic_with_invalid_data(self, nickname, topic_name, namespace, summary):
+    def create_topic_with_special_chars(self, nickname, topic_name, namespace, summary):
         self.create_topic(nickname, topic_name, namespace, summary)
-        self.hover(*CreateTopicIdentifiers.INVALID_TOPIC_NAME)
-        error = self.find_element(*CreateTopicIdentifiers.INVALID_TOPIC_NAME).text
-        if error == message['Create_Topic']['Invalid_Topic_Error']:
+        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
+        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
+        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
             return CanonizerCreateNewTopic(self.driver)
         else:
-            print("Error message not found or is incorrect")
+            print("Page not found")
 
     def create_topic_without_entering_mandatory_fields(self, nickname, topic_name, namespace, summary):
         self.create_topic('', '', '', '')
