@@ -1,6 +1,4 @@
 import time
-
-import selenium.webdriver.common.devtools.v97.overlay
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -35,12 +33,16 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
 
         # Click on Camp Forum Button
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_BUTTON)
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
+        except TimeoutException:
+            pass
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
-        WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -50,7 +52,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.ALL_THREADS_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -60,7 +62,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.MY_THREADS_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or  is not matching")
@@ -70,7 +72,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.TOP_10_THREADS).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -80,7 +82,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.MY_PARTICIPATION).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -109,7 +111,7 @@ class CanonizerCampForumPage(Page):
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         statement = self.find_element(*CampForumIdentifiers.NO_THREAD_STATEMENT).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title'] and 'No Data' in statement:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE'] and 'No Data' in statement:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -120,7 +122,7 @@ class CanonizerCampForumPage(Page):
         WebDriverWait(self.driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
         self.hover(*CampForumIdentifiers.CREATE_THREAD_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CREATE_THREAD_TITLE).text
-        if page_title == message['Camp_Forum']['Thread_Page_Title']:
+        if page_title == message['Camp_Forum']['THREAD_PAGE_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -145,7 +147,7 @@ class CanonizerCampForumPage(Page):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -154,7 +156,7 @@ class CanonizerCampForumPage(Page):
         self.create_thread('')
         self.hover(*CampForumIdentifiers.ERROR_BLANK_TITLE)
         error = self.find_element(*CampForumIdentifiers.ERROR_BLANK_TITLE).text
-        if error == message['Camp_Forum']['Blank_Title_Error']:
+        if error == message['Camp_Forum']['BLANK_TITLE_ERROR']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -164,7 +166,7 @@ class CanonizerCampForumPage(Page):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -173,7 +175,7 @@ class CanonizerCampForumPage(Page):
         self.create_thread('')
         self.hover(*CampForumIdentifiers.ERROR_BLANK_TITLE)
         error = self.find_element(*CampForumIdentifiers.ERROR_BLANK_TITLE).text
-        if error == message['Camp_Forum']['Blank_Title_Error']:
+        if error == message['Camp_Forum']['BLANK_TITLE_ERROR']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -183,7 +185,7 @@ class CanonizerCampForumPage(Page):
         self.click_submit_button()
         self.hover(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR)
         error = self.find_element(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR).text
-        if error == message['Camp_Forum']['Duplicate_Thread']:
+        if error == message['Camp_Forum']['DUPLICATE_THREAD']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -195,7 +197,7 @@ class CanonizerCampForumPage(Page):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -207,7 +209,7 @@ class CanonizerCampForumPage(Page):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -222,7 +224,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.BACK_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -233,7 +235,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
         self.hover(*CampForumIdentifiers.EDIT_THREAD_PAGE_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.EDIT_THREAD_PAGE_TITLE).text
-        if page_title == message['Camp_Forum']['Edit_Thread_Title']:
+        if page_title == message['Camp_Forum']['EDIT_THREAD_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -253,7 +255,7 @@ class CanonizerCampForumPage(Page):
         self.click_submit_button()
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -264,7 +266,7 @@ class CanonizerCampForumPage(Page):
         self.click_submit_button()
         self.hover(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR)
         error = self.find_element(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR).text
-        if error == message['Camp_Forum']['Duplicate_Thread']:
+        if error == message['Camp_Forum']['DUPLICATE_THREAD']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -275,7 +277,7 @@ class CanonizerCampForumPage(Page):
         self.click_submit_button()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -288,7 +290,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.BACK_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -330,7 +332,7 @@ class CanonizerCampForumPage(Page):
         self.post_thread_reply(reply)
         self.hover(*CampForumIdentifiers.EMPTY_REPLY_ERROR)
         error = self.find_element(*CampForumIdentifiers.EMPTY_REPLY_ERROR).text
-        if error == message['Camp_Forum']['Empty_Post_Reply']:
+        if error == message['Camp_Forum']['EMPTY_POST_REPLY']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Error not found or is not matching")
@@ -340,7 +342,7 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.BACK_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['Camp_Forum_Title']:
+        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
@@ -350,23 +352,34 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.NICK_NAME_LINK_ON_POST_PAGE).click()
         self.hover(*CampForumIdentifiers.USER_PROFILE_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.USER_PROFILE_TITLE).text
-        if page_title == message['Camp_Forum']['User_Profile_Title']:
+        if page_title == message['Camp_Forum']['USER_PROFILE_TITLE']:
             return CanonizerCampForumPage(self.driver)
         else:
             print("Title not found or is not matching")
 
     def edit_reply_to_thread(self, reply):
-        try:
             self.hover(*CampForumIdentifiers.EDIT_REPLY)
             self.find_element(*CampForumIdentifiers.EDIT_REPLY).click()
+            self.hover(*CampForumIdentifiers.REPLY_FIELD)
             self.find_element(*CampForumIdentifiers.REPLY_FIELD).clear()
+
             self.find_element(*CampForumIdentifiers.REPLY_FIELD).send_keys(reply)
             self.click_post_submit_button()
+            self.hover(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE)
             success_message = self.find_element(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE).text
-            if success_message == message['Camp_Forum']['Update_Post_Success_Message']:
+            if success_message == message['Camp_Forum']['UPDATE_POST_SUCCESS_MESSAGE']:
                 return CanonizerCampForumPage(self.driver)
-        except NoSuchElementException:
-            return CanonizerCampForumPage(self.driver)
+
+    def delete_reply_to_thread(self):
+        time.sleep(3)
+        self.hover(*CampForumIdentifiers.DELETE_REPLY)
+        self.find_element(*CampForumIdentifiers.DELETE_REPLY).click()
+        time.sleep(3)
+        self.driver.switch_to.alert.accept()
+        return CanonizerCampForumPage(self.driver)
+
+
+
 
 
 

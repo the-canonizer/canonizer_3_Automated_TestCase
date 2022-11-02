@@ -1,69 +1,5 @@
-from selenium.webdriver.common.keys import Keys
 from CanonizerBase import Page
 from Identifiers import *
-import time
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-
-from datetime import datetime
-from time import time
-
-
-# Depends on the page functionality we can have more functions for new classes
-#
-
-##########################
-#  Tests For Main Page   #
-##########################
-
-class CanonizerMainPage(Page):
-    """
-    Class Name: CanonizerMainPage
-    Description: To load the main page and to navigate or load load pages for other URLs.
-
-    Attributes: None
-    """
-
-    def check_home_page_loaded(self):
-        """ To check if the Canonizer Home page loads properly"""
-        if self.find_element(*HomePageIdentifiers.BODY):
-            return CanonizerHomePage(self.driver)
-
-    # def check_load_all_topic_text(self):
-    #     """
-    #     Verify the text to load all the Topics should be "Load All Topics"
-    #
-    #     :return:
-    #         "Load All Topics" String to the main program
-    #     """
-    #     return self.find_element(*HomePageIdentifiers.LOADALLTOPICS).text
-
-    def click_what_is_canonizer_page_link(self):
-        """
-        This Function is to verify if the canonizer main page loads properly
-        :return:
-            Return the result to the main page.check_home_page_loaded
-        """
-        self.hover(*HomePageIdentifiers.WHATISCANONIZER)
-        self.find_element(*HomePageIdentifiers.WHATISCANONIZER).click()
-        return CanonizerHomePage(self.driver)
-
-    def check_home_page_loaded_logo_click(self):
-        self.hover(*HomePageIdentifiers.CANONIZER_LOGO)
-        self.find_element(*HomePageIdentifiers.CANONIZER_LOGO).click()
-        return True if self.find_element(*HomePageIdentifiers.BODY) else False
-
-    def check_scroll_to_top_click(self):
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(3)
-        self.hover(*HomePageIdentifiers.CANONIZER_LOGO)
-        self.find_element(*HomePageIdentifiers.CANONIZER_LOGO).click()
-        return CanonizerHomePage(self.driver)
-
-
-##########################\
-#  Tests For Login Page  #
-##########################
 
 
 class CanonizerHomePage(Page):
@@ -74,10 +10,90 @@ class CanonizerHomePage(Page):
     Attributes: None
     """
 
-    def robots_txt_page_should_have_disallow_settings(self):
-        """
+    def verify_the_facebook_link(self):
+        self.hover(*HomePageIdentifiers.FACEBOOK_LINK)
+        self.find_element(*HomePageIdentifiers.FACEBOOK_LINK).click()
+        return CanonizerHomePage(self.driver)
 
-        :return:
-        """
+    def verify_the_insta_link(self):
+        self.hover(*HomePageIdentifiers.INSTA_LINK)
+        self.find_element(*HomePageIdentifiers.INSTA_LINK).click()
+        return CanonizerHomePage(self.driver)
 
-        return self.find_element(*HomePageIdentifiers.TURNOFFSETTINGS).text
+    def verify_the_twitter_link(self):
+        self.hover(*HomePageIdentifiers.TWITTER_LINK)
+        self.find_element(*HomePageIdentifiers.TWITTER_LINK).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_youtube_link(self):
+        self.hover(*HomePageIdentifiers.YOUTUBE_LINK)
+        self.find_element(*HomePageIdentifiers.YOUTUBE_LINK).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_linkedin_link(self):
+        self.hover(*HomePageIdentifiers.LINKEDIN_LINK)
+        self.find_element(*HomePageIdentifiers.LINKEDIN_LINK).click()
+        return CanonizerHomePage(self.driver)
+
+
+class CanonizerTermsAndPrivacyPolicy(Page):
+
+    def verify_privacy_policy_page(self):
+        self.hover(*HomePageIdentifiers.PRIVACY_POLICY)
+        self.find_element(*HomePageIdentifiers.PRIVACY_POLICY)
+        return CanonizerHomePage(self.driver)
+
+    def verify_terms_and_services_page(self):
+        self.hover(*HomePageIdentifiers.TERMS_AND_SERVICES)
+        self.find_element(*HomePageIdentifiers.TERMS_AND_SERVICES).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_browse_button(self):
+        self.hover(*HomePageIdentifiers.BROWSE)
+        self.find_element(*HomePageIdentifiers.BROWSE).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_create_new_topic(self):
+        self.hover(*HomePageIdentifiers.CREATE_NEW_TOPIC)
+        self.find_element(*HomePageIdentifiers.CREATE_NEW_TOPIC).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_upload_file(self):
+        self.hover(*HomePageIdentifiers.UPLOAD_FILE)
+        self.find_element(*HomePageIdentifiers.UPLOAD_FILE).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_help(self):
+        self.hover(*HomePageIdentifiers.HELP)
+        self.find_element(*HomePageIdentifiers.HELP).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_white_paper(self):
+        self.hover(HomePageIdentifiers.WHITE_PAPER)
+        self.find_element(*HomePageIdentifiers.WHITE_PAPER).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_blog(self):
+        self.hover(*HomePageIdentifiers.BLOG)
+        self.find_element(*HomePageIdentifiers.BLOG).click()
+        return CanonizerHomePage(self.driver)
+
+    def verify_the_jobs(self):
+        self.hover(*HomePageIdentifiers.JOBS)
+        self.find_element(*HomePageIdentifiers.JOBS).click()
+        return CanonizerHomePage(self.driver)
+
+    def click_on_canonizer_logo(self):
+        self.hover(*HomePageIdentifiers.CANONIZER_LOGO)
+        self.find_element(*HomePageIdentifiers.CANONIZER_LOGO).click()
+        return CanonizerHomePage(self.driver)
+
+    def click_on_support_canonizer(self):
+        self.hover(*HomePageIdentifiers.SUPPORT_CANONIZER)
+        self.find_element(*HomePageIdentifiers.SUPPORT_CANONIZER).click()
+        return CanonizerHomePage(self.driver)
+
+    def click_on_algorithm_dropdown_button(self):
+        self.hover(*HomePageIdentifiers.ALGORITHM_DROP_DOWN)
+        self.find_element(*HomePageIdentifiers.ALGORITHM_DROP_DOWN).click()
+        return CanonizerHomePage(self.driver)

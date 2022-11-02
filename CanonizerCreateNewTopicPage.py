@@ -29,7 +29,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE_TITLE)
         page_title = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE_TITLE).text
-        if page_title == message['Create_Topic']['New_Topic_Page_Title']:
+        if page_title == message['Create_Topic']['NEW_TOPIC_PAGE_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Title not found or  is not matching")
@@ -39,7 +39,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.hover(*CreateTopicIdentifiers.LOGIN_PAGE)
         page_title = self.find_element(*CreateTopicIdentifiers.LOGIN_PAGE).text
-        if page_title == message['Create_Topic']['Login_Title']:
+        if page_title == message['Create_Topic']['LOGIN_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Confirmation text is not matching")
@@ -76,7 +76,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, '', namespace, note)
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == message['Create_Topic']['Blank_Topic_Error']:
+        if error == message['Create_Topic']['BLANK_TOPIC_ERROR']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message is not correct")
@@ -85,7 +85,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, "    ", namespace, summary)
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == message['Create_Topic']['Blank_Topic_Error']:
+        if error == message['Create_Topic']['BLANK_TOPIC_ERROR']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message is not correct")
@@ -94,7 +94,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
+        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -105,7 +105,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).send_keys(Keys.ENTER)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
+        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -114,7 +114,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
+        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -123,7 +123,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nick_name, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME).text
-        if error == message['Create_Topic']['Duplicate_Topic_Error']:
+        if error == message['Create_Topic']['DUPLICATE_TOPIC_ERROR']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message not found or is incorrect")
@@ -132,7 +132,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, summary)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
+        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -141,7 +141,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic('', '', '', '')
         self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
         error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == message['Create_Topic']['Blank_Topic_Error']:
+        if error == message['Create_Topic']['BLANK_TOPIC_ERROR']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Error message not found or is incorrect")
@@ -150,7 +150,7 @@ class CanonizerCreateNewTopic(Page):
         self.create_topic(nickname, topic_name, namespace, '')
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Create_Topic_Title']:
+        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
@@ -160,7 +160,7 @@ class CanonizerCreateNewTopic(Page):
         self.find_element(*CreateTopicIdentifiers.CANCEL_BUTTON).click()
         self.hover(*CreateTopicIdentifiers.MAIN_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.MAIN_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['Topic_Label']:
+        if topic_page_confirmation == message['Create_Topic']['TOPIC_LABEL']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
