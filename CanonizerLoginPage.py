@@ -1,6 +1,11 @@
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+
 from CanonizerBase import Page
 from CanonizerValidationCheckMessages import message
 from Identifiers import LoginPageIdentifiers
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CanonizerLoginPage(Page):
@@ -88,10 +93,17 @@ class CanonizerLoginPage(Page):
         First Name, Last Name, Email, Password, Confirm Password are Mandatory Fields
 
         :return: the element value
+
         """
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-input ant-input-status-success')))
+        except TimeoutException:
+            pass
         return \
             self.find_element(*LoginPageIdentifiers.EMAIL_ASTRK) and \
             self.find_element(*LoginPageIdentifiers.PASSWORD_ASTRK)
+
 
     def click_on_login_button(self):
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)

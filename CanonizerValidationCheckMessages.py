@@ -9,7 +9,7 @@ message = {
     },
     'Create_Topic': {
         'NEW_TOPIC_PAGE_TITLE': 'Create New Topic',
-        'LOGIN_TITLE': 'Login to Canonizer',
+        'LOGIN_TITLE': 'Login To Canonizer',
         'BLANK_TOPIC_ERROR': 'Please enter topic name!',
         'CREATE_TOPIC_TITLE': 'Canonizer Sorted Camp Tree',
         'DUPLICATE_TOPIC_ERROR': 'The topic name has already been taken.',
@@ -42,7 +42,7 @@ message = {
         'INVALID_EMAIL_ERROR': 'The input is not valid E-mail!',
         'MOBILE_NUMBER_ERROR': 'Phone number must be at least 10 digits!',
         'LOGIN_TITLE': 'Login to Canonizer',
-        'REGISTER_BUTTON_TITLE': 'Register Now on Canonizer'
+        'REGISTER_BUTTON_TITLE': 'Register Now On Canonizer'
 
     },
     'Login_Page': {

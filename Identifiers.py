@@ -27,7 +27,7 @@ class RegistrationPageIdentifiers(object):
     CAPTCHA = (By.ID, 'rc-anchor-container')
     LOGIN_HERE = (By.ID, 'already-text-link')
     TITLE = (By.ID, 'registration-title')
-    LOGIN_TITLE = (By.XPATH, '//h2[@class= "ant-typography Login_titles__nmC2y"]')
+    LOGIN_TITLE = (By.XPATH, '//h2[@class="ant-typography Login_titles__nmC2y"]')
     REGISTER_NOW = (By.ID, 'register-btn')
     ERROR_FIRST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[1]/div/div[2]/div[2]/div')
     ERROR_LAST_NAME = (By.XPATH, '//*[@id="registration"]/div[1]/div/div[2]/div/div[2]/div[2]/div')

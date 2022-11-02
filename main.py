@@ -145,12 +145,6 @@ class TestPages(unittest.TestCase):
             reg_list_16).get_url()
         self.assertIn("", result)
 
-    #  TC_VERIFY_FORGET_PASSWORD
-    def test_verify_forget_password_button(self):
-        print("\n" + str(test_cases('TC_VERIFY_FORGET_PASSWORD')))
-        result = CanonizerLoginPage(self.driver).verify_the_forget_password_button().get_url()
-        self.assertIn("", result)
-
     # LOGIN PAGE:
     def test_login_page_mandatory_fields_are_marked_with_asterisk(self):
         self.assertTrue(CanonizerLoginPage(
@@ -159,7 +153,7 @@ class TestPages(unittest.TestCase):
     # TC_CLICK_ON_LOGIN_BUTTON
     def test_click_on_login_button(self):
         print("\n" + str(test_cases('TC_CLICK_ON_LOGIN_BUTTON')))
-        result = CanonizerLoginPage(self.driver).click_on_login_button()
+        CanonizerLoginPage(self.driver).click_on_login_button()
 
     # TC_CLICK_CLOSE_ICON_ON_LOGIN_PAGE
     def test_click_close_icon_on_login_page(self):
@@ -1082,31 +1076,6 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_VERIFYING_ACCOUNT_PROFILE')))
         CanonizerAccountSettingPage(self.driver).click_account_settings_page_button()
 
-        # ----- CREATE CAMP Test Cases START -----
-
-    # TC_LOAD_CREATE_CAMP_PAGE
-    def test_load_create_camp_page(self):
-        print("\n" + str(test_cases('TC_LOAD_CREATE_CAMP_PAGE')))
-        self.login_to_canonizer_app()
-        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC)
-        self.assertIn("/camp/create/", result.get_url())
-
-    # TC_NEW_CAMP_FIELDS_ARE_MARKED_WITH_ASTERISK
-    def test_new_camp_mandatory_fields_are_marked_with_asterisk(self):
-        print("\n" + str(test_cases('TC_NEW_CAMP_FIELDS_ARE_MARKED_WITH_ASTERISK')))
-        self.login_to_canonizer_app()
-        self.assertTrue(CanonizerCreateCampPage(
-            self.driver).load_create_camp_page(DEFAULT_TOPIC).new_camp_mandatory_fields_are_marked_with_asterisk())
-
-    # TC_CREATE_CAMP_WITH_VALID_DATA
-    def test_create_camp_with_valid_data(self):
-        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_VALID_DATA')))
-        self.login_to_canonizer_app()
-        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC)\
-            .create_camp_with_valid_data(DEFAULT_NICK_NAME, "", "camp123", "key", "note", "www.google.com", "")
-        self.assertIn("/topic/", result.get_url())
-
-        # ----- CREATE CAMP Test Cases END -----
 
         # ----- ADD NEWS Test Cases START -----
 
