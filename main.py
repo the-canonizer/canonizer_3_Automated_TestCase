@@ -168,7 +168,7 @@ class TestPages(unittest.TestCase):
             DEFAULT_USER, DEFAULT_PASS).get_url()
         self.assertIn("", result)
 
-    #
+    # TC_VERIFY_THE_LOGIN_WITH_BLANK_EMAIL
     def test_verify_the_login_with_blank_email(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_REGISTERED_CREDENTIALS')))
         result = CanonizerLoginPage(self.driver).verify_the_login_with_blank_email("", DEFAULT_PASS).get_url()

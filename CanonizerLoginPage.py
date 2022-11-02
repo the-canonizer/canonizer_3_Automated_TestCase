@@ -97,7 +97,7 @@ class CanonizerLoginPage(Page):
         """
         try:
             WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-input ant-input-status-success')))
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-form-item-required')))
         except TimeoutException:
             pass
         return \

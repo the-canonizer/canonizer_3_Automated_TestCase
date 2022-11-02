@@ -152,7 +152,7 @@ class CanonizerManageNickNameIdentifiersPage(object):
 
 class ForgotPasswordIdentifiers(object):
     FORGOT_PASSWORD_LINK = (By.ID, 'forgot-password-link')
-    LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
+    LOGIN = (By.XPATH, '//span[text()=" Log In"]')
     FORGOT_PASSWORD = (By.XPATH, '//*[@id="login_form"]/div[3]/div/div/div/a')
     EMAIL = (By.ID, 'forgotPassword_email_id')
     SUBMIT_BUTTON = (By.XPATH, '(//span[text()="Submit "])[1]')
