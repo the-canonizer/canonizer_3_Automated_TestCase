@@ -8,7 +8,7 @@ def job():
     print("The testing begin ...")
     #exec("main.py")
     #Running the testcases
-    os.system('python3 test.py')
+    os.system('python3 main.py')
 
     #os.system('python my_file.py')
 def job2():
