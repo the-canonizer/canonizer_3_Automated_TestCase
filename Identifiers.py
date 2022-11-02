@@ -73,6 +73,36 @@ class LoginPageIdentifiers(object):
     GITHUB_LINK = (By.ID, 'github-link')
     GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
 
+class BrowsePageIdentifiers(object):
+    """
+    Class to hold the Browse Page Identifiers
+    """
+    BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
+    ONLY_MY_TOPICS = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[2]')
+    NAMESPACE = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')
+    GENERAL = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[1]')
+    #CORPORATIONS = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[8]/div')
+    CORPORATIONS = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[2]')
+    ALL = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[9]/div')
+    CRYPTOCURRENCY = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[3]/div')
+    FAMILY = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[4]/div')
+    FAMILYJESPERSON = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[3]/div')
+    OCCUPYWALLSTREET = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[4]/div')
+    ORGANIZATION = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
+    ORGANIZATIONCANONIZER = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[6]/div')
+    ORGANIZATIONCANONIZERHELP =  (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
+    ORGANIZATIONMTA = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[6]/div')
+    ORGANIZATIONTV07 = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[7]/div')
+    ORGANIZATIONWTA = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[8]/div')
+    PERSONALATTRIBUTE = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[4]/div')
+    UPLOADFILE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
+    MENU_ITEM = (By.ID, 'namespace')
+    TOPIC_NAME = (By.XPATH, '//*[@id="outline_127"]/a')
+    UPLOAD = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
+    # SUB_TOPIC_NAME = (By.XPATH, '//*[@id="outline_127"]/a')
+    #TITLE = (By.XPATH, '/html/body/div[1]/div[1]/h1')
+    TITLE = (By.XPATH, '/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/img[1]')
+    HEADING = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/h3/text()')    
 
 class ProfileInfoIdentifiersPage(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
