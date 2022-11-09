@@ -1,5 +1,7 @@
-from selenium.webdriver import ActionChains, Keys
-from selenium.webdriver.common.by import By
+from selenium.webdriver import Keys, ActionChains
+from selenium.webdriver.chrome import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.core import driver
 
@@ -7,12 +9,13 @@ from CanonizerBase import Page
 from Identifiers import BrowsePageIdentifiers
 from selenium.webdriver.support.ui import Select
 import time
+from scroll import scroll_down
 import unittest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 
 import sys
+
 
 class CanonizerBrowsePage(Page):
 
@@ -46,9 +49,10 @@ class CanonizerBrowsePage(Page):
         self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
         return CanonizerBrowsePage(self.driver)
 
-    def scroll(self):
-        action = ActionChains(driver)
-        #i = 28
+    def scroll_down(self):
+        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        action = ActionChains(self.driver)
+        #i = 10
         while self.i >= 0:
             action.key_down(Keys.DOWN).perform()
             print(self.i)
@@ -166,68 +170,90 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_canonizer(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONCANONIZER).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_canonizer_only_my_topics(self):
         self.select_by_value_organizations_canonizer()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_organizations_canonizer_help(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONCANONIZERHELP).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_canonizer_help_only_my_topics(self):
         self.select_by_value_organizations_canonizer_help()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_organizations_mta(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONMTA).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_mta_only_my_topics(self):
         self.select_by_value_organizations_mta()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_organizations_tv07(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll()
+        time.sleep(3)
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONTV07).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_tv07_only_my_topics(self):
         self.select_by_value_organizations_tv07()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_organizations_wta(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll()
+        time.sleep(3)
+        self.i = 10
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONWTA).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_wta_only_my_topics(self):
         self.select_by_value_organizations_wta()
-        self.select_dropdown_value()
+        time.sleep(3)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_personal_attributes(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 15
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.PERSONALATTRIBUTE).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_personal_attributes_only_my_topics(self):
-        self.select_by_value_personal_attributes
+        self.select_by_value_personal_attributes()
         time.sleep(3)
         self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
@@ -237,8 +263,9 @@ class CanonizerBrowsePage(Page):
     def select_by_value_personal_reputations(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll()
+        time.sleep(3)
+        self.i = 15
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.PERSONALREPUTATION).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
@@ -254,8 +281,9 @@ class CanonizerBrowsePage(Page):
     def select_by_value_professional_services(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll()
+        time.sleep(3)
+        self.i = 15
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.PROFESSIONALSERVICES).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
@@ -271,8 +299,9 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sandbox(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll()
+        time.sleep(3)
+        self.i = 15
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.SANDBOX).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
@@ -288,8 +317,9 @@ class CanonizerBrowsePage(Page):
     def select_by_value_terminology(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll()
+        time.sleep(3)
+        self.i = 15
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.TERMINOLOGY).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
@@ -305,9 +335,11 @@ class CanonizerBrowsePage(Page):
     def select_by_value_www(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 20
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.WWW).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_www_only_my_topics(self):
