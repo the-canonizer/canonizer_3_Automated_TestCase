@@ -426,8 +426,6 @@ class TestPages(unittest.TestCase):
             result = "Passed"
         else:
             result = "Failed"
-
-        print(result)
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta_only_my_topics(self):
         self.login_to_canonizer_app()
@@ -437,7 +435,6 @@ class TestPages(unittest.TestCase):
             result = "Passed"
         else:
             result = "Failed"
-        print(result)
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes(self):
         self.login_to_canonizer_app()
@@ -447,7 +444,6 @@ class TestPages(unittest.TestCase):
             result = "Passed"
         else:
             result = "Failed"
-        print(result)
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes_only_my_topics(self):
         self.login_to_canonizer_app()
@@ -542,7 +538,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_www()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]"):
+        if self.driver.find_element(By.ID, "name-space-18"):
             result = "Passed"
         else:
             result = "Failed"
@@ -552,6 +548,26 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_www_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        print(result)
+        self.assertIn("Passed", result)
+    def test_select_by_value_sandbox_testing(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing()
+        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[8]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        print(result)
+        self.assertIn("Passed", result)
+    def test_select_by_value_sandbox_testing_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing_only_my_topics()
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -571,103 +587,249 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_crypto_currency_ethereum_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-    def test_select_by_value_void(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_void_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-    def test_select_by_value_mormon_canon_project(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_mormon_canon_project_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-    def test_select_by_value_organizations_united_utah_party(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_organizations_united_utah_party_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-    def test_select_by_value_government(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_government_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-    def test_select_by_value_government_sandy_city(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_government_sandy_city_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-    def test_select_by_value_all(self):
-        self.login_to_canonizer_app()
-        self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).select_by_value_all()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]"):
+        CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum_only_my_topics()
+        if self.driver.find_element(By.XPATH,
+                                    "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
             result = "Failed"
         print(result)
         self.assertIn("Passed", result)
+    def test_select_by_value_void(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_void()
+        if self.driver.find_element(By.XPATH,
+                                    "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_void_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_void_only_my_topics()
+        if self.driver.find_element(By.XPATH,
+                                    "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_mormon_canon_project(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_mormon_canon_project()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_mormon_canon_project_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_mormon_canon_project_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_organizations_united_utah_party(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_organizations_united_utah_party()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_organizations_united_utah_party_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_organizations_united_utah_party_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_government(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_government()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_government_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_government_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_government_sandy_city(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_government_sandy_city()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_government_sandy_city_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_government_sandy_city_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_sports(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sports()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_sports_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sports_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_sports_sbcl(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sports_sbcl()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_sports_sbcl_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_sports_sbcl_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_plateform_of_the_people(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_plateform_of_the_people()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_plateform_of_the_people_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_plateform_of_the_people_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_lord_of_the_ring(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_lord_of_the_ring()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_lord_of_the_ring_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_lord_of_the_ring_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_star_wars(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_star_wars()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_star_wars_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_star_wars_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_world_of_warcraft(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_fiction_world_of_warcraft_only_my_topics(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+    def test_select_by_value_all(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerBrowsePage(self.driver).select_by_value_all()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
     def test_select_by_value_all_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        sleep(3)
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
+        CanonizerBrowsePage(self.driver).select_by_value_all_only_my_topics()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
     def tearDown(self):
         self.driver.close()
 
