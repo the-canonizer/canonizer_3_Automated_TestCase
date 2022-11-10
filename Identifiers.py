@@ -56,23 +56,25 @@ class LoginPageIdentifiers(object):
     INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
     BLANK_EMAIL_ERROR = (By.XPATH, '//div[text() = "Please input your Email!"]')
     BLANK_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Please input your Password!"]')
-    ONE_TIME_REQUEST_TITLE = (By.XPATH, '//h2[@class = "ant-typography Registration_titles__pUOnj"]')
+    ONE_TIME_REQUEST_TITLE = (By.ID, 'otp-title-text')
     FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
     FORGET_PASSWORD_TITLE = (By.XPATH, '//h2[text()= "Forgot your password?"]')
     REGISTER_NOW_LINK = (By.ID, 'dont-account-link-tag')
     REQUEST_CODE = (By.ID, 'request-otp-btn')
     EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
-    LOGIN_TITLE = (By.XPATH, '//*[@id="registration-title"]')
+    LOGIN_TITLE = (By.XPATH, '//h2[@class="ant-typography Registration_titles__pUOnj"]')
     SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
     FACEBOOK_LINK = (By.ID, 'facebook-link')
     FACEBOOK_TITLE = (By.ID, 'header_block')
     GOOGLE_LINK = (By.ID, 'google-link')
+    GOOGLE_TITLE = (By.XPATH, '//div[text()="Sign in with Google"]')
     TWITTER_LINK = (By.ID, 'twitter-link')
-    TWITTER_TITLE = (By.XPATH, '//h2[text() = "Authorize the_canonizer to access your account?"]')
+    TWITTER_TITLE = (By.XPATH, '//strong[text()="This application will be able to:"]')
     LINKEDIN_LINK = (By.ID, 'linkedin-link')
-    LINKEDIN_TITLE = (By.XPATH, '//*[@id="app__container"]/main/div[2]/div[2]')
+    LINKEDIN_TITLE = (By.CLASS_NAME, 'header__content__heading ')
     GITHUB_LINK = (By.ID, 'github-link')
     GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
+    BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
 
 
 class ProfileInfoIdentifiersPage(object):
@@ -80,22 +82,22 @@ class ProfileInfoIdentifiersPage(object):
     # CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
     PROFILE_BUTTON = (By.XPATH, '//*[@id="rc-tabs-1-tab-profile_info"]')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
-    SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[2]')
+    SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '/html/body/div/div/div[3]/div/div[2]/div/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div')
     CHANGE_PASSWORD = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[3]')
     SUPPORTED_CAMPS = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[5]')
     NICK_NAME = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[4]')
-    PHONE_NUMBER = (By.ID, 'verifyNumber_phone_number')
+    PHONE_NUMBER = (By.ID, 'phoneNumber')
     PHONE_NUMBER_ERROR = (By.XPATH, '//div[text()="Phone number must be at least 10 digits!"]')
-    MOBILE_CARRIER = (By.XPATH, '//*[@id="verifyNumber"]/div/div[1]/div[2]/div/div[2]/div/div/div/div/span[2]')
+    MOBILE_CARRIER = (By.XPATH, '//span[@class="ant-select-selection-item"]')
     VERIFY_BUTTON = (By.XPATH, '//*[@id="verifyNumber"]/div/div[2]/div/div/div/button')
-    FIRST_NAME = (By.ID, 'profileInfo_first_name')
-    MIDDLE_NAME = (By.ID, 'profileInfo_middle_name')
-    LAST_NAME = (By.ID, 'profileInfo_last_name')
-    GENDER = (By.XPATH, '//*[@id="profileInfo_gender"]/div/div[1]/label')
+    FIRST_NAME = (By.ID, 'firstName')
+    MIDDLE_NAME = (By.ID, 'middleName')
+    LAST_NAME = (By.ID, 'lastName')
+    GENDER = (By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[1]/div[3]/div[1]/label')
     DATA_BIRTH = (
         By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[2]/div[3]/div[2]/div/div/span/div[1]/div/div/div/div')
     UPDATE_BUTTON = (By.XPATH, '//span[text() = "Update"]')
-    LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
+    LOGOUT = (By.XPATH, '//span[text()="Log Out"]')
     ADDRESS_LINE = (By.ID, 'profileInfo_address_1')
     ALGORITHM_FIELD = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
     ALGORITHM_DROP_DOWN = (By.XPATH, '(//div[@class="ant-select-item-option-content"])[1]')
@@ -104,9 +106,8 @@ class ProfileInfoIdentifiersPage(object):
 class CanonizerSupportCampIdentifiersPage(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
-    SUPPORTED_CAMPS = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[5]')
-    DIRECET_SUPPORTED_CAMPS = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div['
-                                         '1]/div[1]/div/div[1]')
+    SUPPORTED_CAMPS = (By.XPATH, '//div[text()="Direct Supported Camps"]')
+    DIRECT_SUPPORTED_CAMPS = (By.XPATH, '//div[text()="Direct Supported Camps"]')
     DELEGATED_SUPPORT_CAMPS = (By.XPATH, '(//div[@class = "ant-tabs-tab ant-tabs-tab-active"])[2]')
     SUPPORT_CAMP_SEARCH_BAR = (By.XPATH, '//div [@class = "Settings_search_users__sjo27"]')
     CLICKING_ON_TOPIC_NAME = (By.XPATH, '(//div [@class = "DirectSupportedCamps_card_heading_title__qF4nl"])[1]')
@@ -114,6 +115,7 @@ class CanonizerSupportCampIdentifiersPage(object):
     CLICK_ON_REMOVE_SUPPORT = (By.XPATH, '//div[@class="ant-card-extra"]//child::div')
     REMOVE_ON_POP_UP_BUTTON = (By.XPATH, '(//div[@class="ant-form-item-control-input-content"]//child::button)[1]')
     REMOVE_TITLE = (By.XPATH, '//div[@class="ant-modal-title"]')
+    SUPPORTED_CAMP_TITLE = (By.CLASS_NAME, 'Settings_notes__KNmaY')
 
 
 class CanonizerChangePasswordIdentifierPage(object):
@@ -129,7 +131,7 @@ class CanonizerChangePasswordIdentifierPage(object):
     NEW_PASSWORD_ERROR = (By.XPATH, '//*[@id="changePassword"]/div[1]/div/div[2]/div/div[2]/div[2]/div')
     CURRENT_ASTRK = (By.XPATH, '(//span[@class = "required"])[1]')
     NEW_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
-    CONFIRM_ASTRK = (By.XPATH, '(//span[@class = "required"])[3]')
+    CONFIRM_ASTRK = (By.ID, 'asteriskConfirmPassword')
 
 
 class CanonizerManageNickNameIdentifiersPage(object):
@@ -148,6 +150,7 @@ class CanonizerManageNickNameIdentifiersPage(object):
     TITLE = (By.XPATH, '(//div[@class="ant-message-custom-content ant-message-error"]//child::span)[1]')
     FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
     TITTLE1 = (By.XPATH, '//h2[text()= "Forgot your password?"]')
+    ERROR_NICK_NAME_EXISTS = (By.CLASS_NAME, 'ant-message-notice-content')
 
 
 class ForgotPasswordIdentifiers(object):
@@ -190,12 +193,12 @@ class CreateTopicIdentifiers(object):
 
 class CampForumIdentifiers(object):
     VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
-    CAMP_FORUM_BUTTON = (By.XPATH, '//div[@class="topicDetails_topicDetailContentHead_Right__Vc37F"]//button[1]')
+    CAMP_FORUM_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/div[1]/div/div/div[2]/button')
     BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
     SEARCH_TOPIC = (By.XPATH, '//input[@placeholder="Search by topic name"]')
     SEARCH_ICON = (By.XPATH, '(//span[@class="ant-input-group-addon"]//button)[2]')
     TOPIC_CLICK = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li/a')
-    CAMP_FORUM_TITLE = (By.XPATH, '//span[text()="Camp Forum"]')
+    CAMP_FORUM_TITLE = (By.CLASS_NAME, 'Forum_cardTitle__VagbD')
     MY_PARTICIPATION = (By.ID, 'participate-btn')
     TOP_10_THREADS = (By.ID, 'most-rep-btn')
     NO_THREAD_STATEMENT = (By.XPATH, '//div[text()="No Data"]')
@@ -203,7 +206,7 @@ class CampForumIdentifiers(object):
     MY_THREADS_BUTTON = (By.ID, 'my-thread-btn')
     THREAD_BUTTON = (By.ID, 'all-thread-btn')
     CREATE_THREAD_BUTTON = (By.ID, 'create-btn')
-    CREATE_THREAD_TITLE = (By.XPATH, '//span[text()="Create a new thread"]')
+    CREATE_THREAD_TITLE = (By.XPATH, 'Forum_cardTitle__VagbD')
     THREAD_TITLE = (By.ID, 'create_new_thread_thread_title')
     NICK_NAME = (By.XPATH, '//div[text()="sania_talentelgia"]')
     SUBMIT_THREAD = (By.ID, 'submit-btn')
@@ -250,31 +253,6 @@ class HomePageIdentifiers(object):
     ALGORITHM_DROP_DOWN = (By.XPATH,
                            '//div[@class="ant-select ant-select-lg topicListFilter_algoSelect__VRCVF '
                            'ant-select-single ant-select-show-arrow"]')
-
-
-class ProfileInfoIdentifiersPage(object):
-        CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
-        PROFILE_BUTTON = (By.XPATH, '//*[@id="rc-tabs-1-tab-profile_info"]')
-        ACCOUNT_SETTING_BUTTON = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[1]')
-        SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[2]')
-        CHANGE_PASSWORD = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[3]')
-        SUPPORTED_CAMPS = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[5]')
-        NICK_NAME = (By.XPATH, '(//div[@class="ant-tabs-tab-btn"])[4]')
-        PHONE_NUMBER = (By.ID, 'verifyNumber_phone_number')
-        PHONE_NUMBER_ERROR = (By.XPATH, '//div[text()="Phone number must be at least 10 digits!"]')
-        MOBILE_CARRIER = (By.XPATH, '//*[@id="verifyNumber"]/div/div[1]/div[2]/div/div[2]/div/div/div/div/span[2]')
-        VERIFY_BUTTON = (By.XPATH, '//*[@id="verifyNumber"]/div/div[2]/div/div/div/button')
-        FIRST_NAME = (By.ID, 'profileInfo_first_name')
-        MIDDLE_NAME = (By.ID, 'profileInfo_middle_name')
-        LAST_NAME = (By.ID, 'profileInfo_last_name')
-        GENDER = (By.XPATH, '//*[@id="profileInfo_gender"]/div/div[1]/label')
-        DATA_BIRTH = (
-            By.XPATH, '//*[@id="profileInfo"]/div[1]/div[1]/div[2]/div[3]/div[2]/div/div/span/div[1]/div/div/div/div')
-        UPDATE_BUTTON = (By.XPATH, '//span[text() = "Update"]')
-        LOGOUT = (By.XPATH, '(//span[@class="ant-dropdown-menu-title-content"])[3]')
-        ADDRESS_LINE = (By.ID, 'profileInfo_address_1')
-        ALGORITHM_FIELD = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div')
-        ALGORITHM_DROP_DOWN = (By.XPATH, '(//div[@class="ant-select-item-option-content"])[1]')
 
 
 class CreateCampIdentifiers(object):

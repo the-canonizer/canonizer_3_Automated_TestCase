@@ -210,14 +210,14 @@ DEFAULT_INVALID_PASSWORD = "invalid_password"
 # Account Setting page Configuration Parameters
 DEFAULT_NICK_NAME = "saideekshith"
 DEFAULT_NEW_PASSWORD = "Sai@199828"
-DEFAULT_INVALID_NICK_NAME = "saideekshith"
+DEFAULT_INVALID_NICK_NAME = "sai deekshith"
 DEFAULT_INVALID_CONFIRM_PASSWORD = "sai@   12333333"
 INVALID_NEW_PASSWORD = "sai123333"
 INVALID_CURRENT_PASSWORD = "sai@    12333"
 DEFAULT_CONFIRM_PASSWORD = "Sai@166666"
-DEFAULT_FIRST_NAME = "automation  testing"
-DEFAULT_LAST_NAME = "testing  cases"
-DEFAULT_MIDDLE_NAME = "test  case "
+DEFAULT_FIRST_NAME = "  automation  testing"
+DEFAULT_LAST_NAME = "  testing  cases"
+DEFAULT_MIDDLE_NAME = "  test  case "
 
 # support camps tab Configuration Parameters
 DEFAULT_TOPIC_NAME = "automation 123"

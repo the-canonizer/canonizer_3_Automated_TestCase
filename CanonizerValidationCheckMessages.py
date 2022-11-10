@@ -51,13 +51,17 @@ message = {
         'BLANK_EMAIL': 'Please input your Email!',
         'BLANK_PASSWORD': 'Please input your Password!',
         'FORGOT_PASSWORD': 'Forgot your password?',
-        'REGISTER_PAGE_TITLE': 'Register Now on Canonizer',
+        'REGISTER_PAGE_TITLE': 'Register Now On Canonizer',
         'ONE_TIME_REQUEST_CODE_WITH_INVALID_EMAIL': 'Input is not valid!',
-        'ONE_TIME_REQUEST_CODE_WITH_VALID_PASSWORD': 'Log in One Time Verification Code',
+        'ONE_TIME_REQUEST_CODE_WITH_VALID_PASSWORD': 'Log In One Time Verification Code',
         'FACEBOOK_TITLE': 'Log in to Facebook',
-        'TWITTER_TITLE': 'Authorize the_canonizer to access your account?',
+        'GOOGLE_TITLE': 'Sign in with Google',
+        'TWITTER_TITLE': 'This application will be able to:',
+        'LINKEDIN_TITLE': 'Welcome Back',
         'EMAIL_ERROR_MESSAGE': 'Please input your Email!',
-        'LOGIN': 'Log in'
+        'LOGIN': 'Log in',
+        'LOGIN_BROWSE_TITLE': 'Browse',
+        'LOGIN_TITLE': 'Log In',
 
     },
     'Change_Password': {
@@ -67,18 +71,38 @@ message = {
         'ERROR_CONFIRM_PASSWORD': 'Please confirm your password!',
         'ERROR_NEW_PASSWORD': 'Password must contain small, capital letter, number and special character like Abc@1234.',
         'CONFIRM_PASSWORD_ERROR': 'Confirm Password does not match.',
+        'SAVE_BUTTON': 'Save'
 
     },
     'Supported_camps': {
-        'REMOVE_BUTTON_TITLE': 'Remove Support'
+        'REMOVE_BUTTON_TITLE': 'Remove Support',
+        'SUPPORTED_CAMP_TITLE': 'Note : To change support order of camp, drag & drop the camp box on your choice position.'
 
     },
     'Nick_name_tab': {
         'ADD_NEW_NICK_NAME_TITLE': 'Add New Nick Name',
-        'NICK_NAME_ERROR': 'Please Enter Nick Name!'
+        'NICK_NAME_ERROR': 'Please Enter Nick Name!',
+        'ADD_NEW_NICK_NAME': 'Add New Nick Name',
+        'ERROR_NICK_NAME_EXISTS': 'Nick name already exists, please try another one.'
     },
+    'Profile_tab': {
+        'TITLE_VERIFY': 'Personal Information',
+        'TITLE_INFO': 'Profile Info',
+        'SOCIAL_TITLE': 'Social Oauth Verification',
+        'CHANGE_PASSWORD': 'Change Password',
+        'NICK_NAMES': 'Nick Names',
+        'SUPPORTED_CAMPS': 'Supported Camps',
+        'PHONE_NUMBER_VALIDATION': 'Phone number must be at least 10 digits!',
+        'EMPTY_PHONE_VALIDATION': 'Please Enter Phone Number!',
+        'EMPTY_MOBILE_CARRIER_VALIDATION': 'Please Select Mobile Carrier!',
+
+
+
+
+    },
+
     'Create_Camp': {
-        'CREATE_CAMP_TITLE': 'Create New Camp'
+        'CREATE_CAMP_TITLE': 'Create New Camp',
 
     },
     'Add_News': {

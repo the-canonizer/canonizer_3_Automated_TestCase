@@ -1,6 +1,11 @@
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+
 from CanonizerBase import Page
 from CanonizerValidationCheckMessages import message
 from Identifiers import CanonizerChangePasswordIdentifierPage
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class CanonizerChangePasswordTab(Page):
@@ -15,7 +20,7 @@ class CanonizerChangePasswordTab(Page):
         return \
             self.find_element(*CanonizerChangePasswordIdentifierPage.CURRENT_ASTRK) and \
             self.find_element(*CanonizerChangePasswordIdentifierPage.NEW_ASTRK) and \
-            self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_PASSWORD)
+            self.find_element(*CanonizerChangePasswordIdentifierPage.CONFIRM_ASTRK)
 
     def click_account_settings(self):
         self.hover(*CanonizerChangePasswordIdentifierPage.CLICK_ON_DROPDOWN)
@@ -27,8 +32,17 @@ class CanonizerChangePasswordTab(Page):
         self.click_account_settings()
         self.hover(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD)
         self.find_element(*CanonizerChangePasswordIdentifierPage.CHANGE_PASSWORD).click()
-
-        return CanonizerChangePasswordTab(self.driver)
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.visibility_of_element_located((By.ID, 'saveBtn')))
+        except TimeoutException:
+            pass
+        self.hover(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON)
+        title = self.find_element(*CanonizerChangePasswordIdentifierPage.SAVE_BUTTON).text
+        if title == message['Change_Password']['SAVE_BUTTON']:
+            return CanonizerChangePasswordTab(self.driver)
+        else:
+            print("title not found")
 
     def verify_the_current_field_empty_and_click_on_save(self):
         self.verify_click_on_change_password_tab_its_navigating_to_change_password_page()
@@ -41,7 +55,7 @@ class CanonizerChangePasswordTab(Page):
         if title == message['Change_Password']['CURRENT_PASSWORD_ERROR']:
             return CanonizerChangePasswordTab(self.driver)
         else:
-            print('Title not found')
+            print("title not found")
 
     def verify_the_new_password_field_empty_and_click_on_save(self):
         self.verify_click_on_change_password_tab_its_navigating_to_change_password_page()
@@ -54,7 +68,7 @@ class CanonizerChangePasswordTab(Page):
         if title == message['Change_Password']['NEW_PASSWORD_ERROR']:
             return CanonizerChangePasswordTab(self.driver)
         else:
-            print('Title not found')
+            print("title not found")
 
     def verify_the_confirm_password_field_empty_and_click_on_save(self):
         self.verify_click_on_change_password_tab_its_navigating_to_change_password_page()
@@ -67,7 +81,7 @@ class CanonizerChangePasswordTab(Page):
         if title == message['Change_Password']['ERROR_CONFIRM_PASSWORD']:
             return CanonizerChangePasswordTab(self.driver)
         else:
-            print('Title not found')
+            print("title not found")
 
     def verify_entering_the_invalid_new_password(self, INVALID_NEW_PASSWORD):
         self.verify_click_on_change_password_tab_its_navigating_to_change_password_page()
@@ -90,7 +104,7 @@ class CanonizerChangePasswordTab(Page):
         if error == message['Change_Password']['CONFIRM_PASSWORD_ERROR']:
             return CanonizerChangePasswordTab(self.driver)
         else:
-            print('Error message not found')
+            print("Error message not found")
 
     def verify_current_password_new_password_confirm_password_is_present_save_button(self):
         self.verify_click_on_change_password_tab_its_navigating_to_change_password_page()

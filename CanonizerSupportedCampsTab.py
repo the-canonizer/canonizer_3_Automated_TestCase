@@ -1,3 +1,8 @@
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from CanonizerBase import Page
 from CanonizerValidationCheckMessages import message
 from Identifiers import CanonizerSupportCampIdentifiersPage
@@ -10,25 +15,29 @@ class CanonizerSupportCampsTab(Page):
         self.find_element(*CanonizerSupportCampIdentifiersPage.CLICK_ON_DROPDOWN).click()
         self.find_element(*CanonizerSupportCampIdentifiersPage.ACCOUNT_SETTING_BUTTON).click()
 
-        return CanonizerSupportCampsTab(self.driver)
-
     def click_on_supported_camp_tab(self):
         self.hover(*CanonizerSupportCampIdentifiersPage.SUPPORTED_CAMPS)
         self.find_element(*CanonizerSupportCampIdentifiersPage.SUPPORTED_CAMPS).click()
 
-        return CanonizerSupportCampsTab(self.driver)
-
     def verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab(self):
         self.click_account_settings_page()
         self.click_on_supported_camp_tab()
-
-        return CanonizerSupportCampsTab(self.driver)
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'Settings_notes__KNmaY')))
+        except TimeoutException:
+            pass
+        self.hover(*CanonizerSupportCampIdentifiersPage.SUPPORTED_CAMP_TITLE)
+        title = self.find_element(*CanonizerSupportCampIdentifiersPage.SUPPORTED_CAMP_TITLE).text
+        if title == message['Supported_camps']['SUPPORTED_CAMP_TITLE']:
+            return CanonizerSupportCampsTab(self.driver)
+        else:
+            print("title not found")
 
     def verify_direct_supported_camps(self):
         self.click_account_settings_page()
         self.click_on_supported_camp_tab()
-        self.find_element(*CanonizerSupportCampIdentifiersPage.DIRECET_SUPPORTED_CAMPS)
-        self.find_element(*CanonizerSupportCampIdentifiersPage.DELEGATED_SUPPORT_CAMPS)
+        self.find_element(*CanonizerSupportCampIdentifiersPage.DIRECT_SUPPORTED_CAMPS)
 
         return CanonizerSupportCampsTab(self.driver)
 
@@ -94,4 +103,4 @@ class CanonizerSupportCampsTab(Page):
         if title == message['Supported_camps']['REMOVE_BUTTON_TITLE']:
             return CanonizerSupportCampsTab(self.driver)
         else:
-            print('title not found')
+            print("title not found")

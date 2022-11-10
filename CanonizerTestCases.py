@@ -54,9 +54,7 @@ testCases = {
                                            'user should see main page'],
     'TC_VERIFY_LOGIN_PAGE': [Critical, 'When user should click on close on on login page, user should go to canonize '
                                        'main page'],
-    'TC_CLICK_CLOSE_ICON_ON_LOGIN_PAGE': [Critical, 'When user should verify the tittle of "log in canonize page" in '
-                                                    'login page,user should get '
-                                                    'verified tittle'],
+    'TC_CLICK_CLOSE_ICON_ON_LOGIN_PAGE': [Critical, 'When user click on cross icon, should see log in link'],
     'TC_LOGIN_WITH_REGISTERED_CREDENTIALS': [Critical, 'When user should try to login with registered credentials, '
                                                        'user should see main page'],
     'TC_VERIFY_THE_LOGIN_WITH_BLANK_EMAIL': [Critical, 'when user should try to login with blank email, '
@@ -81,7 +79,6 @@ testCases = {
     'TC_VERIFY_ONE_TIME_REQUEST_CODE_WITH_VALID_CREDENTIALS': [Critical, 'when user click on one time request code '
                                                                          'with valid credentials, user should redirect'
                                                                          ' to one time verification page'],
-    'TC_VERIFYING_SOCIAL LINKS': [Critical, 'when '],
     'Tc_verifying_facebook_link': [Critical, 'when user click on facebook link on login page ,user should see it '
                                              'redirect to facebook page'],
     'TC_VERIFYING_TWITTER_LINK': [Critical, 'when user click on twitter link on login page , user should see it '
@@ -123,8 +120,9 @@ testCases = {
                                                                                          'name and user should see '
                                                                                          'it reflect to user name '
                                                                                          'also'],
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER'
-    'TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB'
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER': [Critical, 'when user checks radio button '
+                                                                                      'gender must be selected'],
+    'TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB': [Critical, 'DOB must be selected'],
     'TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN': [Critical,
                                                                                          'when user Update all the '
                                                                                          'Personal Information layout '

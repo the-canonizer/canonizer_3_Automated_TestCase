@@ -27,19 +27,28 @@ class CanonizerCampForumPage(Page):
         # Click on Search Topic
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
-        self.hover(*CampForumIdentifiers.SEARCH_ICON)
-        self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
+        self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(Keys.ENTER)
+
+        #self.hover(*CampForumIdentifiers.SEARCH_ICON)
+        #self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
         self.hover(*CampForumIdentifiers.TOPIC_CLICK)
         self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
 
         # Click on Camp Forum Button
         try:
-            WebDriverWait(self.driver, 5).until(
+            WebDriverWait(self.driver, 8).until(
                 EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
+                    (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/div[1]/div/div/div[2]/button')))
         except TimeoutException:
             pass
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
+
+        try:
+            WebDriverWait(self.driver, 8).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
+        except TimeoutException:
+            pass
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
@@ -68,8 +77,12 @@ class CanonizerCampForumPage(Page):
             print("Title not found or  is not matching")
 
     def load_my_participation_page(self):
-        self.hover(*CampForumIdentifiers.TOP_10_THREADS)
-        self.find_element(*CampForumIdentifiers.TOP_10_THREADS).click()
+        self.hover(*CampForumIdentifiers.MY_PARTICIPATION)
+        self.find_element(*CampForumIdentifiers.MY_PARTICIPATION).click()
+
+        WebDriverWait(self.driver, 8).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
@@ -78,8 +91,8 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def load_top_10_threads_page(self):
-        self.hover(*CampForumIdentifiers.MY_PARTICIPATION)
-        self.find_element(*CampForumIdentifiers.MY_PARTICIPATION).click()
+        self.hover(*CampForumIdentifiers.TOP_10_THREADS)
+        self.find_element(*CampForumIdentifiers.TOP_10_THREADS).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:

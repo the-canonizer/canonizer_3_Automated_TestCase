@@ -26,8 +26,7 @@ class CanonizerAddNewsPage(Page):
         # Click on Search Topic
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
-        self.hover(*CampForumIdentifiers.SEARCH_ICON)
-        self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
+        self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(Keys.ENTER)
         self.hover(*CampForumIdentifiers.TOPIC_CLICK)
         self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
 
@@ -96,6 +95,7 @@ class CanonizerAddNewsPage(Page):
 
     def create_news_with_blank_link(self, display_text):
         self.create_news(display_text, '')
+        self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
         error = self.find_element(*AddNewsIdentifiers.BLANK_LINK_ERROR).text
         if error == message['Add_News']['BLANK_LINK_ERROR']:
             return CanonizerAddNewsPage(self.driver)
@@ -104,7 +104,9 @@ class CanonizerAddNewsPage(Page):
 
     def create_new_with_blank_fields(self, link, display_text):
         self.create_news(link, display_text)
+        self.hover(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR)
         error_text = self.find_element(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR).text
+        self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
         error_link = self.find_element(*AddNewsIdentifiers.BLANK_LINK_ERROR).text
         if error_text == message['Add_News']['BLANK_DISPLAY_TEXT_ERROR'] and error_link == message['Add_News']['BLANK_LINK_ERROR']:
             return CanonizerAddNewsPage(self.driver)
