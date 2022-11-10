@@ -9,7 +9,6 @@ from CanonizerBase import Page
 from Identifiers import BrowsePageIdentifiers
 from selenium.webdriver.support.ui import Select
 import time
-from scroll import scroll_down
 import unittest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
