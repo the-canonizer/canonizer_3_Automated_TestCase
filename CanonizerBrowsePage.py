@@ -352,33 +352,30 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sandbox_testing(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 20
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.SANDBOXTESTING).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_sandbox_testing_only_my_topics(self):
-        self.select_by_value_sandbox()
+        self.select_by_value_sandbox_testing()
         time.sleep(3)
         self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
-        time.sleep(3)
-        return CanonizerBrowsePage(self.driver)
-    def select_by_value_all_default(self):
-        self.hover(*BrowsePageIdentifiers.NAMESPACE)
-        self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_crypto_currency_ethereum(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.CRYPTOCURRENCYETHEREUM).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
-
     def select_by_value_crypto_currency_ethereum_only_my_topics(self):
         self.select_by_value_crypto_currency_ethereum()
         time.sleep(3)
@@ -390,8 +387,9 @@ class CanonizerBrowsePage(Page):
     def select_by_value_void(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.VOID).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
@@ -407,9 +405,11 @@ class CanonizerBrowsePage(Page):
     def select_by_value_mormon_canon_project(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
-        self.find_element(*BrowsePageIdentifiers.MORMONCANON).click()
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.MORMONCANONPROJECT).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_mormon_canon_project_only_my_topics(self):
@@ -423,9 +423,11 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_united_utah_party(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONUNITEDUTAHPARTY).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_organizations_united_utah_party_only_my_topics(self):
@@ -439,9 +441,11 @@ class CanonizerBrowsePage(Page):
     def select_by_value_government(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.GOVERNMENT).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_government_only_my_topics(self):
@@ -455,9 +459,11 @@ class CanonizerBrowsePage(Page):
     def select_by_value_government_sandy_city(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.GOVERNMENTSANDYCITY).click()
+        time.sleep(3)
         return CanonizerBrowsePage(self.driver)
 
     def select_by_value_government_sandy_city_only_my_topics(self):
@@ -471,9 +477,10 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sports(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
-        self.find_element(*BrowsePageIdentifiers.SPORTS).click()
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.SPORT).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_sports_only_my_topics(self):
@@ -486,9 +493,10 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sports_sbcl(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
+        time.sleep(3)
         self.i = 25
-        self.scroll()
-        self.find_element(*BrowsePageIdentifiers.SPORTSSBCL).click()
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.SPORTSBCL).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
     def select_by_value_sports_sbcl_only_my_topics(self):
@@ -498,11 +506,96 @@ class CanonizerBrowsePage(Page):
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
+
+    def select_by_value_plateform_of_the_people(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        time.sleep(3)
+        self.i = 30
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.PLATEFORMOFTHEPEOPLE).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+
+    def select_by_value_plateform_of_the_people_only_my_topics(self):
+        self.select_by_plateform_of_the_people()
+        time.sleep(3)
+        self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
+        self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        time.sleep(3)
+        self.i = 30
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.FICTION).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+
+    def select_by_value_fiction_only_my_topics(self):
+        self.select_by_value_fiction()
+        time.sleep(3)
+        self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
+        self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+
+    def select_by_value_fiction_lord_of_the_ring(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        time.sleep(3)
+        self.i = 30
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.FICTIONLORDOFTHERINGS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction_lord_of_the_ring_only_my_topics(self):
+        self.select_by_value_fiction_lord_of_the_ring()
+        time.sleep(3)
+        self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
+        self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction_star_wars(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        time.sleep(3)
+        self.i = 30
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.FICTIONSTARWARS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction_star_wars_only_my_topics(self):
+        self.select_by_value_fiction_star_wars()
+        time.sleep(3)
+        self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
+        self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction_world_of_warcraft(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        time.sleep(3)
+        self.i = 30
+        self.scroll_down()
+        self.find_element(*BrowsePageIdentifiers.FICTIONWORLDOFWARCRAFT).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
+    def select_by_value_fiction_world_of_warcraft_only_my_topics(self):
+        self.select_by_value_fiction_world_of_warcraft()
+        time.sleep(3)
+        self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
+        self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
+        time.sleep(3)
+        return CanonizerBrowsePage(self.driver)
     def select_by_value_all(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll()
+        time.sleep(3)
+        self.i = 31
+        self.scroll_down()
         self.find_element(*BrowsePageIdentifiers.ALL).click()
         time.sleep(3)
         return CanonizerBrowsePage(self.driver)
