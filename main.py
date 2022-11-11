@@ -168,7 +168,7 @@ class TestPages(unittest.TestCase):
                 (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')))
         except TimeoutException:
             pass
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]"):
+        if self.driver.find_element(By.ID, 'name-space-1'):
             result = "Passed"
         else:
             result = "Failed"
@@ -196,7 +196,7 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_corporations()
 
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li/a/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-2'):
             result = "Passed"
         else:
             result = "Failed"
@@ -219,7 +219,7 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_crypto_currency()
         sleep(3)
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[3]/div"):
+        if self.driver.find_element(By.ID, 'name-space-3'):
             result = "Passed"
         else:
             result = "Failed"
@@ -244,7 +244,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_family()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[4]/div"):
+        if self.driver.find_element(By.ID, 'name-space-4'):
             result = "Passed"
         else:
             result = "Failed"
@@ -267,7 +267,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[5]/div"):
+        if self.driver.find_element(By.ID, 'name-space-5'):
             result = "Passed"
         else:
             result = "Failed"
@@ -290,7 +290,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[6]/div"):
+        if self.driver.find_element(By.ID, 'name-space-6'):
             result = "Passed"
         else:
             result = "Failed"
@@ -313,7 +313,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[6]/div"):
+        if self.driver.find_element(By.ID, 'name-space-7'):
             result = "Passed"
         else:
             result = "Failed"
@@ -335,7 +335,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[8]/div"):
+        if self.driver.find_element(By.ID, 'name-space-8'):
             result = "Passed"
         else:
             result = "Failed"
@@ -357,7 +357,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[6]"):
+        if self.driver.find_element(By.ID, 'name-space-9'):
             result = "Passed"
         else:
             result = "Failed"
@@ -378,7 +378,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_mta()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[7]"):
+        if self.driver.find_element(By.ID, 'name-space-10'):
             result = "Passed"
         else:
             result = "Failed"
@@ -400,7 +400,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[7]"):
+        if self.driver.find_element(By.ID, 'name-space-11'):
             result = "Passed"
         else:
             result = "Failed"
@@ -422,7 +422,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_wta()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[9]"):
+        if self.driver.find_element(By.ID, 'name-space-12'):
             result = "Passed"
         else:
             result = "Failed"
@@ -440,7 +440,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_personal_attributes()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[9]"):
+        if self.driver.find_element(By.ID, 'name-space-13'):
             result = "Passed"
         else:
             result = "Failed"
@@ -459,7 +459,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_personal_reputations()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[6]"):
+        if self.driver.find_element(By.ID, 'name-space-14'):
             result = "Passed"
         else:
             result = "Failed"
@@ -479,7 +479,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_professional_services()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[7]"):
+        if self.driver.find_element(By.ID, 'name-space-15'):
             result = "Passed"
         else:
             result = "Failed"
@@ -498,7 +498,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_sandbox()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[8]"):
+        if self.driver.find_element(By.ID, 'name-space-16'):
             result = "Passed"
         else:
             result = "Failed"
@@ -518,7 +518,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_terminology()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[9]"):
+        if self.driver.find_element(By.ID, 'name-space-17'):
             result = "Passed"
         else:
             result = "Failed"
@@ -558,7 +558,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing()
-        if self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]/div[1]/div/div/div[8]"):
+        if self.driver.find_element(By.ID, 'name-space-19'):
             result = "Passed"
         else:
             result = "Failed"
@@ -578,7 +578,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-21'):
             result = "Passed"
         else:
             result = "Failed"
@@ -599,8 +599,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_void()
-        if self.driver.find_element(By.XPATH,
-                                    "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-22'):
             result = "Passed"
         else:
             result = "Failed"
@@ -619,7 +618,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_mormon_canon_project()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-24'):
             result = "Passed"
         else:
             result = "Failed"
@@ -637,7 +636,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_organizations_united_utah_party()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-25'):
             result = "Passed"
         else:
             result = "Failed"
@@ -655,7 +654,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_government()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-26'):
             result = "Passed"
         else:
             result = "Failed"
@@ -673,7 +672,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_government_sandy_city()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-27'):
             result = "Passed"
         else:
             result = "Failed"
@@ -691,7 +690,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_sports()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-28'):
             result = "Passed"
         else:
             result = "Failed"
@@ -709,7 +708,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_sports_sbcl()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-29'):
             result = "Passed"
         else:
             result = "Failed"
@@ -727,7 +726,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_plateform_of_the_people()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-30'):
             result = "Passed"
         else:
             result = "Failed"
@@ -745,7 +744,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_fiction()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-31'):
             result = "Passed"
         else:
             result = "Failed"
@@ -763,7 +762,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_fiction_lord_of_the_ring()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-32'):
             result = "Passed"
         else:
             result = "Failed"
@@ -781,7 +780,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_fiction_star_wars()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-33'):
             result = "Passed"
         else:
             result = "Failed"
@@ -799,7 +798,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-34'):
             result = "Passed"
         else:
             result = "Failed"
@@ -817,7 +816,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         CanonizerBrowsePage(self.driver).select_by_value_all()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
+        if self.driver.find_element(By.ID, 'name-space-custom'):
             result = "Passed"
         else:
             result = "Failed"
