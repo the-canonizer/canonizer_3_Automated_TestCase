@@ -140,25 +140,6 @@ class CanonizerAccountSettingPage(Page):
 
         return CanonizerAccountSettingPage(self.driver)
 
-    def update_the_first_name_and_check_if_it_is_updating_same_for_username(self, first_name):
-        self.click_account_settings_page_button()
-        self.hover(*ProfileInfoIdentifiersPage.FIRST_NAME)
-        self.find_element(*ProfileInfoIdentifiersPage.FIRST_NAME).click()
-        self.find_element(*ProfileInfoIdentifiersPage.FIRST_NAME).send_keys(first_name)
-        self.find_element(*ProfileInfoIdentifiersPage.UPDATE_BUTTON).click()
-
-        return CanonizerAccountSettingPage(self.driver)
-
-    def verify_the_functionality_of_radio_button_in_selecting_the_gender(self):
-        self.click_account_settings_page_button()
-        self.hover(*ProfileInfoIdentifiersPage.PROFILE_BUTTON)
-        self.find_element(*ProfileInfoIdentifiersPage.PROFILE_BUTTON).click()
-        self.hover(*ProfileInfoIdentifiersPage.GENDER)
-        self.find_element(*ProfileInfoIdentifiersPage.GENDER).click()
-        self.find_element(*ProfileInfoIdentifiersPage.UPDATE_BUTTON).click()
-
-        return CanonizerAccountSettingPage(self.driver)
-
     def verify_when_user_updated_the_personal_information_and_logs_out_and_login_again(self, first, middle, last):
         self.click_account_settings_page_button()
         self.hover(*ProfileInfoIdentifiersPage.FIRST_NAME)

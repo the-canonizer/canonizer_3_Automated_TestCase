@@ -389,13 +389,15 @@ class TestPages(unittest.TestCase):
     def test_create_topic_with_special_chars(self):
         print("\n", str(test_cases('TC_CREATE_NEW_TOPIC_WITH_SPECIAL_CHARS')))
         self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase +
+                                          string.digits, k=7))
         result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button() \
             .create_topic_with_special_chars(
             DEFAULT_NICK_NAME,
-            INVALID_TOPIC_NAME,
+            "Topic&^&#$(# " + add_name,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY).get_url()
-        self.assertIn("create/topic", result)
+        self.assertIn("topic", result)
 
     # TC_CREATE_NEW_WITHOUT_MANDATORY_FIELDS_DATA
     def test_create_topic_without_entering_mandatory_fields(self):
@@ -1030,30 +1032,6 @@ class TestPages(unittest.TestCase):
         result = CanonizerAccountSettingPage(self.driver).verify_the_validation_for_first_name(" ").get_url()
         self.assertIn("canonizer3.canonizer.com/settings", result)
 
-    # TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME
-    def test_update_the_first_name_and_check_if_it_is_updating_same_for_username(self):
-        print("\n" + str(test_cases('TC_UPDATE_THE_FIRST_NAME_AND_CHECK_IF_IT_IS_UPDATING_SAME_FOR_USERNAME')))
-        self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(
-            self.driver).update_the_first_name_and_check_if_it_is_updating_same_for_username(DEFAULT_NAME).get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER
-    def test_verify_the_functionality_of_radio_button_in_selecting_the_gender(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_RADIO_BUTTON_IN_SELECTING_THE_GENDER')))
-        self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(
-            self.driver).verify_the_functionality_of_radio_button_in_selecting_the_gender().get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB
-    def test_verify_the_functionality_of_selecting_the_dob(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_SELECTING_THE_DOB')))
-        self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).verify_the_functionality_of_selecting_the_dob(
-            DEFAULT_USER).get_url()
-        self.assertIn("canonizer3.canonizer.com/settings", result)
-
     # TC_VERIFY_WHEN_USER_UPDATE_THE_PERSONAL_INFORMATION_AND_LOGS_OUT_AND_LOGIN_AGAIN
     def test_verify_when_user_updated_the_personal_information_and_logs_out_and_login_again(self):
         print(
@@ -1077,12 +1055,6 @@ class TestPages(unittest.TestCase):
             DEFAULT_MIDDLE_NAME,
             DEFAULT_LAST_NAME).get_url()
         self.assertIn("https://canonizer3.canonizer.com/", result)
-
-    def test_verify_the_functionality_of_algorithm_drop_down(self):
-        self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(
-            self.driver).verify_the_functionality_of_algorithm_drop_down().get_url()
-        self.assertIn("", result)
 
     # TC_VERIFYING_ACCOUNT_PROFILE
     def test_click_on_account_setting_page(self):
@@ -1173,7 +1145,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerAddNewsPage(self.driver).load_add_news_page(DEFAULT_TOPIC).create_news_with_duplicate_data(
             "Test automated news",
             "https://www.google.com/").get_url()
-        self.assertIn("topic", result)
+        self.assertIn("/topic/704-automated-topic/1-Agreement", result)
 
     # TC_CREATE_NEWS_WITH_TRAILING_SPACES
     def test_create_news_with_trailing_spaces(self):
@@ -1181,22 +1153,8 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         result = CanonizerAddNewsPage(self.driver).load_add_news_page(DEFAULT_TOPIC).create_news_with_trailing_spaces(
             "             News Trailing Spaces",
-            "https://www.google.com/",
-            "").get_url()
-        self.assertIn("topic/173-Software-Testing/1-Agreement", result)
-
-    # TC_LOAD_EDIT_NEWS_PAGE
-    def test_load_edit_news_page(self):
-        self.login_to_canonizer_app()
-        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC).get_url()
-        self.assertIn("/editnews/655-Automated-topic/1", result)
-
-    # TC_CLICK_EDIT_NEWS_CANCEL_BUTTON
-    def test_click_edit_news_cancel_button(self):
-        self.login_to_canonizer_app()
-        print("\n" + str(test_cases('TC_CLICK_EDIT_NEWS_CANCEL_BUTTON')))
-        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC).click_edit_news_cancel_button()
-        self.assertIn("/topic/655-Automated-topic/1-Agreement", result.get_url())
+            "https://www.google.com/").get_url()
+        self.assertIn("/topic/704-automated-topic/1-Agreement", result)
 
         # ----- Log out Test Cases Start -----
     # TC_CLICK_LOGOUT_PAGE_BUTTON

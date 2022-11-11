@@ -173,7 +173,7 @@ class ForgotPasswordIdentifiers(object):
 
 class CreateTopicIdentifiers(object):
     CREATE_NEW_TOPIC = (By.XPATH, '(//span[text()=" Create New Topic"])[1]')
-    LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
+    LOGIN_PAGE = (By.ID, 'login-title')
     TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
     TOPIC_NAME = (By.ID, 'create_new_topic_topic_name')
     NICK_NAME = (By.ID, 'create_new_topic_nick_name')
@@ -193,7 +193,7 @@ class CreateTopicIdentifiers(object):
 
 class CampForumIdentifiers(object):
     VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
-    CAMP_FORUM_BUTTON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/div[1]/div/div/div[2]/button')
+    CAMP_FORUM_BUTTON = (By.ID, 'camp-forum-btn')
     BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
     SEARCH_TOPIC = (By.XPATH, '//input[@placeholder="Search by topic name"]')
     SEARCH_ICON = (By.XPATH, '(//span[@class="ant-input-group-addon"]//button)[2]')
@@ -284,11 +284,11 @@ class AddNewsIdentifiers(object):
     LINK_ASTERISK = (By.XPATH, '(//span[@class="required"])[2]')
     NICKNAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
     NEWS_ADDED = (By.XPATH, '//h4[text()="News added by sania_talentelgia"]')
-    BLANK_LINK_ERROR = (By.CLASS_NAME, "ant-form-item-explain-error")
-    BLANK_DISPLAY_TEXT_ERROR = (By.XPATH, '//div[@class="ant-form-item-explain-error"]')
+    BLANK_LINK_ERROR = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[2]/form/div[1]/div[2]/div[1]/div[2]/div[2]/div')
+    BLANK_DISPLAY_TEXT_ERROR = (By.XPATH, '//div[@role="alert"]')
     TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
     AVAILABLE_FOR_CHILD_CAMP = (By.ID, 'available_for_child')
-    INVALID_LINK = (By.XPATH, '//span[text()="Link is invalid. (Example: https://www.example.com?post=1234)."]')
+    INVALID_LINK = (By.XPATH, '//span[@class="ant-typography ant-typography-danger"]')
     EDIT_NEWS = (By.XPATH, '//div[@class="ant-checkbox-wrapper"]//button[1]')
     EDIT_ICON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/aside/div[3]/div/div[2]/div/ul/li[1]/div/button')
     EDIT_NEWS_TITlE = (By.XPATH, '//div[text()="Edit News"]')

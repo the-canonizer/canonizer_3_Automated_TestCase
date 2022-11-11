@@ -237,7 +237,7 @@ testCases = {
     'TC_CREATE_NEW_TOPIC_WITH_TRAILING_SPACES': [Critical, 'Trailing spaces must be removed '
                                                            'and new topic is created'],
     'TC_CREATE_TOPIC_WITH_DUPLICATE_NAME': [Critical, 'Duplicate topic name must not be created'],
-    'TC_CREATE_NEW_TOPIC_WITH_SPECIAL_CHARS': [Critical, 'Topic must not be created when invalid data is entered'],
+    'TC_CREATE_NEW_TOPIC_WITH_SPECIAL_CHARS': [Critical, 'Topic must be created when special char is entered'],
     'TC_CREATE_NEW_WITHOUT_MANDATORY_FIELDS_DATA': [Critical, 'User must not be able to create a topic '
                                                               'when mandatory fields are blank'],
     'TC_CREATE_NEW_TOPIC_ENTERING_DATA_ONLY_IN_MANDATORY_FIELDS': [Critical, ' User must be able to create a new '

@@ -276,7 +276,7 @@ CREATE_CAMP_LIST_3 = [
 ]
 
 # Create News Configuration Parameters
-DEFAULT_INVALID_LINK = "ww.format"
+DEFAULT_INVALID_LINK = "ww@format"
 
 # History Pages Parameters
 DEFAULT_HISTORY_TOPIC = "Software Testing"
