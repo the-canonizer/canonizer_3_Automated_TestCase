@@ -74,7 +74,12 @@ class CanonizerBrowsePage(Page):
 
     def select_by_value_general_only_my_topics(self):
         self.select_by_value_general()
-        time.sleep(3)
+        try:
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
+                (By.XPATH,
+                 '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')))
+        except TimeoutException:
+            pass
         self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
         try:
@@ -104,7 +109,12 @@ class CanonizerBrowsePage(Page):
 
     def select_by_value_corporations_only_my_topics(self):
         self.select_by_value_corporations()
-        time.sleep(3)
+        try:
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
+                (By.XPATH,
+                 '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')))
+        except TimeoutException:
+            pass
         self.hover(*BrowsePageIdentifiers.ONLY_MY_TOPICS)
         self.find_element(*BrowsePageIdentifiers.ONLY_MY_TOPICS).click()
         try:
@@ -1067,7 +1077,3 @@ class CanonizerBrowsePage(Page):
         except TimeoutException:
             pass
         return CanonizerBrowsePage(self.driver)
-
-
-
-
