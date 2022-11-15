@@ -844,7 +844,6 @@ class TestPages(unittest.TestCase):
         except TimeoutException:
             pass
         namespace = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li[1]/a/span[2]")
-        print(namespace.text)
         namespace = float(namespace.text)
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -858,14 +857,11 @@ class TestPages(unittest.TestCase):
         except TimeoutException:
             pass
         value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div/div/span[2]")
-        print(value.text)
         value = float(value.text)
         if namespace == value:
             result = "Passed"
-            print(result)
         else:
             result = "Failed"
-            print(result)
         self.assertIn("Passed", result)
     def tearDown(self):
         self.driver.close()
