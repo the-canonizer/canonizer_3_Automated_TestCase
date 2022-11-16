@@ -863,6 +863,34 @@ class TestPages(unittest.TestCase):
         else:
             result = "Failed"
         self.assertIn("Passed", result)
+    def test_support_value_new_topic(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        #sleep(3)
+        try:
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/header/div[2]/nav/ul/li[1]')))
+        except TimeoutException:
+            pass
+        CanonizerBrowsePage(self.driver).support_value_new_topic()
+        self.topic_value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div")
+        print(self.topic_value.text)
+        self.topic_value = float(self.topic_value.text)
+        print(self.topic_value)
+        self.camp1_value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div")
+        print(self.camp1_value.text)
+        self.camp1_value = float(self.camp1_value.text)
+        print(self.camp1_value)
+        self.camp2_value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[3]/span[3]/span/div")
+        print(self.camp2_value.text)
+        self.camp2_value = float(self.camp2_value.text)
+        print(self.camp2_value)
+        self.camp_sum = self.camp1_value + self.camp2_value
+        print(self.camp_sum)
+        if self.topic_value == self.camp_sum:
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
     def tearDown(self):
         self.driver.close()
 
