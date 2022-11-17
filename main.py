@@ -863,7 +863,7 @@ class TestPages(unittest.TestCase):
         else:
             result = "Failed"
         self.assertIn("Passed", result)
-        def test_support_value_new_topic(self):
+    def test_support_value_new_topic(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         #sleep(3)
