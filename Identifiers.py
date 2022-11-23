@@ -205,6 +205,7 @@ class HomePageIdentifiers:
 
     BODY = (By.ID, 'mainNav')
     LOGIN = (By.XPATH, '(//span[text()=" Log in"])[1]')
+    #LOGIN = (By.XPATH, '/html/body/div[1]/div/header/div[3]/div[1]/button[1]/span')
     REGISTER = (By.XPATH, '//*[@id="navbarResponsive"]/ul[1]/li[2]/a[3]')
     WHATISCANONIZER = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[2]/a')
     WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
@@ -269,5 +270,11 @@ class UploadFileIdentifiers(object):
     Class to hold the Browse Page Identifiers
     """
     UPLOADFILE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
-    UPLOAD = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
-    UPLOADBUTTON = (By.XPATH, '//*[@id="clickOrDragAreaBtn"]/div')
+    UPLOAD = (By.XPATH, '/html/body/div/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[1]/span/input')
+    UPLOADBUTTON = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')
+    ERROR_FILE_NAME = "  "
+    FIVE_MB_FILE = "/home/akashroshan/PycharmProjects/Test/5mb.jpg"
+    VALID_FILE_NAME = "/home/akashroshan/PycharmProjects/Test/sample.csv"
+    UPLOADED_OPTION = (By.ID, "threeDots")
+    UPLOADED_IMAGE = (By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[2]/div[1]/div/div/div/div[2]")
+    UPLOADED_IMAGE_VIEW = (By.XPATH, '/html/body/div[2]/div/div/ul/li[1]/span/span/span[2]')
