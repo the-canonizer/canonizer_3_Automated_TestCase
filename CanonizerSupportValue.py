@@ -178,19 +178,12 @@ class CanonizerSupportValue(Page):
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-card-head')))
         except TimeoutException:
             pass
-
-
-        #Testing is here
-        #Clicking on Start New Camp
-        print("Clicking on start new camp")
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]").click()
-        print("Clicked on start new camp")
         time.sleep(5)
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-card ant-card-bordered can-card-style createNewTopic_form_card__nUKJV')))
         except TimeoutException:
             pass
-        print("Checked condition")
         self.camp = ("camp_new1" + self.n)
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[2]/div/div/div/div/div[2]/form/div[2]/div[1]/div/div[2]/div[1]/div/input").send_keys(self.camp)
         try:
