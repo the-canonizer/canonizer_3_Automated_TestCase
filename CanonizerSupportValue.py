@@ -36,6 +36,8 @@ class CanonizerSupportValue(Page):
         :return:
             Return the result to the main page.
         """
+        #title = self.find_element(*BrowsePageIdentifiers.TITLE)
+        #print(title)
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
             wait = WebDriverWait(self.driver, 5)
@@ -61,6 +63,7 @@ class CanonizerSupportValue(Page):
         #i = 10
         while self.i >= 0:
             action.key_down(Keys.DOWN).perform()
+            print(self.i)
             self.i = self.i - 1
             #time.sleep(0.4)
 
@@ -68,15 +71,14 @@ class CanonizerSupportValue(Page):
     def support_value_new_topic(self):
         self.n = random.randint(0, 10000)
         self.n = str(self.n)
+        print(self.n)
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll_down()
-        self.find_element(*BrowsePageIdentifiers.SANDBOXTESTING).click()
+        #self.i = 20
+        #self.scroll_down()
+        #self.find_element(*BrowsePageIdentifiers.SANDBOXTESTING).click()
         try:
-            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
-                (By.XPATH,
-                 '/html/body/div[1]/div/div[3]/div/aside/div/div[1]/button/span')))
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/aside/div/div[1]/button/span')))
         except TimeoutException:
             pass
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div[1]/button/span").click()
@@ -89,11 +91,24 @@ class CanonizerSupportValue(Page):
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/div/div[1]/div[2]/div[2]/div[1]/div/input')))
         except TimeoutException:
             pass
+
         self.topic = ("test_new_topic1" + self.n)
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/div/div[1]/div[2]/div[2]/div[1]/div/input").send_keys(self.topic)
-        time.sleep(3)
-        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/button[1]/span").click()
-        time.sleep(10)
+        #Click On Create Topic Button
+
+        try:
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/div[1]/div[1]/div[3]/div[2]/div/div/div/div/span[2]')))
+        except TimeoutException:
+            pass
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/div/div[1]/div[3]/div[2]/div/div/div/div/span[2]").click()
+        self.i = 17
+        self.scroll_down()
+        action = ActionChains(self.driver)
+        action.key_down(Keys.ENTER).perform()
+        #self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[2]/span").click()
+        #self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[2]/form/button[1]/span").click()
+        self.driver.find_element(By.ID, "create-topic-btn").click()                
+        #Topic Created
         # Create Camp
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div/span[2]/span").click()
         time.sleep(3)
