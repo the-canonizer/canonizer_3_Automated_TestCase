@@ -891,6 +891,49 @@ class TestPages(unittest.TestCase):
         else:
             result = "Failed"
         self.assertIn("Passed", result)
+        def test_upload_file_with_user_login(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        sleep(3)
+        CanonizerUploadFilePage(self.driver).upload_file_with_user_login()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
+            result = "Passed"
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
+
+    def test_upload_more_than_5mb_file_with_user_login(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        sleep(3)
+        CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
+            result = "Failed"
+        else:
+            result = "Passed"
+        self.assertIn("Failed", result)
+
+    def test_open_uploaded_file(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        sleep(3)
+        CanonizerUploadFilePage(self.driver).open_uploaded_file()
+        if self.driver.find_element(By.ID, "modalImageId"):
+            result = "Failed"
+        else:
+            result = "Passed"
+        self.assertIn("Failed", result)
+
+    def test_verify_uploaded_image_file_format(self):
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        sleep(3)
+        CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
+            result = "Failed"
+        else:
+            result = "Passed"
+        self.assertIn("Failed", result)
     def tearDown(self):
         self.driver.close()
 
