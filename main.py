@@ -927,13 +927,14 @@ class TestPages(unittest.TestCase):
     def test_verify_uploaded_image_file_format(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        sleep(3)
         CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
-            result = "Failed"
-        else:
+        self.error_message = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
+        print("Main" + self.error_message)
+        if "png" in self.error_message:
             result = "Passed"
-        self.assertIn("Failed", result)
+        else:
+            result = "Failed"
+        self.assertIn("Passed", result)
     def tearDown(self):
         self.driver.close()
 
