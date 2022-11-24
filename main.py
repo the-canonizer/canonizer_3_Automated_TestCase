@@ -938,7 +938,6 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
         CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
         self.error_message = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
-        print("Main" + self.error_message)
         if "png" in self.error_message:
             result = "Passed"
         else:
