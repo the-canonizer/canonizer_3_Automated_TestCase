@@ -891,10 +891,13 @@ class TestPages(unittest.TestCase):
         else:
             result = "Failed"
         self.assertIn("Passed", result)
-        def test_upload_file_with_user_login(self):
+    def test_upload_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        sleep(3)
+        try:
+            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')))
+        except TimeoutException:
+            pass
         CanonizerUploadFilePage(self.driver).upload_file_with_user_login()
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
             result = "Passed"
@@ -905,7 +908,10 @@ class TestPages(unittest.TestCase):
     def test_upload_more_than_5mb_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        sleep(3)
+        try:
+            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')))
+        except TimeoutException:
+            pass
         CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login()
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
             result = "Failed"
@@ -916,7 +922,10 @@ class TestPages(unittest.TestCase):
     def test_open_uploaded_file(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        sleep(3)
+        try:
+            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')))
+        except TimeoutException:
+            pass
         CanonizerUploadFilePage(self.driver).open_uploaded_file()
         if self.driver.find_element(By.ID, "modalImageId"):
             result = "Failed"
