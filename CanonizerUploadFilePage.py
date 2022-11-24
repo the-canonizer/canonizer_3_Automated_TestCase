@@ -116,7 +116,15 @@ class CanonizerUploadFilePage(Page):
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.hover(*UploadFileIdentifiers.UPLOADED_OPTION)
         self.find_element(*UploadFileIdentifiers.UPLOADED_OPTION).click()
+        try:
+            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-dropdown-menu-title-content')))
+        except TimeoutException:
+            pass
         self.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE_VIEW).click()
+        try:
+            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-modal modalStyle')))
+        except TimeoutException:
+            pass                                                                          
         return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_invalid_file_name_format(self, originalfilename):
