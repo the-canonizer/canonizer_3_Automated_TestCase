@@ -89,8 +89,14 @@ class CanonizerUploadFilePage(Page):
         return self.find_element(*UploadFileIdentifiers.SAME_FILE_NAME_ERROR).text
 
     def upload_file_with_size_zero_bytes(self, originalfilename, file_name):
-        self.upload(originalfilename, file_name)
-        return self.find_element(*UploadFileIdentifiers.ERROR_ZERO_FILE_SIZE).text
+        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
+        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
+        #Uploading Zero Byte File
+        zero_byte_filename = "/home/akashroshan/PycharmProjects/Test/zero_byte_file.csv"
+        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(zero_byte_filename)
+        self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        self.driver.find_element(By.ID, "uploadBtn").click()
+        return CanonizerUploadFilePage(self.driver)
 
     def verify_recent_upload_file_name_from_list_of_files(self, originalfilename, file_name):
         self.upload(originalfilename, file_name)
