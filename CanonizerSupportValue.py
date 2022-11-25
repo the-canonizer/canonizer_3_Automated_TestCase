@@ -179,7 +179,7 @@ class CanonizerSupportValue(Page):
         except TimeoutException:
             pass
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]").click()
-        time.sleep(5)
+        #time.sleep(5)
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-card ant-card-bordered can-card-style createNewTopic_form_card__nUKJV')))
         except TimeoutException:
