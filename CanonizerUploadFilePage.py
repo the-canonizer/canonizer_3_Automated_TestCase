@@ -128,5 +128,11 @@ class CanonizerUploadFilePage(Page):
         return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_invalid_file_name_format(self, originalfilename):
-        self.upload(originalfilename)
-        return self.find_element(*UploadFileIdentifiers.SAME_FILE_NAME_ERROR).text
+        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
+        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
+        #Uploading Invalid File Format
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.xxx"
+        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        self.driver.find_element(By.ID, "uploadBtn").click()
+        return CanonizerUploadFilePage(self.driver)
