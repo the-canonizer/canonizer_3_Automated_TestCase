@@ -957,7 +957,21 @@ class TestPages(unittest.TestCase):
             result = "Failed"
         self.assertIn("Passed", result)
         
-    def tearDown(self):
+   
+   def test_upload_file_with_size_zero_bytes(self):
+       self.login_to_canonizer_app()
+       self.driver.maximize_window()
+       CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
+       try:
+           WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')))
+       except TimeoutException:
+           pass
+       if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a"):
+           result = "Passed"
+       else:
+           result = "Failed"
+       self.assertIn("Passed", result)
+   def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
