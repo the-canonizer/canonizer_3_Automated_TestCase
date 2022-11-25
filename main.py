@@ -966,11 +966,12 @@ class TestPages(unittest.TestCase):
            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')))
        except TimeoutException:
            pass
-       if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a"):
+       self.error_message = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
+       if "zero_byte_file.csv" in self.error_message:
            result = "Passed"
        else:
            result = "Failed"
-       self.assertIn("Passed", result)
+      self.assertIn("Passed", result)
    def tearDown(self):
         self.driver.close()
 
