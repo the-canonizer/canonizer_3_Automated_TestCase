@@ -1491,14 +1491,6 @@ class TestPages(unittest.TestCase):
         result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC).verify_submit_camp_update_button()
         self.assertIn("/manage/camp/", result.get_url())
 
-    # TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY
-    def test_verify_edit_and_update_camp_functionality(self):
-        print("\n" + str(test_cases('TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY')))
-        self.login_to_canonizer_app()
-        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
-            .verify_edit_and_update_camp_functionality("newname")
-        self.assertIn("/camp/history/", result.get_url())
-
     # TC_UPDATE_CAMP_WITH_INVALID_URL
     def test_submit_camp_update_with_invalid_url(self):
         self.login_to_canonizer_app()

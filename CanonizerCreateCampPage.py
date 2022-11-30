@@ -230,30 +230,6 @@ class CanonizerEditCampPage(Page):
         else:
             print("Title not found or is not matching")
 
-    def verify_edit_and_update_camp_functionality(self, camp_name):
-        self.verify_submit_camp_update_button()
-        try:
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'campHistory_campStatementCollapseButtons__LVwiX')))
-        except TimeoutException:
-            pass
-            for i in range(0, 20):
-                self.find_element(*CreateCampIdentifiers.EDIT_CAMP_NAME_FIELD).send_keys(Keys.BACKSPACE)
-        self.find_element(*CreateCampIdentifiers.EDIT_CAMP_NAME_FIELD).send_keys(camp_name)
-        self.hover(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON)
-        self.find_element(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON).click()
-        time.sleep(6)
-        camp_history = self.find_element(*CreateCampIdentifiers.CAMP_HISTORY)
-        divs = camp_history.find_elements_by_class_name(
-            "ant-collapse ant-collapse-icon-position-end campHistoryCollapseCards + " " + live")
-        for i in camp_history:
-            r = i.value_of_css_property("border")
-            if r == '1px solid #12c879':
-                return CanonizerEditCampPage(self.driver)
-            else:
-                print("Record not live")
-
     def submit_camp_update_with_invalid_url(self, camp_about_url):
         self.verify_submit_camp_update_button()
         try:

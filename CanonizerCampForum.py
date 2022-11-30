@@ -383,13 +383,7 @@ class CanonizerCampForumPage(Page):
             if success_message == message['Camp_Forum']['UPDATE_POST_SUCCESS_MESSAGE']:
                 return CanonizerCampForumPage(self.driver)
 
-    def delete_reply_to_thread(self):
-        time.sleep(3)
-        self.hover(*CampForumIdentifiers.DELETE_REPLY)
-        self.find_element(*CampForumIdentifiers.DELETE_REPLY).click()
-        time.sleep(3)
-        self.driver.switch_to.alert.accept()
-        return CanonizerCampForumPage(self.driver)
+
 
 
 

@@ -109,7 +109,6 @@ class CanonizerCampStatementPage(Page):
             print("Error not found or is not matching")
 
     def add_camp_statement_page(self, nickname, statement, edit_summary):
-        time.sleep(5)
         self.create_camp_statement(nickname, statement, edit_summary)
         self.hover(*CampStatementIdentifiers.CAMP_STATEMENT_HISTORY)
         page_title = self.find_element(*CampStatementIdentifiers.CAMP_STATEMENT_HISTORY).text
