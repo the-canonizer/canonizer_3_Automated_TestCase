@@ -193,18 +193,24 @@ testCases = {
                                                                        'Supported camp tab'],
     'TC_VERIFY_USER_NAVIGATE_SUPPORT_CAMP_PAGE': [Critical, 'when user click on supported camp tab , user should see '
                                                             'supported camp page'],
-    'TC_VERIFY_REMOVE_SUPPORT_BUTTON': [Critical, 'when user click on direct are delegate support camp , user should '
+    'TC_VERIFY_REMOVE_SUPPORT_BUTTON': [Critical, 'when user click on delegated support camp , user should '
                                                   'see remove support button'],
-    'TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE': [Critical, 'when user click on direct support  camp button , user '
+    'TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE': [Critical, 'when user click on direct support camp button , user '
                                                         'should see topic name and it clickable'],
-    'TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP': [Critical, 'when user should click on '
-                                                                                      'direct supported camp, '
-                                                                                      'user should see topic name '
-                                                                                      'and agreement camp name'],
+    'TC_VERIFY_CURRENT_SUPPORTED_CAMP_LINK': [Critical, 'when user click on delegated support camp , user should '
+                                                        'see supported camp tree on click link'],
+    'TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP': [Critical, 'when user click on topic link '
+                                                                                      'must see topic detail page'],
     'TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE': [Critical, 'when user should click on supported '
                                                                              'camps , user should see search bar, '
                                                                              'user can search topic name in search '
                                                                              'bar'],
+    'TC_VERIFY_TOPIC_LINK_ON_DIRECT_SUPPORTED_TAB': [Critical, 'When user click on direct supported topic link '
+                                                               'it must redirect to the details page'],
+    'TC_VERIFY_SUPPORT_DELEGATED_TO_USER_LINK': [Critical, 'when user click on delegated support tab ,user should see '
+                                                           'user profile of the delegated user on click the link'],
+    'TC_VERIFY_NICK_NAME_LINK_ON_DELEGATED_TAB': [Critical, 'User should redirect to nick name details page on click '
+                                                                             'link'],
     'TC_VERIFY_THE_FACEBOOK_LINK': [Critical, 'when user click on facebook link in home, user should see the page '
                                               'redirect to facebook login page'],
 
@@ -324,7 +330,26 @@ testCases = {
                                                            'see object, live, in-review, old data'],
     'TC_COMPARE_TWO_STATEMENTS': [Critical, 'When user checks 2 check boxes of different statement history, '
                                   'compare button should be enabled'],
-    'TC_LOAD_TOPIC_HISTORY_PAGE': [Critical, 'When user clicks on manage/edit this topic, history page must load']
+    'TC_LOAD_TOPIC_HISTORY_PAGE': [Critical, 'When user clicks on manage/edit this topic, history page must load'],
+    'TC_CREATE_CAMP_WITH_BLANK_CAMP_NAME': [low,
+                                            'On Create New Camp page, When user doesn\'t put Camp Name , user must '
+                                            'see Error Message'],
+    'TC_CREATE_CAMP_WITH_DUPLICATE_CAMP_NAME': [Critical, 'On Create New Camp Page, if user enters duplicate data, '
+                                                          'should see error message'],
+    'TC_CREATE_CAMP_WITHOUT_ENTERING_DATA_IN_MANDATORY_FIELDS': [Critical, 'On Create New Camp page, if user doesn\'t '
+                                                                           'enter data and submit the camp, '
+                                                                           'user must see error messages'],
+    'TC_CREATE_CAMP_WITH_INVALID_CAMP_ABOUT_URL': [Critical, 'User must see error message if enter invalid camp URL'],
+    'TC_CAMP_CANCEL_BUTTON': [Critical, 'On click cancel button, user must see sorted camp tree'],
+    'TC_VERIFY_SUBMITTER_NICK_NAME_ON_CAMP_HISTORY_PAGE': [Critical, ' Submitter nick name must be a clickable '
+                                                           'should redirect to user profile on click'],
+    'TC_VERIFY_SUBMIT_CAMP_UPDATE_BUTTON': [Critical, 'On click submit camp update user must redirect to camp edit page'],
+    'TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY': [Critical, 'User must see submit update btton enabled when '
+                                                     'edit and field and on click must update the same'],
+
+
+
+
 
 
 

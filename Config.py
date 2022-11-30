@@ -202,8 +202,8 @@ DEFAULT_USER_INVALID = "xcvxc"
 # Login Page Configuration Parameters
 DEFAULT_USER = "sania.mohan@talentelgia.in"
 DEFAULT_PASS = "Test@123"
-# DEFAULT_USER = "r_canonizer_user@yopmail.com"
-# DEFAULT_PASS = "Rupali@12345"
+#DEFAULT_USER = "rupali.chavan9860@gmail.com"
+#DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduse22rgmail.com'
 DEFAULT_INVALID_PASSWORD = "invalid_password"
 
@@ -247,32 +247,42 @@ DEFAULT_PARENT_CAMP = ""
 DEFAULT_NOTE = "Automated note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 DUPLICATE_CAMP_NAME = "Levels Of Testing"
-DEFAULT_CAMP_ABOUT_URL = "www.google.com"
+DEFAULT_CAMP_ABOUT_URL = "https://canonizer3.canonizer.com/"
+INVALID_CAMP_ABOUT_URL = "google@com"
+add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+DEFAULT_CAMP_NAME = "Camp" + add_name,
 CREATE_CAMP_LIST_1 = [
     DEFAULT_NICK_NAME,
     DEFAULT_PARENT_CAMP,
-    "CAMP234",
+    DEFAULT_CAMP_NAME,
     "Keywords",
     "Test summary",
     DEFAULT_CAMP_ABOUT_URL,
-    ""
+
 ]
 CREATE_CAMP_LIST_2 = [
+    DEFAULT_NICK_NAME,
+    DEFAULT_PARENT_CAMP,
+    "",
+    "Keywords",
+    "Test summary",
+    DEFAULT_CAMP_ABOUT_URL,
+]
+CREATE_CAMP_LIST_3 = [
     "",
     "",
     DUPLICATE_CAMP_NAME,
     "",
     "",
-    "",
     ""
 ]
-CREATE_CAMP_LIST_3 = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    ""
+CREATE_CAMP_LIST_4 = [
+    DEFAULT_NICK_NAME,
+    DEFAULT_PARENT_CAMP,
+    DEFAULT_CAMP_NAME,
+    "Keywords",
+    "Test summary",
+    INVALID_CAMP_ABOUT_URL,
 ]
 
 # Create News Configuration Parameters
@@ -280,6 +290,9 @@ DEFAULT_INVALID_LINK = "ww@format"
 
 # History Pages Parameters
 DEFAULT_HISTORY_TOPIC = "Software Testing"
+
+# Supported Camp Parameters
+DEFAULT_SUPPORTED_TOPIC_NAME = "Supported topic automation"
 
 
 

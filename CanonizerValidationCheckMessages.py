@@ -76,7 +76,9 @@ message = {
     },
     'Supported_camps': {
         'REMOVE_BUTTON_TITLE': 'Remove Support',
-        'SUPPORTED_CAMP_TITLE': 'Note : To change support order of camp, drag & drop the camp box on your choice position.'
+        'SUPPORTED_CAMP_TITLE': 'Note : To change support order of camp, drag & drop the camp box on your choice position.',
+        'USER_PROFILE_TITLE': 'User Profile',
+        'SORTED_TREE_TITLE': 'Canonizer Sorted Camp Tree',
 
     },
     'Nick_name_tab': {
@@ -96,13 +98,18 @@ message = {
         'EMPTY_PHONE_VALIDATION': 'Please Enter Phone Number!',
         'EMPTY_MOBILE_CARRIER_VALIDATION': 'Please Select Mobile Carrier!',
 
-
-
-
     },
 
     'Create_Camp': {
         'CREATE_CAMP_TITLE': 'Create New Camp',
+        'TOPIC_PAGE_TITLE': 'Camp created successfully.',
+        'BLANK_CAMP_NAME_ERROR': 'Please enter camp name!',
+        'DUPLICATE_CAMP_NAME_ERROR': 'The camp name has already been taken.',
+        'INVALID_CAMP_ABOUT_URL_ERROR': 'The camp about url format is invalid. (Example: https://www.example.com?post=1234)',
+        'CAMP_HISTORY_TITLE': 'Camp History',
+        'CAMP_UPDATE_PAGE_TITLE': 'Camp Update',
+        'PREVIEW_TITLE': 'Camp Preview',
+        'CAMP_HISTORY_COMPARISON': 'Camp History Comparison',
 
     },
     'Add_News': {
@@ -111,7 +118,7 @@ message = {
         'BLANK_DISPLAY_TEXT_ERROR': 'Display text is required',
         'BLANK_LINK_ERROR': 'Link is required.',
         'CANCEL_NEWS_TITLE': 'Canonizer Sorted Camp Tree',
-        'INVALID_LINK_ERROR': 'Link is invalid. (Example: https://www.example.com?post=1234).'
+        'INVALID_LINK_ERROR': 'Link is invalid. (Example: https://www.example.com?post=1234).',
     },
     'Edit_News': {
         'EDIT_NEWS_TITLE': 'Edit News',

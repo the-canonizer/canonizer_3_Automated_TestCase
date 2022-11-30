@@ -67,6 +67,11 @@ class CanonizerCampStatementPage(Page):
 
     def load_add_camp_statement_page(self):
         # Click on Create New Camp Statement Button
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-btn ant-btn-default btn-green')))
+        except TimeoutException:
+            pass
         self.hover(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON)
         self.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON).click()
         self.hover(*CampStatementIdentifiers.ADD_STATEMENT_TITLE)
@@ -104,6 +109,7 @@ class CanonizerCampStatementPage(Page):
             print("Error not found or is not matching")
 
     def add_camp_statement_page(self, nickname, statement, edit_summary):
+        time.sleep(5)
         self.create_camp_statement(nickname, statement, edit_summary)
         self.hover(*CampStatementIdentifiers.CAMP_STATEMENT_HISTORY)
         page_title = self.find_element(*CampStatementIdentifiers.CAMP_STATEMENT_HISTORY).text

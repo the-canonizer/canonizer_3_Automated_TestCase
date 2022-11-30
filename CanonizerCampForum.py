@@ -38,7 +38,7 @@ class CanonizerCampForumPage(Page):
         try:
             WebDriverWait(self.driver, 8).until(
                 EC.visibility_of_element_located(
-                    (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/div[1]/div/div/div[2]/button')))
+                    (By.ID, 'camp-forum-btn')))
         except TimeoutException:
             pass
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()

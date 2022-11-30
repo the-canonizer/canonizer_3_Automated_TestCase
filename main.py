@@ -5,6 +5,7 @@ from CanonizerAddNewsPage import CanonizerEditNewsPage
 from CanonizerCampStatementPage import CanonizerCampStatementPage
 from CanonizerCampStatementPage import CanonizerEditCampStatementPage
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
+from CanonizerCreateCampPage import CanonizerCreateCampPage, CanonizerEditCampPage
 from CanonizerLogoutPage import CanonizerLogoutPage
 from CanonizerHomePage import CanonizerTermsAndPrivacyPolicy, CanonizerHomePage
 from CanonizerManageNickNameTab import CanonizerManageNickNameTab
@@ -739,14 +740,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerSupportCampsTab(
             self.driver).verify_user_is_navigating_to_supported_camp_page_when_clicks_on_supported_camps_tab() \
             .get_url()
-        self.assertIn("", result)
-
-    # TC_VERIFY_DIRECT_SUPPORTED_CAMPS
-    def test_verify_direct_supported_camps(self):
-        print("\n" + str(test_cases('TC_VERIFY_DIRECT_SUPPORTED_CAMPS')))
-        self.login_to_canonizer_app()
-        url = CanonizerSupportCampsTab(self.driver).verify_direct_supported_camps().get_url()
-        self.assertIn("/settings?tab=supported_camps", url)
+        self.assertIn("/settings?tab=supported_camps", result)
 
     # TC_VERIFY_THE_SEARCH_BAR_IS_NEXT_TO_DELEGATED_SUPPORT_CAMP_TAB
     def test_verify_the_search_bar_is_present_next_the_delegate_support_camp_tab(self):
@@ -764,13 +758,6 @@ class TestPages(unittest.TestCase):
         result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_direct_support_camp().get_url()
         self.assertIn("/settings?tab=supported_camps", result)
 
-    #  TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP
-    def test_verify_the_functionality_of_delegate_support_camp_tab(self):
-        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP')))
-        self.login_to_canonizer_app()
-        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_delegate_support_camp_tab().get_url()
-        self.assertIn("/settings?tab=supported_camps", result)
-
     # TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE
     def test_verify_the_search_functionality_in_supported_camps_page(self):
         print("\n" + str(test_cases('TC_VERIFY_THE_SEARCH_FUNCTIONALITY_IN_SUPPORTED_CAMPS_PAGE')))
@@ -779,12 +766,12 @@ class TestPages(unittest.TestCase):
             DEFAULT_TOPIC_NAME).get_url()
         self.assertIn("/settings?tab=supported_camps", result)
 
-    # TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP
-    def test_verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab(self):
+    # TC_VERIFY_TOPIC_NAME_LINK_NAME_IN DIRECT_SUPPORT_CAMP
+    def test_verify_topic_name_link_in_direct_support_camp_tab(self):
         print("\n" + str(test_cases('TC_VERIFY_TOPIC_NAME_AND_AGREEMENT_CAMP_NAME_IN DIRECT_SUPPORT_CAMP')))
         self.login_to_canonizer_app()
         result = CanonizerSupportCampsTab \
-            (self.driver).verify_topic_name_and_agreement_camp_name_is_present_in_direct_support_camp_tab().get_url()
+            (self.driver).verify_topic_name_link_in_direct_support_camp_tab().get_url()
         self.assertIn("/settings?tab=supported_camps", result)
 
     # TC_TOPIC_NAME_AND_CAMP_NAME_CLICKABLE
@@ -800,6 +787,48 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         result = CanonizerSupportCampsTab(self.driver).verify_remove_support_button_functionality().get_url()
         self.assertIn("", result)
+
+    #  TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP
+    def test_verify_the_functionality_of_delegate_support_camp_tab(self):
+        print("\n" + str(test_cases('TC_VERIFY_THE_FUNCTIONALITY_OF_DELEGATE_SUPPORT_CAMP')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_the_functionality_of_delegate_support_camp_tab().get_url()
+        self.assertIn("/settings?tab=supported_camps", result)
+
+    # TC_VERIFY_NICK_NAME_LINK_ON_DELEGATED_TAB
+    def test_verify_nick_name_link_on_delegated_tab(self):
+        print("\n" + str(test_cases('TC_VERIFY_NICK_NAME_LINK_ON_DELEGATED_TAB')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_nick_name_link_on_delegated_tab().get_url()
+        self.assertIn("/user/supports/", result)
+
+    # TC_VERIFY_SUPPORT_DELEGATED_TO_USER_LINK
+    def test_verify_support_delegated_to_user_link(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUPPORT_DELEGATED_TO_USER_LINK')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_support_delegated_to_user_link().get_url()
+        self.assertIn("/user/supports/", result)
+
+    # TC_VERIFY_CURRENT_SUPPORTED_CAMP_LINK
+    def test_verify_current_supported_camp_link(self):
+        print("\n" + str(test_cases('TC_VERIFY_CURRENT_SUPPORTED_CAMP_LINK')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_current_supported_camp_link().get_url()
+        self.assertIn("/topic/", result)
+
+    # TC_VERIFY_TOPIC_LINK_ON_DIRECT_SUPPORTED_TAB
+    def test_verify_topic_link_on_direct_supported_tab(self):
+        print("\n" + str(test_cases('TC_VERIFY_TOPIC_LINK_ON_DIRECT_SUPPORTED_TAB')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_topic_link_on_direct_supported_tab().get_url()
+        self.assertIn("/topic/", result)
+
+    # TC_VERIFY_AGREEMENT_SUPPORT_LINK_ON_DIRECT_SUPPORTED_TAB
+    def test_verify_agreement_support_link_on_direct_supported_tab(self):
+        print("\n" + str(test_cases('TC_VERIFY_TOPIC_LINK_ON_DIRECT_SUPPORTED_TAB')))
+        self.login_to_canonizer_app()
+        result = CanonizerSupportCampsTab(self.driver).verify_agreement_support_link_on_direct_supported_tab().get_url()
+        self.assertIn("/1-Agreement", result)
 
     # MANAGE NICK NAME TAB:-
     # TC VERIFY_WHEN_USER_CLICK_ON_NICK_NAME_TAB
@@ -1380,14 +1409,156 @@ class TestPages(unittest.TestCase):
         result = CanonizerCampHistoryPage(self.driver).load_topic_page(DEFAULT_HISTORY_TOPIC).load_topic_history_page()
         self.assertIn("/topic/history/173-Software-Testing", result)
 
+    # TC_LOAD_CREATE_CAMP_PAGE
+    def test_load_create_camp_page(self):
+        print("\n" + str(test_cases('TC_LOAD_CREATE_CAMP_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC)
+        self.assertIn("/camp/create/", result.get_url())
 
+    # TC_NEW_CAMP_FIELDS_ARE_MARKED_WITH_ASTERISK
+    def test_new_camp_mandatory_fields_are_marked_with_asterisk(self):
+        print("\n" + str(test_cases('TC_NEW_CAMP_FIELDS_ARE_MARKED_WITH_ASTERISK')))
+        self.login_to_canonizer_app()
+        self.assertTrue(CanonizerCreateCampPage(
+            self.driver).load_create_camp_page(DEFAULT_TOPIC).new_camp_mandatory_fields_are_marked_with_asterisk())
 
+    # TC_CREATE_CAMP_WITH_VALID_DATA
+    def test_create_camp_with_valid_data(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_VALID_DATA')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC)\
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        self.assertIn("/topic/", result.get_url())
 
+    # TC_CREATE_CAMP_WITH_BLANK_CAMP_NAME
+    def test_create_camp_with_blank_camp_name(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_BLANK_CAMP_NAME')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_blank_camp_name(CREATE_CAMP_LIST_2)
+        self.assertIn("/camp/create/", result.get_url())
 
+    # TC_CREATE_CAMP_WITH_DUPLICATE_CAMP_NAME
+    def test_create_camp_with_invalid_data(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_DUPLICATE_CAMP_NAME')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_duplicate_camp_name(CREATE_CAMP_LIST_3)
+        self.assertIn("/camp/create/", result.get_url())
 
+    # TC_CREATE_CAMP_WITHOUT_ENTERING_DATA_IN_MANDATORY_FIELDS
+    def test_create_camp_without_entering_data_in_mandatory_fields(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITHOUT_ENTERING_DATA_IN_MANDATORY_FIELDS')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_blank_camp_name(CREATE_CAMP_LIST_2)
+        self.assertIn("/camp/create/", result.get_url())
 
+    # TC_CREATE_CAMP_WITH_INVALID_CAMP_ABOUT_URL
+    def test_create_camp_with_invalid_camp_about_url(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_INVALID_CAMP_ABOUT_URL')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_invalid_camp_about_url(CREATE_CAMP_LIST_4)
+        self.assertIn("/camp/create/", result.get_url())
 
+    # TC_CAMP_CANCEL_BUTTON
+    def test_camp_cancel_button(self):
+        print("\n" + str(test_cases('TC_CAMP_CANCEL_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC).camp_cancel_button()
+        self.assertIn("/topic/", result.get_url())
 
+    # TC_LOAD_CAMP_MANAGE_EDIT_PAGE
+    def test_load_camp_manage_edit_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC).load_camp_manage_edit_page()
+        self.assertIn("/camp/history/", result.get_url())
+
+    # TC_VERIFY_SUBMITTER_NICK_NAME_ON_CAMP_HISTORY_PAGE
+    def test_verify_submitter_nick_name_on_camp_history_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUBMITTER_NICK_NAME_ON_CAMP_HISTORY_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .verify_submitter_nick_name_on_camp_history_page()
+        self.assertIn("/user/supports/", result.get_url())
+
+    # TC_VERIFY_SUBMIT_CAMP_UPDATE_BUTTON
+    def test_verify_submit_camp_update_button(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUBMIT_CAMP_UPDATE_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC).verify_submit_camp_update_button()
+        self.assertIn("/manage/camp/", result.get_url())
+
+    # TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY
+    def test_verify_edit_and_update_camp_functionality(self):
+        print("\n" + str(test_cases('TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .verify_edit_and_update_camp_functionality("newname")
+        self.assertIn("/camp/history/", result.get_url())
+
+    # TC_UPDATE_CAMP_WITH_INVALID_URL
+    def test_submit_camp_update_with_invalid_url(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .submit_camp_update_with_invalid_url(INVALID_CAMP_ABOUT_URL)
+        self.assertIn("/manage/camp/", result.get_url())
+
+    # TC_UPDATE_CAMP_WITH_DUPLICATE_CAMP_NAME
+    def test_update_camp_with_duplicate_camp_name(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .update_camp_with_duplicate_camp_name(DUPLICATE_CAMP_NAME)
+        self.assertIn("/manage/camp/", result.get_url())
+
+    # TC_VERIFY_CANCEL_BUTTON_FUNCTIONALITY_ON_CAMP_UPDATE_PAGE
+    def test_verify_cancel_button_functionality_on_camp_update_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .verify_cancel_button_functionality_on_camp_update_page()
+        self.assertIn("/camp/history/", result.get_url())
+
+    # TC_VERIFY_PREVIEW_BUTTON_FUNCTIONALITY_ON_CAMP_UPDATE_PAGE
+    def test_verify_preview_button_functionality_on_camp_update_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC) \
+            .verify_preview_button_functionality_on_camp_update_page()
+        self.assertIn("/manage/camp/", result.get_url())
+
+    # TC_VERIFY_FIELDS_ON_PREVIEW_MODAL
+    def test_verify_camp_name_on_preview_modal(self):
+        self.login_to_canonizer_app()
+        CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC).verify_fields_on_preview_modal()
+
+    # TC_VERIFY_CANCEL_BUTTON_FUNCTIONALITY_ON_PREVIEW_MODAL
+    def test_verify_cancel_button_on_preview_modal(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC) \
+            .verify_cancel_button_on_preview_modal()
+        self.assertIn("/manage/camp/", result.get_url())
+
+    # TC_VERIFY_SUBMITTER_NICK_NAME_ON_PREVIEW_MODAL
+    def test_submitter_nick_name_on_preview_modal(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC) \
+            .verify_submitter_nick_name_on_preview_modal()
+        self.assertIn("/user/supports/", result.get_url())
+
+    # TC_VERIFY_COMPARE_CAMPS_BUTTON_FUNCTIONALITY
+    def test_verify_compare_camps_button_functionality(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .verify_compare_camps_button_functionality()
+        self.assertIn("/statement/compare/", result.get_url())
+
+    # TC_VERIFY_CAMPS_NAME_ON_CAMP_HISTORY_COMPARISON_PAGE
+    def test_verify_camps_name_on_camp_history_comparison_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC) \
+            .verify_camps_name_on_camp_history_comparison_page().get_url()
+        self.assertIn("/statement/compare/", result)
 
 
 def tearDown(self):
