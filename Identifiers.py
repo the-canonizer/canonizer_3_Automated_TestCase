@@ -179,6 +179,7 @@ class ForgotPasswordIdentifiers(object):
     CROSS_ICON_FORGOT_MODAL = (By.XPATH, '//*[@id="forgotPassword"]/button')
     CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="forgot-modal-close-btn"]/span/svg')
     CHANGE_PASSWORD_TITLE = (By.XPATH, '//h2[text()="Create new password"]')
+    BLANK_EMAIL_ERROR = (By.XPATH, '//div[text()="Please input your E-mail!"]')
 
 
 class CreateTopicIdentifiers(object):
@@ -200,6 +201,33 @@ class CreateTopicIdentifiers(object):
     TOPIC_NAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[2]')
     NAMESPACE_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
 
+
+class UpdateTopicIdentifiers(object):
+    MANAGE_EDIT_TOPIC_BUTTON = (By.XPATH, '(//button[contains(@class,"ant-btn ant-btn-default")]//a)[2]')
+    TOPIC_HISTORY_TITLE = (By.XPATH, '//h4[text()="Topic History"]')
+    TOPIC_NAME_ON_CURRENT_TOPIC_RECORD = (By.XPATH, '(//div[@class="ant-descriptions-item-container"]//span)[2]')
+    TOPIC_NAME_ON_HISTORY_PAGE = (By.XPATH, '//div[contains(@class,"ant-typography mb-0")]//a[1]')
+    SUBMITTER_NICK_NAME_LINK = (By.XPATH, '//h5[@class="ant-typography"]//a[1]')
+    NICK_NAME_ON_PROFILE = (By.XPATH, '//span[@class="UserProfile_Bluecolor__El2lJ"]//b[1]')
+    SUBMIT_UPDATE = (By.XPATH, '//div[@class="campHistory_campStatementCollapseButtons__LVwiX"]//button[1]')
+    TOPIC_UPDATE_TITLE = (By.XPATH, '//div[text()="Topic Update"]')
+    UPDATE_TOPIC_NAME = (By.ID, 'topic_name')
+    SUBMIT_UPDATE_BUTTON = (By.XPATH, '//div[@class="ant-form-item-control-input-content"]//button[1]')
+    DUPLICATE_TOPIC_NAME_ERROR = (By.XPATH, '/html/body/div[2]/div/div/div/div')
+    CANCEL_BUTTON = (By.XPATH,'(//div[@class="ant-form-item-control-input-content"]//button)[2]')
+    PREVIEW_BUTTON = (By.XPATH, '(//div[@class="ant-form-item-control-input-content"]//button)[3]')
+    TOPIC_PREVIEW_TITLE = (By.XPATH,'//div[text()="Topic Preview"]')
+    SUBMITTER_NICK_NAME_LINK_ON_PREVIEW_MODAL = (By.XPATH, '//span[@class="ant-descriptions-item-content"]//a[1]')
+    CANCEL_PREVIEW_BUTTON = (By.XPATH, '//div[@class="ant-modal-footer"]//button[1]')
+    COMPARE_CHECKBOX1 = (By.XPATH, '//span[@class="ant-checkbox"]/following-sibling::span')
+    COMPARE_CHECKBOX2 = (By.XPATH, '(//span[@class="ant-checkbox"]/following-sibling::span)[2]')
+    COMPARE_TOPIC_BUTTON = (By.ID, 'compare-topic')
+    TOPIC_HISTORY_COMPARISON_TITLE = (By.XPATH, '//h4[text()="Topic "]')
+    AGREEMENT_LINK = (By.XPATH, '//div[@class="topicDetails_breadcrumbLinks__7BG2D"]//a[1]')
+    CREATE_TOPIC = (By.ID, 'create-topic-btn')
+    CREATE_CAMP = (By.ID, 'create-camp-btn')
+    BACK_ARROW_ICON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div[3]/div[1]/div/button')
+    VIEW_THIS_VERSION_BUTTON = (By.XPATH, '//button[contains(@class,"ant-btn ant-btn-primary")]//a')
 
 class CampForumIdentifiers(object):
     VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
@@ -318,7 +346,6 @@ class CreateCampIdentifiers(object):
     CAMP_NAME2 = (By.XPATH, '(//div[@class="ant-collapse-content-box"]//span)[2]')
     COMPARE_CAMP1 = (By.XPATH, '//ins[@class="diffmod"]')
     COMPARE_CAMP2 = (By.XPATH, '(//ins[@class="diffmod"])[2]')
-
 
 class AddNewsIdentifiers(object):
     ADD_NEWS_LINK = (By.XPATH, '//div[@class="ant-checkbox-wrapper"]//a[1]')

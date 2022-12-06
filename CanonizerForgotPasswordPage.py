@@ -64,7 +64,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_submit_button()
         self.hover(*ForgotPasswordIdentifiers.INVALID_EMAIL)
         error = self.find_element(*ForgotPasswordIdentifiers.INVALID_EMAIL).text
-        if error == message['Forgot_Password']['INVALID_EMAIL_ERROR']:
+        if error == message['Forgot_Password']['BLANK_EMAIL_ERROR']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Error not found or not matching")

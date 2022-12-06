@@ -259,7 +259,7 @@ class CanonizerEditCampPage(Page):
                     (By.CLASS_NAME, 'campHistory_campStatementCollapseButtons__LVwiX')))
         except TimeoutException:
             pass
-            for i in range(0, 20):
+            for i in range(0, 30):
                 self.find_element(*CreateCampIdentifiers.EDIT_CAMP_NAME_FIELD).send_keys(Keys.BACKSPACE)
 
         self.find_element(*CreateCampIdentifiers.EDIT_CAMP_NAME_FIELD).send_keys(duplicate_camp_name)

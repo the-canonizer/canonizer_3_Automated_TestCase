@@ -5,7 +5,7 @@ from CanonizerAddNewsPage import CanonizerEditNewsPage
 from CanonizerCampStatementPage import CanonizerCampStatementPage
 from CanonizerCampStatementPage import CanonizerEditCampStatementPage
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
-from CanonizerCreateCampPage import CanonizerCreateCampPage, CanonizerEditCampPage
+from CanonizerCreateUpdateCampPage import CanonizerCreateCampPage, CanonizerEditCampPage
 from CanonizerLogoutPage import CanonizerLogoutPage
 from CanonizerHomePage import CanonizerTermsAndPrivacyPolicy, CanonizerHomePage
 from CanonizerManageNickNameTab import CanonizerManageNickNameTab
@@ -13,11 +13,10 @@ from CanonizerProfileInfoTab import CanonizerAccountSettingPage
 from CanonizerRegistrationPage import CanonizerRegisterPage
 from CanonizerCampForum import CanonizerCampForumPage
 from selenium.common.exceptions import TimeoutException
-from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
+from CanonizerCreateUpdateTopicPage import CanonizerCreateNewTopic, CanonizerUpdateTopicPage
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerForgotPasswordPage import *
 from CanonizerSupportedCampsTab import CanonizerSupportCampsTab
-from CanonizerCampHistoryPage import CanonizerCampHistoryPage
 from CanonizerTestCases import test_cases
 from Config import *
 from selenium import webdriver
@@ -442,6 +441,161 @@ class TestPages(unittest.TestCase):
             self.driver).click_create_new_topic_page_button().topic_page_mandatory_fields_are_marked_with_asterisk())
 
     # ----- CREATE TOPIC Test Cases end -----
+
+    # ----- UPDATE TOPIC Test Cases Start -----
+
+    # TC_LOAD_TOPIC_HISTORY_PAGE
+    def test_load_topic_history_page(self):
+        print("\n" + str(test_cases('TC_LOAD_TOPIC_HISTORY_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC)
+        self.assertIn("/topic/history/", result.get_url())
+
+    # TC_VERIFY_TOPIC_NAME_ON_TOPIC_HISTORY_PAGE
+    def test_verify_topic_name_on_topic_history_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_TOPIC_NAME_ON_TOPIC_HISTORY_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).verify_topic_name_on_topic_history_page(DEFAULT_TOPIC)
+        self.assertIn("/topic/history/", result.get_url())
+
+    # TC_VERIFY_SUBMITTER_NICK_NAME_LINK_ON_USER_PROFILE
+    def test_verify_submitter_nick_name_link_on_user_profile(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUBMITTER_NICK_NAME_LINK_ON_USER_PROFILE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC)\
+            .verify_submitter_nick_name_link_on_user_profile()
+        self.assertIn("/user/supports/", result.get_url())
+
+    # TC_VERIFY_SUBMIT_TOPIC_UPDATE_BUTTON
+    def test_verify_submit_topic_update_button(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUBMIT_TOPIC_UPDATE_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC)\
+            .verify_submit_topic_update_button()
+        self.assertIn("manage/topic/", result.get_url())
+
+    # TC_UPDATE_TOPIC_WITH_DUPLICATE_NAME
+    def test_update_topic_with_duplicate_name(self):
+        print("\n" + str(test_cases('TC_UPDATE_TOPIC_WITH_DUPLICATE_NAME')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .update_topic_with_duplicate_name(DUPLICATE_TOPIC_NAME)
+        self.assertIn("manage/topic/", result.get_url())
+
+    # TC_VERIFY_CANCEL_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE
+    def test_verify_cancel_button_functionality_on_topic_update_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_CANCEL_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_cancel_button_functionality_on_topic_update_page()
+        self.assertIn("/topic/history/", result.get_url())
+
+    # TC_VERIFY_PREVIEW_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE
+    def test_verify_preview_button_functionality_on_topic_update_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_PREVIEW_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE')))
+        self.login_to_canonizer_app()
+        CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_preview_button_functionality_on_topic_update_page()
+
+    # TC_VERIFY_SUBMITTER_NICK_NAME_ON_PREVIEW_MODAL
+    def test_verify_submitter_nick_name_on_preview_modal(self):
+        print("\n" + str(test_cases('TC_VERIFY_SUBMITTER_NICK_NAME_ON_PREVIEW_MODAL')))
+        self.login_to_canonizer_app()
+        CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_submitter_nick_name_on_preview_modal()
+
+    # TC_VERIFY_CANCEL_BUTTON_ON_PREVIEW_MODAL
+    def test_verify_cancel_button_on_preview_modal(self):
+        print("\n" + str(test_cases('TC_VERIFY_CANCEL_BUTTON_ON_PREVIEW_MODAL')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_cancel_button_on_preview_modal()
+        self.assertIn("/manage/topic/", result.get_url())
+
+    # TC_UPDATE_TOPIC_NAME_AND_VERIFY_SUBMIT_UPDATE_BUTTON
+    def test_update_topic_name_and_verify_submit_update_button(self):
+        print("\n" + str(test_cases('TC_UPDATE_TOPIC_NAME_AND_VERIFY_SUBMIT_UPDATE_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .update_topic_name_and_verify_submit_update_button(DEFAULT_UPDATE_TOPIC_NAME)
+        self.assertIn("topic/history/", result.get_url())
+
+    # TC_VERIFY_COMPARE_TOPICS_BUTTON_FUNCTIONALITY
+    def test_verify_compare_topics_button_functionality(self):
+        print("\n" + str(test_cases('TC_VERIFY_COMPARE_TOPICS_BUTTON_FUNCTIONALITY')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_compare_topics_button_functionality()
+        self.assertIn("/statement/compare/", result.get_url())
+
+    # TC_VERIFY_AGREEMENT_LINK_ON_TOPIC_COMPARISON_PAGE
+    def test_verify_agreement_link_on_topic_comparison_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_AGREEMENT_LINK_ON_TOPIC_COMPARISON_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_agreement_link_on_topic_comparison_page()
+        self.assertIn("/topic/", result.get_url())
+
+    # TC_VERIFY_CREATE_TOPIC_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE
+    def test_verify_create_topic_button_functionality_on_topic_comparison_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_CREATE_TOPIC_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC)\
+            .verify_create_topic_button_functionality_on_topic_comparison_page()
+        self.assertIn("/create/topic", result.get_url())
+
+    # TC_VERIFY_CREATE_CAMP_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE
+    def test_verify_create_camp_button_functionality_on_topic_comparison_page(self):
+        print("\n" + str(test_cases('TC_VERIFY_CREATE_CAMP_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE')))
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_create_camp_button_functionality_on_topic_comparison_page()
+        self.assertIn("/camp/create/", result.get_url())
+
+    # TC_VERIFY_BACK_ARROW_ICON_ON_TOPIC_COMPARISON_PAGE
+    def test_verify_back_arrow_icon_on_topic_comparison_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_back_arrow_icon_on_topic_comparison_page()
+        self.assertIn("/topic/history/", result.get_url())
+
+    # TC_VERIFY_VIEW_THIS_VERSION_BUTTON_FUNCTIONALITY
+    def test_verify_view_this_version_button_functionality(self):
+        self.login_to_canonizer_app()
+        result = CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC) \
+            .verify_view_this_version_button_functionality()
+        self.assertIn("/topic/", result.get_url())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # ----- CAMP FORUM Test Cases Start -----
     # TC_CLICK_CAMP_FORUM_BUTTON
     def test_load_camp_forum_page(self):
@@ -1402,13 +1556,6 @@ class TestPages(unittest.TestCase):
             .compare_two_statements()
         self.assertIn("/statement/compare/610-Automated-Topic/", result)
 
-    # TC_LOAD_TOPIC_HISTORY_PAGE
-    def test_load_topic_history_page(self):
-        print("\n", str(test_cases('TC_LOAD_TOPIC_HISTORY_PAGE')))
-        self.login_to_canonizer_app()
-        result = CanonizerCampHistoryPage(self.driver).load_topic_page(DEFAULT_HISTORY_TOPIC).load_topic_history_page()
-        self.assertIn("/topic/history/173-Software-Testing", result)
-
     # TC_LOAD_CREATE_CAMP_PAGE
     def test_load_create_camp_page(self):
         print("\n" + str(test_cases('TC_LOAD_CREATE_CAMP_PAGE')))
@@ -1551,6 +1698,8 @@ class TestPages(unittest.TestCase):
         result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC) \
             .verify_camps_name_on_camp_history_comparison_page().get_url()
         self.assertIn("/statement/compare/", result)
+
+
 
 
 def tearDown(self):

@@ -5,8 +5,10 @@ message = {
         'PASSWORD_VERIFY_TITLE': 'Create password verification code',
         'EMPTY_OTP_ERROR': 'Please input your OTP!',
         'INVALID_OTP_ERROR': 'OTP should be min/max 6 characters long!',
-        'LOGIN_PAGE_TITLE': 'Log in'
-    },
+        'LOGIN_PAGE_TITLE': 'Log in',
+        'BLANK_EMAIL_ERROR': 'Please input your E-mail!',
+
+},
     'Create_Topic': {
         'NEW_TOPIC_PAGE_TITLE': 'Create New Topic',
         'LOGIN_TITLE': 'Login To Canonizer',
@@ -15,6 +17,13 @@ message = {
         'DUPLICATE_TOPIC_ERROR': 'The topic name has already been taken.',
         'INVALID_TOPIC_ERROR': 'Topic name can only contain space and alphanumeric characters.',
         'TOPIC_LABEL': 'Select Namespace'
+    },
+    'Update_Topic': {
+        'TOPIC_HISTORY_TITLE': 'Topic History',
+        'TOPIC_UPDATE_TITLE': 'Topic Update',
+        'DUPLICATE_TOPIC_NAME_ERROR': 'Topic name has already been taken.',
+        'TOPIC_PREVIEW_TITLE': 'Topic Preview',
+        'TOPIC_HISTORY_COMPARISON_TITLE': 'Topic History Comparison',
 
     },
     'Camp_Forum': {
@@ -32,7 +41,6 @@ message = {
     'Register_Page': {
         'FIRST_NAME_ERROR': 'Please input your first name!',
         'LAST_NAME_ERROR': 'Please input your last name!',
-        'BLANK_EMAIL_ERROR': 'Please input your E-mail!',
         'BLANK_PASSWORD_ERROR': 'Please input your password!',
         'ERROR_FIRST_NAME': 'Please input your first name!',
         'INVALID_PASSWORD_ERR0R': 'Password must contain small, capital letter, number and special character like '

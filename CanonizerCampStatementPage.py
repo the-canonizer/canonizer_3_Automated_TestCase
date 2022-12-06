@@ -13,7 +13,6 @@ from CanonizerValidationCheckMessages import message
 class CanonizerCampStatementPage(Page):
 
     def load_new_topic_page(self):
-
             try:
                 WebDriverWait(self.driver, 5).until(
                     EC.visibility_of_element_located((By.CLASS_NAME, 'ant-btn ant-btn-default ant-btn-lg mb-3 btn')))

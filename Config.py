@@ -236,6 +236,8 @@ DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 INVALID_TOPIC_NAME = "@#$%^&(!(!(!"
+add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+DEFAULT_UPDATE_TOPIC_NAME = "Camp" + add_name,
 
 # Camp Forum Configuration Parameters
 DEFAULT_TOPIC = "Automated Topic"
@@ -245,7 +247,6 @@ DUPLICATE_THREAD_TITLE = "Automated thread"
 DEFAULT_NICK_NAME = "sania_talentelgia"
 DEFAULT_PARENT_CAMP = ""
 DEFAULT_NOTE = "Automated note"
-DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 DUPLICATE_CAMP_NAME = "Levels Of Testing"
 DEFAULT_CAMP_ABOUT_URL = "https://canonizer3.canonizer.com/"
 INVALID_CAMP_ABOUT_URL = "google@com"

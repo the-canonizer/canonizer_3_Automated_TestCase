@@ -330,7 +330,7 @@ testCases = {
                                                            'see object, live, in-review, old data'],
     'TC_COMPARE_TWO_STATEMENTS': [Critical, 'When user checks 2 check boxes of different statement history, '
                                   'compare button should be enabled'],
-    'TC_LOAD_TOPIC_HISTORY_PAGE': [Critical, 'When user clicks on manage/edit this topic, history page must load'],
+
     'TC_CREATE_CAMP_WITH_BLANK_CAMP_NAME': [low,
                                             'On Create New Camp page, When user doesn\'t put Camp Name , user must '
                                             'see Error Message'],
@@ -346,6 +346,36 @@ testCases = {
     'TC_VERIFY_SUBMIT_CAMP_UPDATE_BUTTON': [Critical, 'On click submit camp update user must redirect to camp edit page'],
     'TC_VERIFY_EDIT_AND_UPDATE_CAMP_FUNCTIONALITY': [Critical, 'User must see submit update btton enabled when '
                                                      'edit and field and on click must update the same'],
+    'TC_LOAD_TOPIC_HISTORY_PAGE': [Critical, 'When user clicks on manage/edit this topic, history page must load'],
+    'TC_VERIFY_TOPIC_NAME_ON_TOPIC_HISTORY_PAGE': [Critical, 'Topic name must be same on detail page and history page'],
+    'TC_VERIFY_SUBMITTER_NICK_NAME_LINK_ON_USER_PROFILE': [Critical, 'Submitter nick name must be same on user profile'],
+    'TC_VERIFY_SUBMIT_TOPIC_UPDATE_BUTTON': [Critical, 'User must see topic update page on click button submit update'],
+    'TC_UPDATE_TOPIC_WITH_DUPLICATE_NAME': [Critical, 'User must see error message when edit and update duplicate topic'],
+    'TC_VERIFY_CANCEL_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE': [Critical, 'On click cancel button user should not be'
+                                                                             ' able to update and save'],
+    'TC_VERIFY_PREVIEW_BUTTON_FUNCTIONALITY_ON_TOPIC_UPDATE_PAGE': [Critical, 'On click preview button,'
+                                                                              ' user must see the preview modal'],
+    'TC_VERIFY_SUBMITTER_NICK_NAME_ON_PREVIEW_MODAL': [Critical, 'On click submitter nick name, user must redirect to'
+                                                                 ' user profile with same nickname'],
+    'TC_VERIFY_CANCEL_BUTTON_ON_PREVIEW_MODAL': [Critical, 'On click cancel button user must redirect to topic update'],
+    'TC_UPDATE_TOPIC_NAME_AND_VERIFY_SUBMIT_UPDATE_BUTTON': [Critical, 'On submit topic update user must '
+                                                                       'redirect to history page'],
+    'TC_VERIFY_AGREEMENT_LINK_ON_TOPIC_COMPARISON_PAGE': [Critical, 'On click agreement link, user must redirect'
+                                                                    ' to canonizer sorted tree'],
+    'TC_VERIFY_CREATE_TOPIC_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE': [Critical, 'User must redirect'
+                                                                                       ' to create topic page'],
+    'TC_VERIFY_CREATE_CAMP_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE' : [Critical, 'User must redirect'
+                                                                                       ' to create camp page'],
+
+
+
+
+
+
+
+
+
+
 
 
 
