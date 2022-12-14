@@ -971,7 +971,7 @@ class TestPages(unittest.TestCase):
            result = "Passed"
        else:
            result = "Failed"
-      self.assertIn("Passed", result)
+       self.assertIn("Passed", result)
    def tearDown(self):
         self.driver.close()
 
