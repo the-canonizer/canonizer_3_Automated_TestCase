@@ -95,11 +95,16 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         try:
-            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
-                (By.XPATH, '/html/body/div/div/header/div[2]/nav/ul/li[1]/a')))
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         except TimeoutException:
             pass
         CanonizerBrowsePage(self.driver).click_browse_page_button()
+        try:
+            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
+        except TimeoutException:
+            pass
         browse_url = self.driver.current_url
         print(browse_url)
         if browse_url == "https://canonizer3.canonizer.com/browse":
