@@ -219,6 +219,11 @@ class TestPages(unittest.TestCase):
         except TimeoutException:
             pass
         CanonizerBrowsePage(self.driver).select_by_value_corporations()
+        try:
+            WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        except TimeoutException:
+            pass
 
         if self.driver.find_element(By.ID, 'name-space-2'):
             result = "Passed"
