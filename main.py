@@ -213,6 +213,11 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_corporations(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        try:
+            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
+                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        except TimeoutException:
+            pass
         CanonizerBrowsePage(self.driver).select_by_value_corporations()
 
         if self.driver.find_element(By.ID, 'name-space-2'):
