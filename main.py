@@ -197,13 +197,7 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_general_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-        try:
-            WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
-        except TimeoutException:
-            pass
         CanonizerBrowsePage(self.driver).select_by_value_general_only_my_topics()
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]')))
