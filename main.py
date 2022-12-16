@@ -1,11 +1,8 @@
 import unittest
 from subprocess import run
-
 from selenium.webdriver import Keys
 from termcolor import colored, cprint
 import HtmlTestRunner
-
-from CanonizerRegistrationPage import CanonizerRegisterPage
 from CanonizerBrowsePage import *
 from CanonizerUploadFilePage import *
 from Config import *
