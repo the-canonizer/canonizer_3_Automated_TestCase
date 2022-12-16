@@ -6,13 +6,6 @@ from termcolor import colored, cprint
 import HtmlTestRunner
 
 from CanonizerRegistrationPage import CanonizerRegisterPage
-
-from unittest import result
-from selenium.common.exceptions import TimeoutException
-from CanonizerCreateNewTopicPage import CanonizerCreateNewTopic
-from CanonizerLoginPage import CanonizerLoginPage
-from CanonizerForgotPasswordPage import *
-#from CanonizerTestCases import test_cases
 from CanonizerBrowsePage import *
 from CanonizerUploadFilePage import *
 from Config import *
