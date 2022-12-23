@@ -77,13 +77,13 @@ class TestPages(unittest.TestCase):
                 (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/h3')))
         except TimeoutException:
             pass
+        self.driver.maximize_window()
 
     # TC_CLICK_ON_REGISTER_BUTTON
     def test_click_browse_page_button(self):
         #print("\n" + str(test_cases(22)))
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -110,7 +110,6 @@ class TestPages(unittest.TestCase):
         #print("\n" + str(test_cases(23)))
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
@@ -139,7 +138,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_dropdown_value(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
@@ -166,7 +164,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_general(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
@@ -186,7 +183,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_general_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -207,7 +203,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_corporations(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -229,7 +224,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_corporations_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -250,7 +244,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_crypto_currency(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -272,7 +265,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_crypto_currency_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -294,7 +286,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_family(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -315,7 +306,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_family_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -337,7 +327,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_family_jesperson_oscar_f(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -358,7 +347,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_family_jesperson_oscar_f_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -380,7 +368,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_occupy_wall_street(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -401,7 +388,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_occupy_wall_street_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -423,7 +409,6 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_organizations(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -444,7 +429,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -465,7 +449,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -486,7 +469,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -507,7 +489,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_help(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -527,7 +508,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_help_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -548,7 +528,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -569,7 +548,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -590,7 +568,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -611,7 +588,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -632,7 +608,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -651,7 +626,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -670,7 +644,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -689,7 +662,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -709,7 +681,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_reputations(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -729,7 +700,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_reputations_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -749,7 +719,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_professional_services(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -768,7 +737,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_professional_services_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -788,7 +756,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_sandbox(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -808,7 +775,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_sandbox_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -828,7 +794,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_terminology(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -848,7 +813,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_terminology_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -868,7 +832,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_www(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -888,7 +851,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_www_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -908,7 +870,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_sandbox_testing(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -928,7 +889,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_sandbox_testing_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -948,7 +908,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_crypto_currency_ethereum(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -968,7 +927,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_crypto_currency_ethereum_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -989,7 +947,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_void(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
@@ -1008,7 +965,6 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_void_only_my_topics(self):
         self.login_to_canonizer_app()
-        self.driver.maximize_window()
         try:
             WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
                 (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
