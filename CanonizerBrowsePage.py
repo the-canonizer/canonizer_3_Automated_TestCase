@@ -49,7 +49,7 @@ class CanonizerBrowsePage(Page):
         self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
         return CanonizerBrowsePage(self.driver)
 
-    def scroll_down(self):
+    def scroll_down(self, i):
         # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         action = ActionChains(self.driver)
         #i = 10
@@ -300,8 +300,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_canonizer_help(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 8
-        self.scroll_down()
+        self.scroll_down(8)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONCANONIZERHELP).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -330,8 +329,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_mta(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 9
-        self.scroll_down()
+        self.scroll_down(9)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONMTA).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -360,8 +358,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_tv07(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 9
-        self.scroll_down()
+        self.scroll_down(9)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONTV07).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -390,8 +387,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_wta(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 10
-        self.scroll_down()
+        self.scroll_down(10)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONWTA).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -420,8 +416,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_personal_attributes(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll_down()
+        self.scroll_down(15)
         self.find_element(*BrowsePageIdentifiers.PERSONALATTRIBUTE).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -452,8 +447,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_personal_reputations(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll_down()
+        self.scroll_down(15)
         self.find_element(*BrowsePageIdentifiers.PERSONALREPUTATION).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -484,8 +478,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_professional_services(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll_down()
+        self.scroll_down(15)
         self.find_element(*BrowsePageIdentifiers.PROFESSIONALSERVICES).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -516,8 +509,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sandbox(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll_down()
+        self.scroll_down(15)
         self.find_element(*BrowsePageIdentifiers.SANDBOX).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -548,8 +540,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_terminology(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 15
-        self.scroll_down()
+        self.scroll_down(15)
         self.find_element(*BrowsePageIdentifiers.TERMINOLOGY).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -580,8 +571,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_www(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll_down()
+        self.scroll_down(20)
         self.find_element(*BrowsePageIdentifiers.WWW).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -612,8 +602,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sandbox_testing(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 20
-        self.scroll_down()
+        self.scroll_down(20)
         self.find_element(*BrowsePageIdentifiers.SANDBOXTESTING).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -644,8 +633,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_crypto_currency_ethereum(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.CRYPTOCURRENCYETHEREUM).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -675,8 +663,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_void(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.VOID).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -707,8 +694,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_mormon_canon_project(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.MORMONCANONPROJECT).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -739,8 +725,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_organizations_united_utah_party(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.ORGANIZATIONUNITEDUTAHPARTY).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -771,8 +756,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_government(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.GOVERNMENT).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -803,8 +787,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_government_sandy_city(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.GOVERNMENTSANDYCITY).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -835,8 +818,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sports(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.SPORT).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -865,8 +847,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_sports_sbcl(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 25
-        self.scroll_down()
+        self.scroll_down(25)
         self.find_element(*BrowsePageIdentifiers.SPORTSBCL).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -896,8 +877,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_plateform_of_the_people(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 30
-        self.scroll_down()
+        self.scroll_down(30)
         self.find_element(*BrowsePageIdentifiers.PLATEFORMOFTHEPEOPLE).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -927,8 +907,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_fiction(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 30
-        self.scroll_down()
+        self.scroll_down(30)
         self.find_element(*BrowsePageIdentifiers.FICTION).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -959,8 +938,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_fiction_lord_of_the_ring(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 30
-        self.scroll_down()
+        self.scroll_down(30)
         self.find_element(*BrowsePageIdentifiers.FICTIONLORDOFTHERINGS).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -989,8 +967,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_fiction_star_wars(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 30
-        self.scroll_down()
+        self.scroll_down(30)
         self.find_element(*BrowsePageIdentifiers.FICTIONSTARWARS).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -1019,8 +996,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_fiction_world_of_warcraft(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 30
-        self.scroll_down()
+        self.scroll_down(30)
         self.find_element(*BrowsePageIdentifiers.FICTIONWORLDOFWARCRAFT).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
@@ -1049,8 +1025,7 @@ class CanonizerBrowsePage(Page):
     def select_by_value_all(self):
         self.click_browse_page_button()
         self.select_dropdown_value()
-        self.i = 31
-        self.scroll_down()
+        self.scroll_down(31)
         self.find_element(*BrowsePageIdentifiers.ALL).click()
         try:
             WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
