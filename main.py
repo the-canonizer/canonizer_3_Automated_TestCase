@@ -80,26 +80,18 @@ class TestPages(unittest.TestCase):
         #print("\n" + str(test_cases(22)))
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
-        browse_url = self.driver.current_url
-        if browse_url == "https://canonizer3.canonizer.com/browse":
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
-        # Click on the Browse link
+        browse_url = self.driver.get_url
+        self.assertIn("/browse", result)
 
     def test_click_only_my_topics_button(self):
         #print("\n" + str(test_cases(23)))
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
-        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
         CanonizerBrowsePage(self.driver).click_only_my_topics_button()
-        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]')))
         # Click on the Browse link and click on "Only My Topics"
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
@@ -109,11 +101,9 @@ class TestPages(unittest.TestCase):
 
     def test_select_dropdown_value(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/span')))
         CanonizerBrowsePage(self.driver).select_dropdown_value()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, 'rc_select_3_list_1')))
         if self.driver.find_element(By.ID, "rc_select_3_list_1"):
             result = "Passed"
         else:
@@ -122,9 +112,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_general(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_general()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')))
         if self.driver.find_element(By.ID, 'name-space-1'):
             result = "Passed"
         else:
@@ -133,9 +122,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_general_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_general_only_my_topics()
-        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -145,9 +133,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_corporations(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_corporations()
-        WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-2'):
             result = "Passed"
         else:
@@ -157,7 +144,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_corporations_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_corporations_only_my_topics()
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
@@ -167,9 +154,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_crypto_currency(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_crypto_currency()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-3'):
             result = "Passed"
         else:
@@ -178,9 +164,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_crypto_currency_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -191,9 +176,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_family(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_family()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-4'):
             result = "Passed"
         else:
@@ -201,11 +185,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_family_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_family_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -216,9 +197,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_family_jesperson_oscar_f(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-5'):
             result = "Passed"
         else:
@@ -228,9 +208,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_family_jesperson_oscar_f_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -241,9 +220,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_occupy_wall_street(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-6'):
             result = "Passed"
         else:
@@ -253,9 +231,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_occupy_wall_street_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -266,9 +243,8 @@ class TestPages(unittest.TestCase):
 
     def test_select_by_value_organizations(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-7'):
             result = "Passed"
         else:
@@ -278,9 +254,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -290,9 +265,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-8'):
             result = "Passed"
         else:
@@ -302,9 +276,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -314,9 +287,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_help(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-9'):
             result = "Passed"
         else:
@@ -325,9 +297,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_help_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -337,9 +308,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_mta()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.ID, 'name-space-10'):
             result = "Passed"
         else:
@@ -349,9 +319,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta_only_my_topics(self):
         self.login_to_canonizer_app()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_mta_only_my_topics()
-        WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located((By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -361,17 +330,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.ID, 'name-space-11'):
             result = "Passed"
         else:
@@ -381,17 +341,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07_only_my_topics(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07_only_my_topics()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -401,17 +352,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_wta()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.ID, 'name-space-12'):
             result = "Passed"
         else:
@@ -419,17 +361,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta_only_my_topics(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_organizations_wta_only_my_topics()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
@@ -437,17 +370,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_personal_attributes()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.ID, 'name-space-13'):
             result = "Passed"
         else:
@@ -455,17 +379,8 @@ class TestPages(unittest.TestCase):
         self.assertIn("Passed", result)
     def test_select_by_value_personal_attributes_only_my_topics(self):
         self.login_to_canonizer_app()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_by_value_personal_attributes_only_my_topics()
-        try:
-            WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(
-                (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')))
-        except TimeoutException:
-            pass
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
             result = "Passed"
         else:
