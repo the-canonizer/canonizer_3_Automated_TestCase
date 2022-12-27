@@ -401,38 +401,22 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_fiction_world_of_warcraft(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft()
-        if self.driver.find_element(By.ID, 'name-space-34'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft())
+
     def test_select_by_value_fiction_world_of_warcraft_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft_only_my_topics())
+
     def test_select_by_value_all(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_all()
-        if self.driver.find_element(By.ID, 'name-space-custom'):
-            result = "Passed"
-        else:
-            result = "Failed"
+       self.assertTrue( CanonizerBrowsePage(self.driver).select_by_value_all())
     def test_select_by_value_all_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_all_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_all_only_my_topics())
+
     def test_support_value(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
