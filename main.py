@@ -103,6 +103,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_general())
+        
     def test_select_by_value_general_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -138,6 +139,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f())
+        
     def test_select_by_value_family_jesperson_oscar_f_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
