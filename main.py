@@ -156,6 +156,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations())
+                        
     def test_select_by_value_organizations_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -170,10 +171,12 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_only_my_topics())
+                        
     def test_select_by_value_organizations_canonizer_help(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help())
+                        
     def test_select_by_value_organizations_canonizer_help_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -208,6 +211,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_wta_only_my_topics())
+                        
     def test_select_by_value_personal_attributes(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -217,6 +221,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_attributes_only_my_topics())
+                        
     def test_select_by_value_personal_reputations(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -411,6 +416,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         self.assertTrue( CanonizerBrowsePage(self.driver).select_by_value_all())
+                        
     def test_select_by_value_all_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -442,6 +448,7 @@ class TestPages(unittest.TestCase):
         self.camp_sum = ("%.2f" % self.camp_sum)
         result = float(self.camp_sum)
         self.assertIn(self.topic_score, result)
+                        
     def test_upload_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -462,12 +469,11 @@ class TestPages(unittest.TestCase):
         CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
         result = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
         self.assertIn("png", result)
+                        
     def test_click_upload_button(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerUploadFilePage(self.driver).click_upload_button())
-
-        
+        self.assertTrue(CanonizerUploadFilePage(self.driver).click_upload_button())       
    
     def test_upload_file_with_size_zero_bytes(self):
         self.login_to_canonizer_app()
@@ -475,6 +481,7 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(10)
         result = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
         self.assertIn("zero_byte_file.csv", result)
+                        
     def tearDown(self):
         self.driver.close()
 
