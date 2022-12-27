@@ -1062,7 +1062,6 @@ class CanonizerBrowsePage(Page):
         while n >= 0:
             action.key_down(Keys.DOWN).perform()
             action.key_down(Keys.ENTER).perform()
-            print(n)
             n = n - 1
             self.driver.implicitly_wait(10)
             # Check
