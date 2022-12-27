@@ -1052,3 +1052,22 @@ class CanonizerBrowsePage(Page):
         except TimeoutException:
             pass
         return CanonizerBrowsePage(self.driver)
+     def select_all_namespaces(self):
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        self.driver.implicitly_wait(10)
+        action = ActionChains(driver)
+        n = 40
+        i = 1
+        while n >= 0:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            print(n)
+            n = n - 1
+            self.driver.implicitly_wait(10)
+            # Check
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            # Uncheck
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            self.select_dropdown_value()
+
