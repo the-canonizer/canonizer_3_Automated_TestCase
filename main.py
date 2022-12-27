@@ -69,13 +69,12 @@ class TestPages(unittest.TestCase):
         :return:
         """
         #result = CanonizerLoginPage(self.driver).click_login_page_button().login_with_valid_user(DEFAULT_USER, DEFAULT_PASS).get_url()
+        self.driver.implicitly_wait(10)
         CanonizerLoginPage(self.driver).click_login_page_button()
         result = CanonizerLoginPage(self.driver).login_with_valid_user(DEFAULT_USER, DEFAULT_PASS).get_url()
         self.assertIn("", result)
-        WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/h3')))
         self.driver.maximize_window()
 
-    # TC_CLICK_ON_REGISTER_BUTTON
     def test_click_browse_page_button(self):
         #print("\n" + str(test_cases(22)))
         # Click on the Login Page and Create a Login Session and for further actions.
@@ -84,7 +83,7 @@ class TestPages(unittest.TestCase):
         CanonizerBrowsePage(self.driver).click_browse_page_button()
         browse_url = self.driver.get_url
         self.assertIn("/browse", result)
-
+# Click on the Browse link and click on "Only My Topics"
     def test_click_only_my_topics_button(self):
         #print("\n" + str(test_cases(23)))
         # Click on the Login Page and Create a Login Session and for further actions.
@@ -92,7 +91,7 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
         self.assertTrue(CanonizerBrowsePage(self.driver).click_only_my_topics_button())
-        # Click on the Browse link and click on "Only My Topics"
+
 
     def test_select_dropdown_value(self):
         self.login_to_canonizer_app()
