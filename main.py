@@ -91,461 +91,213 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
-        CanonizerBrowsePage(self.driver).click_only_my_topics_button()
+        self.assertTrue(CanonizerBrowsePage(self.driver).click_only_my_topics_button())
         # Click on the Browse link and click on "Only My Topics"
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
 
     def test_select_dropdown_value(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
-        CanonizerBrowsePage(self.driver).select_dropdown_value()
-        if self.driver.find_element(By.ID, "rc_select_3_list_1"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_dropdown_value())
 
     def test_select_by_value_general(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_general()
-        if self.driver.find_element(By.ID, 'name-space-1'):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_general())
     def test_select_by_value_general_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_general_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_general_only_my_topics())
     def test_select_by_value_corporations(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_corporations()
-        if self.driver.find_element(By.ID, 'name-space-2'):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_corporations())
     def test_select_by_value_corporations_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_corporations_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_corporations_only_my_topics())
     def test_select_by_value_crypto_currency(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_crypto_currency()
-        if self.driver.find_element(By.ID, 'name-space-3'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency())
 
     def test_select_by_value_crypto_currency_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_only_my_topics())
 
     def test_select_by_value_family(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_family()
-        if self.driver.find_element(By.ID, 'name-space-4'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family())
     def test_select_by_value_family_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_family_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_only_my_topics())
 
     def test_select_by_value_family_jesperson_oscar_f(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f()
-        if self.driver.find_element(By.ID, 'name-space-5'):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f())
     def test_select_by_value_family_jesperson_oscar_f_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f_only_my_topics())
 
     def test_select_by_value_occupy_wall_street(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street()
-        if self.driver.find_element(By.ID, 'name-space-6'):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street()
     def test_select_by_value_occupy_wall_street_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street_only_my_topics())
 
     def test_select_by_value_organizations(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations()
-        if self.driver.find_element(By.ID, 'name-space-7'):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations())
     def test_select_by_value_organizations_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_only_my_topics())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer()
-        if self.driver.find_element(By.ID, 'name-space-8'):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_canonizer_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_only_my_topics())
     def test_select_by_value_organizations_canonizer_help(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help()
-        if self.driver.find_element(By.ID, 'name-space-9'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help())
     def test_select_by_value_organizations_canonizer_help_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help_only_my_topics())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_mta()
-        if self.driver.find_element(By.ID, 'name-space-10'):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_mta())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_mta_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_mta_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_mta_only_my_topics())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07()
-        if self.driver.find_element(By.ID, 'name-space-11'):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_tv07_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07_only_my_topics())
 
-        print(result)
-        self.assertIn("Passed", result)
     def test_select_by_value_organizations_wta(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_wta()
-        if self.driver.find_element(By.ID, 'name-space-12'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_wta())
+
     def test_select_by_value_organizations_wta_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_organizations_wta_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_wta_only_my_topics())
     def test_select_by_value_personal_attributes(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_personal_attributes()
-        if self.driver.find_element(By.ID, 'name-space-13'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_attributes())
+
     def test_select_by_value_personal_attributes_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_personal_attributes_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_attributes_only_my_topics())
     def test_select_by_value_personal_reputations(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_personal_reputations()
-        if self.driver.find_element(By.ID, 'name-space-14'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_reputations())
+
     def test_select_by_value_personal_reputations_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_personal_reputations_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_reputations_only_my_topics())
+
     def test_select_by_value_professional_services(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_professional_services()
-        if self.driver.find_element(By.ID, 'name-space-15'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_professional_services())
+
     def test_select_by_value_professional_services_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_professional_services_only_my_topics()
-        self.driver.implicitly_wait(10)
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_professional_services_only_my_topics())
+
     def test_select_by_value_sandbox(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_sandbox()
-        if self.driver.find_element(By.ID, 'name-space-16'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox())
+
     def test_select_by_value_sandbox_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_sandbox_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_only_my_topics())
+
     def test_select_by_value_terminology(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_terminology()
-        if self.driver.find_element(By.ID, 'name-space-17'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_terminology())
+
     def test_select_by_value_terminology_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_terminology_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_terminology_only_my_topics())
+
     def test_select_by_value_www(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_www()
-        if self.driver.find_element(By.ID, "name-space-18"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_www())
+
     def test_select_by_value_www_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_www_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_www_only_my_topics())
+
     def test_select_by_value_sandbox_testing(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing()
-        if self.driver.find_element(By.ID, 'name-space-19'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing())
+
     def test_select_by_value_sandbox_testing_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing_only_my_topics())
+
     def test_select_by_value_crypto_currency_ethereum(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum()
-        if self.driver.find_element(By.ID, 'name-space-21'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum())
+
     def test_select_by_value_crypto_currency_ethereum_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum_only_my_topics()
-        if self.driver.find_element(By.XPATH,
-                                    "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        print(result)
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum_only_my_topics())
+
     def test_select_by_value_void(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_void()
-        if self.driver.find_element(By.ID, 'name-space-22'):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_void())
+
     def test_select_by_value_void_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_by_value_void_only_my_topics()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_void_only_my_topics())
+
     def test_select_by_value_mormon_canon_project(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
