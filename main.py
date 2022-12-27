@@ -426,6 +426,7 @@ class TestPages(unittest.TestCase):
         value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div/div/span[2]")
         result = float(value.text)
         self.assertIn(namespace, result)
+ 
     def test_support_value_new_topic(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
