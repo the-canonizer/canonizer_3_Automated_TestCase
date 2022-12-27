@@ -424,12 +424,8 @@ class TestPages(unittest.TestCase):
         namespace = float(namespace.text)
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li[1]/a/span[2]").click()
         value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div/div/span[2]")
-        value = float(value.text)
-        if namespace == value:
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        result = float(value.text)
+        self.assertIn(namespace, result)
     def test_support_value_new_topic(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -443,72 +439,41 @@ class TestPages(unittest.TestCase):
         self.camp_sum = self.camp1_score + self.camp2_score
         self.camp_sum = float(self.camp_sum)
         self.camp_sum = ("%.2f" % self.camp_sum)
-        self.camp_sum = float(self.camp_sum)
-        if self.topic_score == self.camp_sum:
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        result = float(self.camp_sum)
+        self.assertIn(self.topic_score, result)
     def test_upload_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerUploadFilePage(self.driver).upload_file_with_user_login()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerUploadFilePage(self.driver).upload_file_with_user_login())
 
     def test_upload_more_than_5mb_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login()
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/div/div[1]/div/span"):
-            result = "Failed"
-        else:
-            result = "Passed"
-        self.assertIn("Failed", result)
+        self.assertTrue(CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login())
 
     def test_open_uploaded_file(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerUploadFilePage(self.driver).open_uploaded_file()
-        if self.driver.find_element(By.ID, "modalImageId"):
-            result = "Failed"
-        else:
-            result = "Passed"
-        self.assertIn("Failed", result)
+        self.assertTrue(CanonizerUploadFilePage(self.driver).open_uploaded_file())
 
     def test_verify_uploaded_image_file_format(self):
         self.login_to_canonizer_app()
         CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
-        self.error_message = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
-        if "png" in self.error_message:
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        result = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
+        self.assertIn("png", result)
     def test_click_upload_button(self):
         self.login_to_canonizer_app()
-        CanonizerUploadFilePage(self.driver).click_upload_button()
         self.driver.implicitly_wait(10)
-        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a"):
-            result = "Passed"
-        else:
-            result = "Failed"
-        self.assertIn("Passed", result)
+        self.assertTrue(CanonizerUploadFilePage(self.driver).click_upload_button())
+
         
    
    def test_upload_file_with_size_zero_bytes(self):
        self.login_to_canonizer_app()
        CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
        self.driver.implicitly_wait(10)
-       self.error_message = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
-       if "zero_byte_file.csv" in self.error_message:
-           result = "Passed"
-       else:
-           result = "Failed"
-       self.assertIn("Passed", result)
+       result = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
+       self.assertIn("zero_byte_file.csv", result)
    def tearDown(self):
         self.driver.close()
 
