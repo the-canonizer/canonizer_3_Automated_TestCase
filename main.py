@@ -410,7 +410,7 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_all(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-       self.assertTrue( CanonizerBrowsePage(self.driver).select_by_value_all())
+        self.assertTrue( CanonizerBrowsePage(self.driver).select_by_value_all())
     def test_select_by_value_all_only_my_topics(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -470,11 +470,11 @@ class TestPages(unittest.TestCase):
         
    
     def test_upload_file_with_size_zero_bytes(self):
-       self.login_to_canonizer_app()
-       CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
-       self.driver.implicitly_wait(10)
-       result = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
-       self.assertIn("zero_byte_file.csv", result)
+        self.login_to_canonizer_app()
+        CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
+        self.driver.implicitly_wait(10)
+        result = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
+        self.assertIn("zero_byte_file.csv", result)
     def tearDown(self):
         self.driver.close()
 
