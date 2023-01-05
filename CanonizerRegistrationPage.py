@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -166,15 +168,10 @@ class CanonizerRegisterPage(Page):
                 EC.visibility_of_element_located((By.CLASS_NAME, 'ant-typography Registration_ft_link__tyQ1C')))
         except TimeoutException:
             pass
-        self.hover(*RegistrationPageIdentifiers.LOGIN_HERE)
         self.find_element(*RegistrationPageIdentifiers.LOGIN_HERE).click()
-        try:
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-typography Login_titles__nmC2y')))
-        except TimeoutException:
-            pass
+        self.hover(*RegistrationPageIdentifiers.LOGIN_TITLE)
         title = self.find_element(*RegistrationPageIdentifiers.LOGIN_TITLE).text
-        if title == message['Register_Page']['LOGIN_TITLE']:
+        if title == message['Create_Topic']['LOGIN_TITLE']:
             return CanonizerRegisterPage(self.driver)
         else:
             print("Title not found")

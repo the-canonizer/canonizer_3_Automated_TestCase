@@ -1,5 +1,7 @@
 import os
 import platform
+import string
+import random
 
 """
 Set All Basic Configuration required for testing Framework
@@ -191,39 +193,31 @@ reg_list_16 = [
     DEFAULT_PASS,
     ''
 ]
-
-# Login Page Configuration Parameters
-# DEFAULT_USER = ""
-# DEFAULT_PASS = ""
-DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Deekshith@123"
-
 # Forgot Password  Page Configuration Parameters
 UNREGISTERED_EMAIL = "can@gmail.com"
 INVALID_LONG_OTP = "7272727722"
-# DEFAULT_EMAIL = "cano3@yopmail.com"
+DEFAULT_EMAIL = "cano3@yopmail.com"
 DEFAULT_USER_INVALID = "xcvxc"
-# DEFAULT_PASS = "123456"
 
 # Login Page Configuration Parameters
-# DEFAULT_USER = "sania.mohan@talentelgia.in"
-# DEFAULT_PASSWORD = "Test@123"
-# DEFAULT_USER = "r_canonizer_user@yopmail.com"
-# DEFAULT_PASS = "Rupali@12345"
+DEFAULT_USER = "sania.mohan@talentelgia.in"
+DEFAULT_PASS = "Test@123"
+#DEFAULT_USER = "rupali.chavan9860@gmail.com"
+#DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduse22rgmail.com'
 DEFAULT_INVALID_PASSWORD = "invalid_password"
 
 # Account Setting page Configuration Parameters
 DEFAULT_NICK_NAME = "saideekshith"
 DEFAULT_NEW_PASSWORD = "Sai@199828"
-DEFAULT_INVALID_NICK_NAME = "saideekshith"
+DEFAULT_INVALID_NICK_NAME = "sai deekshith"
 DEFAULT_INVALID_CONFIRM_PASSWORD = "sai@   12333333"
 INVALID_NEW_PASSWORD = "sai123333"
 INVALID_CURRENT_PASSWORD = "sai@    12333"
 DEFAULT_CONFIRM_PASSWORD = "Sai@166666"
-DEFAULT_FIRST_NAME = "automation  testing"
-DEFAULT_LAST_NAME = "testing  cases"
-DEFAULT_MIDDLE_NAME = "test  case "
+DEFAULT_FIRST_NAME = "  automation  testing"
+DEFAULT_LAST_NAME = "  testing  cases"
+DEFAULT_MIDDLE_NAME = "  test  case "
 
 # support camps tab Configuration Parameters
 DEFAULT_TOPIC_NAME = "automation 123"
@@ -234,8 +228,6 @@ DEFAULT_VALID_PHONE_NUMBER = ""
 DEFAULT_INVALID_OTP = "123456789"
 DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
 
-# Camp Forum Configuration Parameters
-DEFAULT_TOPIC = "Automated Topic"
 
 # Create New Topic Configuration Parameters
 # DEFAULT_NICK_NAME = "sania_talentelgia"
@@ -243,6 +235,68 @@ DEFAULT_TOPIC = "Automated Topic"
 DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
-INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
+INVALID_TOPIC_NAME = "@#$%^&(!(!(!"
+add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+DEFAULT_UPDATE_TOPIC_NAME = "Camp" + add_name,
+
+# Camp Forum Configuration Parameters
+DEFAULT_TOPIC = "Automated Topic"
+DUPLICATE_THREAD_TITLE = "Automated thread"
+
+# Create New Camp Configuration Parameters
+DEFAULT_NICK_NAME = "sania_talentelgia"
+DEFAULT_PARENT_CAMP = ""
+DEFAULT_NOTE = "Automated note"
+DUPLICATE_CAMP_NAME = "Levels Of Testing"
+DEFAULT_CAMP_ABOUT_URL = "https://canonizer3.canonizer.com/"
+INVALID_CAMP_ABOUT_URL = "google@com"
+add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+DEFAULT_CAMP_NAME = "Camp" + add_name,
+CREATE_CAMP_LIST_1 = [
+    DEFAULT_NICK_NAME,
+    DEFAULT_PARENT_CAMP,
+    DEFAULT_CAMP_NAME,
+    "Keywords",
+    "Test summary",
+    DEFAULT_CAMP_ABOUT_URL,
+
+]
+CREATE_CAMP_LIST_2 = [
+    DEFAULT_NICK_NAME,
+    DEFAULT_PARENT_CAMP,
+    "",
+    "Keywords",
+    "Test summary",
+    DEFAULT_CAMP_ABOUT_URL,
+]
+CREATE_CAMP_LIST_3 = [
+    "",
+    "",
+    DUPLICATE_CAMP_NAME,
+    "",
+    "",
+    ""
+]
+CREATE_CAMP_LIST_4 = [
+    DEFAULT_NICK_NAME,
+    DEFAULT_PARENT_CAMP,
+    DEFAULT_CAMP_NAME,
+    "Keywords",
+    "Test summary",
+    INVALID_CAMP_ABOUT_URL,
+]
+
+# Create News Configuration Parameters
+DEFAULT_INVALID_LINK = "ww@format"
+
+# History Pages Parameters
+DEFAULT_HISTORY_TOPIC = "Software Testing"
+
+# Supported Camp Parameters
+DEFAULT_SUPPORTED_TOPIC_NAME = "Supported topic automation"
+
+
+
+
 
 

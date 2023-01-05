@@ -1,6 +1,13 @@
+import time
+
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+
 from CanonizerBase import Page
 from CanonizerValidationCheckMessages import message
 from Identifiers import LoginPageIdentifiers
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CanonizerLoginPage(Page):
@@ -21,11 +28,7 @@ class CanonizerLoginPage(Page):
         """
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
-        title = self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).text
-        if title == message['Login_Page']['LOGIN']:
-            return CanonizerLoginPage(self.driver)
-        else:
-            print("Title not found or not matching")
+        return CanonizerLoginPage(self.driver)
 
     def enter_email(self, user):
         """
@@ -88,7 +91,13 @@ class CanonizerLoginPage(Page):
         First Name, Last Name, Email, Password, Confirm Password are Mandatory Fields
 
         :return: the element value
+
         """
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-form-item-required')))
+        except TimeoutException:
+            pass
         return \
             self.find_element(*LoginPageIdentifiers.EMAIL_ASTRK) and \
             self.find_element(*LoginPageIdentifiers.PASSWORD_ASTRK)
@@ -110,8 +119,12 @@ class CanonizerLoginPage(Page):
         self.click_on_login_button()
         self.hover(*LoginPageIdentifiers.CLOSE_BUTTON)
         self.find_element(*LoginPageIdentifiers.CLOSE_BUTTON).click()
-
-        return CanonizerLoginPage(self.driver)
+        self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
+        title = self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).text
+        if title == message['Login_Page']['LOGIN_TITLE']:
+            return CanonizerLoginPage(self.driver)
+        else:
+            print("Error message not found")
 
     def verify_the_login_with_invalid_email_format(self, default_invalid_user, default_pass):
         self.verify_the_login_page(default_invalid_user, default_pass)
@@ -136,8 +149,12 @@ class CanonizerLoginPage(Page):
 
     def verify_the_login_functionality_by_entering_the_registered_credential(self, default_user, default_pass):
         self.verify_the_login_page(default_user, default_pass)
-
-        return CanonizerLoginPage(self.driver)
+        self.hover(*LoginPageIdentifiers.BROWSE)
+        title = self.find_element(*LoginPageIdentifiers.BROWSE).text
+        if title == message['Login_Page']['LOGIN_BROWSE_TITLE']:
+            return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def verify_the_forget_password_button(self):
         self.click_on_login_button()
@@ -162,6 +179,11 @@ class CanonizerLoginPage(Page):
 
     def click_on_register_now_button_on_login_page(self):
         self.click_on_login_button()
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.visibility_of_element_located((By.ID, 'dont-account-link-tag')))
+        except TimeoutException:
+            pass
         self.find_element(*LoginPageIdentifiers.REGISTER_NOW_LINK).click()
         self.hover(*LoginPageIdentifiers.LOGIN_TITLE)
         title = self.find_element(*LoginPageIdentifiers.LOGIN_TITLE).text
@@ -194,7 +216,7 @@ class CanonizerLoginPage(Page):
         else:
             print("Title not found")
 
-    def verifying_facebook_icon(self):
+    def verifying_facebook_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
         self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
@@ -204,17 +226,15 @@ class CanonizerLoginPage(Page):
         else:
             print("Title not found")
 
-    def verifying_social_account_links(self):
-        self.click_on_login_button()
-        self.find_element(*LoginPageIdentifiers.SOCIAL_LINKS).click()
-
-        return CanonizerLoginPage(self.driver)
-
     def verifying_google_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
-
-        return CanonizerLoginPage(self.driver)
+        self.hover(*LoginPageIdentifiers.GOOGLE_TITLE)
+        title = self.find_element(*LoginPageIdentifiers.GOOGLE_TITLE).text
+        if title == message['Login_Page']['GOOGLE_TITLE']:
+            return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def verifying_twitter_link(self):
         self.click_on_login_button()
@@ -229,8 +249,12 @@ class CanonizerLoginPage(Page):
     def verifying_linkedin_link(self):
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
-
-        return CanonizerLoginPage(self.driver)
+        self.hover(*LoginPageIdentifiers.LINKEDIN_TITLE)
+        title = self.find_element(*LoginPageIdentifiers.LINKEDIN_TITLE).text
+        if title == message['Login_Page']['LINKEDIN_TITLE']:
+            return CanonizerLoginPage(self.driver)
+        else:
+            print("Title not found")
 
     def verifying_github_link(self):
         self.click_on_login_button()
