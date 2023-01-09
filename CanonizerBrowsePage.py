@@ -69,7 +69,7 @@ class CanonizerBrowsePage(Page):
             self.data = self.d['label']
             self.namespaces_list.append(self.data)
         #Creating list from Automation.
-        self.current_name_list = []
+        self.current_name_list = ['/General/']
         while self.i >= 1:
             self.driver.implicitly_wait(10)
             action.key_down(Keys.DOWN).perform()
