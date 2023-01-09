@@ -64,6 +64,7 @@ class CanonizerBrowsePage(Page):
         self.response = requests.get("https://api3.canonizer.com/api/v3/get-all-namespaces")
         self.r = self.response.json()["data"]
         self.i = len(self.r)
+        time.sleep(0.4)
         #Creating list from Api.
         self.namespaces_list = []
         for self.d in self.r:
