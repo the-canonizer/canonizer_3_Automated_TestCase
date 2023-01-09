@@ -84,7 +84,7 @@ class CanonizerBrowsePage(Page):
             self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]').click()
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]").text
             self.current_name_list.append(self.current_name)
-        self.current_name_list = ['All']    
+        self.namespaces_list = ['All']    
     def select_by_value_general(self):
         #select = Select(self.find_element(*BrowsePageIdentifiers.NAMESPACE))
         #select.select_by_value("1")
