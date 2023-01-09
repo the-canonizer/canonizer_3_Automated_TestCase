@@ -50,6 +50,7 @@ class CanonizerBrowsePage(Page):
 
     def scroll_down(self, i):
         # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver.implicitly_wait(10)
         action = ActionChains(self.driver)
         #i = 10
         while self.i >= 0:
@@ -75,7 +76,6 @@ class CanonizerBrowsePage(Page):
             action.key_down(Keys.DOWN).perform()
             action.key_down(Keys.ENTER).perform()
             self.i = self.i - 1
-            time.sleep(0.4)
             # Check
             self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
             # Uncheck
