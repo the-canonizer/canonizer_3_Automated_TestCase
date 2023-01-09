@@ -63,7 +63,7 @@ class CanonizerBrowsePage(Page):
         action = ActionChains(self.driver)
         self.response = requests.get("https://api3.canonizer.com/api/v3/get-all-namespaces")
         self.r = self.response.json()["data"]
-        self.i = len(self.r)
+        self.i = len(self.r)-1
         time.sleep(0.4)
         #Creating list from Api.
         self.namespaces_list = []
@@ -71,7 +71,7 @@ class CanonizerBrowsePage(Page):
             self.data = self.d['label']
             self.namespaces_list.append(self.data)
         #Creating list from Automation.
-        self.current_name_list = ['/General/']
+        self.current_name_list = []
         while self.i >= 1:
             self.driver.implicitly_wait(10)
             action.key_down(Keys.DOWN).perform()
@@ -84,6 +84,7 @@ class CanonizerBrowsePage(Page):
             self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]').click()
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]").text
             self.current_name_list.append(self.current_name)
+        self.current_name_list = ['All']    
     def select_by_value_general(self):
         #select = Select(self.find_element(*BrowsePageIdentifiers.NAMESPACE))
         #select.select_by_value("1")
