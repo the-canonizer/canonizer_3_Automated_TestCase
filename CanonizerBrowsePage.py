@@ -58,6 +58,33 @@ class CanonizerBrowsePage(Page):
             print(self.i)
             self.i = self.i - 1
             time.sleep(0.4)
+    def scroll_namespaces(self):
+        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver.implicitly_wait(10)
+        action = ActionChains(self.driver)
+        self.response = requests.get("https://api3.canonizer.com/api/v3/get-all-namespaces")
+        self.r = self.response.json()["data"]
+        self.i = len(self.r)
+        #Creating list from Api.
+        self.namespaces_list = []
+        for self.d in self.r:
+            self.data = self.d['label']
+            self.namespaces_list.append(self.data)
+        #Creating list from Automation.
+        self.current_name_list = []
+        while self.i >= 1:
+            self.driver.implicitly_wait(10)
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            self.i = self.i - 1
+            time.sleep(0.4)
+            # Check
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            # Uncheck
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]').click()
+            self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]").text
+            self.current_name_list.append(self.current_name)
     def select_by_value_general(self):
         #select = Select(self.find_element(*BrowsePageIdentifiers.NAMESPACE))
         #select.select_by_value("1")
@@ -1051,6 +1078,12 @@ class CanonizerBrowsePage(Page):
                  '/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')))
         except TimeoutException:
             pass
+        return CanonizerBrowsePage(self.driver)
+    def select_all_namespaces(self):
+        self.driver.implicitly_wait(10)
+        self.click_browse_page_button()
+        self.select_dropdown_value()
+        self.scroll_namespaces()
         return CanonizerBrowsePage(self.driver)
      def select_all_namespaces(self):
         self.click_browse_page_button()
