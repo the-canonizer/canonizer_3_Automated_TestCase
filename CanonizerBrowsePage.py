@@ -29,7 +29,6 @@ class CanonizerBrowsePage(Page):
             Return the result to the main page.
         """
         #title = self.find_element(*BrowsePageIdentifiers.TITLE)
-        #print(title)
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
             wait = WebDriverWait(self.driver, 5)
@@ -55,7 +54,6 @@ class CanonizerBrowsePage(Page):
         #i = 10
         while self.i >= 0:
             action.key_down(Keys.DOWN).perform()
-            print(self.i)
             self.i = self.i - 1
             time.sleep(0.4)
     def scroll_namespaces(self):
