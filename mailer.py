@@ -66,7 +66,7 @@ def mailern():
     s.starttls()
 
     # Authentication
-    s.login(fromaddr, "4321@cannie")
+    s.login(fromaddr, "pass")
 
     # Converts the Multipart msg into a string
     text = msg.as_string()
