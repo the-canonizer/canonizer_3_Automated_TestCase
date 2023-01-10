@@ -489,6 +489,8 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).select_all_namespaces()
+        self.current_name_list = CanonizerBrowsePage(self.driver).current_name_list
+        self.namespaces_list = CanonizerBrowsePage(self.driver).namespaces_list
         self.assertListEqual(self.current_name_list, self.namespaces_list)
                         
     def tearDown(self):
