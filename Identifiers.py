@@ -229,13 +229,15 @@ class UpdateTopicIdentifiers(object):
     BACK_ARROW_ICON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div[3]/div[1]/div/button')
     VIEW_THIS_VERSION_BUTTON = (By.XPATH, '//button[contains(@class,"ant-btn ant-btn-primary")]//a')
 
+
 class CampForumIdentifiers(object):
     VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
     CAMP_FORUM_BUTTON = (By.ID, 'camp-forum-btn')
     BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
     SEARCH_TOPIC = (By.XPATH, '//input[@placeholder="Search by topic name"]')
     SEARCH_ICON = (By.XPATH, '(//span[@class="ant-input-group-addon"]//button)[2]')
-    TOPIC_CLICK = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li/a')
+    TOPIC_CLICK = (By.XPATH, '//li[@class="ant-list-item topicsList_item__toE6c"]//a[1]')
+
     CAMP_FORUM_TITLE = (By.CLASS_NAME, 'Forum_cardTitle__VagbD')
     MY_PARTICIPATION = (By.ID, 'participate-btn')
     TOP_10_THREADS = (By.ID, 'most-rep-btn')
@@ -254,7 +256,7 @@ class CampForumIdentifiers(object):
     THREAD_TITLE_ASTERISK = (By.XPATH, '(//span[@class = "required"])')
     NICK_NAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[2]')
     BACK_BUTTON = (By.ID, 'back-btn')
-    EDIT_THREAD_ICON = (By.XPATH, '//*[@id="thread-name-new"]/a/span')
+    EDIT_THREAD_ICON = (By.XPATH, '//a[@class="Forum_threadListTitle__eSVW8"]//a[1]')
     EDIT_THREAD_PAGE_TITLE = (By.XPATH, '//span[text()="Edit title of the thread"]')
     THREAD_LINK = (By.ID, 'thread-label-1')
     POST_TITLE = (By.ID, 'card-title')
@@ -269,6 +271,12 @@ class CampForumIdentifiers(object):
     REPLY_UPDATED_MESSAGE = (By.XPATH, '//div[@class="ant-message-notice"]//div')
     DELETE_REPLY = (By.XPATH, '//a[@id="post-delete-icon-1938"]')
     BUTTON2 = (By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div/div[2]/button[2]')
+    EDIT_POST_ICON = (By.XPATH, '(//div[@class="ant-space-item"]//a)[3]')
+    VERIFY_POST_REPLY = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/p[1]')
+    POST_UPDATE_MESSAGE = (By.XPATH, '/html/body/div[3]/div/div/div/div')
+    DELETE_POST_ICON = (By.XPATH, '(//a[@class="linkCss"])[2]')
+    DELETE_CONFIRM = (By.XPATH, '(//div[@class="ant-popover-buttons"]//button)[2]')
+    POST_DELETE_MESSAGE = (By.XPATH, '/html/body/div[2]/div/div/div/div')
 
 
 class HomePageIdentifiers(object):
@@ -289,8 +297,7 @@ class HomePageIdentifiers(object):
     CANONIZER_LOGO = (By.XPATH, '//*[@id="__next"]/div/footer/div[1]/div/div[1]/div/a/span/img')
     SUPPORT_CANONIZER = (By.XPATH, 'icon-envelope')
     ALGORITHM_DROP_DOWN = (By.XPATH,
-                           '//div[@class="ant-select ant-select-lg topicListFilter_algoSelect__VRCVF '
-                           'ant-select-single ant-select-show-arrow"]')
+                           '//div[contains(@class,"ant-select ant-select-lg")]//div')
 
 
 class CreateCampIdentifiers(object):
@@ -312,7 +319,7 @@ class CreateCampIdentifiers(object):
     BLANK_CAMP_NAME_ERROR = (By.XPATH, '//div[@class="ant-form-item-explain ant-form-item-explain-connected"]//div[1]')
     DUPLICATE_CAMP_NAME_ERROR = (By.XPATH, '//div[text()="The camp name has already been taken."]')
     INVALID_CAMP_ABOUT_URL_ERROR = (By.XPATH, '//div[text()="The camp about url format is invalid. (Example: https://www.example.com?post=1234)"]')
-    CANCEL_BUTTON = (By.XPATH, 'cancel-btn')
+    CANCEL_BUTTON = (By.ID, 'cancel-btn')
     MANAGE_EDIT_CAMP_BUTTON = (By.XPATH, '(//button[@type="button"]//a)[3]')
     CAMP_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
     CAMP_NAME_CLICK = (By. XPATH, '(//span[@class="treeListItemTitle topicDetails_treeListItemTitle__G91mC"]//a)[3]')
@@ -346,6 +353,7 @@ class CreateCampIdentifiers(object):
     CAMP_NAME2 = (By.XPATH, '(//div[@class="ant-collapse-content-box"]//span)[2]')
     COMPARE_CAMP1 = (By.XPATH, '//ins[@class="diffmod"]')
     COMPARE_CAMP2 = (By.XPATH, '(//ins[@class="diffmod"])[2]')
+    CANCEL_TITLE = (By.XPATH, '//span[@class="ant-collapse-header-text"]//h3')
 
 class AddNewsIdentifiers(object):
     ADD_NEWS_LINK = (By.XPATH, '//div[@class="ant-checkbox-wrapper"]//a[1]')
@@ -365,8 +373,8 @@ class AddNewsIdentifiers(object):
     AVAILABLE_FOR_CHILD_CAMP = (By.ID, 'available_for_child')
     INVALID_LINK = (By.XPATH, '//span[@class="ant-typography ant-typography-danger"]')
     EDIT_NEWS = (By.XPATH, '//div[@class="ant-checkbox-wrapper"]//button[1]')
-    EDIT_ICON = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div[1]/aside/div[3]/div/div[2]/div/ul/li[1]/div/button')
-    EDIT_NEWS_TITlE = (By.XPATH, '//div[text()="Edit News"]')
+    EDIT_ICON = (By.ID, 'news-edit-btn')
+    EDIT_NEWS_TITlE = (By.XPATH, '//div[@class="ant-card-head-wrapper"]//div[1]')
     EDIT_CANCEL_BUTTON = (By.ID, 'cancel-news-btn')
 
 
@@ -378,7 +386,7 @@ class LogoutIdentifiers(object):
 class CampStatementIdentifiers(object):
     ADD_STATEMENT_BUTTON = (By.XPATH, '//button[@type="button"]//a')
     ADD_STATEMENT_TITLE = (By.XPATH, '//div[text()="Add Camp Statement"]')
-    NICK_NAME = (By.XPATH, '//div[contains(@class,"ant-select ant-select-lg")]//div[1]')
+    NICK_NAME = (By.XPATH, '(//div[@class="ant-select-selector"]//span)[2]')
     STATEMENT = (By.ID, 'statement')
     EDIT_SUMMARY = (By.ID, 'edit_summary')
     SUBMIT_STATEMENT_BUTTON = (By.XPATH, '//div[@class="ant-form-item-control-input-content"]//button[1]')
@@ -390,8 +398,8 @@ class CampStatementIdentifiers(object):
     TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
     PREVIEW_PAGE = (By.XPATH, '(//button[contains(@class,"ant-btn ant-btn-primary")])[2]')
     SUBMIT_PREVIEW = (By.XPATH, '//button[@class="ant-btn ant-btn-primary"]')
-    PREVIEW_MODAL_TITLE = (By.ID, 'rc_unique_0')
-    EDIT_CAMP_STATEMENT_BUTTON = (By.XPATH, '//a[@href="/statement/history/610-Automated-Topic/1-Agreement"]')
+    PREVIEW_MODAL_TITLE = (By.XPATH, '//div[text()="Statement Preview"]')
+    EDIT_CAMP_STATEMENT_BUTTON = (By.XPATH, '//button[contains(@class,"ant-btn ant-btn-default")]//a')
     CAMP_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
     SUBMIT_STATEMENT_UPDATE = (By.XPATH, '//span[text()="Submit Statement Update Based on This"]')
     SUBMIT_UPDATE = (By.XPATH, '(//button[@type="submit"])[2]')
@@ -400,10 +408,10 @@ class CampStatementIdentifiers(object):
     LIVE_COLOR = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]')
     IN_REVIEW = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]')
     OLD = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]')
-    COMPARE_STATEMENT2 = (By.XPATH, '(//input[@type="checkbox"])[2]')
-    COMPARE_STATEMENT1 = (By.XPATH, '(//input[@type="checkbox"])')
-    COMPARE_STATEMENT_BUTTON = (By.XPATH, '(//button[contains(@class,"ant-btn ant-btn-primary")])[2]')
-    STATEMENT_COMPARE_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
+    COMPARE_STATEMENT2 = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/label[1]/span[2]')
+    COMPARE_STATEMENT1 = (By.XPATH, '(//label[@class="ant-checkbox-wrapper campHistory_campSelectCheckbox__NNUPk"]//span)[3]')
+    COMPARE_STATEMENT_BUTTON = (By.ID, 'compare-statement')
+    STATEMENT_COMPARE_HISTORY_TITLE = (By.XPATH, '//div[@class="UI_filterOt___p9MH"]//h4[1]')
 
 
 class CampHistoryIdentifiers(object):

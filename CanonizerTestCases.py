@@ -364,8 +364,16 @@ testCases = {
                                                                     ' to canonizer sorted tree'],
     'TC_VERIFY_CREATE_TOPIC_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE': [Critical, 'User must redirect'
                                                                                        ' to create topic page'],
-    'TC_VERIFY_CREATE_CAMP_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE' : [Critical, 'User must redirect'
+    'TC_VERIFY_CREATE_CAMP_BUTTON_FUNCTIONALITY_ON_TOPIC_COMPARISON_PAGE': [Critical, 'User must redirect'
                                                                                        ' to create camp page'],
+    'TC_VERIFY_POST_EDIT_ICON': [Critical, 'User must be able to edit post on click edit icon'],
+    'TC_VERIFY_POST_DELETE_FUNCTIONALITY': [Critical, 'User must be able to delete post on click delete icon'],
+    'TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT': [Critical, 'On Edit News page, When user does not put Display Text , '
+                                                         'user must see Error Message'],
+    'TC_UPDATE_NEWS_WITH_BLANK_LINK': [Critical, 'On Edit News page, When user does not put Link , user must see '
+                                                 'Error Message'],
+
+
 
 
 

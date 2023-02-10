@@ -28,7 +28,6 @@ class CanonizerCampForumPage(Page):
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(Keys.ENTER)
-
         #self.hover(*CampForumIdentifiers.SEARCH_ICON)
         #self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
         self.hover(*CampForumIdentifiers.TOPIC_CLICK)
@@ -36,19 +35,13 @@ class CanonizerCampForumPage(Page):
 
         # Click on Camp Forum Button
         try:
-            WebDriverWait(self.driver, 8).until(
+            WebDriverWait(self.driver, 6).until(
                 EC.visibility_of_element_located(
-                    (By.ID, 'camp-forum-btn')))
+                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
         except TimeoutException:
             pass
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
 
-        try:
-            WebDriverWait(self.driver, 8).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
-        except TimeoutException:
-            pass
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
@@ -117,12 +110,19 @@ class CanonizerCampForumPage(Page):
 
     def check_no_thread_availability(self):
         self.create_new_topic()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_BUTTON)
+        # Click on Camp Forum Button
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
+        except TimeoutException:
+            pass
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
         self.hover(*CampForumIdentifiers.ALL_THREADS_BUTTON)
         self.find_element(*CampForumIdentifiers.ALL_THREADS_BUTTON).click()
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
+        self.hover(*CampForumIdentifiers.NO_THREAD_STATEMENT)
         statement = self.find_element(*CampForumIdentifiers.NO_THREAD_STATEMENT).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE'] and 'No Data' in statement:
             return CanonizerCampForumPage(self.driver)
@@ -371,17 +371,74 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def edit_reply_to_thread(self, reply):
-            self.hover(*CampForumIdentifiers.EDIT_REPLY)
-            self.find_element(*CampForumIdentifiers.EDIT_REPLY).click()
-            self.hover(*CampForumIdentifiers.REPLY_FIELD)
-            self.find_element(*CampForumIdentifiers.REPLY_FIELD).clear()
+        self.hover(*CampForumIdentifiers.EDIT_REPLY)
+        self.find_element(*CampForumIdentifiers.EDIT_REPLY).click()
+        self.hover(*CampForumIdentifiers.REPLY_FIELD)
+        self.find_element(*CampForumIdentifiers.REPLY_FIELD).clear()
 
-            self.find_element(*CampForumIdentifiers.REPLY_FIELD).send_keys(reply)
-            self.click_post_submit_button()
-            self.hover(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE)
-            success_message = self.find_element(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE).text
-            if success_message == message['Camp_Forum']['UPDATE_POST_SUCCESS_MESSAGE']:
-                return CanonizerCampForumPage(self.driver)
+        self.find_element(*CampForumIdentifiers.REPLY_FIELD).send_keys(reply)
+        self.click_post_submit_button()
+        self.hover(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE)
+        success_message = self.find_element(*CampForumIdentifiers.REPLY_UPDATED_MESSAGE).text
+        if success_message == message['Camp_Forum']['UPDATE_POST_SUCCESS_MESSAGE']:
+            return CanonizerCampForumPage(self.driver)
+
+    def verify_edit_post_icon(self):
+        self.hover(*CampForumIdentifiers.THREAD_LINK)
+        self.find_element(*CampForumIdentifiers.THREAD_LINK).click()
+        self.hover(*CampForumIdentifiers.EDIT_POST_ICON)
+        self.find_element(*CampForumIdentifiers.EDIT_POST_ICON).click()
+        self.hover(*CampForumIdentifiers.VERIFY_POST_REPLY)
+        text1 = self.find_element(*CampForumIdentifiers.VERIFY_POST_REPLY).text
+        self.hover(*CampForumIdentifiers.POST_REPLY)
+        text2 = self.find_element(*CampForumIdentifiers.POST_REPLY).text
+        if text1 == text2:
+            return CanonizerCampForumPage(self.driver)
+        else:
+            print("Post edit title not matching")
+
+    def verify_post_edit_functionality(self, reply):
+        self.hover(*CampForumIdentifiers.THREAD_LINK)
+        self.find_element(*CampForumIdentifiers.THREAD_LINK).click()
+        self.hover(*CampForumIdentifiers.EDIT_POST_ICON)
+        self.find_element(*CampForumIdentifiers.EDIT_POST_ICON).click()
+        for i in range(0, 100):
+            self.find_element(*CampForumIdentifiers.POST_REPLY).send_keys(Keys.BACKSPACE)
+        self.find_element(*CampForumIdentifiers.POST_REPLY).send_keys(reply)
+        self.hover(*CampForumIdentifiers.POST_SUBMIT)
+        self.find_element(*CampForumIdentifiers.POST_SUBMIT).click()
+        validation_message = self.find_element(*CampForumIdentifiers.POST_UPDATE_MESSAGE).text
+        if validation_message == message['Camp_Forum']['POST_UPDATE_MESSAGE']:
+            return CanonizerCampForumPage(self.driver)
+        else:
+            print("Title not found or is not matching")
+
+    def test_verify_post_delete_functionality(self):
+        self.hover(*CampForumIdentifiers.THREAD_LINK)
+        self.find_element(*CampForumIdentifiers.THREAD_LINK).click()
+        self.hover(*CampForumIdentifiers.DELETE_POST_ICON)
+        self.find_element(*CampForumIdentifiers.DELETE_POST_ICON).click()
+        self.hover(*CampForumIdentifiers.DELETE_CONFIRM)
+        self.find_element(*CampForumIdentifiers.DELETE_CONFIRM).click()
+        try:
+            WebDriverWait(self.driver, 6).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'ant-message-notice-content')))
+        except TimeoutException:
+            pass
+        validation_message = self.find_element(*CampForumIdentifiers.POST_DELETE_MESSAGE).text
+        if validation_message == message['Camp_Forum']['POST_DELETE_MESSAGE']:
+            return CanonizerCampForumPage(self.driver)
+        else:
+            print("Message not found or is not matching")
+
+
+
+
+
+
+
+
 
 
 

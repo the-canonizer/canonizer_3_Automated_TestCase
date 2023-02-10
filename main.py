@@ -1,7 +1,9 @@
 import unittest
+from subprocess import run
+import HtmlTestRunner
 
-from CanonizerAddNewsPage import CanonizerAddNewsPage
-from CanonizerAddNewsPage import CanonizerEditNewsPage
+from CanonizerAddEditNewsPage import CanonizerAddNewsPage
+from CanonizerAddEditNewsPage import CanonizerEditNewsPage
 from CanonizerCampStatementPage import CanonizerCampStatementPage
 from CanonizerCampStatementPage import CanonizerEditCampStatementPage
 from CanonizerChangePasswordTab import CanonizerChangePasswordTab
@@ -25,6 +27,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import string
 import random
+import time
+
 
 
 class TestPages(unittest.TestCase):
@@ -73,7 +77,7 @@ class TestPages(unittest.TestCase):
             self.driver).click_register_button().register_page_mandatory_fields_are_marked_with_asterisk())
 
     # TC_REGISTER_WITH_BLANK_FIRST_NAME
-    def test_registration_with_blank_first_name(self, ):
+    def test_registration_with_blank_first_name(self):
         print("\n" + str(test_cases('TC_REGISTER_WITH_BLANK_FIRST_NAME')))
         result = CanonizerRegisterPage(self.driver).click_register_button().registration_with_blank_first_name(
             reg_list_3).get_url()
@@ -242,8 +246,7 @@ class TestPages(unittest.TestCase):
         # TC_CLICK_FORGOT_PASSWORD_LINK
     def test_click_forgot_password_link(self):
         print("\n" + str(test_cases('TC_CLICK_FORGOT_PASSWORD_LINK')))
-        result = CanonizerForgotPasswordPage(self.driver).click_forgot_password_link().get_url()
-        self.assertIn("", result)
+        CanonizerForgotPasswordPage(self.driver).click_forgot_password_link()
 
     # TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
     def test_click_submit_button_with_valid_email(self):
@@ -305,11 +308,8 @@ class TestPages(unittest.TestCase):
 
     # TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME
     def test_create_topic_with_blank_topic_name(self):
-        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME')))
         self.login_to_canonizer_app()
-        # Click on the Create New Topic link and check if topic name is blank
-        result = CanonizerCreateNewTopic(
-            self.driver).click_create_new_topic_page_button().create_topic_with_blank_topic_name(
+        result = CanonizerCreateNewTopic(self.driver).click_create_new_topic_page_button().create_topic_with_blank_topic_name(
             DEFAULT_NICK_NAME,
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY).get_url()
@@ -566,35 +566,7 @@ class TestPages(unittest.TestCase):
             .verify_view_this_version_button_functionality()
         self.assertIn("/topic/", result.get_url())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # ----- UPDATE TOPIC Test Cases End -----
 
     # ----- CAMP FORUM Test Cases Start -----
     # TC_CLICK_CAMP_FORUM_BUTTON
@@ -827,6 +799,30 @@ class TestPages(unittest.TestCase):
         result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page() \
             .delete_reply_to_thread()
         self.assertIn("/1-Agreement/threads", result.get_url())
+
+    # TC_VERIFY_POST_EDIT_ICON FUNCTIONALITY
+    def test_verify_edit_post_icon(self):
+        print("\n" + str(test_cases('TC_VERIFY_POST_EDIT_ICON')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC)\
+            .verify_edit_post_icon()
+        self.assertIn("/forum/", result.get_url())
+
+    # TC_VERIFY_POST_EDIT_FUNCTIONALITY
+    def test_verify_post_edit_functionality(self):
+        print("\n" + str(test_cases('TC_VERIFY_POST_EDIT_FUNCTIONALITY')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC) \
+            .verify_post_edit_functionality("post updated4")
+        self.assertIn("/forum/", result.get_url())
+
+    # TC_VERIFY_POST_DELETE_FUNCTIONALITY
+    def test_verify_post_delete_functionality(self):
+        print("\n" + str(test_cases('TC_VERIFY_POST_DELETE_FUNCTIONALITY')))
+        self.login_to_canonizer_app()
+        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC) \
+            .test_verify_post_delete_functionality()
+        self.assertIn("/forum/", result.get_url())
 
     # ----- CAMP FORUM Test Cases End -----
 
@@ -1125,7 +1121,7 @@ class TestPages(unittest.TestCase):
         result = CanonizerTermsAndPrivacyPolicy(self.driver).click_on_canonizer_logo().get_url()
         self.assertIn("", result)
 
-    # TC_CLCIK_ON_SUPPORT_CANONIZER
+    # TC_CLICK_ON_SUPPORT_CANONIZER
     def test_click_on_support_canonizer(self):
         self.login_to_canonizer_app()
         result = CanonizerTermsAndPrivacyPolicy(self.driver).click_on_support_canonizer().get_url()
@@ -1338,6 +1334,41 @@ class TestPages(unittest.TestCase):
             "             News Trailing Spaces",
             "https://www.google.com/").get_url()
         self.assertIn("/topic/704-automated-topic/1-Agreement", result)
+        # ----- Add News Test Cases End -----
+
+        # ----- Edit News Test Cases Start -----
+
+    # TC_LOAD_EDIT_NEWS
+    def test_load_edit_news_page(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)
+        self.assertIn("/editnews/", result.get_url())
+
+    # TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT
+    def test_update_news_with_blank_display_text(self):
+        print("\n" + str(test_cases('TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
+            .update_news_with_blank_display_text("", "staging.canonizer.com/support").get_url()
+        self.assertIn("/editnews/", result)
+
+    # TC_UPDATE_NEWS_WITH_BLANK_LINK
+    def test_update_news_with_blank_link(self):
+        print("\n" + str(test_cases('TC_UPDATE_NEWS_WITH_BLANK_LINK')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC) \
+            .update_news_with_blank_link("text_update", " ").get_url()
+        self.assertIn("/editnews/", result)
+
+    # TC_EDIT_NEWS_WITH_CANCEL_BUTTON
+    def test_click_edit_news_cancel_button(self):
+        print("\n" + str(test_cases('TC_EDIT_NEWS_WITH_CANCEL_BUTTON')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC) \
+            .click_edit_news_cancel_button().get_url()
+        self.assertIn("/topic/", result)
+
+        # ----- Edit News Test Cases End -----
 
         # ----- Log out Test Cases Start -----
     # TC_CLICK_LOGOUT_PAGE_BUTTON
@@ -1477,7 +1508,7 @@ class TestPages(unittest.TestCase):
             DEFAULT_NAMESPACE,
             DEFAULT_SUMMARY
         ).load_add_camp_statement_page().click_on_statement_preview_button().get_url()
-        self.assertIn("statement/history", result)
+        self.assertIn("/create/statement/", result)
 
     # TC_CREATE_STATEMENT_ON_CLICK_PREVIEW_BUTTON
     def test_create_statement_on_click_preview_button(self):
@@ -1554,7 +1585,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         result = CanonizerEditCampStatementPage(self.driver).load_edit_camp_statement_page(DEFAULT_TOPIC) \
             .compare_two_statements()
-        self.assertIn("/statement/compare/610-Automated-Topic/", result)
+        self.assertIn("/statement/compare/", result.get_url())
 
     # TC_LOAD_CREATE_CAMP_PAGE
     def test_load_create_camp_page(self):
@@ -1701,7 +1732,6 @@ class TestPages(unittest.TestCase):
 
 
 
-
 def tearDown(self):
         self.driver.close()
 
@@ -1709,3 +1739,8 @@ def tearDown(self):
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
     unittest.TextTestRunner(verbosity=2).run(suite)
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test'))
+
+
+output = run("pwd", capture_output=True).stdout
+

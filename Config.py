@@ -202,6 +202,7 @@ DEFAULT_USER_INVALID = "xcvxc"
 # Login Page Configuration Parameters
 DEFAULT_USER = "sania.mohan@talentelgia.in"
 DEFAULT_PASS = "Test@123"
+
 #DEFAULT_USER = "rupali.chavan9860@gmail.com"
 #DEFAULT_PASS = "Rupali@12345"
 DEFAULT_INVALID_USER = 'invaliduse22rgmail.com'

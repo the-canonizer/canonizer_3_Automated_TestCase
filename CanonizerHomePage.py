@@ -91,9 +91,9 @@ class CanonizerTermsAndPrivacyPolicy(Page):
     def click_on_support_canonizer(self):
         self.hover(*HomePageIdentifiers.SUPPORT_CANONIZER)
         self.find_element(*HomePageIdentifiers.SUPPORT_CANONIZER).click()
-        return CanonizerHomePage(self.driver)
+        return CanonizerTermsAndPrivacyPolicy(self.driver)
 
     def click_on_algorithm_dropdown_button(self):
         self.hover(*HomePageIdentifiers.ALGORITHM_DROP_DOWN)
         self.find_element(*HomePageIdentifiers.ALGORITHM_DROP_DOWN).click()
-        return CanonizerHomePage(self.driver)
+        return CanonizerTermsAndPrivacyPolicy(self.driver)

@@ -35,6 +35,8 @@ message = {
         'EMPTY_POST_REPLY': 'The reply field is required.',
         'USER_PROFILE_TITLE': 'User Profile',
         'UPDATE_POST_SUCCESS_MESSAGE': 'Post Updated Successfully',
+        'POST_UPDATE_MESSAGE': 'Post Updated Successfully',
+        'POST_DELETE_MESSAGE': 'Post deleted successfully.'
 
 
     },
@@ -50,7 +52,8 @@ message = {
         'INVALID_EMAIL_ERROR': 'The input is not valid E-mail!',
         'MOBILE_NUMBER_ERROR': 'Phone number must be at least 10 digits!',
         'LOGIN_TITLE': 'Login to Canonizer',
-        'REGISTER_BUTTON_TITLE': 'Register Now On Canonizer'
+        'REGISTER_BUTTON_TITLE': 'Register Now On Canonizer',
+        'BLANK_EMAIL_ERROR': 'Please input your E-mail!',
 
     },
     'Login_Page': {
@@ -118,6 +121,7 @@ message = {
         'CAMP_UPDATE_PAGE_TITLE': 'Camp Update',
         'PREVIEW_TITLE': 'Camp Preview',
         'CAMP_HISTORY_COMPARISON': 'Camp History Comparison',
+        'SORTED_TREE_TITLE': 'Canonizer Sorted Camp Tree',
 
     },
     'Add_News': {
@@ -133,7 +137,7 @@ message = {
 
     },
     'Logout': {
-        'LOGIN': 'Log in',
+        'LOGIN': 'Log In',
 
     },
     'Add_Camp_Statement': {
@@ -141,7 +145,7 @@ message = {
         'CAMP_HISTORY_PAGE': 'Camp Statement History',
         'STATEMENT_FIELD_ERROR': 'Statement is required',
         'CANCEL_STATEMENT_TITLE': 'Canonizer Sorted Camp Tree',
-        'PREVIEW_MODAL_TITLE': 'Statement preview',
+        'PREVIEW_MODAL_TITLE': 'Statement Preview',
         'CAMP_HISTORY_TITLE': 'Camp Statement History',
         'STATEMENT_COMPARE_HISTORY_TITLE': 'Camp Statement History Comparison'
     },
