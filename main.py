@@ -82,7 +82,7 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(10)
         CanonizerBrowsePage(self.driver).click_browse_page_button()
         browse_url = self.driver.get_url
-        self.assertIn("/browse", result)
+        self.assertIn("/browse", browse_url)
 # Click on the Browse link and click on "Only My Topics"
     def test_click_only_my_topics_button(self):
         #print("\n" + str(test_cases(23)))
@@ -148,7 +148,7 @@ class TestPages(unittest.TestCase):
     def test_select_by_value_occupy_wall_street(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street()
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street())
                         
     def test_select_by_value_occupy_wall_street_only_my_topics(self):
         self.login_to_canonizer_app()
