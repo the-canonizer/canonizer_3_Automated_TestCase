@@ -107,7 +107,7 @@ class BrowsePageIdentifiers(object):
     """
     BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
     ONLY_MY_TOPICS = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[2]')
-    NAMESPACE = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]')
+    NAMESPACE = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]')
     GENERAL = (By.ID, 'name-space-1')
     #CORPORATIONS = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[8]/div')
     CORPORATIONS = (By.ID, 'name-space-2')
