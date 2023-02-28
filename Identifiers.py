@@ -270,7 +270,7 @@ class UploadFileIdentifiers(object):
     Class to hold the Browse Page Identifiers
     """
     UPLOADFILE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
-    UPLOAD = (By.XPATH, '/html/body/div/div/div[3]/div/div/div/div/form/div/div[2]/div[1]/span/div[1]/span/input')
+    UPLOAD = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/form/div/div[2]/div[1]/span/div[1]/span/input')
     UPLOADBUTTON = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a')
     ERROR_FILE_NAME = "  "
     FIVE_MB_FILE = "/home/akashroshan/PycharmProjects/Test/5mb.jpg"
