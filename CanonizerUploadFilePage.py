@@ -47,10 +47,15 @@ class CanonizerUploadFilePage(Page):
 
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
+        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
+        time.sleep(5)
 
         return CanonizerUploadFilePage(self.driver)
 
@@ -58,10 +63,17 @@ class CanonizerUploadFilePage(Page):
 
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.jpg"
+        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        time.sleep(3)
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
+        time.sleep(5)
+
+        return CanonizerUploadFilePage(self.driver)
 
 
 
@@ -85,17 +97,33 @@ class CanonizerUploadFilePage(Page):
             return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_same_file_name(self, originalfilename, file_name):
-        self.upload(originalfilename, file_name)
-        return self.find_element(*UploadFileIdentifiers.SAME_FILE_NAME_ERROR).text
+        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
+        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
+        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        time.sleep(3)
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
+        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        time.sleep(3)
+        self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        time.sleep(3)
+        self.driver.find_element(By.ID, "uploadBtn").click()
+        time.sleep(5)
+
+        return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_size_zero_bytes(self, originalfilename, file_name):
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        #Uploading Zero Byte File
-        zero_byte_filename = "/home/akashroshan/PycharmProjects/Test/zero_byte_file.csv"
-        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(zero_byte_filename)
+        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        time.sleep(3)
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/zero_byte.csv"
+        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
+        time.sleep(5)
+
         return CanonizerUploadFilePage(self.driver)
 
     def verify_recent_upload_file_name_from_list_of_files(self, originalfilename, file_name):
@@ -136,9 +164,14 @@ class CanonizerUploadFilePage(Page):
     def upload_file_with_invalid_file_name_format(self):
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        #Uploading Invalid File Format
-        unknown_filename = "/home/akashroshan/PycharmProjects/Test/sample.xxx"
+        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        time.sleep(3)
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.xxx"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
+        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
+        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
+        time.sleep(5)
+
         return CanonizerUploadFilePage(self.driver)
