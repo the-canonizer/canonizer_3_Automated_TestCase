@@ -475,8 +475,10 @@ class TestPages(unittest.TestCase):
                         
     def test_click_upload_button(self):
         self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerUploadFilePage(self.driver).click_upload_button())       
+        self.driver.implicitly_wait(20)
+        CanonizerUploadFilePage(self.driver).click_upload_button()
+        t = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
+        self.assertIn("Upload File", t)      
    
     def test_upload_file_with_size_zero_bytes(self):
         self.login_to_canonizer_app()
