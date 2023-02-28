@@ -43,9 +43,12 @@ class CanonizerBrowsePage(Page):
         return CanonizerBrowsePage(self.driver)
 
     def select_dropdown_value(self):
+        self.driver.implicitly_wait(20)
         self.click_browse_page_button()
+        #time.sleep(10)
         self.hover(*BrowsePageIdentifiers.NAMESPACE)
         self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
+        time.sleep(10)
         return CanonizerBrowsePage(self.driver)
 
     def scroll_down(self, i):
