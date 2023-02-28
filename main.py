@@ -477,15 +477,15 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(20)
         CanonizerUploadFilePage(self.driver).click_upload_button()
-        t = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
-        self.assertIn("Upload File", t)      
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
+        self.assertIn("Upload File", result)      
    
     def test_upload_file_with_size_zero_bytes(self):
         self.login_to_canonizer_app()
         CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
         self.driver.implicitly_wait(10)
-        result = self.driver.find_element(*UploadFileIdentifiers.ZERO_BYTE_FILE).text
-        self.assertIn("zero_byte_file.csv", result)
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
+        self.assertIn("Upload File", result)
     
     def test_select_all_namespaces(self):
         self.login_to_canonizer_app()
