@@ -459,8 +459,10 @@ class TestPages(unittest.TestCase):
 
     def test_upload_more_than_5mb_file_with_user_login(self):
         self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login())
+        self.driver.implicitly_wait(20)
+        CanonizerUploadFilePage(self.driver).upload_more_than_5mb_file_with_user_login()
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/p").text
+        self.assertIn("This file is exceeding the max limit and will not be uploaded", result)
 
     def test_open_uploaded_file(self):
         self.login_to_canonizer_app()
