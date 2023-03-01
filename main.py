@@ -491,8 +491,8 @@ class TestPages(unittest.TestCase):
     
     def test_select_all_namespaces(self):
         self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)        
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_all_namespaces()) 
+        self.driver.implicitly_wait(10)
+        self.assertTrue(CanonizerBrowsePage(self.driver).select_all_namespaces())        
                         
     def tearDown(self):
         self.driver.close()
