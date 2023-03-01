@@ -6,6 +6,10 @@ import time
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 import os
+from webdriver_manager.chrome import ChromeDriverManager
+
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 
 
 
@@ -14,7 +18,8 @@ class CanonizerUploadFilePage(Page):
     Class Name: CanonizerUploadFilePage
 
     """
-
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def click_upload_file_page_button(self):
         """
         -> Hover the control towards the upload file button. Identifiers are loaded from Identifiers Class
@@ -32,47 +37,26 @@ class CanonizerUploadFilePage(Page):
                 return CanonizerUploadFilePage(self.driver)
         return CanonizerUploadFilePage(self.driver)
 
-    def upload_file_without_user_login(self):
-
-        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
-        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
-        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        self.driver.find_element(By.ID, "uploadBtn").click()
-
-        return CanonizerUploadFilePage(self.driver)
-
     def upload_file_with_user_login(self):
-
+        self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
-        time.sleep(5)
-
         return CanonizerUploadFilePage(self.driver)
 
     def upload_more_than_5mb_file_with_user_login(self):
-
+        self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
-        time.sleep(5)
-
         return CanonizerUploadFilePage(self.driver)
 
 
@@ -82,10 +66,12 @@ class CanonizerUploadFilePage(Page):
         This function clicks the Upload Button
         :return:
         """
+        self.driver.implicitly_wait(20)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
 
 
     def upload_file_with_blank_file(self):
+        self.driver.implicitly_wait(20)
         self.click_upload_button()
         return self.find_element(*UploadFileIdentifiers.ERROR_FILE_NAME).text
 
@@ -97,32 +83,26 @@ class CanonizerUploadFilePage(Page):
             return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_same_file_name(self, originalfilename, file_name):
+        self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
-        time.sleep(5)
 
         return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_size_zero_bytes(self, originalfilename, file_name):
+        self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/zero_byte.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
-        time.sleep(5)
 
         return CanonizerUploadFilePage(self.driver)
 
@@ -162,16 +142,13 @@ class CanonizerUploadFilePage(Page):
         return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_invalid_file_name_format(self):
+        self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        time.sleep(3)
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.xxx"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        time.sleep(3)
         self.driver.find_element(By.ID, "enterFileName").send_keys("testfile")
-        time.sleep(3)
         self.driver.find_element(By.ID, "uploadBtn").click()
-        time.sleep(5)
 
         return CanonizerUploadFilePage(self.driver)
