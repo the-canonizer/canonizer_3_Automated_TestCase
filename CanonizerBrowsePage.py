@@ -84,9 +84,9 @@ class CanonizerBrowsePage(Page):
             action.key_down(Keys.ENTER).perform()
             self.i = self.i - 1
             # Check
-            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/label/span[1]').click()
             # Uncheck
-            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/label/span[1]/input").click()
+            self.driver.find_element(By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/label/span[1]').click()
             self.driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]').click()
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div/span[2]").text
             self.current_name_list.append(self.current_name)
