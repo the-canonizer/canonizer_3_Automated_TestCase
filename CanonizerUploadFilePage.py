@@ -58,15 +58,10 @@ class CanonizerUploadFilePage(Page):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        self.driver.find_element(By.ID, 'addAFileBtn').click()
-        originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.csv"
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.jpg"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
         self.upload_file_name()
-        self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
-        self.driver.find_element(By.ID, "uploadBtn").click()
         return CanonizerUploadFilePage(self.driver)
-
-
 
     def click_upload_button(self):
         """
