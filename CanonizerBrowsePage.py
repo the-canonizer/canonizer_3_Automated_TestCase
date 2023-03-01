@@ -13,12 +13,16 @@ import time
 import unittest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
 
 import sys
 
 
 class CanonizerBrowsePage(Page):
 
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def click_browse_page_button(self):
         """
         This function is to click on the Browse link
@@ -45,7 +49,6 @@ class CanonizerBrowsePage(Page):
     def select_dropdown_value(self):
         self.driver.implicitly_wait(20)
         self.click_browse_page_button()
-        #time.sleep(10)
         self.hover(*BrowsePageIdentifiers.NAMESPACE)
         self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
         time.sleep(10)
