@@ -49,8 +49,8 @@ class LoginPageIdentifiers(object):
     LOGIN_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
     EMAIL = (By.ID, 'login_form_username')
     PASSWORD = (By.ID, 'login_form_password')
-    #SUBMIT = (By.ID, 'login-btn')
-    SUBMIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]")
+    SUBMIT = (By.ID, 'login-btn')
+    #SUBMIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]")
     CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
     CHECK_BOX = (By.ID, 'login_form_remember')
     INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
@@ -107,7 +107,7 @@ class BrowsePageIdentifiers(object):
     """
     BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
     ONLY_MY_TOPICS = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/label/span[1]')
-    NAMESPACE = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]')
+    NAMESPACE = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]")
     GENERAL = (By.ID, 'name-space-1')
     #CORPORATIONS = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[8]/div')
     CORPORATIONS = (By.ID, 'name-space-2')
@@ -211,8 +211,7 @@ class HomePageIdentifiers:
     WHATISCANONIZERHEADING = (By.XPATH, '//*[@id="exampleAccordion"]/ul[1]/li[1]/a/span')
     EMAILLOGIN = (By.XPATH, '//*[@id="login_form_username"]')
     PASSWORD = (By.ID, 'login_form_password')
-    LOGIN_SUBMIT = (By.XPATH,
-                    '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
+    LOGIN_SUBMIT = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]')
     ACCOUNT_HEADER = (By.XPATH, '(//div[@class="siteHeader_btnsLoginRegister__u9U7_"]//child::*)[13]')
 
 
@@ -276,5 +275,5 @@ class UploadFileIdentifiers(object):
     FIVE_MB_FILE = "/home/akashroshan/PycharmProjects/Test/5mb.jpg"
     VALID_FILE_NAME = "/home/akashroshan/PycharmProjects/Test/sample.csv"
     UPLOADED_OPTION = (By.ID, "threeDots")
-    UPLOADED_IMAGE = (By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[2]/div[1]/div/div/div/div[2]")
+    UPLOADED_IMAGE = (By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/form/div/div[2]/div[2]/div[1]/div/div/div/h3/span[1]")
     UPLOADED_IMAGE_VIEW = (By.XPATH, '/html/body/div[2]/div/div/ul/li[1]/span/span/span[2]')
