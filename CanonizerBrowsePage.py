@@ -99,7 +99,7 @@ class CanonizerBrowsePage(Page):
         #self.r = self.response.json()["data"]
         #print(self.r)
         #self.i = len(self.r)
-        self.i = 50
+        self.i = 100
         self.current_name_list = []
 
         while self.i >= 1:
@@ -116,6 +116,8 @@ class CanonizerBrowsePage(Page):
             self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]').click()
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div/span[2]").text
             self.current_name_list.append(self.current_name)
+        if self.current_name == "All":
+           break
     def select_by_value_general(self):
         #select = Select(self.find_element(*BrowsePageIdentifiers.NAMESPACE))
         #select.select_by_value("1")
