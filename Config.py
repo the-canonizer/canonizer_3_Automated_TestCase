@@ -25,9 +25,9 @@ else:
     print("Unknown OS")
     exit(1)
 
-DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Deekshith@123"
-DEFAULT_NAME = "saideekshith"
+DEFAULT_USER = "akash.roshan@iffort.com"
+DEFAULT_PASS = "Iffort@1234"
+DEFAULT_NAME = "test"
 INVALID_NAME = "sai deekshith1"
 INVALID_PASSWORD = "sfagf@@3 sfg gdahg"
 
@@ -36,11 +36,11 @@ MIDDLE_NAME = "testing"
 LAST_NAME = "automation"
 
 # Registration Page Configuration Parameters
-DEFAULT_FIRST_NAME = "kumar"
-DEFAULT_LAST_NAME = "file"
-DEFAULT_EMAIL = "saideekshith@zibtek"
-DEFAULT_PASSWORD = "Sai@1998"
-DEFAULT_CONFIRM_PASSWORD = "Sai@1998"
+DEFAULT_FIRST_NAME = "test"
+DEFAULT_LAST_NAME = "tester"
+DEFAULT_EMAIL = "akash.roshan@iffort.com"
+DEFAULT_PASSWORD = "Iffort@1234"
+DEFAULT_CONFIRM_PASSWORD = "Iffort@1234"
 INVALID_MOBILE_NUMBER = "12345"
 DEFAULT_MOBILE_NUMBER = "1992936545"
 DEFAULT_INVALID_EMAIL = "sai#222222gmail"
@@ -195,8 +195,8 @@ reg_list_16 = [
 # Login Page Configuration Parameters
 # DEFAULT_USER = ""
 # DEFAULT_PASS = ""
-DEFAULT_USER = "saideekshith@zibtek.in"
-DEFAULT_PASS = "Deekshith@123"
+DEFAULT_USER = "sania.mohan@talentelgia.in"
+DEFAULT_PASS = "Test@123"
 
 # Forgot Password  Page Configuration Parameters
 UNREGISTERED_EMAIL = "can@gmail.com"
@@ -244,5 +244,4 @@ DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
 INVALID_TOPIC_NAME = "invalid @#$%^&(!(!(!"
-
 
