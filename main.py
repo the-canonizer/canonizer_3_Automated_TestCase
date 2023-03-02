@@ -492,8 +492,9 @@ class TestPages(unittest.TestCase):
     def test_select_all_namespaces(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_all_namespaces())        
-                        
+        CanonizerBrowsePage(self.driver).select_all_namespaces()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div/span[2]").text
+        self.assertIn("All", result)                        
     def tearDown(self):
         self.driver.close()
 
