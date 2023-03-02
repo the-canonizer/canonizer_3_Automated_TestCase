@@ -42,6 +42,15 @@ class CanonizerUploadFilePage(Page):
                 return CanonizerUploadFilePage(self.driver)
         return CanonizerUploadFilePage(self.driver)
 
+
+    def click_upload_button(self):
+        """
+        This function clicks the Upload Button
+        :return:
+        """
+        self.driver.implicitly_wait(20)
+        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
+
     def upload_file_with_user_login(self):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
@@ -60,29 +69,7 @@ class CanonizerUploadFilePage(Page):
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         originalfilename = "/home/akashroshan/PycharmProjects/Test/more_than_5mb.jpg"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        self.upload_file_name()
         return CanonizerUploadFilePage(self.driver)
-
-    def click_upload_button(self):
-        """
-        This function clicks the Upload Button
-        :return:
-        """
-        self.driver.implicitly_wait(20)
-        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-
-
-    def upload_file_with_blank_file(self):
-        self.driver.implicitly_wait(20)
-        self.click_upload_button()
-        return self.find_element(*UploadFileIdentifiers.ERROR_FILE_NAME).text
-
-
-    def upload_file_with_valid_format(self, originalfilename, file_name):
-        self.upload(originalfilename, file_name)
-        success_message = self.find_element(*UploadFileIdentifiers.SUCCESS_MESSAGE).text
-        if success_message == 'Success! File uploaded successfully!':
-            return CanonizerUploadFilePage(self.driver)
 
     def upload_file_with_same_file_name(self, originalfilename, file_name):
         self.driver.implicitly_wait(20)
@@ -97,63 +84,12 @@ class CanonizerUploadFilePage(Page):
 
         return CanonizerUploadFilePage(self.driver)
 
-    def upload_file_with_size_zero_bytes(self, originalfilename, file_name):
-        self.driver.implicitly_wait(20)
-        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
-        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        self.driver.find_element(By.ID, 'addAFileBtn').click()
-        originalfilename = "/home/akashroshan/PycharmProjects/Test/zero_byte.csv"
-        self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        self.upload_file_name()
-        self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
-        self.driver.find_element(By.ID, "uploadBtn").click()
-
-        return CanonizerUploadFilePage(self.driver)
-
-    def verify_recent_upload_file_name_from_list_of_files(self, originalfilename, file_name):
-        self.upload(originalfilename, file_name)
-        success_message = self.find_element(*UploadFileIdentifiers.SUCCESS_MESSAGE).text
-        if success_message == 'Success! File uploaded successfully!':
-            recent_file_name = self.find_element(*UploadFileIdentifiers.RECENT_FILE_NAME).text
-            if file_name in recent_file_name:
-                return CanonizerUploadFilePage(self.driver)
-
-    def verify_uploaded_image_file_format(self, originalfilename, file_name):
-        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
-        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        try:
-            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-card-head')))
-        except TimeoutException:
-            pass
-        error_message = self.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
-        if error_message  in 'Error! The type of the uploaded file should be an image.(jpeg,jpg,png,bmp,gif)':
-            return CanonizerUploadFilePage(self.driver)
-
-    def open_uploaded_file(self):
-        self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
-        self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        self.hover(*UploadFileIdentifiers.UPLOADED_OPTION)
-        self.find_element(*UploadFileIdentifiers.UPLOADED_OPTION).click()
-        try:
-            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-dropdown-menu-title-content')))
-        except TimeoutException:
-            pass
-        self.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE_VIEW).click()
-        try:
-            WebDriverWait(self.driver, 3).until(EC.invisibility_of_element_located((By.CLASS_NAME, 'ant-modal modalStyle')))
-        except TimeoutException:
-            pass                                                                          
-        return CanonizerUploadFilePage(self.driver)
-
     def upload_file_with_invalid_file_name_format(self):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
         self.driver.find_element(By.ID, 'addAFileBtn').click()
-        originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.xxx"
+        originalfilename = "/home/akashroshan/PycharmProjects/Test/t.xxx"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
-        self.upload_file_name()
-        self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
-        self.driver.find_element(By.ID, "uploadBtn").click()
 
         return CanonizerUploadFilePage(self.driver)
