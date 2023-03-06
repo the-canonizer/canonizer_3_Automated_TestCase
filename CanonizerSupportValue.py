@@ -142,5 +142,10 @@ class CanonizerSupportValue(Page):
         self.driver.find_element(By.ID, "create_new_camp_camp_about_url").send_keys("https://www.google.com")
         self.driver.find_element(By.ID, "camp-about-nick-dropdown").click()
         self.driver.find_element(By.ID, "camp-about-nick-301").click()
-        self.driver.find_element(By.ID, "crate-camp-btn").click()   
+        self.driver.find_element(By.ID, "crate-camp-btn").click()  
+        
+        #Support first camp
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[1]").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[5]/div/div[2]/div/div[2]/a/button/span").click()
+        self.driver.find_element(By.ID, "uploadBtn").click()
         return CanonizerSupportValue(self.driver)
