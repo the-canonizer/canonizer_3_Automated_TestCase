@@ -108,6 +108,6 @@ class CanonizerSupportValue(Page):
         else:
             print("Not Found")
         self.scroll_down()
-        self.driver.find_element(By.ID, "create-topic-btnn").click()
+        self.driver.find_element(By.ID, "create-topic-btn").click()
         return CanonizerSupportValue(self.driver)
 
