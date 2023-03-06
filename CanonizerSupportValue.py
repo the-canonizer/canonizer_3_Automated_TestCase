@@ -79,7 +79,7 @@ class CanonizerSupportValue(Page):
             self.driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div/div[2]/form/div[1]/div[1]/div[3]/div/div[2]/div/div/div/div/span[2]').click()
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[2]/form/div[1]/div[1]/div[3]/div/div[2]/div/div/div/div/span[2]").text
             if self.current_name == "/sandbox testing/":
-
+                action.key_down(Keys.ENTER).perform()
                 break
 
             #time.sleep(0.4)
