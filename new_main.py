@@ -121,7 +121,14 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(20)
         CanonizerUploadFilePage(self.driver).click_upload_button()
         result = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
-        self.assertIn("Upload File", result)      
+        self.assertIn("Upload File", result) 
+        
+    def test_support_value_new_topic(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+
+        self.assertTrue(CanonizerSupportValue(self.driver).support_value_new_topic())   
 
     
 
