@@ -118,6 +118,7 @@ class CanonizerSupportValue(Page):
         self.n = random.randint(0, 10000)
         self.n = str(self.n)
         print(self.n)
+        self.driver.implicitly_wait(30)
         self.driver.find_element(By.XPATH, "//html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div/span[2]/span").click()
         # CLicking on Start CAmp Here
         self.driver.find_element(By.XPATH,"/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span").click()
@@ -142,10 +143,39 @@ class CanonizerSupportValue(Page):
         self.driver.find_element(By.ID, "create_new_camp_camp_about_url").send_keys("https://www.google.com")
         self.driver.find_element(By.ID, "camp-about-nick-dropdown").click()
         self.driver.find_element(By.ID, "camp-about-nick-301").click()
-        self.driver.find_element(By.ID, "crate-camp-btn").click()  
-        
-        #Support first camp
+        self.driver.find_element(By.ID, "crate-camp-btn").click()
+        #supportfirst camp
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[1]").click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[5]/div/div[2]/div/div[2]/a/button/span").click()
         self.driver.find_element(By.ID, "uploadBtn").click()
-        return CanonizerSupportValue(self.driver)
+        self.calculate_support_value()
+        if self.topic_score == self.camp_sum:
+           return CanonizerSupportValue(self.driver)
+
+
+
+    def calculate_support_value(self):
+        self.driver.implicitly_wait(30)
+
+        self.topic_score = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div/span[3]/span/div/div/span[2]/div/div/div/span")
+        self.topic_score = float(self.topic_score.text)
+        self.topic_score = ("%.2f" % self.topic_score)
+        print("topic score")
+        print(self.topic_score)
+
+
+        self.camp1_score = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[3]/span[3]/span/div/div/span[2]/div/div/div/span")
+        #print(self.camp1_score.text)
+        self.camp1_score = float(self.camp1_score.text)
+        print("camp1 score")
+        print(self.camp1_score)
+        self.camp2_score = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[4]/span[3]/span/div/div/span[2]/div/div/div/span")
+        print(self.camp2_score.text)
+        self.camp2_score = float(self.camp2_score.text)
+        print("camp2 score")
+        print(self.camp2_score)
+        self.camp_sum = self.camp1_score + self.camp2_score
+        self.camp_sum = float(self.camp_sum)
+        #self.camp_sum = ("%.2f" % self.camp_sum)
+        print("camp score")
+        print(self.camp_sum)
