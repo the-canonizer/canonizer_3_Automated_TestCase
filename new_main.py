@@ -129,7 +129,66 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
 
         self.assertTrue(CanonizerSupportValue(self.driver).support_value_new_topic())   
+    def test_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
 
+        res = requests.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
+        res = str(res.status_code)
+        print(res)
+        if "200" == res:
+           print("pass")
+           self.driver.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
+           time.sleep(5)
+           resp = self.driver.current_url
+           print(resp)
+        else:
+           print("url does not exist")
+        if resp == "/topic/88-Theories-of-Consciousness/1-Agreement":
+            pass
+        else:
+            mailer.mailern()
+            print("failed")
+
+
+        self.assertIn("/topic/88-Theories-of-Consciousness/1-Agreement", resp)
+
+    def test_unknown_topic(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.n = random.randint(0, 10000)
+        self.n = str(self.n)
+        url = ("http://canonizer3.canonizer.com/topic"+self.n+"/88-Theories-of-Consciousness/1-Agreement")
+        self.driver.get(url)
+        resp = requests.get(url)
+        resp = str(resp.status_code)
+        if resp == "404":
+            pass
+        else:
+            mailer.mailern()
+            print("failed")
+
+        self.assertIn("404", resp)
+
+    def test_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.n = random.randint(0, 10000)
+        self.n = str(self.n)
+        self.driver.get("http://canonizer3.canonizer.com/topic.asp/"+self.n)
+        time.sleep(5)
+
+        resp = self.driver.current_url
+        reslt = ("/topic/"+self.n)
+        print(resp)
+        print(reslt)
+        if resp == reslt:
+            pass
+        else:
+            mailer.mailern()
+            print("failed")
+
+        self.assertIn(reslt, resp)
     
 
     def tearDown(self):
