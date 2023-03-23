@@ -194,22 +194,22 @@ class TestPages(unittest.TestCase):
             print("failed")
 
         self.assertIn(reslt, resp)
-   def test_video_url(self):
+    def test_video_url(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
-        res = requests.get("https://canonizer.com/videos/consciousness")
+        res = requests.get("https://canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
         res = str(res.status_code)
         print(res)
         if "200" == res:
-            print("pass")
-            url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness")
+            url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
             self.driver.get(url)
-            time.sleep(5)
-            resp = self.driver.current_url
-            print(resp)
+            if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video"):
+               self.resp = "passed"
+            #resp = self.driver.current_url
+               print(self.resp)
         else:
             print("url does not exist")
-        self.assertIn("/videos/", resp)    
+        self.assertIn("passed", self.resp)  
     
 
     def tearDown(self):
