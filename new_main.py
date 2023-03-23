@@ -135,21 +135,15 @@ class TestPages(unittest.TestCase):
 
         res = requests.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
         res = str(res.status_code)
-        print(res)
         if "200" == res:
-           print("pass")
            self.driver.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
            time.sleep(5)
            resp = self.driver.current_url
-           print(resp)
         else:
-           print("url does not exist")
         if resp == "/topic/88-Theories-of-Consciousness/1-Agreement":
             pass
         else:
             mailer.mailern()
-            print("failed")
-
 
         self.assertIn("/topic/88-Theories-of-Consciousness/1-Agreement", resp)
 
@@ -161,17 +155,14 @@ class TestPages(unittest.TestCase):
         self.n = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
         self.n = str(self.n)
         url = ("http://canonizer3.canonizer.com/topic/"+self.n)
-        print(url)
         self.driver.get(url)
         resp = requests.get(url)
         resp = str(resp.status_code)
-        print(resp)
         if resp == "404":
            pass
         
         else:
             mailer.mailern()
-            print("failed")
 
         self.assertIn("404", resp)
 
@@ -185,28 +176,21 @@ class TestPages(unittest.TestCase):
 
         resp = self.driver.current_url
         reslt = ("/topic/"+self.n)
-        print(resp)
-        print(reslt)
         if resp == reslt:
             pass
         else:
             mailer.mailern()
-            print("failed")
-
         self.assertIn(reslt, resp)
     def test_video_url(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
         res = requests.get("https://canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
         res = str(res.status_code)
-        print(res)
         if "200" == res:
             url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
             self.driver.get(url)
             if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video"):
                self.resp = "passed"
-            #resp = self.driver.current_url
-               print(self.resp)
         else:
             print("url does not exist")
         self.assertIn("passed", self.resp)  
