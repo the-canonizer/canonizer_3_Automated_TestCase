@@ -156,14 +156,19 @@ class TestPages(unittest.TestCase):
     def test_unknown_topic(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
-        self.n = random.randint(0, 10000)
+        import string
+        N = 10
+        self.n = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
         self.n = str(self.n)
-        url = ("http://canonizer3.canonizer.com/topic"+self.n+"/88-Theories-of-Consciousness/1-Agreement")
+        url = ("http://canonizer3.canonizer.com/topic/"+self.n)
+        print(url)
         self.driver.get(url)
         resp = requests.get(url)
         resp = str(resp.status_code)
+        print(resp)
         if resp == "404":
-            pass
+           pass
+        
         else:
             mailer.mailern()
             print("failed")
