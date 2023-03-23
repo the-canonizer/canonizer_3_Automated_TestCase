@@ -189,6 +189,22 @@ class TestPages(unittest.TestCase):
             print("failed")
 
         self.assertIn(reslt, resp)
+   def test_video_url(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        res = requests.get("https://canonizer.com/videos/consciousness")
+        res = str(res.status_code)
+        print(res)
+        if "200" == res:
+            print("pass")
+            url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness")
+            self.driver.get(url)
+            time.sleep(5)
+            resp = self.driver.current_url
+            print(resp)
+        else:
+            print("url does not exist")
+        self.assertIn("/videos/", resp)    
     
 
     def tearDown(self):
