@@ -1,5 +1,6 @@
 import unittest
-from selenium.webdriver import Keys
+#from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 from CanonizerBrowsePage import *
 from CanonizerSupportValue import *
 from CanonizerUploadFilePage import *
@@ -56,7 +57,8 @@ class TestPages(unittest.TestCase):
 
         options.add_argument("--start-maximized")
 
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        #self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get(DEFAULT_BASE_URL)
 
     def login_to_canonizer_app(self):
