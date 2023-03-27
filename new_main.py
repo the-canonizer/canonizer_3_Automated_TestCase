@@ -205,12 +205,10 @@ class TestPages(unittest.TestCase):
         self.resp = resp.json()
         print(type(self.resp))
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -220,17 +218,15 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
-        resp = requests.get("http://canonizer3.canonizer.com/thread.asp/23/13/4canonizer.com/support_list.asp?nick_name_id=1")
+        resp = requests.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4canonizer.com/support_list.asp?nick_name_id=1")
+           self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -243,14 +239,12 @@ class TestPages(unittest.TestCase):
         resp = requests.get("http://canonizer3.canonizer.com/forum.asp/88/1")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -263,14 +257,12 @@ class TestPages(unittest.TestCase):
         resp = requests.get("http://canonizer3.canonizer.com/topoc.asp/85")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -283,14 +275,12 @@ class TestPages(unittest.TestCase):
         resp = requests.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -303,14 +293,12 @@ class TestPages(unittest.TestCase):
         resp = requests.get("http://canonizer3.canonizer.com/statement.asp/2/2")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
@@ -323,14 +311,12 @@ class TestPages(unittest.TestCase):
         resp = requests.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
         res = str(resp.status_code)
         self.resp = resp.json()
-        print(type(self.resp))
         if "200" == res:
            print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
            time.sleep(5)
            self.reslt = self.driver.current_url
-           print(self.reslt)
         else:
            print("url does not exist")
 
