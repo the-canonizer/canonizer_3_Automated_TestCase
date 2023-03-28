@@ -196,7 +196,7 @@ class TestPages(unittest.TestCase):
         else:
             print("url does not exist")
         self.assertIn("passed", self.resp)  
-        def test_support_list_asp_url_redirection(self):
+    def test_support_list_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
