@@ -222,7 +222,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
            time.sleep(5)
@@ -240,7 +239,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
            time.sleep(5)
@@ -258,7 +256,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
            time.sleep(5)
@@ -276,7 +273,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
            time.sleep(5)
@@ -294,7 +290,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
            time.sleep(5)
@@ -312,7 +307,6 @@ class TestPages(unittest.TestCase):
         res = str(resp.status_code)
         self.resp = resp.json()
         if "200" == res:
-           print("pass")
            #if json response have data = true parameter then redirect else return 404.
            self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
            time.sleep(5)
@@ -323,7 +317,7 @@ class TestPages(unittest.TestCase):
         self.assertIn("/stmt.asp/2/2", self.reslt)
     
 
-     def tearDown(self):
+    def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
