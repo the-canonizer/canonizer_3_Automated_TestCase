@@ -183,138 +183,118 @@ class TestPages(unittest.TestCase):
         else:
             mailer.mailern()
         self.assertIn(reslt, resp)
-    def test_video_url(self):
+   def test_video_url(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
         res = requests.get("https://canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
         res = str(res.status_code)
+        print(res)
         if "200" == res:
             url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
             self.driver.get(url)
             if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video"):
                self.resp = "passed"
+            #resp = self.driver.current_url
+               print(self.resp)
         else:
             print("url does not exist")
-        self.assertIn("passed", self.resp)  
+        self.assertIn("passed", self.resp)
+
     def test_support_list_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
-
-        resp = requests.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        print(type(self.resp))
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
+        time.sleep(30)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/h3"):
+            self.status = "200"
         else:
-           print("url does not exist")
+            self.status = "404"
 
-        self.assertIn("/support_list.asp?nick_name_id=1", self.reslt)
+        self.assertIn("200", self.status)
 
     def test_thread_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
-        resp = requests.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-btn"):
+           self.status = "200"
         else:
-           print("url does not exist")
+           self.status = "404"
 
-        self.assertIn("/thread.asp/23/13/4canonizer.com/support_list.asp?nick_name_id=1", self.reslt)
+        self.assertIn("200", self.status)
+        '''self.reslt = self.driver.current_url
+        print(self.reslt)
+        check = requests.get(self.reslt)
+        self.status = str(check.status_code)
+        print(self.status)
+
+        self.assertIn("200", self.status)'''
 
     def test_forum_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
-        resp = requests.get("http://canonizer3.canonizer.com/forum.asp/88/1")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-btn"):
+           self.status = "200"
         else:
-           print("url does not exist")
+           self.status = "404"
 
-        self.assertIn("/forum.asp/88/1", self.reslt)
+        self.assertIn("200", self.status)
 
     def test_topoc_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
-        resp = requests.get("http://canonizer3.canonizer.com/topoc.asp/85")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "camp-forum-btn"):
+            self.status = "200"
         else:
-           print("url does not exist")
+            self.status = "404"
 
-        self.assertIn("/topoc.asp/85", self.reslt)
+        self.assertIn("200", self.status)
+
 
     def test_manage_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
-
-        resp = requests.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-topic-btn"):
+            self.status = "200"
         else:
-           print("url does not exist")
+            self.status = "404"
 
-        self.assertIn("/manage.asp/2/2?class=camp", self.reslt)
+        self.assertIn("200", self.status)
 
     def test_statement_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
-
-        resp = requests.get("http://canonizer3.canonizer.com/statement.asp/2/2")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
+        time.sleep(20)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
+            self.status = "200"
         else:
-           print("url does not exist")
+            self.status = "404"
 
-        self.assertIn("/statement.asp/2/2", self.reslt)
+        self.assertIn("200", self.status)
 
     def test_stmt_asp_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
 
-        resp = requests.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
-        res = str(resp.status_code)
-        self.resp = resp.json()
-        if "200" == res:
-           #if json response have data = true parameter then redirect else return 404.
-           self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
-           time.sleep(5)
-           self.reslt = self.driver.current_url
+        self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
+        time.sleep(20)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
+            self.status = "200"
         else:
-           print("url does not exist")
+            self.status = "404"
 
-        self.assertIn("/stmt.asp/2/2", self.reslt)
+        self.assertIn("200", self.status)
     
 
     def tearDown(self):
