@@ -295,6 +295,26 @@ class TestPages(unittest.TestCase):
             self.status = "404"
 
         self.assertIn("200", self.status)
+    def test_sitemap_url(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        resp = requests.get("https://canonizer.com/sitemap.xml")
+        self.res = str(resp.status_code)
+        if "200" == self.res:
+           #if json response have data = true parameter then redirect else return 404.
+           self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
+           self.resf = requests.get("https://canonizer3.canonizer.com/sitemap.xml").text
+           time.sleep(5)
+           from bs4 import BeautifulSoup
+           soup = BeautifulSoup(self.resf, "html.parser")
+           print(soup.h1.text)
+
+        else:
+           self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
+           print("url does not exist")
+
+        self.assertIn("XML Sitemap", soup.h1)    
     
 
     def tearDown(self):
