@@ -316,7 +316,68 @@ class TestPages(unittest.TestCase):
 
         self.assertIn("XML Sitemap", soup.h1)    
     
+    def test_load_camp_statement_page(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
 
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement())
+
+    def test_add_camp_statement_page_with_asterisk(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_asterisk())
+
+
+    def test_add_camp_statement_without_mandatory_field(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_without_mandatory_data())
+
+    def test_add_camp_statement_with_trailing_spaces(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_trailing_spaces())
+
+    def test_add_camp_statement_with_blank_data(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_blank_data())
+
+    def test_load_edit_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).load_edit_camp_statement())
+
+    def test_update_camp_statement_with_mandatory_field(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).update_camp_statement_with_mandatory_field())
+
+    def test_edit_camp_statement_with_trailing_spaces(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement_with_trailing_spaces())
+
+    def test_edit_camp_statement_with_blank_data(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement_with_blank_data())
+
+    def test_compare_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).compare_camp_statement())
+    
     def tearDown(self):
         self.driver.close()
 
