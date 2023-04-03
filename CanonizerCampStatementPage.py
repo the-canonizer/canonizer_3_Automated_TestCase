@@ -246,13 +246,14 @@ class CanonizerCampStatementPage(Page):
         self.driver.get("https://canonizer3.canonizer.com/browse")
         self.create_new_topic()
         self.click_add_camp_statement()
+        #create statement
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div").send_keys("hello statement")
         self.driver.find_element(By.ID, "edit_summary").send_keys("hello summary")
         self.driver.find_element(By.ID, "update-submit-btn").click()
-        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
-        self.driver.find_element(By.ID, "add-camp-statement-btn").click()
+        #edit statement
+        #self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
+        #self.driver.find_element(By.ID, "add-camp-statement-btn").click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
-        time.sleep(10)
         self.driver.find_element(By.ID, "update-submit-btn").click()
 
         if self.driver.find_element(By.ID, "update-submit-btn"):
