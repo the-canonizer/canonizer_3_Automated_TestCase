@@ -384,6 +384,13 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
         self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
     
+    def test_update_news(self):
+        print("\n" + str(test_cases('TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
+            .update_news("text_update", "staging.canonizer.com/support").get_url()
+        self.assertIn("/editnews/", result)
+    
     def tearDown(self):
         self.driver.close()
 
