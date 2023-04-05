@@ -390,6 +390,12 @@ class TestPages(unittest.TestCase):
         result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
             .update_news("text_update", "staging.canonizer.com/support").get_url()
         self.assertIn("/editnews/", result)
+        
+    def test_add_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
     
     def tearDown(self):
         self.driver.close()
