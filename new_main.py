@@ -385,7 +385,7 @@ class TestPages(unittest.TestCase):
         self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
     
     def test_update_news(self):
-        print("\n" + str(test_cases('TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT')))
+        print("\n" + str(test_cases('TC_UPDATE_NEWS')))
         self.login_to_canonizer_app()
         result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
             .update_news("text_update", "staging.canonizer.com/support").get_url()
