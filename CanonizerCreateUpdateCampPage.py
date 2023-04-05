@@ -418,11 +418,22 @@ class CanonizerEditCampPage(Page):
             print("Text not matching")
             
             
-    def create_camp(self,create_camp_list_4 ):
-        self.create_camp(create_camp_list_4)
+    def submit_camp_update(self, camp_about_url):
+        self.verify_submit_camp_update_button()
+        try:
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located(
+                    (By.CLASS_NAME, 'campHistory_campStatementCollapseButtons__LVwiX')))
+        except TimeoutException:
+            pass
+            for i in range(0, 60):
+                self.find_element(*CreateCampIdentifiers.EDIT_CAMP_URL).send_keys(Keys.BACKSPACE)
 
-
-        return CanonizerCreateCampPage(self.driver)
+        self.find_element(*CreateCampIdentifiers.EDIT_CAMP_URL).send_keys("www.google.com")
+        self.hover(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON)
+        self.find_element(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON).click()
+        self.hover(*CreateCampIdentifiers.INVALID_CAMP_ABOUT_URL_ERROR)
+        return CanonizerEditCampPage(self.driver)
 
 
 
