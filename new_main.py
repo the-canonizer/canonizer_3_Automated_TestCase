@@ -377,6 +377,12 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.maximize_window()
         self.assertTrue(CanonizerCampStatementPage(self.driver).compare_camp_statement())
+        
+    def test_edit_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
     
     def tearDown(self):
         self.driver.close()
