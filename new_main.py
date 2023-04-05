@@ -397,6 +397,12 @@ class TestPages(unittest.TestCase):
         self.driver.maximize_window()
         self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
     
+    def test_submit_camp_update(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .submit_camp_update("www.google.com")
+        self.assertIn("/manage/camp/", result.get_url())
+    
     def tearDown(self):
         self.driver.close()
 
