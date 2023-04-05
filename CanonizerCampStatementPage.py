@@ -309,6 +309,18 @@ class CanonizerCampStatementPage(Page):
         if self.driver.find_element(By.ID, "update-submit-btn"):
             pass
         return CanonizerCampStatementPage(self.driver)
+    
+    def add_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.driver.get("https://canonizer3.canonizer.com/browse")
+        self.create_new_topic()
+        self.click_add_camp_statement()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div").send_keys("create new statement")
+        self.driver.find_element(By.ID, "edit_summary").send_keys("create new summary")
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        if self.driver.find_element(By.ID, "update-submit-btn"):
+            pass
+        return CanonizerCampStatementPage(self.driver)
 
 
 
