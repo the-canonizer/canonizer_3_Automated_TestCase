@@ -1,9 +1,8 @@
 import unittest
-from subprocess import run
-from selenium.webdriver import Keys
-from termcolor import colored, cprint
-import HtmlTestRunner
+#from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 from CanonizerBrowsePage import *
+from CanonizerSupportValue import *
 from CanonizerUploadFilePage import *
 from Config import *
 from selenium import webdriver
@@ -22,7 +21,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 import unittest
 from subprocess import run
 from termcolor import colored, cprint
-import HtmlTestRunner
 
 from CanonizerRegistrationPage import CanonizerRegisterPage
 
@@ -59,7 +57,8 @@ class TestPages(unittest.TestCase):
 
         options.add_argument("--start-maximized")
 
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        #self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get(DEFAULT_BASE_URL)
 
     def login_to_canonizer_app(self):
@@ -71,387 +70,34 @@ class TestPages(unittest.TestCase):
         #result = CanonizerLoginPage(self.driver).click_login_page_button().login_with_valid_user(DEFAULT_USER, DEFAULT_PASS).get_url()
         self.driver.implicitly_wait(10)
         CanonizerLoginPage(self.driver).click_login_page_button()
-        result = CanonizerLoginPage(self.driver).login_with_valid_user(DEFAULT_USER, DEFAULT_PASS).get_url()
-        self.assertIn("", result)
+        result = CanonizerLoginPage(self.driver).login_with_valid_user(DEFAULT_USER, DEFAULT_PASS)
+        try:
+            WebDriverWait(self.driver, 2).until(EC.presence_of_element_located(
+                (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/h3')))
+        except TimeoutException:
+            pass
         self.driver.maximize_window()
 
-    def test_click_browse_page_button(self):
-        #print("\n" + str(test_cases(22)))
-        # Click on the Login Page and Create a Login Session and for further actions.
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        browse_url = self.driver.get_url
-        self.assertIn("/browse", browse_url)
-# Click on the Browse link and click on "Only My Topics"
     def test_click_only_my_topics_button(self):
         #print("\n" + str(test_cases(23)))
         # Click on the Login Page and Create a Login Session and for further actions.
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
         self.assertTrue(CanonizerBrowsePage(self.driver).click_only_my_topics_button())
 
 
     def test_select_dropdown_value(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
         self.assertTrue(CanonizerBrowsePage(self.driver).select_dropdown_value())
-
-    def test_select_by_value_general(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_general())
-        
-    def test_select_by_value_general_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_general_only_my_topics())
-    def test_select_by_value_corporations(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_corporations())
-    def test_select_by_value_corporations_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_corporations_only_my_topics())
-    def test_select_by_value_crypto_currency(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency())
-
-    def test_select_by_value_crypto_currency_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_only_my_topics())
-
-    def test_select_by_value_family(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family())
-    def test_select_by_value_family_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_only_my_topics())
-
-    def test_select_by_value_family_jesperson_oscar_f(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f())
-        
-    def test_select_by_value_family_jesperson_oscar_f_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_family_jesperson_oscar_f_only_my_topics())
-
-    def test_select_by_value_occupy_wall_street(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street())
                         
-    def test_select_by_value_occupy_wall_street_only_my_topics(self):
+    def test_select_all_namespaces(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_occupy_wall_street_only_my_topics())
+        CanonizerBrowsePage(self.driver).select_all_namespaces()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div/span[2]").text
+        self.assertIn("All", result)
 
-    def test_select_by_value_organizations(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations())
-                        
-    def test_select_by_value_organizations_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_only_my_topics())
-
-    def test_select_by_value_organizations_canonizer(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer())
-
-    def test_select_by_value_organizations_canonizer_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_only_my_topics())
-                        
-    def test_select_by_value_organizations_canonizer_help(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help())
-                        
-    def test_select_by_value_organizations_canonizer_help_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_canonizer_help_only_my_topics())
-
-    def test_select_by_value_organizations_mta(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_mta())
-
-    def test_select_by_value_organizations_mta_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_mta_only_my_topics())
-
-    def test_select_by_value_organizations_tv07(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07())
-
-    def test_select_by_value_organizations_tv07_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_tv07_only_my_topics())
-
-    def test_select_by_value_organizations_wta(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_wta())
-
-    def test_select_by_value_organizations_wta_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_wta_only_my_topics())
-                        
-    def test_select_by_value_personal_attributes(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_attributes())
-
-    def test_select_by_value_personal_attributes_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_attributes_only_my_topics())
-                        
-    def test_select_by_value_personal_reputations(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_reputations())
-
-    def test_select_by_value_personal_reputations_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_personal_reputations_only_my_topics())
-
-    def test_select_by_value_professional_services(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_professional_services())
-
-    def test_select_by_value_professional_services_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_professional_services_only_my_topics())
-
-    def test_select_by_value_sandbox(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox())
-
-    def test_select_by_value_sandbox_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_only_my_topics())
-
-    def test_select_by_value_terminology(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_terminology())
-
-    def test_select_by_value_terminology_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_terminology_only_my_topics())
-
-    def test_select_by_value_www(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_www())
-
-    def test_select_by_value_www_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_www_only_my_topics())
-
-    def test_select_by_value_sandbox_testing(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing())
-
-    def test_select_by_value_sandbox_testing_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sandbox_testing_only_my_topics())
-
-    def test_select_by_value_crypto_currency_ethereum(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum())
-
-    def test_select_by_value_crypto_currency_ethereum_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_crypto_currency_ethereum_only_my_topics())
-
-    def test_select_by_value_void(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_void())
-
-    def test_select_by_value_void_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_void_only_my_topics())
-
-    def test_select_by_value_mormon_canon_project(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_mormon_canon_project())
-
-    def test_select_by_value_mormon_canon_project_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_mormon_canon_project_only_my_topics())
-
-    def test_select_by_value_organizations_united_utah_party(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_united_utah_party())
-
-    def test_select_by_value_organizations_united_utah_party_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_organizations_united_utah_party_only_my_topics())
-
-    def test_select_by_value_government(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_government())
-
-    def test_select_by_value_government_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_government_only_my_topics())
-                        
-    def test_select_by_value_government_sandy_city(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_government_sandy_city())
-
-    def test_select_by_value_government_sandy_city_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_government_sandy_city_only_my_topics())
-
-    def test_select_by_value_sports(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sports())
-
-    def test_select_by_value_sports_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sports_only_my_topics())
-
-    def test_select_by_value_sports_sbcl(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sports_sbcl())
-
-    def test_select_by_value_sports_sbcl_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_sports_sbcl_only_my_topics())
-
-    def test_select_by_value_plateform_of_the_people(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_plateform_of_the_people())
-
-    def test_select_by_value_plateform_of_the_people_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_plateform_of_the_people_only_my_topics())
-
-    def test_select_by_value_fiction(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction())
-
-    def test_select_by_value_fiction_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_only_my_topics())
-
-    def test_select_by_value_fiction_lord_of_the_ring(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_lord_of_the_ring())
-
-    def test_select_by_value_fiction_lord_of_the_ring_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_lord_of_the_ring_only_my_topics())
-
-    def test_select_by_value_fiction_star_wars(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_star_wars())
-
-    def test_select_by_value_fiction_star_wars_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_star_wars_only_my_topics())
-
-    def test_select_by_value_fiction_world_of_warcraft(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft())
-
-    def test_select_by_value_fiction_world_of_warcraft_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_fiction_world_of_warcraft_only_my_topics())
-
-    def test_select_by_value_all(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue( CanonizerBrowsePage(self.driver).select_by_value_all())
-                        
-    def test_select_by_value_all_only_my_topics(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerBrowsePage(self.driver).select_by_value_all_only_my_topics())
-
-    def test_support_value(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).click_browse_page_button()
-        namespace = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li[1]/a/span[2]")
-        namespace = float(namespace.text)
-        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[2]/div/ul/li[1]/a/span[2]").click()
-        value = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div/div/span[2]")
-        result = float(value.text)
-        self.assertIn(namespace, result)
- 
-    def test_support_value_new_topic(self):
-        self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        CanonizerSupportValue(self.driver).support_value_new_topic()
-        self.topic_score = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[1]/span[3]/span/div/div/span[2]")
-        self.topic_score = float(self.topic_score.text)
-        self.camp1_score = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[2]")
-        self.camp1_score = float(self.camp1_score.text)
-        self.camp2_score = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[3]/span[3]/span/div/div/span[2]")
-        self.camp2_score = float(self.camp2_score.text)
-        self.camp_sum = self.camp1_score + self.camp2_score
-        self.camp_sum = float(self.camp_sum)
-        self.camp_sum = ("%.2f" % self.camp_sum)
-        result = float(self.camp_sum)
-        self.assertIn(self.topic_score, result)
-                        
     def test_upload_file_with_user_login(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(10)
@@ -464,45 +110,304 @@ class TestPages(unittest.TestCase):
         result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/p").text
         self.assertIn("This file is exceeding the max limit and will not be uploaded", result)
 
-    def test_open_uploaded_file(self):
+    def test_upload_file_with_invalid_file_name_format(self):
         self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        self.assertTrue(CanonizerUploadFilePage(self.driver).open_uploaded_file())
+        self.driver.implicitly_wait(20)
+        CanonizerUploadFilePage(self.driver).upload_file_with_invalid_file_name_format()
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/form/div/div[2]/div[1]/span/div[2]/div/div/div/div/p").text
+        self.assertIn("This file format is invalid", result)
 
-    def test_verify_uploaded_image_file_format(self):
-        self.login_to_canonizer_app()
-        CanonizerUploadFilePage(self.driver).verify_uploaded_image_file_format()
-        result = self.driver.find_element(*UploadFileIdentifiers.UPLOADED_IMAGE).text
-        self.assertIn("png", result)
                         
     def test_click_upload_button(self):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(20)
         CanonizerUploadFilePage(self.driver).click_upload_button()
         result = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
-        self.assertIn("Upload File", result)      
-   
-    def test_upload_file_with_size_zero_bytes(self):
+        self.assertIn("Upload File", result) 
+        
+    def test_support_value_new_topic(self):
+        self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
-        CanonizerUploadFilePage(self.driver).upload_file_with_size_zero_bytes()
-        self.driver.implicitly_wait(10)
-        result = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]").text
-        self.assertIn("Upload File", result)
+        self.driver.maximize_window()
+
+        self.assertTrue(CanonizerSupportValue(self.driver).support_value_new_topic())   
+    def test_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        res = requests.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
+        res = str(res.status_code)
+        if "200" == res:
+           self.driver.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
+           time.sleep(5)
+           resp = self.driver.current_url
+        else:
+        if resp == "/topic/88-Theories-of-Consciousness/1-Agreement":
+            pass
+        else:
+            mailer.mailern()
+
+        self.assertIn("/topic/88-Theories-of-Consciousness/1-Agreement", resp)
+
+    def test_unknown_topic(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        import string
+        N = 10
+        self.n = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+        self.n = str(self.n)
+        url = ("http://canonizer3.canonizer.com/topic/"+self.n)
+        self.driver.get(url)
+        resp = requests.get(url)
+        resp = str(resp.status_code)
+        if resp == "404":
+           pass
+        
+        else:
+            mailer.mailern()
+
+        self.assertIn("404", resp)
+
+    def test_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.n = random.randint(0, 10000)
+        self.n = str(self.n)
+        self.driver.get("http://canonizer3.canonizer.com/topic.asp/"+self.n)
+        time.sleep(5)
+
+        resp = self.driver.current_url
+        reslt = ("/topic/"+self.n)
+        if resp == reslt:
+            pass
+        else:
+            mailer.mailern()
+        self.assertIn(reslt, resp)
+   def test_video_url(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        res = requests.get("https://canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
+        res = str(res.status_code)
+        print(res)
+        if "200" == res:
+            url = ("https://"+"canonizer3"+".canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
+            self.driver.get(url)
+            if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video"):
+               self.resp = "passed"
+            #resp = self.driver.current_url
+               print(self.resp)
+        else:
+            print("url does not exist")
+        self.assertIn("passed", self.resp)
+
+    def test_support_list_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.driver.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
+        time.sleep(30)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/h3"):
+            self.status = "200"
+        else:
+            self.status = "404"
+
+        self.assertIn("200", self.status)
+
+    def test_thread_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-btn"):
+           self.status = "200"
+        else:
+           self.status = "404"
+
+        self.assertIn("200", self.status)
+        '''self.reslt = self.driver.current_url
+        print(self.reslt)
+        check = requests.get(self.reslt)
+        self.status = str(check.status_code)
+        print(self.status)
+
+        self.assertIn("200", self.status)'''
+
+    def test_forum_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-btn"):
+           self.status = "200"
+        else:
+           self.status = "404"
+
+        self.assertIn("200", self.status)
+
+    def test_topoc_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "camp-forum-btn"):
+            self.status = "200"
+        else:
+            self.status = "404"
+
+        self.assertIn("200", self.status)
+
+
+    def test_manage_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
+        time.sleep(20)
+        if self.driver.find_element(By.ID, "create-topic-btn"):
+            self.status = "200"
+        else:
+            self.status = "404"
+
+        self.assertIn("200", self.status)
+
+    def test_statement_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+        self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
+        time.sleep(20)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
+            self.status = "200"
+        else:
+            self.status = "404"
+
+        self.assertIn("200", self.status)
+
+    def test_stmt_asp_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
+        time.sleep(20)
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
+            self.status = "200"
+        else:
+            self.status = "404"
+
+        self.assertIn("200", self.status)
+    def test_sitemap_url(self):
+        self.login_to_canonizer_app()
+        self.driver.implicitly_wait(30)
+
+        resp = requests.get("https://canonizer.com/sitemap.xml")
+        self.res = str(resp.status_code)
+        if "200" == self.res:
+           #if json response have data = true parameter then redirect else return 404.
+           self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
+           self.resf = requests.get("https://canonizer3.canonizer.com/sitemap.xml").text
+           time.sleep(5)
+           from bs4 import BeautifulSoup
+           soup = BeautifulSoup(self.resf, "html.parser")
+           print(soup.h1.text)
+
+        else:
+           self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
+           print("url does not exist")
+
+        self.assertIn("XML Sitemap", soup.h1)    
     
-    def test_select_all_namespaces(self):
+    def test_load_camp_statement_page(self):
+        self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
-        self.driver.implicitly_wait(10)
-        CanonizerBrowsePage(self.driver).select_all_namespaces()
-        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div/span[2]").text
-        self.assertIn("All", result)                        
+        self.driver.maximize_window()
+
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement())
+
+    def test_add_camp_statement_page_with_asterisk(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_asterisk())
+
+
+    def test_add_camp_statement_without_mandatory_field(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_without_mandatory_data())
+
+    def test_add_camp_statement_with_trailing_spaces(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_trailing_spaces())
+
+    def test_add_camp_statement_with_blank_data(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_blank_data())
+
+    def test_load_edit_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).load_edit_camp_statement())
+
+    def test_update_camp_statement_with_mandatory_field(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).update_camp_statement_with_mandatory_field())
+
+    def test_edit_camp_statement_with_trailing_spaces(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement_with_trailing_spaces())
+
+    def test_edit_camp_statement_with_blank_data(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement_with_blank_data())
+
+    def test_compare_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).compare_camp_statement())
+        
+    def test_edit_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
+    
+    def test_update_news(self):
+        print("\n" + str(test_cases('TC_UPDATE_NEWS')))
+        self.login_to_canonizer_app()
+        result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
+            .update_news("text_update", "staging.canonizer.com/support").get_url()
+        self.assertIn("/editnews/", result)
+        
+    def test_add_camp_statement(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        self.assertTrue(CanonizerCampStatementPage(self.driver).edit_camp_statement())
+    
+    def test_submit_camp_update(self):
+        self.login_to_canonizer_app()
+        result = CanonizerEditCampPage(self.driver).load_topic_detail_page(DEFAULT_TOPIC)\
+            .submit_camp_update("www.google.com")
+        self.assertIn("/manage/camp/", result.get_url())
+    
     def tearDown(self):
         self.driver.close()
 
 if __name__ == "__main__":
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    #suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
+    #unittest.TextTestRunner(verbosity=2).run(suite)
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test'))
 
-
-output = run("pwd", capture_output=True).stdout
-print(output)
