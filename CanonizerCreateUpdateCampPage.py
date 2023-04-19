@@ -144,6 +144,7 @@ class CanonizerCreateCampPage(Page):
     def camp_cancel_button(self):
         self.hover(*CreateCampIdentifiers.CANCEL_BUTTON)
         self.find_element(*CreateCampIdentifiers.CANCEL_BUTTON).click()
+        print("Clicked on cancel button")
         self.hover(*CreateCampIdentifiers.CANCEL_TITLE)
         error = self.find_element(*CreateCampIdentifiers.CANCEL_TITLE).text
         if error == message['Create_Camp']['SORTED_TREE_TITLE']:
@@ -416,8 +417,9 @@ class CanonizerEditCampPage(Page):
             return CanonizerEditCampPage(self.driver)
         else:
             print("Text not matching")
-            
-            
+
+
+
     def submit_camp_update(self, camp_about_url):
         self.verify_submit_camp_update_button()
         try:
@@ -429,11 +431,20 @@ class CanonizerEditCampPage(Page):
             for i in range(0, 60):
                 self.find_element(*CreateCampIdentifiers.EDIT_CAMP_URL).send_keys(Keys.BACKSPACE)
 
-        self.find_element(*CreateCampIdentifiers.EDIT_CAMP_URL).send_keys("www.google.com")
+        self.find_element(*CreateCampIdentifiers.EDIT_CAMP_URL).send_keys(camp_about_url)
         self.hover(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON)
         self.find_element(*CreateCampIdentifiers.SUBMIT_UPDATE_BUTTON).click()
         self.hover(*CreateCampIdentifiers.INVALID_CAMP_ABOUT_URL_ERROR)
-        return CanonizerEditCampPage(self.driver)
+        error = self.find_element(*CreateCampIdentifiers.INVALID_CAMP_ABOUT_URL_ERROR).text
+        if error == message['Create_Camp']['INVALID_CAMP_ABOUT_URL_ERROR']:
+            return CanonizerEditCampPage(self.driver)
+        else:
+            print("Error not found or is not matching")
+
+
+
+
+
 
 
 

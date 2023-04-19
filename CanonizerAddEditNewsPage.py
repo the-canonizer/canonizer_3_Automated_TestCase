@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from CanonizerValidationCheckMessages import message
 from CanonizerBase import Page
 from Identifiers import CampForumIdentifiers, AddNewsIdentifiers
-from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 import string
 import random
 
@@ -244,6 +244,5 @@ class CanonizerEditNewsPage(Page):
         heading = self.find_element(*AddNewsIdentifiers.TOPIC_PAGE).text
         if heading == message['Add_News']['CANCEL_NEWS_TITLE']:
             return CanonizerEditNewsPage(self.driver)
-
 
 

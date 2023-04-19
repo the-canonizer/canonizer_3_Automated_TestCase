@@ -12,7 +12,7 @@ class CanonizerForgotPasswordPage(Page):
         self.find_element(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_LINK).click()
         self.hover(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_TITLE)
         label = self.find_element(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_TITLE).text
-        if label == message['Forgot_Password']['Title']:
+        if label == message['Forgot_Password']['TITLE']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Confirmation text is not matching")
@@ -40,7 +40,7 @@ class CanonizerForgotPasswordPage(Page):
         self.enter_email(email)
         self.click_submit_button()
         title = self.find_element(*ForgotPasswordIdentifiers.OTP_PAGE_TITLE).text
-        if title == message['Forgot_Password']['Password_Verify_Title']:
+        if title == message['Forgot_Password']['PASSWORD_VERIFY_TITLE']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Title is not matching")
@@ -54,7 +54,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_submit_button()
         self.hover(*ForgotPasswordIdentifiers.INVALID_EMAIL)
         error = self.find_element(*ForgotPasswordIdentifiers.INVALID_EMAIL).text
-        if error == message['Forgot_Password']['Invalid_Email_Error']:
+        if error == message['Forgot_Password']['INVALID_EMAIL_ERROR']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Error not found or not matching")
@@ -64,7 +64,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_submit_button()
         self.hover(*ForgotPasswordIdentifiers.INVALID_EMAIL)
         error = self.find_element(*ForgotPasswordIdentifiers.INVALID_EMAIL).text
-        if error == message['Forgot_Password']['Invalid_Email_Error']:
+        if error == message['Forgot_Password']['BLANK_EMAIL_ERROR']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Error not found or not matching")
@@ -77,7 +77,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_otp_submit_button()
         self.hover(*ForgotPasswordIdentifiers.EMPTY_OTP)
         error = self.find_element(*ForgotPasswordIdentifiers.EMPTY_OTP).text
-        if error == message['Forgot_Password']['Empty_Otp_Error']:
+        if error == message['Forgot_Password']['EMPTY_OTP_ERROR']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Error not found or not matching")
@@ -90,7 +90,7 @@ class CanonizerForgotPasswordPage(Page):
         self.click_otp_submit_button()
         self.hover(*ForgotPasswordIdentifiers.INVALID_OTP)
         error = self.find_element(*ForgotPasswordIdentifiers.INVALID_OTP).text
-        if error == message['Forgot_Password']['Invalid_Otp_Error']:
+        if error == message['Forgot_Password']['INVALID_OTP_ERROR']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Error not found or not matching")
@@ -98,7 +98,7 @@ class CanonizerForgotPasswordPage(Page):
     def cross_icon_on_forgot_page(self):
         self.find_element(*ForgotPasswordIdentifiers.CROSS_ICON_FORGOT_MODAL).click()
         confirmation_text = self.find_element(*ForgotPasswordIdentifiers.LOGIN).text
-        if confirmation_text == message['Forgot_Password']['Topic_Label']:
+        if confirmation_text == message['Forgot_Password']['TOPIC_LABEL']:
             return CanonizerForgotPasswordPage(self.driver)
         else:
             print("Text is not matching or not found")

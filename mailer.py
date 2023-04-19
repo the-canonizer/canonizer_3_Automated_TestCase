@@ -8,8 +8,8 @@ import os
 
 def mailern():
     fromaddr = "akash.roshan@iffort.com"
-    #toaddr = "vittu.amit@gmail.com"
-    recipients = ['vittu.amit@gmail.com', 'vittu.amit@gmail.com']
+    toaddr = "vittu.amit@gmail.com"
+    #recipients = 'vittu.amit@gmail.com'
     # instance of MIMEMultipart
     msg = MIMEMultipart()
 
@@ -17,8 +17,8 @@ def mailern():
     msg['From'] = fromaddr
 
     # storing the receivers email address
-    #msg['To'] = toaddr
-    msg['To'] = ", ".join(recipients)
+    msg['To'] = toaddr
+    #msg['To'] = ", ".join(recipients)
 
     # storing the subject
     msg['Subject'] = "Canonizer3 report"
@@ -28,19 +28,10 @@ def mailern():
 
     # attach the body with the msg instance
     msg.attach(MIMEText(body, 'plain'))
-    #remove old files
-   # dir = 'test'
-    #for f in os.listdir(dir):
-        #os.remove(os.path.join(dir, f))
 
-    # open the file to be send
-    path = "test"
-    file = os.listdir(path)
-    n = len(file)
-    print(len(file))
-    print(file[0])
+
     #filename = "test/TestResults___main__.TestPages_2022-09-06_15-54-23.html"
-    filename = ("test/"+file[0])
+    filename = ("t.txt")
     print(filename)
     #attachment = open("test/TestResults___main__.TestPages_2022-09-06_15-54-23.html", "rb")
     attachment = open(filename, "rb")
@@ -64,16 +55,17 @@ def mailern():
 
     # start TLS for security
     s.starttls()
-
+    #s.ehlo("helo")
+    passw = "password"
     # Authentication
-    s.login(fromaddr, "pass")
+    s.login(fromaddr, passw)
 
     # Converts the Multipart msg into a string
     text = msg.as_string()
 
     # sending the mail
-    #s.sendmail(fromaddr, toaddr, text)
-    s.sendmail(fromaddr, recipients, text)
+    s.sendmail(fromaddr, toaddr, text)
+    #s.sendmail(fromaddr, recipients, text)
 
     # terminating the session
     s.quit()

@@ -55,12 +55,12 @@ class CanonizerUploadFilePage(Page):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        self.driver.find_element(*UploadFileIdentifiers.ADD_FILE_BUTTON).click()
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
         self.upload_file_name()
-        self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
-        self.driver.find_element(By.ID, "uploadBtn").click()
+        self.driver.find_element(*UploadFileIdentifiers.ENTER_FILE_NAME).send_keys(self.res)
+        self.driver.find_element(*UploadFileIdentifiers.UPLOADBUTTON_ID).click()
         return CanonizerUploadFilePage(self.driver)
 
     def upload_more_than_5mb_file_with_user_login(self):
@@ -71,6 +71,9 @@ class CanonizerUploadFilePage(Page):
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
         return CanonizerUploadFilePage(self.driver)
 
+
+
+
     def upload_file_with_same_file_name(self, originalfilename, file_name):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
@@ -79,7 +82,10 @@ class CanonizerUploadFilePage(Page):
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
         self.upload_file_name()
-        self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
+        #self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
+        self.driver.find_element(*UploadFileIdentifiers.ENTER_FILE_NAME).send_keys(self.res)
+
+
         self.driver.find_element(By.ID, "uploadBtn").click()
 
         return CanonizerUploadFilePage(self.driver)
@@ -88,7 +94,7 @@ class CanonizerUploadFilePage(Page):
         self.driver.implicitly_wait(20)
         self.hover(*UploadFileIdentifiers.UPLOADBUTTON)
         self.find_element(*UploadFileIdentifiers.UPLOADBUTTON).click()
-        self.driver.find_element(By.ID, 'addAFileBtn').click()
+        self.driver.find_element(*UploadFileIdentifiers.ADD_FILE_BUTTON).click()
         originalfilename = "/home/akashroshan/PycharmProjects/Test/t.xxx"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
 
