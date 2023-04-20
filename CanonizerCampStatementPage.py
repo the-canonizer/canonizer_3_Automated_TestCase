@@ -103,7 +103,7 @@ class CanonizerCampStatementPage(Page):
         else:
             print("Not Found")
         self.scroll_down()
-        self.driver.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
+        self.driver.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).click()
 
     def add_camp_statement(self):
         self.driver.implicitly_wait(30)
