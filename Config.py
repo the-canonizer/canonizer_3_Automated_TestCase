@@ -221,7 +221,7 @@ DEFAULT_LAST_NAME = "  testing  cases"
 DEFAULT_MIDDLE_NAME = "  test  case "
 
 # support camps tab Configuration Parameters
-DEFAULT_TOPIC_NAME = "automation 123"
+DEFAULT_TOPIC_NAME = "Test"
 # //input [@aria-activedescendant = 'PlacesAutocomplete__suggestion-ChIJVaU9EY4UrjsRIrtCkznuBEc']
 DEFAULT_UNVERIFIED_PHONE_NUMBER = "1234567890"
 DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
