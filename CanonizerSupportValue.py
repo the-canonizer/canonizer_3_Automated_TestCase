@@ -72,7 +72,7 @@ class CanonizerSupportValue(Page):
             self.i = self.i - 1
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CreateTopicIdentifiers.SELECTED_TITLE).text
-            if self.current_name == "/sandbox testing/":
+            if self.current_name == "sandbox testing":
                 print("Got Sandbox")
                 print(self.current_name)
                 time.sleep(10)
@@ -195,5 +195,4 @@ class CanonizerSupportValue(Page):
         #self.camp_sum = ("%.2f" % self.camp_sum)
         print("camp score")
         print(self.camp_sum)
-
 
