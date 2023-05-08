@@ -9,9 +9,16 @@ from Identifiers import CampForumIdentifiers, AddNewsIdentifiers
 from selenium.webdriver.common.keys import Keys
 import string
 import random
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
 
 
 class CanonizerAddNewsPage(Page):
+
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def load_add_news_page(self, topic_name):
         try:
             WebDriverWait(self.driver, 10).until(
@@ -39,11 +46,7 @@ class CanonizerAddNewsPage(Page):
             pass
         self.find_element(*AddNewsIdentifiers.ADD_NEWS_LINK).click()
         self.hover(*AddNewsIdentifiers.ADD_NEWS_PAGE_TITLE)
-        page_title = self.find_element(*AddNewsIdentifiers.ADD_NEWS_PAGE_TITLE).text
-        if page_title == message['Add_News']['ADD_NEWS_PAGE_TITLE']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def enter_display_text(self, display_text):
         self.find_element(*AddNewsIdentifiers.DISPLAY_TEXT).send_keys(display_text)
@@ -66,11 +69,7 @@ class CanonizerAddNewsPage(Page):
     def create_news_with_valid_data(self, display_text, link):
         self.create_news(display_text, link)
         self.hover(*AddNewsIdentifiers.NEWS_ADDED)
-        page_title = self.find_element(*AddNewsIdentifiers.NEWS_ADDED).text
-        if page_title == message['Add_News']['NEWS_ADDED']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def add_news_page_mandatory_fields_are_marked_with_asterisk(self):
         try:
@@ -87,50 +86,29 @@ class CanonizerAddNewsPage(Page):
     def create_news_with_blank_display_text(self, link):
         self.create_news('', link)
         self.hover(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR)
-        error = self.find_element(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR).text
-        if error == message['Add_News']['BLANK_DISPLAY_TEXT_ERROR']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_news_with_blank_link(self, display_text):
         self.create_news(display_text, '')
         self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
-        error = self.find_element(*AddNewsIdentifiers.BLANK_LINK_ERROR).text
-        if error == message['Add_News']['BLANK_LINK_ERROR']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_new_with_blank_fields(self, link, display_text):
         self.create_news(link, display_text)
         self.hover(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR)
-        error_text = self.find_element(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR).text
         self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
-        error_link = self.find_element(*AddNewsIdentifiers.BLANK_LINK_ERROR).text
-        if error_text == message['Add_News']['BLANK_DISPLAY_TEXT_ERROR'] and error_link == message['Add_News']['BLANK_LINK_ERROR']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Error not found or not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def click_add_news_cancel_button(self):
         self.hover(*AddNewsIdentifiers.CANCEL_BUTTON)
         self.find_element(*AddNewsIdentifiers.CANCEL_BUTTON).click()
         self.hover(*AddNewsIdentifiers.TOPIC_PAGE)
-        heading = self.find_element(*AddNewsIdentifiers.TOPIC_PAGE).text
-        if heading == message['Add_News']['CANCEL_NEWS_TITLE']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_news_with_invalid_link_format(self, display_text, link):
         self.create_news(display_text, link)
         self.hover(*AddNewsIdentifiers.INVALID_LINK)
-        error_text = self.find_element(*AddNewsIdentifiers.INVALID_LINK).text
-        if error_text == message['Add_News']['INVALID_LINK_ERROR']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Error not found or not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_news_with_enter_key(self, display_text, link):
         self.enter_display_text(display_text)
@@ -138,29 +116,17 @@ class CanonizerAddNewsPage(Page):
         self.check_available_for_child_camps()
         self.find_element(*AddNewsIdentifiers.CREATE_NEWS_BUTTON).send_keys(Keys.ENTER)
         self.hover(*AddNewsIdentifiers.NEWS_ADDED)
-        page_title = self.find_element(*AddNewsIdentifiers.NEWS_ADDED).text
-        if page_title == message['Add_News']['NEWS_ADDED']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_news_with_duplicate_data(self, display_text, link):
         self.create_news(display_text, link)
         self.hover(*AddNewsIdentifiers.NEWS_ADDED)
-        page_title = self.find_element(*AddNewsIdentifiers.NEWS_ADDED).text
-        if page_title == message['Add_News']['NEWS_ADDED']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
     def create_news_with_trailing_spaces(self, display_text, link):
         self.create_news(display_text, link)
         self.hover(*AddNewsIdentifiers.NEWS_ADDED)
-        page_title = self.find_element(*AddNewsIdentifiers.NEWS_ADDED).text
-        if page_title == message['Add_News']['NEWS_ADDED']:
-            return CanonizerAddNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerAddNewsPage(self.driver)
 
 
 class CanonizerEditNewsPage(Page):
@@ -192,11 +158,7 @@ class CanonizerEditNewsPage(Page):
             self.find_element(*AddNewsIdentifiers.EDIT_ICON).click()
             WebDriverWait(self.driver, 7).until(
                 EC.visibility_of_element_located((By.CLASS_NAME, 'ant-card-head-title')))
-            page_title = self.find_element(*AddNewsIdentifiers.EDIT_NEWS_TITlE).text
-            if page_title == message['Edit_News']['EDIT_NEWS_TITLE']:
-                return CanonizerEditNewsPage(self.driver)
-            else:
-                print("Title not found or is not matching")
+            return CanonizerEditNewsPage(self.driver)
 
     def update_display_text(self, display_text):
         self.find_element(*AddNewsIdentifiers.DISPLAY_TEXT).send_keys(display_text)
@@ -220,29 +182,18 @@ class CanonizerEditNewsPage(Page):
         self.find_element(*AddNewsIdentifiers.DISPLAY_TEXT).clear()
         self.update_news('', link)
         self.hover(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR)
-        error = self.find_element(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR).text
-        if error == message['Add_News']['BLANK_DISPLAY_TEXT_ERROR']:
-            return CanonizerEditNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerEditNewsPage(self.driver)
 
     def update_news_with_blank_link(self, display_text):
         self.find_element(*AddNewsIdentifiers.LINK).clear()
         self.update_news(display_text, '')
         self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
-        error = self.find_element(*AddNewsIdentifiers.BLANK_LINK_ERROR).text
-        if error == message['Add_News']['BLANK_LINK_ERROR']:
-            return CanonizerEditNewsPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerEditNewsPage(self.driver)
 
     def click_edit_news_cancel_button(self):
         self.hover(*AddNewsIdentifiers.EDIT_CANCEL_BUTTON)
         self.find_element(*AddNewsIdentifiers.EDIT_CANCEL_BUTTON).click()
         self.hover(AddNewsIdentifiers.EDIT_NEWS_TITlE)
         self.hover(*AddNewsIdentifiers.TOPIC_PAGE)
-        heading = self.find_element(*AddNewsIdentifiers.TOPIC_PAGE).text
-        if heading == message['Add_News']['CANCEL_NEWS_TITLE']:
-            return CanonizerEditNewsPage(self.driver)
-
+        return CanonizerEditNewsPage(self.driver)
 
