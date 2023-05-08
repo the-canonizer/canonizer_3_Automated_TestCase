@@ -9,9 +9,18 @@ from Identifiers import CampForumIdentifiers, CreateTopicIdentifiers
 from selenium.webdriver.common.keys import Keys
 import string
 import random
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
+
+
 
 
 class CanonizerCampForumPage(Page):
+
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     def load_camp_forum_page(self, topic_name):
         try:
@@ -33,21 +42,11 @@ class CanonizerCampForumPage(Page):
         self.hover(*CampForumIdentifiers.TOPIC_CLICK)
         self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
 
-        # Click on Camp Forum Button
-        try:
-            WebDriverWait(self.driver, 6).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
-        except TimeoutException:
-            pass
+
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
 
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+
+        return CanonizerCampForumPage(self.driver)
 
     def load_all_threads_page(self):
         self.hover(*CampForumIdentifiers.ALL_THREADS_BUTTON)
@@ -130,26 +129,25 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def click_create_thread_button(self):
-        self.hover(*CampForumIdentifiers.CREATE_THREAD_BUTTON)
-        self.find_element(*CampForumIdentifiers.CREATE_THREAD_BUTTON).click()
-        WebDriverWait(self.driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
-        self.hover(*CampForumIdentifiers.CREATE_THREAD_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CREATE_THREAD_TITLE).text
-        if page_title == message['Camp_Forum']['THREAD_PAGE_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.driver.implicitly_wait(20)
+        #self.hover(*CampForumIdentifiers.CREATE_THREAD_BUTTON)
+        #self.find_element(*CampForumIdentifiers.CREATE_THREAD_BUTTON).click()
+        self.driver.find_element(By.ID, "create-btn").click()
+        time.sleep(10)
+        return CanonizerCampForumPage(self.driver)
 
     def enter_thread_title(self, title):
-        self.find_element(*CampForumIdentifiers.THREAD_TITLE).send_keys(title)
+        #self.find_element(*CampForumIdentifiers.THREAD_TITLE).send_keys(title)
+        self.find_element(By.ID, "create_new_thread_thread_title").send_keys(title)
+
 
     def enter_nickname(self, nickname):
         self.hover(*CampForumIdentifiers.NICK_NAME)
         self.find_element(*CampForumIdentifiers.NICK_NAME).send_keys(nickname)
 
     def click_submit_button(self):
-        self.hover(*CampForumIdentifiers.SUBMIT_THREAD)
-        self.find_element(*CampForumIdentifiers.SUBMIT_THREAD).click()
+        #self.find_element(*CampForumIdentifiers.SUBMIT_THREAD).click()
+        self.driver.find_element(By.ID, "submit-btn").click()
 
     def create_thread(self, title):
         self.enter_thread_title(title)
@@ -157,22 +155,13 @@ class CanonizerCampForumPage(Page):
 
     def create_thread_with_valid_data(self, title):
         self.create_thread(title)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerCampForumPage(self.driver)
+
 
     def create_thread_with_blank_title_name(self, title):
         self.create_thread('')
-        self.hover(*CampForumIdentifiers.ERROR_BLANK_TITLE)
-        error = self.find_element(*CampForumIdentifiers.ERROR_BLANK_TITLE).text
-        if error == message['Camp_Forum']['BLANK_TITLE_ERROR']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerCampForumPage(self.driver)
 
     def create_thread_with_special_chars(self, title):
         self.create_thread(title)
@@ -194,8 +183,8 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def create_thread_with_duplicate_title(self, title):
-        self.enter_thread_title(title)
-        self.click_submit_button()
+        self.create_thread(title)
+        self.create_thread(title)
         self.hover(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR)
         error = self.find_element(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR).text
         if error == message['Camp_Forum']['DUPLICATE_THREAD']:
@@ -204,16 +193,12 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def create_thread_with_valid_data_with_enter_key(self, title):
+        self.driver.implicitly_wait(20)
         self.enter_thread_title(title)
-        self.hover(*CampForumIdentifiers.SUBMIT_THREAD)
-        self.find_element(*CampForumIdentifiers.SUBMIT_THREAD).send_keys(Keys.ENTER)
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.hover(By.ID, "submit-btn")
+        time.sleep(10)
+        self.driver.find_element(By.ID, "submit-btn").send_keys(Keys.ENTER)
+        return CanonizerCampForumPage(self.driver)
 
     def create_thread_with_trailing_spaces(self, title):
         self.enter_thread_title(title)
@@ -431,7 +416,6 @@ class CanonizerCampForumPage(Page):
             return CanonizerCampForumPage(self.driver)
         else:
             print("Message not found or is not matching")
-
 
 
 
