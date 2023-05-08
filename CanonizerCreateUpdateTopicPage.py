@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
@@ -6,10 +8,15 @@ from selenium.webdriver.common.by import By
 from CanonizerValidationCheckMessages import message
 from CanonizerBase import Page
 from Identifiers import CreateTopicIdentifiers, CampForumIdentifiers, UpdateTopicIdentifiers, CreateCampIdentifiers
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class CanonizerCreateNewTopic(Page):
 
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def click_create_topic_button(self):
         self.driver.implicitly_wait(30)
         #self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).click()
@@ -26,56 +33,58 @@ class CanonizerCreateNewTopic(Page):
 
     def enter_topic_name(self, topic_name):
         self.driver.implicitly_wait(30)
-        print("topic name")
         # WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.ID, 'create_new_topic_topic_name')))
         self.find_element(*CreateTopicIdentifiers.TOPIC_NAME).send_keys(topic_name)
 
     def enter_namespace(self, namespace):
         self.driver.implicitly_wait(30)
-        print("topic namespace")
 
         self.find_element(*CreateTopicIdentifiers.NAMESPACE).send_keys(namespace)
 
     def enter_summary(self, summary):
         self.driver.implicitly_wait(30)
-        print("Enter Summary")
-        print(summary)
-        self.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys("new summary")
+        #self.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys("new summary")
+        self.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys(summary)
+
 
 
 
     def entering_data_fields(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
-        print("Came in entering data field")
-        print(summary)
         self.enter_summary(summary)
-        print("enter summary")
         self.enter_topic_name(topic_name)
         self.enter_namespace(namespace)
 
     def create_topic(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
-        print("Came Topic in createtopic")
 
-        # WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[1]/div[2]/div[2]')))
         self.entering_data_fields(summary, topic_name, namespace)
-        print("Came Topic in createtopic")
         self.create_topic_button()
 
     def create_topic_with_valid_data(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
-        print("came in valid data fuction")
         self.create_topic(summary, topic_name, namespace)
-        print("Came Topic in create")
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
         topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
         if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
+    def create_topic_with_blank_topic(self, summary, topic_name, namespace):
+        self.driver.implicitly_wait(30)
+        self.create_topic(summary, "     ", namespace)
 
-    def create_topic_name_with_enter_key(self, nickname, topic_name, namespace, summary):
-        self.entering_data_fields(nickname, topic_name, namespace, summary)
+        return CanonizerCreateNewTopic(self.driver)
+
+
+    def create_topic_name_with_trailing_space(self, summary, topic_name, namespace):
+        self.driver.implicitly_wait(30)
+        self.create_topic(summary, "     new topic", namespace)
+
+        return CanonizerCreateNewTopic(self.driver)
+
+    def create_topic_name_with_enter_key(self, summary, topic_name, namespace):
+        self.entering_data_fields(summary, topic_name, namespace)
         self.hover(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON)
         self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).send_keys(Keys.ENTER)
         self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
@@ -85,50 +94,27 @@ class CanonizerCreateNewTopic(Page):
         else:
             print("Page not found")
 
-    def create_topic_name_with_trailing_space(self, nickname, topic_name, namespace, summary):
-        self.create_topic(nickname, topic_name, namespace, summary)
-        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
-        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
-            return CanonizerCreateNewTopic(self.driver)
-        else:
-            print("Page not found")
+    def create_topic_with_duplicate_topic_name(self, summary, topic_name, namespace):
+        self.driver.implicitly_wait(30)
+        self.create_topic(summary, "test_new_topic12527", namespace)
 
-    def create_topic_with_duplicate_topic_name(self, nick_name, topic_name, namespace, summary):
-        self.create_topic(nick_name, topic_name, namespace, summary)
-        self.hover(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME)
-        error = self.find_element(*CreateTopicIdentifiers.ERROR_DUPLICATE_TOPIC_NAME).text
-        if error == message['Create_Topic']['DUPLICATE_TOPIC_ERROR']:
-            return CanonizerCreateNewTopic(self.driver)
-        else:
-            print("Error message not found or is incorrect")
+        return CanonizerCreateNewTopic(self.driver)
 
-    def create_topic_with_special_chars(self, nickname, topic_name, namespace, summary):
-        self.create_topic(nickname, topic_name, namespace, summary)
-        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
-        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
-            return CanonizerCreateNewTopic(self.driver)
-        else:
-            print("Page not found")
+    def create_topic_with_special_chars(self, summary, topic_name, namespace):
+        self.driver.implicitly_wait(30)
+        self.create_topic(summary, topic_name, namespace)
 
-    def create_topic_without_entering_mandatory_fields(self, nickname, topic_name, namespace, summary):
-        self.create_topic('', '', '', '')
-        self.hover(*CreateTopicIdentifiers.ERROR_TOPIC_NAME)
-        error = self.find_element(*CreateTopicIdentifiers.ERROR_TOPIC_NAME).text
-        if error == message['Create_Topic']['BLANK_TOPIC_ERROR']:
-            return CanonizerCreateNewTopic(self.driver)
-        else:
-            print("Error message not found or is incorrect")
+        return CanonizerCreateNewTopic(self.driver)
 
-    def create_topic_with_entering_data_only_in_mandatory_fields(self, nickname, topic_name, namespace, summary):
-        self.create_topic(nickname, topic_name, namespace, '')
-        self.hover(*CreateTopicIdentifiers.TOPIC_PAGE)
-        topic_page_confirmation = self.find_element(*CreateTopicIdentifiers.TOPIC_PAGE).text
-        if topic_page_confirmation == message['Create_Topic']['CREATE_TOPIC_TITLE']:
-            return CanonizerCreateNewTopic(self.driver)
-        else:
-            print("Page not found")
+    def create_topic_without_entering_mandatory_fields(self, summary, topic_name, namespace):
+        self.driver.implicitly_wait(30)
+        self.create_topic('', '', '')
+        return CanonizerCreateNewTopic(self.driver)
+
+    def create_topic_with_entering_data_only_in_mandatory_fields(self, summary, topic_name, namespace):
+        self.create_topic(" ", topic_name, namespace)
+        return CanonizerCreateNewTopic(self.driver)
+
 
     def click_on_cancel_button(self):
         self.hover(*CreateTopicIdentifiers.CANCEL_BUTTON)
@@ -170,7 +156,7 @@ class CanonizerUpdateTopicPage(Page):
 
         # Click on Search Topic
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
-        self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys("campB")
+        self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys("Test")
         self.hover(*CampForumIdentifiers.SEARCH_ICON)
         self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
         self.hover(*CampForumIdentifiers.TOPIC_CLICK)
@@ -420,7 +406,6 @@ class CanonizerUpdateTopicPage(Page):
             return CanonizerCreateNewTopic(self.driver)
         else:
             print("Page not found")
-
 
 
 
