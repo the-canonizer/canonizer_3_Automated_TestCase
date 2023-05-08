@@ -74,7 +74,7 @@ class LoginPageIdentifiers(object):
     LINKEDIN_TITLE = (By.CLASS_NAME, 'header__content__heading ')
     GITHUB_LINK = (By.ID, 'github-link')	
     GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
-    BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
+    BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a/text()')
     EMAIL_ASTRK = (By.XPATH, '//span[@class = "required"]')
     PASSWORD_ASTRK = (By.XPATH, '(//span[@class = "required"])[2]')
     LOGIN_BUTTON = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/button[1]/span')
@@ -84,15 +84,15 @@ class LoginPageIdentifiers(object):
     #SUBMIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]")
     CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
     CHECK_BOX = (By.ID, 'login_form_remember')
-    INVALID_EMAIL_TITLE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
-    BLANK_EMAIL_ERROR = (By.XPATH, '//div[text() = "Please input your Email!"]')
+    INVALID_EMAIL_TITLE = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[1]/div[1]/div[2]/div[2]/div[1]/div')
+    BLANK_EMAIL_ERROR = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]')
     BLANK_PASSWORD_ERROR = (By.XPATH, '//div[text() = "Please input your Password!"]')
     ONE_TIME_REQUEST_TITLE = (By.XPATH, '//h2[@class = "ant-typography Registration_titles__pUOnj"]')
     FORGET_PASSWORD = (By.XPATH, '//a[text()= "Forgot password"]')
     FORGET_PASSWORD_TITLE = (By.XPATH, '//h2[text()= "Forgot your password?"]')
     REGISTER_NOW_LINK = (By.ID, 'dont-account-link-tag')
     REQUEST_CODE = (By.ID, 'request-otp-btn')
-    EMAIL_ERROR_MESSAGE = (By.XPATH, '//*[@id="login_form"]/div[1]/div[2]/div[2]/div')
+    EMAIL_ERROR_MESSAGE = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]')
     LOGIN_TITLE = (By.XPATH, '//*[@id="registration-title"]')
     SOCIAL_LINKS = (By.XPATH, '//div[@class="social-login_btn_group__BQdOr"]//child::button')
     FACEBOOK_LINK = (By.ID, 'facebook-link')
@@ -220,6 +220,7 @@ class CreateTopicIdentifiers(object):
     EDIT_SUMMARY = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/div/div[2]/form/div[1]/div[2]/div/div/div[2]/div/div/textarea")
     CREATE_TOPIC_BUTTON = (By.ID, 'create-topic-btn')
     TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
+    BLANK_TOPIC_ERROR = (By.ID, "create_new_topic_topic_name_help")
     ERROR_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
     ERROR_DUPLICATE_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
     INVALID_TOPIC_NAME = (By.XPATH, '//*[@id="create_new_topic"]/div/div[1]/div[2]/div[2]/div[2]/div')
@@ -273,7 +274,7 @@ class CampForumIdentifiers(object):
     ALL_THREADS_BUTTON = (By.ID, 'all-thread-btn')
     MY_THREADS_BUTTON = (By.ID, 'my-thread-btn')
     THREAD_BUTTON = (By.ID, 'all-thread-btn')
-    CREATE_THREAD_BUTTON = (By.ID, 'create-btn')
+    CREATE_THREAD_BUTTON = (By.XPATH, '/html/body/div/div/div[2]/div/div/div[2]/div/div/div[2]/div[1]/button[5]/span')
     CREATE_THREAD_TITLE = (By.XPATH, '//span[text()="Create a new thread"]')
     THREAD_TITLE = (By.ID, 'create_new_thread_thread_title')
     NICK_NAME = (By.XPATH, '//div[text()="sania_talentelgia"]')
@@ -558,7 +559,7 @@ class BrowsePageIdentifiers(object):
     """
     Class to hold the Browse Page Identifiers
     """
-    BROWSE = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[1]/a')
+    BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a/text()')
     ONLY_MY_TOPICS = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/label/span[1]')
     NAMESPACE = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]")
     GENERAL = (By.ID, 'name-space-1')
@@ -632,7 +633,6 @@ class CanonizerFooterIdentifiers(object):
     FOOTER_WHITEPAPER = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[2]/a/i")
     FOOTER_BLOG = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[3]/a/i")
     FOOTER_JOBS = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[4]/a/i")
-
 
 
 
