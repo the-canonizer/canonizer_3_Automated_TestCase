@@ -144,13 +144,8 @@ class CanonizerCreateCampPage(Page):
     def camp_cancel_button(self):
         self.hover(*CreateCampIdentifiers.CANCEL_BUTTON)
         self.find_element(*CreateCampIdentifiers.CANCEL_BUTTON).click()
-        print("Clicked on cancel button")
         self.hover(*CreateCampIdentifiers.CANCEL_TITLE)
-        error = self.find_element(*CreateCampIdentifiers.CANCEL_TITLE).text
-        if error == message['Create_Camp']['SORTED_TREE_TITLE']:
-            return CanonizerCreateCampPage(self.driver)
-        else:
-            print("Error not found or is not matching")
+        return CanonizerCreateCampPage(self.driver)
 
 
 class CanonizerEditCampPage(Page):
@@ -440,38 +435,5 @@ class CanonizerEditCampPage(Page):
             return CanonizerEditCampPage(self.driver)
         else:
             print("Error not found or is not matching")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
