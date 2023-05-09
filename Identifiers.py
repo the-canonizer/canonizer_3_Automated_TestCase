@@ -73,6 +73,7 @@ class LoginPageIdentifiers(object):
     LINKEDIN_SIGNIN = (By.XPATH, "/html/body/div/main/div[2]/form/div[3]/button")
     LINKEDIN_LINK = (By.ID, 'linkedin-link')
     LINKEDIN_TITLE = (By.CLASS_NAME, 'header__content__heading ')
+    GITHUB_SIGNIN = (By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/form/div/input[12]")
     GITHUB_LINK = (By.ID, 'github-link')	
     GITHUB_TITLE = (By.XPATH, '//*[@id="js-pjax-container"]/div/div[1]/h2')
     BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a/text()')
