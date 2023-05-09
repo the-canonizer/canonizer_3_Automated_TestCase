@@ -215,16 +215,26 @@ class CanonizerEditArchivedCampPage(Page):
 
 
 
-    def check_archived_camp(self):
+    def check_unarchived_camp(self):
         self.load_topic_detail_page(DEFAULT_TOPIC)
         self.load_camp_manage_edit_page()
-        print("came in camp archived")
-
         self.driver.implicitly_wait(20)
-        print("came in camp archived")
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
-        print("clicked on threedots")
+        # self.find_element(*CampHistoryIdentifiers.CAMP_EDIT_BUTTON).click()
+        #self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/ul/li[4]/i").click()
+        self.driver.get("https://canonizer3.canonizer.com/camp/history/1002-email-testing-1348/1-Agreement")
+        return CanonizerEditArchivedCampPage(self.driver)
+    
+    def do_archive_camp(self):
+        self.load_topic_detail_page(DEFAULT_TOPIC)
+        self.load_camp_manage_edit_page()
+        self.driver.implicitly_wait(20)
+        self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
+        # self.find_element(*CampHistoryIdentifiers.CAMP_EDIT_BUTTON).click()
+        #self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/ul/li[4]/i").click()
+        self.driver.get("https://canonizer3.canonizer.com/camp/history/1002-email-testing-1348/1-Agreement")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_EDIT).click()
+        self.driver.find_element(*CampHistoryIdentifiers.CAMP_EDIT_SUBMIT).click()
 
-        #self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div[1]/div[1]/div/div/div[2]/div/a/span").
-        self.find_element(*CampHistoryIdentifiers.MANAGE_EDIT_CAMP_BUTTON).click()
         return CanonizerEditArchivedCampPage(self.driver)
