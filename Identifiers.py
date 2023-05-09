@@ -70,8 +70,8 @@ class LoginPageIdentifiers(object):
     GOOGLE_TITLE = (By.XPATH, '//div[text()="Sign in with Google"]')
     TWITTER_LINK = (By.ID, 'twitter-link')
     TWITTER_TITLE = (By.XPATH, '//strong[text()="This application will be able to:"]')
-    LINKEDIN_SIGNIN = (By.XPATH, "/html/body/div/main/div[2]/form/div[3]/button")
     LINKEDIN_LINK = (By.ID, 'linkedin-link')
+    LINKEDIN_SIGNIN = (By.XPATH, "/html/body/div/main/div[2]/form/div[3]/button")
     LINKEDIN_TITLE = (By.CLASS_NAME, 'header__content__heading ')
     GITHUB_SIGNIN = (By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/form/div/input[12]")
     GITHUB_LINK = (By.ID, 'github-link')	
@@ -453,13 +453,16 @@ class CampStatementIdentifiers(object):
 class CampHistoryIdentifiers(object):
     THREEDOTS = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[1]/div[1]/div/div/div[2]/div/a/span")
     TOPIC_EDIT_BUTTON = (By.XPATH, '//a[@href="/topic/history/173-Software-Testing"]')
-    CAMP_EDIT_BUTTON = (By.XPATH, '//a[@href="/camp/history/173-Software-Testing/1-Agreement"]')
+    CAMP_EDIT_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/ul/li[4]/span')
     TOPIC_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
     HISTORY_TOPIC = (By.XPATH, '//a[@href="/topic/173-Software-Testing/1-Agreement"]')
     NAMESPACE_ALL = (By.XPATH, '//div[@title="All"]//div[1]')
     MANAGE_EDIT_CAMP_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/ul/li[6]/span[2]')
     NAMESPACE = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div')
     ARCHIEVED = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div/div[1]/div/div[2]/label[3]/span[1]")
+    ARCHIEVED_EDIT = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/label[3]/span[1]")
+    ARCHIEVED_STATUS = (By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[1]/h5[8]/span")
+    CAMP_EDIT_SUBMIT = (By.ID, "update-submit-btn")
 
 
 class CampForumIdentifiers(object):
