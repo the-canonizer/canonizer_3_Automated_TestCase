@@ -264,6 +264,12 @@ class TestPages(unittest.TestCase):
         CanonizerLoginPage(self.driver).verifying_linkedin_link()
         result  = self.driver.find_element(*LoginPageIdentifiers.LINKEDIN_SIGNIN).text
         self.assertIn("Sign in", result)
+    def test_verifying_github_link(self):
+        self.driver.implicitly_wait(20)
+        print("\n" + str(test_cases('TC_VERIFYING_LINKEDIN_LINK')))
+        CanonizerLoginPage(self.driver).verifying_github_link()
+        result = self.driver.find_element(*LoginPageIdentifiers.GITHUB_SIGNIN).text
+        self.assertIn("", result)    
 
         # ----- FORGOT PASSWORD Test Cases Start -----
         # TC_CLICK_FORGOT_PASSWORD_LINK
