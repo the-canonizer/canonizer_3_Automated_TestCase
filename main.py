@@ -41,6 +41,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import string
 import random
 import time
+from Identifiers import *
 
 
 
@@ -258,9 +259,11 @@ class TestPages(unittest.TestCase):
 
     # TC_VERIFYING_LINKEDIN_LINK
     def test_verifying_linkedin_link(self):
+        self.driver.implicitly_wait(20)
         print("\n" + str(test_cases('TC_VERIFYING_LINKEDIN_LINK')))
-        result = CanonizerLoginPage(self.driver).verifying_linkedin_link().get_url()
-        self.assertIn("/uas/login?", result)
+        CanonizerLoginPage(self.driver).verifying_linkedin_link()
+        result  = self.driver.find_element(*LoginPageIdentifiers.LINKEDIN_SIGNIN).text
+        self.assertIn("Sign in", result)
 
         # ----- FORGOT PASSWORD Test Cases Start -----
         # TC_CLICK_FORGOT_PASSWORD_LINK
