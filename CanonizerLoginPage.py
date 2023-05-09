@@ -220,6 +220,7 @@ class CanonizerLoginPage(Page):
             print("Title not found")
 
     def verifying_facebook_link(self):
+        self.driver.implicitly_wait(30)
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
         self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
@@ -230,6 +231,7 @@ class CanonizerLoginPage(Page):
             print("Title not found")
 
     def verifying_google_link(self):
+        self.driver.implicitly_wait(30)
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.GOOGLE_LINK).click()
         self.hover(*LoginPageIdentifiers.GOOGLE_TITLE)
@@ -240,6 +242,7 @@ class CanonizerLoginPage(Page):
             print("Title not found")
 
     def verifying_twitter_link(self):
+        self.driver.implicitly_wait(30)
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.TWITTER_LINK).click()
         self.hover(*LoginPageIdentifiers.TWITTER_TITLE)
@@ -250,6 +253,7 @@ class CanonizerLoginPage(Page):
             print("Title not found")
 
     def verifying_linkedin_link(self):
+        self.driver.implicitly_wait(30)
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.LINKEDIN_LINK).click()
         self.hover(*LoginPageIdentifiers.LINKEDIN_TITLE)
@@ -260,6 +264,7 @@ class CanonizerLoginPage(Page):
             print("Title not found")
 
     def verifying_github_link(self):
+        self.driver.implicitly_wait(30)
         self.click_on_login_button()
         self.find_element(*LoginPageIdentifiers.GITHUB_LINK).click()
 
