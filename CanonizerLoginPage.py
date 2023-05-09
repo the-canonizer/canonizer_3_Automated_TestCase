@@ -224,7 +224,7 @@ class CanonizerLoginPage(Page):
         self.find_element(*LoginPageIdentifiers.FACEBOOK_LINK).click()
         self.hover(*LoginPageIdentifiers.FACEBOOK_TITLE)
         title = self.find_element(*LoginPageIdentifiers.FACEBOOK_TITLE).text
-        if title == message['Login_Page']['FACEBOOK_TITLE']:
+        if title == message['Log Into Facebook']['FACEBOOK_TITLE']:
             return CanonizerLoginPage(self.driver)
         else:
             print("Title not found")
