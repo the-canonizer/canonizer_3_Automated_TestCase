@@ -70,6 +70,7 @@ class LoginPageIdentifiers(object):
     GOOGLE_TITLE = (By.XPATH, '//div[text()="Sign in with Google"]')
     TWITTER_LINK = (By.ID, 'twitter-link')
     TWITTER_TITLE = (By.XPATH, '//strong[text()="This application will be able to:"]')
+    LINKEDIN_SIGNIN = (By.XPATH, "/html/body/div/main/div[2]/form/div[3]/button")
     LINKEDIN_LINK = (By.ID, 'linkedin-link')
     LINKEDIN_TITLE = (By.CLASS_NAME, 'header__content__heading ')
     GITHUB_LINK = (By.ID, 'github-link')	
