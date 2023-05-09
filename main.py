@@ -186,8 +186,9 @@ class TestPages(unittest.TestCase):
     # TC_LOGIN_WITH_REGISTERED_CREDENTIALS
     def test_login_with_registered_credentials(self):
         print("\n" + str(test_cases('TC_LOGIN_WITH_REGISTERED_CREDENTIALS')))
-        result = CanonizerLoginPage(self.driver).verify_the_login_functionality_by_entering_the_registered_credential(
-            DEFAULT_USER, DEFAULT_PASS).get_url()
+        self.driver.implicitly_wait(30)
+        CanonizerLoginPage(self.driver).verify_the_login_functionality_by_entering_the_registered_credential(DEFAULT_USER, DEFAULT_PASS)
+        result = self.driver.current_url
         self.assertIn("", result)
 
     # TC_VERIFY_THE_LOGIN_WITH_BLANK_EMAIL
