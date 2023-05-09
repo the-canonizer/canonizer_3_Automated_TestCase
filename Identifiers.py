@@ -449,12 +449,15 @@ class CampStatementIdentifiers(object):
 
 
 class CampHistoryIdentifiers(object):
+    THREEDOTS = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[1]/div[1]/div/div/div[2]/div/a/span")
     TOPIC_EDIT_BUTTON = (By.XPATH, '//a[@href="/topic/history/173-Software-Testing"]')
     CAMP_EDIT_BUTTON = (By.XPATH, '//a[@href="/camp/history/173-Software-Testing/1-Agreement"]')
     TOPIC_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
     HISTORY_TOPIC = (By.XPATH, '//a[@href="/topic/173-Software-Testing/1-Agreement"]')
     NAMESPACE_ALL = (By.XPATH, '//div[@title="All"]//div[1]')
+    MANAGE_EDIT_CAMP_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/ul/li[6]/span[2]')
     NAMESPACE = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/div[1]/div')
+    ARCHIEVED = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div/div[1]/div/div[2]/label[3]/span[1]")
 
 
 class CampForumIdentifiers(object):
@@ -633,8 +636,3 @@ class CanonizerFooterIdentifiers(object):
     FOOTER_WHITEPAPER = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[2]/a/i")
     FOOTER_BLOG = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[3]/a/i")
     FOOTER_JOBS = (By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[2]/ul/li[4]/a/i")
-
-
-
-
-
