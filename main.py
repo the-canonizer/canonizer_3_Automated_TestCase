@@ -2086,6 +2086,12 @@ class TestPages(unittest.TestCase):
         CanonizerEditArchivedCampPage(self.driver).check_unarchived_camp()
         result = self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_STATUS).text
         self.assertIn("No", result)
+    def test_do_archive_camp(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        CanonizerEditArchivedCampPage(self.driver).do_archive_camp()
+        result = self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_STATUS).text
+        self.assertIn("Yes", result)    
 
 
     def tearDown(self):
