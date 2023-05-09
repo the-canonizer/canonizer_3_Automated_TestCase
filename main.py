@@ -26,6 +26,7 @@ from CanonizerRegistrationPage import CanonizerRegisterPage
 from CanonizerCampForum import CanonizerCampForumPage
 from selenium.common.exceptions import TimeoutException
 from CanonizerCreateUpdateTopicPage import CanonizerCreateNewTopic, CanonizerUpdateTopicPage
+from CanonizerCreateUpdateArchivedCamp import CanonizerCreateUpdateArchivedCamp, CanonizerEditArchivedCampPage
 from CanonizerLoginPage import CanonizerLoginPage
 from CanonizerForgotPasswordPage import *
 from CanonizerSupportValue import CanonizerSupportValue
@@ -2018,6 +2019,57 @@ class TestPages(unittest.TestCase):
            result = self.driver.current_url
 
         self.assertIn("https://canonizer3.canonizer.com/topic/6-Canonizer-Jobs/1-Agreement", result)
+        def test_create_archived_camp_with_valid_data(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_VALID_DATA')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC)\
+            .create_archived_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        result = self.driver.current_url
+        print(result)
+        self.assertIn("/camp/create/", result)
+
+    def test_create_archived_camp_with_blank_camp_name(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_BLANK_CAMP_NAME')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_archived_camp_with_blank_camp_name(CREATE_CAMP_LIST_2)
+        result = self.driver.current_url
+
+        self.assertIn("/camp/create/", result)
+
+    def test_create_archived_camp_with_duplicate_camp_name(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_DUPLICATE_CAMP_NAME')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_archived_camp_with_duplicate_camp_name(CREATE_CAMP_LIST_3)
+        result = self.driver.current_url
+
+        self.assertIn("/camp/create/", result)
+
+    def test_create_archived_camp_without_entering_data_in_mandatory_fields(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITHOUT_ENTERING_DATA_IN_MANDATORY_FIELDS')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_archived_camp_with_blank_camp_name(CREATE_CAMP_LIST_2)
+        result = self.driver.current_url
+
+        self.assertIn("/camp/create/", result)
+
+    def test_create_archived_camp_with_invalid_camp_about_url(self):
+        print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_INVALID_CAMP_ABOUT_URL')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_archived_camp_with_invalid_camp_about_url(CREATE_CAMP_LIST_4)
+        result = self.driver.current_url
+
+        self.assertIn("/camp/create/", result)
+
+    def test_camp_archived_cancel_button(self):
+        print("\n" + str(test_cases('TC_CAMP_CANCEL_BUTTON')))
+        self.login_to_canonizer_app()
+        CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC).camp_archived_cancel_button()
+        result = self.driver.current_url
+        self.assertIn("/topic/", result)    
 
 
     def tearDown(self):
