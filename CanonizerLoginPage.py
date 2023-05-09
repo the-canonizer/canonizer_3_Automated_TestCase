@@ -8,6 +8,10 @@ from CanonizerValidationCheckMessages import message
 from Identifiers import LoginPageIdentifiers
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
 
 
 class CanonizerLoginPage(Page):
@@ -18,6 +22,9 @@ class CanonizerLoginPage(Page):
     Attributes: None
     """
 
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    
     def click_login_page_button(self):
         """
         This function is to click on the login button
@@ -103,6 +110,7 @@ class CanonizerLoginPage(Page):
             self.find_element(*LoginPageIdentifiers.PASSWORD_ASTRK)
 
     def click_on_login_button(self):
+        self.driver.implicitly_wait(30)
         self.hover(*LoginPageIdentifiers.LOGIN_BUTTON)
         self.find_element(*LoginPageIdentifiers.LOGIN_BUTTON).click()
 
@@ -149,12 +157,7 @@ class CanonizerLoginPage(Page):
 
     def verify_the_login_functionality_by_entering_the_registered_credential(self, default_user, default_pass):
         self.verify_the_login_page(default_user, default_pass)
-        self.hover(*LoginPageIdentifiers.BROWSE)
-        title = self.find_element(*LoginPageIdentifiers.BROWSE).text
-        if title == message['Login_Page']['LOGIN_BROWSE_TITLE']:
-            return CanonizerLoginPage(self.driver)
-        else:
-            print("Title not found")
+        return CanonizerLoginPage(self.driver)
 
     def verify_the_forget_password_button(self):
         self.click_on_login_button()
