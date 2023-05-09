@@ -2072,7 +2072,14 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC).camp_archived_cancel_button()
         result = self.driver.current_url
-        self.assertIn("/topic/", result)    
+        self.assertIn("/topic/", result)
+    
+    def test_check_unarchived_camp(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        CanonizerEditArchivedCampPage(self.driver).check_unarchived_camp()
+        result = self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_STATUS).text
+        self.assertIn("No", result)
 
 
     def tearDown(self):
