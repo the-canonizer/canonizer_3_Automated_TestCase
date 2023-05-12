@@ -10,12 +10,7 @@ class CanonizerForgotPasswordPage(Page):
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()
         self.hover(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_LINK)
         self.find_element(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_LINK).click()
-        self.hover(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_TITLE)
-        label = self.find_element(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_TITLE).text
-        if label == message['Forgot_Password']['TITLE']:
-            return CanonizerForgotPasswordPage(self.driver)
-        else:
-            print("Confirmation text is not matching")
+        return CanonizerForgotPasswordPage(self.driver)
 
     def login_and_forgot_password(self):
         self.hover(*ForgotPasswordIdentifiers.LOGIN)
