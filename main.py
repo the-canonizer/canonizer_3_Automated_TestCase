@@ -276,6 +276,8 @@ class TestPages(unittest.TestCase):
     def test_click_forgot_password_link(self):
         print("\n" + str(test_cases('TC_CLICK_FORGOT_PASSWORD_LINK')))
         CanonizerForgotPasswordPage(self.driver).click_forgot_password_link()
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/section/form/h2").text
+        self.assertIn("Forgot Your Password?", result)
 
     # TC_SUBMIT_BUTTON_WITH_VALID_EMAIL_AND_CHECK_OTP_SCREEN
     def test_click_submit_button_with_valid_email(self):
