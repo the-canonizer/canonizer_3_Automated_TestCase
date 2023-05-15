@@ -17,13 +17,11 @@ class CanonizerFooter(Page):
         self.driver.implicitly_wait(30)
         self.hover(*CanonizerFooterIdentifiers.FOOTER_BROWSE)
         self.driver.find_element(*CanonizerFooterIdentifiers.FOOTER_BROWSE).click()
-        time.sleep(20)
 
     def footer_create_new_topic(self):
         self.driver.implicitly_wait(30)
         self.hover(*CanonizerFooterIdentifiers.FOOTER_NEW_TOPIC)
         self.driver.find_element(*CanonizerFooterIdentifiers.FOOTER_NEW_TOPIC).click()
-        time.sleep(20)
 
     def footer_upload(self):
         self.driver.implicitly_wait(30)
@@ -58,4 +56,3 @@ class CanonizerFooter(Page):
         self.driver.implicitly_wait(30)
         self.hover(*CanonizerFooterIdentifiers.FOOTER_JOBS)
         self.driver.find_element(*CanonizerFooterIdentifiers.FOOTER_JOBS).click()
-        #time.sleep(20)
