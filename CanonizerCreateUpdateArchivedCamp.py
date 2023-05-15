@@ -178,8 +178,6 @@ class CanonizerEditArchivedCampPage(Page):
             # Browse to Browse Page
         self.hover(*CampForumIdentifiers.BROWSE)
         self.find_element(*CampForumIdentifiers.BROWSE).click()
-        print("came load topic")
-
         # Click on Search Topic
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
@@ -196,7 +194,6 @@ class CanonizerEditArchivedCampPage(Page):
                     (By.CLASS_NAME, 'ant-btn ant-btn-default ant-btn-lg btn')))
         except TimeoutException:
             pass
-        print("came in camp manage")
         self.find_element(*CreateCampIdentifiers.CAMP_NAME_CLICK).click()
         self.driver.execute_script(self.window_scroll)
         try:
