@@ -2011,7 +2011,7 @@ class TestPages(unittest.TestCase):
            result = self.driver.current_url
 
         self.assertIn("https://canonizer3.canonizer.com/topic/6-Canonizer-Jobs/1-Agreement", result)
-        def test_create_archived_camp_with_valid_data(self):
+    def test_create_archived_camp_with_valid_data(self):
         print("\n" + str(test_cases('TC_CREATE_CAMP_WITH_VALID_DATA')))
         self.login_to_canonizer_app()
         CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC)\
@@ -2074,7 +2074,10 @@ class TestPages(unittest.TestCase):
         CanonizerEditArchivedCampPage(self.driver).do_archive_camp()
         result = self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_STATUS).text
         self.assertIn("Yes", result)    
-
+    def test_archive_camp_score_after_making_archive(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.assertTrue(CanonizerEditArchivedCampPage(self.driver).archive_camp_score_after_making_archive())
 
     def tearDown(self):
         self.driver.close()
