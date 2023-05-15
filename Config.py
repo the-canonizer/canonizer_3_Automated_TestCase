@@ -9,6 +9,8 @@ Set All Basic Configuration required for testing Framework
 
 DEFAULT_BASE_URL = "https://canonizer3.canonizer.com/"
 ARCHIVED_CAMP_URL = "https://canonizer3.canonizer.com/topic/861-can-1462-test/3-camp-2"
+ARCHIVED_EDIT_CAMP_URL = "https://canonizer3.canonizer.com/camp/history/861-can-1462-test/2-camp-1"
+
 
 """
     Identify the Default Chrome Binary Location for different OS 
