@@ -462,6 +462,7 @@ class CampHistoryIdentifiers(object):
     ARCHIEVED = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div/div/div/div/div[1]/div/div[2]/label[3]/span[1]")
     ARCHIEVED_EDIT = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/label[3]/span[1]")
     ARCHIEVED_STATUS = (By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[1]/h5[8]/span")
+    ARCHIVED_SCORE = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[3]/div/div/div/span")
     CAMP_EDIT_SUBMIT = (By.ID, "update-submit-btn")
 
 
