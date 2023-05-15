@@ -1696,7 +1696,6 @@ class TestPages(unittest.TestCase):
         if "200" == res:
             print("pass")
             self.driver.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
-            time.sleep(5)
             resp = self.driver.current_url
             print(resp)
         else:
@@ -1732,8 +1731,6 @@ class TestPages(unittest.TestCase):
         self.n = random.randint(0, 10000)
         self.n = str(self.n)
         self.driver.get("http://canonizer3.canonizer.com/topic.asp/" + self.n)
-        time.sleep(5)
-
         resp = self.driver.current_url
         reslt = ("/topic/" + self.n)
         print(resp)
@@ -1756,7 +1753,6 @@ class TestPages(unittest.TestCase):
             url = ("https://" + "canonizer3" + ".canonizer.com/videos/consciousness?chapter=representational_qualia_consensus")
             self.driver.get(url)
             self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div[2]/div[1]/div/div/label[1]/span[1]/input").click()
-            time.sleep(10)
 
             self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video").click()
             if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[2]/video"):
@@ -1771,7 +1767,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
         self.driver.get("http://canonizer3.canonizer.com/support_list.asp?nick_name_id=1")
-        time.sleep(30)
         if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/h3"):
             self.status = "200"
         else:
@@ -1784,7 +1779,6 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
 
         self.driver.get("http://canonizer3.canonizer.com/thread.asp/23/13/4")
-        time.sleep(20)
         if self.driver.find_element(By.ID, "create-btn"):
             self.status = "200"
         else:
@@ -1797,7 +1791,6 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
 
         self.driver.get("http://canonizer3.canonizer.com/forum.asp/88/1")
-        time.sleep(20)
         if self.driver.find_element(By.ID, "create-btn"):
             self.status = "200"
         else:
@@ -1810,7 +1803,6 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
 
         self.driver.get("http://canonizer3.canonizer.com/topoc.asp/85")
-        time.sleep(20)
         if self.driver.find_element(By.ID, "camp-forum-btn"):
             self.status = "200"
         else:
@@ -1822,7 +1814,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
         self.driver.get("http://canonizer3.canonizer.com/manage.asp/2/2?class=camp")
-        time.sleep(20)
         if self.driver.find_element(By.ID, "create-topic-btn"):
             self.status = "200"
         else:
@@ -1834,7 +1825,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.implicitly_wait(30)
         self.driver.get("http://canonizer3.canonizer.com/statement.asp/2/2")
-        #time.sleep(20)
         if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
             self.status = "200"
         else:
@@ -1847,7 +1837,6 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
 
         self.driver.get("http://canonizer3.canonizer.com/stmt.asp/2/2")
-        #time.sleep(20)
         if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/button[1]/span"):
             self.status = "200"
         else:
@@ -1862,14 +1851,10 @@ class TestPages(unittest.TestCase):
         resp = requests.get("https://canonizer.com/sitemap.xml")
         self.res = str(resp.status_code)
         if "200" == self.res:
-            # if json response have data = true parameter then redirect else return 404.
             self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
             self.resf = requests.get("https://canonizer3.canonizer.com/sitemap.xml").text
-            time.sleep(5)
             from bs4 import BeautifulSoup
             soup = BeautifulSoup(self.resf, "html.parser")
-            print(soup.h1.text)
-
         else:
             self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
             print("url does not exist")
@@ -2008,10 +1993,7 @@ class TestPages(unittest.TestCase):
         #action = ActionChains(self.driver)
         #action.key_down(Keys.CONTROL).send_keys('W').key_up(Keys.CONTROL).perform()
         #self.driver.close
-        time.sleep(30)
         result = self.driver.current_url
-        print(result)
-
         self.assertIn("https://canonizer3.canonizer.com/files/2012_amplifying_final.pdf", result)
 
     def test_footer_blog(self):
@@ -2019,7 +2001,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         CanonizerFooter(self.driver).footer_blog()
         result = self.driver.current_url
-        print(result)
         self.assertIn("https://canonizer3.canonizer.com/", result)
 
     def test_footer_jobs(self):
@@ -2036,7 +2017,6 @@ class TestPages(unittest.TestCase):
         CanonizerCreateUpdateArchivedCamp(self.driver).load_create_camp_page(DEFAULT_TOPIC)\
             .create_archived_camp_with_valid_data(CREATE_CAMP_LIST_1)
         result = self.driver.current_url
-        print(result)
         self.assertIn("/camp/create/", result)
 
     def test_create_archived_camp_with_blank_camp_name(self):
