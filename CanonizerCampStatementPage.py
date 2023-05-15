@@ -1,6 +1,5 @@
 import random
 
-#from selenium.webdriver import Keys, ActionChains
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome import webdriver
@@ -43,8 +42,6 @@ class CanonizerCampStatementPage(Page):
         :return:
             Return the result to the main page.
         """
-        #title = self.find_element(*BrowsePageIdentifiers.TITLE)
-        #print(title)
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
             wait = WebDriverWait(self.driver, 5)
@@ -59,29 +56,20 @@ class CanonizerCampStatementPage(Page):
         return CanonizerCampStatementPage(self.driver)
 
     def click_add_camp_statement(self):
-        print("Adding campstatement")
         self.driver.implicitly_wait(30)
         self.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON).click()
-        time.sleep(20)
         return CanonizerCampStatementPage(self.driver)
 
 
     def scroll_down(self):
         self.driver.implicitly_wait(20)
-        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         action = ActionChains(self.driver)
-        # self.response = requests.get("https://api3.canonizer.com/api/v3/get-all-namespaces")
-        # self.r = self.response.json()["data"]
-        # print(self.r)
-        # self.i = len(self.r)
         self.i = 100
         self.current_name_list = []
 
         while self.i >= 1:
             action.key_down(Keys.DOWN).perform()
             action.key_down(Keys.ENTER).perform()
-            print("element selected")
-            print(self.i)
             self.i = self.i - 1
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CampStatementIdentifiers.SELECTED_NAMESPACE).text
@@ -100,19 +88,15 @@ class CanonizerCampStatementPage(Page):
         self.driver.implicitly_wait(30)
         self.n = random.randint(0, 10000000)
         self.n = str(self.n)
-        print(self.n)
         self.driver.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.driver.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys("test_new_topic1")
         self.topic = ("test_new_topic1" + self.n)
         self.driver.find_element(*CreateTopicIdentifiers.TOPIC_NAME).send_keys(self.topic)
         if self.driver.find_element(*CampStatementIdentifiers.NAMESPACE):
-            print("Found")
             self.driver.find_element(*CampStatementIdentifiers.NAMESPACE).click()
-            print("Clicked on namespace")
         else:
             print("Not Found")
         self.scroll_down()
-        print("Testing is here")
         self.driver.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).click()
 
     def add_camp_statement(self):
@@ -260,8 +244,6 @@ class CanonizerCampStatementPage(Page):
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("hello summary")
         self.driver.find_element(By.ID, "update-submit-btn").click()
         #edit statement
-        #self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
-        #self.driver.find_element(By.ID, "add-camp-statement-btn").click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
 
@@ -282,9 +264,7 @@ class CanonizerCampStatementPage(Page):
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
         self.driver.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON).click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
-        time.sleep(10)
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("new statement")
-        time.sleep(10)
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("new summary")
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[1]/label/span[1]/input").click()
@@ -306,9 +286,7 @@ class CanonizerCampStatementPage(Page):
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
         self.driver.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON).click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
-        time.sleep(10)
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("edit new statement")
-        time.sleep(10)
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("edit new summary")
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
         if self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON):
