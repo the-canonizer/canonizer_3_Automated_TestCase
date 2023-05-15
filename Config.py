@@ -225,7 +225,6 @@ DEFAULT_MIDDLE_NAME = "  test  case "
 
 # support camps tab Configuration Parameters
 DEFAULT_TOPIC_NAME = "Test"
-# //input [@aria-activedescendant = 'PlacesAutocomplete__suggestion-ChIJVaU9EY4UrjsRIrtCkznuBEc']
 DEFAULT_UNVERIFIED_PHONE_NUMBER = "1234567890"
 DEFAULT_INVALID_PHONE_NUMBER = "1212121212"
 DEFAULT_VALID_PHONE_NUMBER = ""
@@ -234,8 +233,6 @@ DEFAULT_INVALID_EMAIL_FORMAT = "test@test"
 
 
 # Create New Topic Configuration Parameters
-# DEFAULT_NICK_NAME = "sania_talentelgia"
-# DEFAULT_TOPIC_NAME = "testing4546"
 DEFAULT_NAMESPACE = ""
 DEFAULT_SUMMARY = "Default note"
 DUPLICATE_TOPIC_NAME = "Theories of Consciousness"
