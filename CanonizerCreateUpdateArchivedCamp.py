@@ -229,3 +229,18 @@ class CanonizerEditArchivedCampPage(Page):
         self.driver.find_element(*CampHistoryIdentifiers.CAMP_EDIT_SUBMIT).click()
 
         return CanonizerEditArchivedCampPage(self.driver)
+    
+    def archive_camp_score_after_making_archive(self):
+        self.driver.implicitly_wait(20)
+        self.driver.get(ARCHIVED_CAMP_URL)
+        score_unrchive = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[3]/div/div/div/span").text
+        self.driver.get(ARCHIVED_EDIT_CAMP_URL)
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_EDIT).click()
+        self.driver.find_element(*CampHistoryIdentifiers.CAMP_EDIT_SUBMIT).click()
+        self.driver.get(ARCHIVED_CAMP_URL)
+        score_archive = self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[3]/div/div/div/span").text
+        if score_archive != score_unrchive:
+            return CanonizerEditArchivedCampPage(self.driver)
+        else:
+            print("Failed")
