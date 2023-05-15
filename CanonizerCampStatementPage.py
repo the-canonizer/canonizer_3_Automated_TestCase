@@ -81,9 +81,6 @@ class CanonizerCampStatementPage(Page):
 
 
 
-            #time.sleep(0.4)
-
-
     def create_new_topic(self):
         self.driver.implicitly_wait(30)
         self.n = random.randint(0, 10000000)
