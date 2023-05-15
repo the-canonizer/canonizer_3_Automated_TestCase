@@ -82,7 +82,6 @@ class CanonizerUploadFilePage(Page):
         originalfilename = "/home/akashroshan/PycharmProjects/Test/sample.csv"
         self.find_element(*UploadFileIdentifiers.UPLOAD).send_keys(originalfilename)
         self.upload_file_name()
-        #self.driver.find_element(By.ID, "enterFileName").send_keys(self.res)
         self.driver.find_element(*UploadFileIdentifiers.ENTER_FILE_NAME).send_keys(self.res)
 
 
