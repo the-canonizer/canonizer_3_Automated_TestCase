@@ -45,7 +45,6 @@ class CanonizerCampStatementPage(Page):
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
             wait = WebDriverWait(self.driver, 5)
-            #wait.until(EC.element_to_be_clickable(*BrowsePageIdentifiers.BROWSE))
             self.find_element(*BrowsePageIdentifiers.BROWSE).click()
             wait = WebDriverWait(self.driver, 5)
 
@@ -74,8 +73,6 @@ class CanonizerCampStatementPage(Page):
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CampStatementIdentifiers.SELECTED_NAMESPACE).text
             if self.current_name == "sandbox testing":
-                print("Got Sandbox")
-                print(self.current_name)
                 time.sleep(10)
                 break
 
