@@ -34,11 +34,9 @@ class CanonizerBrowsePage(Page):
         :return:
             Return the result to the main page.
         """
-        #title = self.find_element(*BrowsePageIdentifiers.TITLE)
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
             wait = WebDriverWait(self.driver, 5)
-            #wait.until(EC.element_to_be_clickable(*BrowsePageIdentifiers.BROWSE))
             self.find_element(*BrowsePageIdentifiers.BROWSE).click()
             wait = WebDriverWait(self.driver, 5)
 
@@ -57,12 +55,7 @@ class CanonizerBrowsePage(Page):
 
     def scroll_namespaces(self):
         self.driver.implicitly_wait(20)
-        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         action = ActionChains(self.driver)
-        #self.response = requests.get("https://api3.canonizer.com/api/v3/get-all-namespaces")
-        #self.r = self.response.json()["data"]
-        #print(self.r)
-        #self.i = len(self.r)
         self.i = 1000
         self.current_name_list = []
 
