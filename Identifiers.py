@@ -83,7 +83,6 @@ class LoginPageIdentifiers(object):
     EMAIL = (By.ID, 'login_form_username')
     PASSWORD = (By.ID, 'login_form_password')
     SUBMIT = (By.ID, 'login-btn')
-    #SUBMIT = (By.XPATH, "/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[4]/div/div/div/button[1]")
     CLOSE_BUTTON = (By.XPATH, '//span[@class = "anticon anticon-close-circle"]')
     CHECK_BOX = (By.ID, 'login_form_remember')
     INVALID_EMAIL_TITLE = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/div/div[1]/div/form/div[1]/div[1]/div[2]/div[2]/div[1]/div')
@@ -110,7 +109,6 @@ class LoginPageIdentifiers(object):
 
 class ProfileInfoIdentifiersPage(object):
     CLICK_ON_DROPDOWN = (By.XPATH, '//*[@id="__next"]/div/header/div[3]/div[1]/div/div/div[2]/div/div[3]/a')
-    # CLICK_ON_DROPDOWN = (By.CLASS_NAME, 'ant-space ant-space-horizontal ant-space-align-center ant-dropdown-trigger')
     PROFILE_BUTTON = (By.ID, 'rc-tabs-0-tab-profile_info')
     ACCOUNT_SETTING_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/ul/li[1]/span')
     SOCIAL_OAUTH_VERIFICATION = (By.XPATH, '/html/body/div[1]/div/div[2]/div/div[2]/div/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div')
@@ -478,7 +476,6 @@ class CampForumIdentifiers(object):
     
     
 class CreateTopicIdentifiers(object):
-    #CREATE_NEW_TOPIC = (By.XPATH, '/html/body/div/div/div[2]/div/aside/div/div[1]/button/span')
     CREATE_NEW_TOPIC = (By.XPATH, "/html/body/div[1]/div/div[2]/div/aside/div/div[1]/button/span")
     LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
     TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
@@ -499,7 +496,6 @@ class CreateTopicIdentifiers(object):
     NAMESPACE_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
 
 class SupportValueIdentifiers(object):
-    #CREATE_NEW_TOPIC = (By.XPATH, '/html/body/div/div/div[2]/div/aside/div/div[1]/button/span')
     CREATE_NEW_TOPIC = (By.XPATH, "/html/body/div[1]/div/div[2]/div/aside/div/div[1]/button/span")
     LOGIN_PAGE = (By.XPATH, '//h2[text() = "Login to Canonizer"]')
     TOPIC_PAGE_TITLE = (By.XPATH, '(//span[text()="Create New Topic"])[1]')
@@ -573,7 +569,6 @@ class BrowsePageIdentifiers(object):
     NAMESPACE = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]")
     GENERAL = (By.ID, 'name-space-1')
     SELECTED_TITLE = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]/div/span[2]")
-    #CORPORATIONS = (By.XPATH, '/html/body/div[3]/div/div/div/div[2]/div[1]/div/div/div[8]/div')
     CORPORATIONS = (By.ID, 'name-space-2')
     CRYPTOCURRENCY = (By.ID, 'name-space-3')
     FAMILY = (By.ID, 'name-space-4')
@@ -611,8 +606,6 @@ class BrowsePageIdentifiers(object):
     MENU_ITEM = (By.ID, 'namespace')
     TOPIC_NAME = (By.XPATH, '//*[@id="outline_127"]/a')
     UPLOAD = (By.XPATH, '//*[@id="__next"]/div/header/div[2]/nav/ul/li[2]/a')
-    # SUB_TOPIC_NAME = (By.XPATH, '//*[@id="outline_127"]/a')
-    #TITLE = (By.XPATH, '/html/body/div[1]/div[1]/h1')
     TITLE = (By.XPATH, '/html[1]/body[1]/div[1]/div[1]/header[1]/div[1]/a[1]/span[1]/img[1]')
     HEADING = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[1]/div/div/div[1]/div/h3/text()')
     
