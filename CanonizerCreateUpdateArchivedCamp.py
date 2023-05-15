@@ -1,5 +1,5 @@
 import time
-
+from Config import *
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from CanonizerBase import Page
