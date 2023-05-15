@@ -130,14 +130,11 @@ class CanonizerCampForumPage(Page):
 
     def click_create_thread_button(self):
         self.driver.implicitly_wait(20)
-        #self.hover(*CampForumIdentifiers.CREATE_THREAD_BUTTON)
-        #self.find_element(*CampForumIdentifiers.CREATE_THREAD_BUTTON).click()
         self.driver.find_element(By.ID, "create-btn").click()
         time.sleep(10)
         return CanonizerCampForumPage(self.driver)
 
     def enter_thread_title(self, title):
-        #self.find_element(*CampForumIdentifiers.THREAD_TITLE).send_keys(title)
         self.find_element(By.ID, "create_new_thread_thread_title").send_keys(title)
 
 
@@ -146,7 +143,6 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CampForumIdentifiers.NICK_NAME).send_keys(nickname)
 
     def click_submit_button(self):
-        #self.find_element(*CampForumIdentifiers.SUBMIT_THREAD).click()
         self.driver.find_element(By.ID, "submit-btn").click()
 
     def create_thread(self, title):
@@ -196,7 +192,6 @@ class CanonizerCampForumPage(Page):
         self.driver.implicitly_wait(20)
         self.enter_thread_title(title)
         self.hover(By.ID, "submit-btn")
-        time.sleep(10)
         self.driver.find_element(By.ID, "submit-btn").send_keys(Keys.ENTER)
         return CanonizerCampForumPage(self.driver)
 
