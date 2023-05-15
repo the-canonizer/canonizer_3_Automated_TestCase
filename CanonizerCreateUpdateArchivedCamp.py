@@ -175,10 +175,8 @@ class CanonizerEditArchivedCampPage(Page):
         except TimeoutException:
             pass
 
-            # Browse to Browse Page
         self.hover(*CampForumIdentifiers.BROWSE)
         self.find_element(*CampForumIdentifiers.BROWSE).click()
-        # Click on Search Topic
         self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
         self.hover(*CampForumIdentifiers.SEARCH_ICON)
@@ -217,8 +215,6 @@ class CanonizerEditArchivedCampPage(Page):
         self.load_camp_manage_edit_page()
         self.driver.implicitly_wait(20)
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
-        # self.find_element(*CampHistoryIdentifiers.CAMP_EDIT_BUTTON).click()
-        #self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/ul/li[4]/i").click()
         self.driver.get("https://canonizer3.canonizer.com/camp/history/1002-email-testing-1348/1-Agreement")
         return CanonizerEditArchivedCampPage(self.driver)
     
@@ -227,8 +223,6 @@ class CanonizerEditArchivedCampPage(Page):
         self.load_camp_manage_edit_page()
         self.driver.implicitly_wait(20)
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
-        # self.find_element(*CampHistoryIdentifiers.CAMP_EDIT_BUTTON).click()
-        #self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/ul/li[4]/i").click()
         self.driver.get("https://canonizer3.canonizer.com/camp/history/1002-email-testing-1348/1-Agreement")
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[1]/span").click()
         self.driver.find_element(*CampHistoryIdentifiers.ARCHIEVED_EDIT).click()
