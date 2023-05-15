@@ -195,7 +195,6 @@ class CanonizerCampStatementPage(Page):
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
 
         #edit statement
-        print("editing statement")
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
 
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div").send_keys("hello update statement")
@@ -219,9 +218,7 @@ class CanonizerCampStatementPage(Page):
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
         self.driver.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON).click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
-        time.sleep(10)
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div").send_keys("           ")
-        time.sleep(10)
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("      ")
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
         if self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON):
