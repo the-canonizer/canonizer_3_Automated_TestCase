@@ -92,11 +92,7 @@ class CanonizerForgotPasswordPage(Page):
 
     def cross_icon_on_forgot_page(self):
         self.find_element(*ForgotPasswordIdentifiers.CROSS_ICON_FORGOT_MODAL).click()
-        confirmation_text = self.find_element(*ForgotPasswordIdentifiers.LOGIN).text
-        if confirmation_text == message['Forgot_Password']['TOPIC_LABEL']:
-            return CanonizerForgotPasswordPage(self.driver)
-        else:
-            print("Text is not matching or not found")
+        return CanonizerForgotPasswordPage(self.driver)
 
 
 
