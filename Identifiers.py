@@ -205,7 +205,7 @@ class ForgotPasswordIdentifiers(object):
     OTP_ENTER = (By.XPATH, '//*[@id="otpverify_otp"]')
     INVALID_OTP = (By.XPATH, '//*[@id="otpverify"]/div[1]/div[2]/div/div[2]/div')
     CROSS_ICON_FORGOT_MODAL = (By.XPATH, '/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/section/form/button/span')
-    CROSS_ICON_OTP_MODAL = (By.XPATH, '//*[@id="forgot-modal-close-btn"]/span/svg')
+    CROSS_ICON_OTP_MODAL = (By.XPATH, '/html/body/div[2]/div/div[2]/div/div[2]/div/div/div/section/form/button/span')
     CHANGE_PASSWORD_TITLE = (By.XPATH, '//h2[text()="Create new password"]')
     BLANK_EMAIL_ERROR = (By.XPATH, '//div[text()="Please input your E-mail!"]')
 
