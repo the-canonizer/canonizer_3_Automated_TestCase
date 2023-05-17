@@ -348,7 +348,7 @@ class CreateCampIdentifiers(object):
     DUPLICATE_CAMP_NAME_ERROR = (By.XPATH, '//div[text()="The camp name has already been taken."]')
     INVALID_CAMP_ABOUT_URL_ERROR = (By.XPATH, '//div[text()="The camp about url format is invalid. (Example: https://www.example.com?post=1234)"]')
     CANCEL_BUTTON = (By.ID, 'cancel-btn')
-    MANAGE_EDIT_CAMP_BUTTON = (By.XPATH, '/html/body/div[2]/div/div/ul/li[6]/span[2]')
+    MANAGE_EDIT_CAMP_BUTTON = (By.XPATH, "/html/body/div[2]/div/div/ul/li[5]")
     CAMP_HISTORY_TITLE = (By.XPATH, '//h4[@class="ant-typography"]')
     CAMP_NAME_CLICK = (By. XPATH, '(//span[@class="treeListItemTitle topicDetails_treeListItemTitle__G91mC"]//a)[3]')
     SUBMITTER_NICK_NAME_LINK = (By.XPATH, '//h5[@class="ant-typography"]//a[1]')
