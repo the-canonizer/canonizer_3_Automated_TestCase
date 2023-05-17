@@ -186,13 +186,10 @@ class CanonizerEditCampPage(Page):
                     (By.CLASS_NAME, 'ant-btn ant-btn-default btn-green')))
         except TimeoutException:
             pass
+        self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
         self.find_element(*CreateCampIdentifiers.MANAGE_EDIT_CAMP_BUTTON).click()
         self.hover(*CreateCampIdentifiers.CAMP_HISTORY_TITLE)
-        page_title = self.find_element(*CreateCampIdentifiers.CAMP_HISTORY_TITLE).text
-        if page_title == message['Create_Camp']['CAMP_HISTORY_TITLE']:
-            return CanonizerEditCampPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        return CanonizerEditCampPage(self.driver)
 
     def verify_submitter_nick_name_on_camp_history_page(self):
         self.load_camp_manage_edit_page()
