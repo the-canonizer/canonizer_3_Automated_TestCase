@@ -243,7 +243,7 @@ class UpdateTopicIdentifiers(object):
     UPDATE_TOPIC_NAME = (By.ID, 'topic_name')
     SUBMIT_UPDATE_BUTTON = (By.XPATH, '//div[@class="ant-form-item-control-input-content"]//button[1]')
     DUPLICATE_TOPIC_NAME_ERROR = (By.XPATH, '/html/body/div[2]/div/div/div/div')
-    CANCEL_BUTTON = (By.XPATH,'(//div[@class="ant-form-item-control-input-content"]//button)[2]')
+    CANCEL_BUTTON = (By.ID, 'update-cancel-btn')
     PREVIEW_BUTTON = (By.XPATH, '(//div[@class="ant-form-item-control-input-content"]//button)[3]')
     TOPIC_PREVIEW_TITLE = (By.XPATH,'//div[text()="Topic Preview"]')
     SUBMITTER_NICK_NAME_LINK_ON_PREVIEW_MODAL = (By.XPATH, '//span[@class="ant-descriptions-item-content"]//a[1]')
