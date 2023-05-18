@@ -422,6 +422,8 @@ class CampStatementIdentifiers(object):
     CAMP_STATEMENT_ASTERISK2 = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[1]/label/span")
     EDIT_SUMMARY = (By.ID, 'edit_summary')
     SUBMIT_STATEMENT_BUTTON = (By.ID, "update-submit-btn")
+    EDIT_CAMP_STATEMENT = (By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[2]/span")
+    EDIT_CAMP_STATEMENT_SUBMIT_BUTTON = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[4]/div/div/div/div/div/button[1]/span")
     UPDATE_CANCEL_BUTTON = (By.ID, "update-cancel-btn")
     STATEMENT_TEXT = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/div/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div[2]/div/div/div")
     CANCEL_BUTTON = (By.XPATH, '//button[contains(@class,"ant-btn ant-btn-ghost")]')
