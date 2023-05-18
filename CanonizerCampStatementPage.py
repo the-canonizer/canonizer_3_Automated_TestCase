@@ -73,7 +73,6 @@ class CanonizerCampStatementPage(Page):
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CampStatementIdentifiers.SELECTED_NAMESPACE).text
             if self.current_name == "sandbox testing":
-                time.sleep(10)
                 break
 
 
