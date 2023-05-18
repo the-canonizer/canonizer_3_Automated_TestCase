@@ -95,8 +95,7 @@ class CanonizerCampStatementPage(Page):
 
     def add_camp_statement(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("create new statement")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("create new summary")
@@ -106,7 +105,7 @@ class CanonizerCampStatementPage(Page):
         return CanonizerCampStatementPage(self.driver)
 
     def add_camp_statement_asterisk(self):
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         if self.driver.find_element(*CampStatementIdentifiers.CAMP_STATEMENT_ASTERISK1):
             if self.driver.find_element(*CampStatementIdentifiers.CAMP_STATEMENT_ASTERISK2):
@@ -116,8 +115,7 @@ class CanonizerCampStatementPage(Page):
 
     def add_camp_statement_without_mandatory_data(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("sample summary")
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
@@ -127,8 +125,7 @@ class CanonizerCampStatementPage(Page):
 
     def add_camp_statement_with_trailing_spaces(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("      ")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("      ")
@@ -139,8 +136,7 @@ class CanonizerCampStatementPage(Page):
 
     def add_camp_statement_with_blank_data(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON).click()
         if self.driver.find_element(*CampStatementIdentifiers.SUBMIT_STATEMENT_BUTTON):
@@ -149,8 +145,7 @@ class CanonizerCampStatementPage(Page):
 
     def click_on_add_camp_statement_cancel_button(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.UPDATE_CANCEL_BUTTON).click()
         if self.driver.find_element(*CampStatementIdentifiers.ADD_STATEMENT_BUTTON):
@@ -159,8 +154,7 @@ class CanonizerCampStatementPage(Page):
 
     def click_on_camp_statement_preview_button(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("hello summary")
@@ -172,8 +166,7 @@ class CanonizerCampStatementPage(Page):
 
     def load_edit_camp_statement(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("hello summary")
@@ -186,8 +179,7 @@ class CanonizerCampStatementPage(Page):
 
     def update_camp_statement_with_mandatory_field(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         #create statement
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
@@ -207,8 +199,7 @@ class CanonizerCampStatementPage(Page):
 
     def edit_camp_statement_with_trailing_spaces(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("hello summary")
@@ -227,8 +218,7 @@ class CanonizerCampStatementPage(Page):
 
     def edit_camp_statement_with_blank_data(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         #create statement
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
@@ -244,8 +234,7 @@ class CanonizerCampStatementPage(Page):
 
     def compare_camp_statement(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement ")
 
@@ -267,8 +256,7 @@ class CanonizerCampStatementPage(Page):
 
     def edit_camp_statement(self):
         self.driver.implicitly_wait(30)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
-        self.create_new_topic()
+        self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.STATEMENT_TEXT).send_keys("hello statement")
         self.driver.find_element(*CampStatementIdentifiers.EDIT_SUMMARY).send_keys("hello summary")
