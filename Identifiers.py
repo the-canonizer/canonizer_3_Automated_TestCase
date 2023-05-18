@@ -445,8 +445,8 @@ class CampStatementIdentifiers(object):
     LIVE_COLOR = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]')
     IN_REVIEW = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]')
     OLD = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]')
-    COMPARE_STATEMENT2 = (By.XPATH, '//div[@id="__next"]/div[1]/div[3]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/label[1]/span[2]')
-    COMPARE_STATEMENT1 = (By.XPATH, '(//label[@class="ant-checkbox-wrapper campHistory_campSelectCheckbox__NNUPk"]//span)[3]')
+    COMPARE_STATEMENT2 = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[1]/label/span[1]/input")
+    COMPARE_STATEMENT1 = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/label/span[1]/input")
     COMPARE_STATEMENT_BUTTON = (By.ID, 'compare-statement')
     STATEMENT_COMPARE_HISTORY_TITLE = (By.XPATH, '//div[@class="UI_filterOt___p9MH"]//h4[1]')
 
