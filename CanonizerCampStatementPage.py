@@ -232,7 +232,7 @@ class CanonizerCampStatementPage(Page):
         self.driver.get(CAMP_STATEMENT_TOPIC)
         self.click_add_camp_statement()
         self.driver.find_element(*CampStatementIdentifiers.COMPARE_STATEMENT1).click()
-        self.driver.find_element(*CampStatementIdentifiers.COMPARE_STATEMENT1).click()
+        self.driver.find_element(*CampStatementIdentifiers.COMPARE_STATEMENT2).click()
         self.driver.find_element(*CampStatementIdentifiers.COMPARE_STATEMENT_BUTTON).click()
         if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[1]/div/button"):
             pass
