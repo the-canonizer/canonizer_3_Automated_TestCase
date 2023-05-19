@@ -1866,37 +1866,48 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
-
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement())
 
     def test_add_camp_statement(self):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement())
 
     def test_add_camp_statement_page_with_asterisk(self):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_asterisk())
 
     def test_add_camp_statement_without_mandatory_field(self):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_without_mandatory_data())
 
     def test_add_camp_statement_with_trailing_spaces(self):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_trailing_spaces())
 
     def test_add_camp_statement_with_blank_data(self):
         self.driver.implicitly_wait(30)
         self.login_to_canonizer_app()
         self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
         self.assertTrue(CanonizerCampStatementPage(self.driver).add_camp_statement_with_blank_data())
 
     def test_load_edit_camp_statement(self):
