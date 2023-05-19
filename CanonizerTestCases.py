@@ -426,7 +426,17 @@ testCases = {
     'TC_FOOTER_HELP':[moderate,],
     'TC_FOOTER_WHITE_PAPER':[moderate,],
     'TC_FOOTER_BLOG':[moderate,],
-    'TC_footer_jobs':[moderate,],
+    'TC_FOOTER_JOBS':[moderate,],
+    'TC_CREATE_ARCHIVED_CAMP_WITH_VALID_DATA':[moderate,],
+    'TC_CREATE_ARCHIVED_CAMP_WITH_BLANK_CAMP_NAME':[moderate,],
+    'TC_CREATE_ARCHIVED_CAMP_WITH_DUPLICATE_CAMP_NAME':[moderate,],
+    'TC_CREATE_ARCHIVED_CAMP_WITHOUT_ENTERING_DATA_IN_MANDATORY_FIELDS':[moderate,],
+    'TC_CREATE_ARCHIVED_CAMP_WITH_INVALID_CAMP_ABOUT_URL':[moderate,],
+    'TC_CAMP_ARCHIVED_CANCEL_BUTTON':[moderate,],
+    'TC_CHECK_UNARCHIVED_CAMP':[moderate,],
+    'TC_DO_ARCHIVE_CAMP':[moderate,],
+    'TEST_ARCHIVE_CAMP_SCORE_AFTER_MAKING_ARCHIVE':[moderate,],
+    
 
 
 
