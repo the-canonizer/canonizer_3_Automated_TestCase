@@ -34,11 +34,11 @@ class CanonizerBrowsePage(Page):
         :return:
             Return the result to the main page.
         """
+        self.driver.implicitly_wait(10)
         if self.find_element(*BrowsePageIdentifiers.BROWSE):
             self.hover(*BrowsePageIdentifiers.BROWSE)
-            wait = WebDriverWait(self.driver, 5)
             self.find_element(*BrowsePageIdentifiers.BROWSE).click()
-            wait = WebDriverWait(self.driver, 5)
+            WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.CLASS_NAME, "topicsList_head__IooBi topicsList_browsePage__cb2G_")))
 
     def click_only_my_topics_button(self):
         self.click_browse_page_button()
