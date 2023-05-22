@@ -1094,8 +1094,9 @@ class TestPages(unittest.TestCase):
     # TC_LOAD_PRIVACY_POLICY_PAGE
     def test_load_privacy_policy_page(self):
         self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_privacy_policy_page().get_url()
-        self.assertIn("", result)
+        CanonizerTermsAndPrivacyPolicy(self.driver).verify_privacy_policy_page()
+        result = self.driver.title
+        self.assertIn("Build consensus by canonizing what you believe is right", result)
 
     # TC_LOAD_TERMS_AND_SERVICES_PAGE
     def test_load_terms_and_services(self):
