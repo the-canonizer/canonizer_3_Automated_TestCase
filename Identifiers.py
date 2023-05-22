@@ -327,6 +327,7 @@ class HomePageIdentifiers(object):
     SUPPORT_CANONIZER = (By.XPATH, 'icon-envelope')
     ALGORITHM_DROP_DOWN = (By.XPATH,'//div[contains(@class,"ant-select ant-select-lg")]//div')
     PRIVACY_PAGE_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/div/h5")
+    TERM_AND_SERVICES_TITLE = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/div/p[1]/span")
 
 
 class CreateCampIdentifiers(object):
