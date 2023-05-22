@@ -40,7 +40,7 @@ class CanonizerTermsAndPrivacyPolicy(Page):
 
     def verify_privacy_policy_page(self):
         self.hover(*HomePageIdentifiers.PRIVACY_POLICY)
-        self.find_element(*HomePageIdentifiers.PRIVACY_POLICY)
+        self.find_element(*HomePageIdentifiers.PRIVACY_POLICY).click()
         return CanonizerHomePage(self.driver)
 
     def verify_terms_and_services_page(self):
