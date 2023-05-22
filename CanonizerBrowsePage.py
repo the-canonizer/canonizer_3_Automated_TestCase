@@ -80,7 +80,7 @@ class CanonizerBrowsePage(Page):
 
     def select_all_namespaces(self):
         self.driver.implicitly_wait(20)
-        self.driver.get("https://canonizer3.canonizer.com/browse")
+        self.click_browse_page_button()
         if self.driver.find_element(*BrowsePageIdentifiers.NAMESPACE):
             self.driver.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
             self.scroll_namespaces()
