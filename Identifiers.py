@@ -567,7 +567,7 @@ class BrowsePageIdentifiers(object):
     """
     Class to hold the Browse Page Identifiers
     """
-    BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a/text()')
+    BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')
     ONLY_MY_TOPICS = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/label/span[1]')
     NAMESPACE = (By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div/div[1]/div[1]/div/div[1]")
     GENERAL = (By.ID, 'name-space-1')
