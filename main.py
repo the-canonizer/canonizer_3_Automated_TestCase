@@ -1101,8 +1101,8 @@ class TestPages(unittest.TestCase):
     # TC_LOAD_TERMS_AND_SERVICES_PAGE
     def test_load_terms_and_services(self):
         self.login_to_canonizer_app()
-        result = CanonizerTermsAndPrivacyPolicy(self.driver).verify_terms_and_services_page().get_url()
-        self.assertIn("", result)
+        result = self.driver.find_element(*BrowsePageIdentifiers.TERM_AND_SERVICES_TITLE).text
+        self.assertIn("Terms of Service", result)
 
     # TC_VERIFY_THE_BROWSE_BUTTON
     def test_verify_the_browse_button(self):
