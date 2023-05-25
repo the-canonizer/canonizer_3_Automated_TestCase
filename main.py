@@ -1095,13 +1095,13 @@ class TestPages(unittest.TestCase):
     def test_load_privacy_policy_page(self):
         self.login_to_canonizer_app()
         CanonizerTermsAndPrivacyPolicy(self.driver).verify_privacy_policy_page()
-        result = self.driver.find_element(*BrowsePageIdentifiers.PRIVACY_PAGE_TITLE).text
+        result = self.driver.find_element(*HomePageIdentifiers.PRIVACY_PAGE_TITLE).text
         self.assertIn("Canonizer Privacy Policy.", result)
 
     # TC_LOAD_TERMS_AND_SERVICES_PAGE
     def test_load_terms_and_services(self):
         self.login_to_canonizer_app()
-        result = self.driver.find_element(*BrowsePageIdentifiers.TERM_AND_SERVICES_TITLE).text
+        result = self.driver.find_element(*HomePageIdentifiers.TERM_AND_SERVICES_TITLE).text
         self.assertIn("Terms of Service", result)
 
     # TC_VERIFY_THE_BROWSE_BUTTON
