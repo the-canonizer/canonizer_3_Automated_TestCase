@@ -46,7 +46,7 @@ class CanonizerAddNewsPage(Page):
             pass
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
         self.find_element(*AddNewsIdentifiers.ADD_NEWS_LINK).click()
-        WebDriverWait(self.driver, 5).until(EC.invisibility_of_element_located((By.CLASS_NAME, "ant-card-head-title")))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "ant-card-head-title")))
         return CanonizerAddNewsPage(self.driver)
 
     def enter_display_text(self, display_text):
