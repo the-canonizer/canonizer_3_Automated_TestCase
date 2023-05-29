@@ -44,6 +44,7 @@ class CanonizerAddNewsPage(Page):
                     (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
         except TimeoutException:
             pass
+        self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
         self.find_element(*AddNewsIdentifiers.ADD_NEWS_LINK).click()
         self.hover(*AddNewsIdentifiers.ADD_NEWS_PAGE_TITLE)
         return CanonizerAddNewsPage(self.driver)
