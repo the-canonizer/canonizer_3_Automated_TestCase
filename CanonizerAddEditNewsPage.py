@@ -69,7 +69,6 @@ class CanonizerAddNewsPage(Page):
 
     def create_news_with_valid_data(self, display_text, link):
         self.create_news(display_text, link)
-        self.hover(*AddNewsIdentifiers.NEWS_ADDED)
         return CanonizerAddNewsPage(self.driver)
 
     def add_news_page_mandatory_fields_are_marked_with_asterisk(self):
