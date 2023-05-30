@@ -43,14 +43,10 @@ class CanonizerCampForumPage(Page):
         return CanonizerCampForumPage(self.driver)
 
     def load_all_threads_page(self):
-        self.hover(*CampForumIdentifiers.ALL_THREADS_BUTTON)
-        self.find_element(*CampForumIdentifiers.ALL_THREADS_BUTTON).click()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.driver.implicitly_wait(20)
+        self.driver.find_element(By.ID, "all-thread-btn").click()
+        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located((By.CLASS_NAME, "ant-table-cell ant-table-cell-row-hover")))
+        return CanonizerCampForumPage(self.driver)
 
     def load_my_threads_page(self):
         self.hover(*CampForumIdentifiers.MY_THREADS_BUTTON)
