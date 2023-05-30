@@ -397,7 +397,7 @@ class AddNewsIdentifiers(object):
     LINK_ASTERISK = (By.XPATH, '(//span[@class="required"])[2]')
     NICKNAME_ASTERISK = (By.XPATH, '(//span[@class = "required"])[3]')
     NEWS_ADDED = (By.XPATH, '//h4[text()="News added by sania_talentelgia"]')
-    BLANK_LINK_ERROR = (By.XPATH, '//*[@id="__next"]/div/div[3]/div/div/div/div/div/div[2]/form/div[1]/div[2]/div[1]/div[2]/div[2]/div')
+    BLANK_LINK_ERROR = (By.ID, 'link_help')
     BLANK_DISPLAY_TEXT_ERROR = (By.XPATH, '//div[@role="alert"]')
     TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
     AVAILABLE_FOR_CHILD_CAMP = (By.ID, 'available_for_child')
