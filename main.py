@@ -1373,7 +1373,7 @@ class TestPages(unittest.TestCase):
     def test_load_edit_news_page(self):
         self.login_to_canonizer_app()
         result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)
-        self.assertIn("/editnews/", result.get_url())
+        self.assertIn("/1-Agreement", result.get_url())
 
     # TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT
     def test_update_news_with_blank_display_text(self):
