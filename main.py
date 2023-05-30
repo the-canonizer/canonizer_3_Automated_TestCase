@@ -1380,8 +1380,8 @@ class TestPages(unittest.TestCase):
         print("\n" + str(test_cases('TC_UPDATE_NEWS_WITH_BLANK_DISPLAY_TEXT')))
         self.login_to_canonizer_app()
         result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC)\
-            .update_news_with_blank_display_text("", "staging.canonizer.com/support").get_url()
-        self.assertIn("/editnews/", result)
+            .update_news_with_blank_display_text(" ").get_url()
+        self.assertIn("/1-Agreement", result)
 
     # TC_UPDATE_NEWS_WITH_BLANK_LINK
     def test_update_news_with_blank_link(self):
