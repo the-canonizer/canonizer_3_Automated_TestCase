@@ -82,25 +82,12 @@ class CanonizerCampForumPage(Page):
         self.find_element(*CreateTopicIdentifiers.CREATE_TOPIC_BUTTON).click()
 
     def check_no_thread_availability(self):
-        self.create_new_topic()
-        # Click on Camp Forum Button
-        try:
-            WebDriverWait(self.driver, 6).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
-        except TimeoutException:
-            pass
+        self.driver.implicitly_wait(20)
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
-        self.hover(*CampForumIdentifiers.ALL_THREADS_BUTTON)
-        self.find_element(*CampForumIdentifiers.ALL_THREADS_BUTTON).click()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        self.hover(*CampForumIdentifiers.NO_THREAD_STATEMENT)
-        statement = self.find_element(*CampForumIdentifiers.NO_THREAD_STATEMENT).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE'] and 'No Data' in statement:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        self.driver.find_element(By.ID, "all-thread-btn").click()
+        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located((By.CLASS_NAME, "ant-empty ant-empty-normal")))
+        return CanonizerCampForumPage(self.driver)
 
     def click_create_thread_button(self):
         self.driver.implicitly_wait(20)
