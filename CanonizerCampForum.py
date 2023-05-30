@@ -23,12 +23,7 @@ class CanonizerCampForumPage(Page):
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     def load_camp_forum_page(self, topic_name):
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, 'siteHeader_navWrap__yilWi false')))
-        except TimeoutException:
-            pass
-
+        self.driver.implicitly_wait(20)
         # Browse to Browse Page
         self.hover(*CampForumIdentifiers.BROWSE)
         self.find_element(*CampForumIdentifiers.BROWSE).click()
@@ -44,8 +39,7 @@ class CanonizerCampForumPage(Page):
 
 
         self.find_element(*CampForumIdentifiers.CAMP_FORUM_BUTTON).click()
-
-
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
         return CanonizerCampForumPage(self.driver)
 
     def load_all_threads_page(self):
