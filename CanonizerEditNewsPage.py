@@ -62,9 +62,10 @@ class CanonizerEditNewsPage(Page):
         self.update_available_for_child_camps()
         self.click_create_news_button()
 
-    def update_news_with_blank_display_text(self, link,):
+    def update_news_with_blank_display_text(self, link):
+        self.driver.implicitly_wait(20)
         self.find_element(*AddNewsIdentifiers.DISPLAY_TEXT).clear()
-        self.update_news('', link)
+        self.update_news(' ', link)
         self.hover(*AddNewsIdentifiers.BLANK_DISPLAY_TEXT_ERROR)
         return CanonizerEditNewsPage(self.driver)
 
