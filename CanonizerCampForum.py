@@ -55,28 +55,16 @@ class CanonizerCampForumPage(Page):
         return CanonizerCampForumPage(self.driver)
 
     def load_my_participation_page(self):
-        self.hover(*CampForumIdentifiers.MY_PARTICIPATION)
-        self.find_element(*CampForumIdentifiers.MY_PARTICIPATION).click()
-
-        WebDriverWait(self.driver, 8).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'Forum_cardTitle__VagbD')))
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.driver.implicitly_wait(20)
+        self.driver.find_element(By.ID, "participate-btn").click()
+        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located((By.CLASS_NAME, "ant-table-cell ant-table-cell-row-hover")))
+        return CanonizerCampForumPage(self.driver)
 
     def load_top_10_threads_page(self):
-        self.hover(*CampForumIdentifiers.TOP_10_THREADS)
-        self.find_element(*CampForumIdentifiers.TOP_10_THREADS).click()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.driver.implicitly_wait(20)
+        self.driver.find_element(By.ID, "most-rep-btn").click()
+        WebDriverWait(self.driver, 20).until(EC.invisibility_of_element_located((By.CLASS_NAME, "ant-table-cell ant-table-cell-row-hover")))
+        return CanonizerCampForumPage(self.driver)
 
     def create_new_topic(self):
         try:
