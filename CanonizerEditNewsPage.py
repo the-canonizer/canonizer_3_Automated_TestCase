@@ -13,6 +13,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.remote.webelement import *
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 class CanonizerEditNewsPage(Page):
     window_scroll = "window.scrollTo(0, document.body.scrollHeight);"
@@ -71,8 +73,10 @@ class CanonizerEditNewsPage(Page):
         return CanonizerEditNewsPage(self.driver)
 
     def update_news_with_blank_link(self, display_text):
-        self.find_element(*AddNewsIdentifiers.LINK).clear()
-        self.update_news(display_text, '')
+        self.driver.implicitly_wait(20)
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/form/div[1]/div[2]/div[1]/div/div[2]/div/div/input").send_keys(Keys.CONTROL+ 'a')
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div/div[2]/form/div[1]/div[2]/div[1]/div/div[2]/div/div/input").send_keys(Keys.BACKSPACE)
+        self.update_news(display_text, ' ')
         self.hover(*AddNewsIdentifiers.BLANK_LINK_ERROR)
         return CanonizerEditNewsPage(self.driver)
 
