@@ -81,8 +81,8 @@ class CanonizerEditNewsPage(Page):
         return CanonizerEditNewsPage(self.driver)
 
     def click_edit_news_cancel_button(self):
+        self.driver.implicitly_wait(20)
         self.hover(*AddNewsIdentifiers.EDIT_CANCEL_BUTTON)
         self.find_element(*AddNewsIdentifiers.EDIT_CANCEL_BUTTON).click()
-        self.hover(AddNewsIdentifiers.EDIT_NEWS_TITlE)
-        self.hover(*AddNewsIdentifiers.TOPIC_PAGE)
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "edit-news-btn")))
         return CanonizerEditNewsPage(self.driver)
