@@ -40,11 +40,8 @@ class CanonizerEditNewsPage(Page):
             self.hover(*AddNewsIdentifiers.EDIT_NEWS)
             self.find_element(*AddNewsIdentifiers.EDIT_NEWS).click()
             self.driver.execute_script(self.window_scroll)
-            WebDriverWait(self.driver, 7).until(
-                EC.visibility_of_element_located((By.ID, 'news-edit-btn')))
-            self.find_element(*AddNewsIdentifiers.EDIT_ICON).click()
-            WebDriverWait(self.driver, 7).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-card-head-title')))
+            WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "close-new-btn")))
+
             return CanonizerEditNewsPage(self.driver)
 
     def update_display_text(self, display_text):
