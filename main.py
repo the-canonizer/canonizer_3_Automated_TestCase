@@ -640,8 +640,11 @@ class TestPages(unittest.TestCase):
     def test_check_no_thread_availability(self):
         print("\n" + str(test_cases('TC_CHECK_NO_THREAD_AVAILABILITY')))
         self.login_to_canonizer_app()
-        result = CanonizerCampForumPage(self.driver).check_no_thread_availability().get_url()
-        self.assertIn("/1-Agreement/threads", result)
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC).create_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "camp-forum-btn")))
+        CanonizerCampForumPage(self.driver).check_no_thread_availability()
+        result = self.driver.find_element(By.CLASS_NAME, "ant-empty-description").text
+        self.assertIn("No data", result)
 
     # TC_CLICK_CREATE_THREAD_BUTTON
     def test_click_create_thread_button(self):
