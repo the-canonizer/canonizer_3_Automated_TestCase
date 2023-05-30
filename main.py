@@ -1393,7 +1393,6 @@ class TestPages(unittest.TestCase):
 
     # TC_EDIT_NEWS_WITH_CANCEL_BUTTON
     def test_click_edit_news_cancel_button(self):
-        print("\n" + str(test_cases('TC_EDIT_NEWS_WITH_CANCEL_BUTTON')))
         self.login_to_canonizer_app()
         result = CanonizerEditNewsPage(self.driver).load_edit_news_page(DEFAULT_TOPIC) \
             .click_edit_news_cancel_button().get_url()
