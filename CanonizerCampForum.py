@@ -184,15 +184,12 @@ class CanonizerCampForumPage(Page):
             print("Title not found or is not matching")
 
     def load_edit_thread_page(self):
+        self.driver.implicitly_wait(10)
         self.load_my_threads_page()
-        self.hover(*CampForumIdentifiers.EDIT_THREAD_ICON)
-        self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
-        self.hover(*CampForumIdentifiers.EDIT_THREAD_PAGE_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.EDIT_THREAD_PAGE_TITLE).text
-        if page_title == message['Camp_Forum']['EDIT_THREAD_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr[1]/td[1]").click()
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.ID, "submit-btn")))
+        return CanonizerCampForumPage(self.driver)
 
     def edit_thread(self, title):
         self.hover(*CampForumIdentifiers.EDIT_THREAD_ICON)
