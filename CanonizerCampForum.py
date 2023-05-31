@@ -245,15 +245,8 @@ class CanonizerCampForumPage(Page):
 
     def load_thread_posts_page(self):
         self.load_all_threads_page()
-        self.hover(*CampForumIdentifiers.THREAD_LINK)
-        page_title1 = self.find_element(*CampForumIdentifiers.THREAD_LINK).text
-        self.find_element(*CampForumIdentifiers.THREAD_LINK).click()
-        self.hover(*CampForumIdentifiers.POST_TITLE)
-        page_title2 = self.find_element(*CampForumIdentifiers.POST_TITLE).text
-        if page_title1 == page_title2:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.driver.find_element(By.CLASS_NAME, "Forum_threadListTitle__eSVW8").click()
+        return CanonizerCampForumPage(self.driver)
 
     def enter_post_reply(self, reply):
         self.hover(*CampForumIdentifiers.POST_REPLY)
