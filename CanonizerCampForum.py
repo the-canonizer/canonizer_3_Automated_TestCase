@@ -236,16 +236,12 @@ class CanonizerCampForumPage(Page):
 
     def click_on_edit_back_button(self):
         self.load_my_threads_page()
-        self.hover(*CampForumIdentifiers.EDIT_THREAD_ICON)
-        self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
-        self.hover(*CampForumIdentifiers.BACK_BUTTON)
-        self.find_element(*CampForumIdentifiers.BACK_BUTTON).click()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/a/span").click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, "submit-btn")))
+        self.driver.find_element(By.ID, "back-btn").click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def load_thread_posts_page(self):
         self.load_all_threads_page()
