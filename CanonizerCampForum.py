@@ -216,7 +216,7 @@ class CanonizerCampForumPage(Page):
         self.load_my_threads_page()
         self.edit_thread(title)
         self.click_submit_button()
-        self.hover(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         error = self.find_element(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR).text
         if error == message['Camp_Forum']['DUPLICATE_THREAD']:
             return CanonizerCampForumPage(self.driver)
@@ -227,7 +227,7 @@ class CanonizerCampForumPage(Page):
         self.load_my_threads_page()
         self.edit_thread(title)
         self.click_submit_button()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
         page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
         if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
             return CanonizerCampForumPage(self.driver)
