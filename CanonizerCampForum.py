@@ -192,13 +192,14 @@ class CanonizerCampForumPage(Page):
         return CanonizerCampForumPage(self.driver)
 
     def edit_thread(self, title):
-        self.hover(*CampForumIdentifiers.EDIT_THREAD_ICON)
-        self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
-        self.hover(*CampForumIdentifiers.THREAD_TITLE)
-        self.find_element(*CampForumIdentifiers.THREAD_TITLE).clear()
-        for i in range(0, 100):
-            self.find_element(*CampForumIdentifiers.THREAD_TITLE).send_keys(Keys.BACKSPACE)
-        self.find_element(*CampForumIdentifiers.THREAD_TITLE).send_keys(title)
+        self.driver.implicitly_wait(10)
+        self.load_my_threads_page()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr[1]/td[1]").click()
+        # self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, "submit-btn")))
+        self.driver.find_element(By.ID, "create_new_thread_thread_title").send_keys(title)
+        return CanonizerCampForumPage(self.driver)
 
     def update_thread_title(self, title):
         self.load_my_threads_page()
