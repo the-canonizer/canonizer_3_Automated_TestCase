@@ -195,7 +195,7 @@ class CanonizerCampForumPage(Page):
         self.driver.implicitly_wait(10)
         self.load_my_threads_page()
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
-        self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr[1]/td[1]").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div/table/tbody/tr[1]/td[1]/a/a/span").click()
         # self.find_element(*CampForumIdentifiers.EDIT_THREAD_ICON).click()
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.ID, "submit-btn")))
         self.driver.find_element(By.ID, "create_new_thread_thread_title").send_keys(title)
