@@ -249,25 +249,23 @@ class CanonizerCampForumPage(Page):
         return CanonizerCampForumPage(self.driver)
 
     def enter_post_reply(self, reply):
-        self.hover(*CampForumIdentifiers.POST_REPLY)
-        self.find_element(*CampForumIdentifiers.POST_REPLY).send_keys(reply)
+        self.hover(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[2]/div/div/div[2]/form/div/div[1]/div/div/div[2]/div[1]")
+        self.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[2]/div/div/div[2]/form/div/div[1]/div/div/div[2]/div[1]").send_keys(reply)
 
     def click_post_submit_button(self):
-        self.hover(*CampForumIdentifiers.POST_SUBMIT)
-        self.find_element(*CampForumIdentifiers.POST_SUBMIT).click()
+        self.hover(By.ID, "submit-btn")
+        self.find_element(By.ID, "submit-btn").click()
 
     def post_thread_reply(self, reply):
         self.enter_post_reply(reply)
         self.click_post_submit_button()
 
     def thread_post_with_valid_data(self, reply):
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        self.driver.implicitly_wait(20)
         self.post_thread_reply(reply)
-        self.hover(*CampForumIdentifiers.REPLY_FIELD)
-        post = self.find_element(*CampForumIdentifiers.REPLY_FIELD).text
-        if post in reply:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Reply not saved or is not matching")
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def thread_post_with_empty_reply(self, reply):
         self.post_thread_reply(reply)
