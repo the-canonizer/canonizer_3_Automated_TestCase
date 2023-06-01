@@ -277,14 +277,10 @@ class CanonizerCampForumPage(Page):
             print("Error not found or is not matching")
 
     def click_on_post_back_button(self):
-        self.hover(*CampForumIdentifiers.BACK_BUTTON)
-        self.find_element(*CampForumIdentifiers.BACK_BUTTON).click()
-        self.hover(*CampForumIdentifiers.CAMP_FORUM_TITLE)
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        self.hover(By.ID, "back-btn")
+        self.find_element(By.ID, "back-btn").click()
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def verify_nick_name_link_on_post_page(self):
         self.hover(*CampForumIdentifiers.NICK_NAME_LINK_ON_POST_PAGE)
