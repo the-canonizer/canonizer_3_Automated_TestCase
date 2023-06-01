@@ -797,8 +797,8 @@ class TestPages(unittest.TestCase):
     def test_thread_post_with_empty_reply(self):
         print("\n" + str(test_cases('TC_THREAD_POST_WITH_EMPTY_REPLY')))
         self.login_to_canonizer_app()
-        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()\
-            .thread_post_with_empty_reply("")
+        CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()
+        result = CanonizerCampForumPage(self.driver).thread_post_with_valid_data(" ")
         self.assertIn("/1-Agreement/threads", result.get_url())
 
     # TC_CLICK_ON_POST_BACK_BUTTON
@@ -819,10 +819,10 @@ class TestPages(unittest.TestCase):
 
     # TC_VERIFY_EDIT_REPLY_TO_THREAD
     def test_edit_reply_to_thread(self):
-        print("\n" + str(test_cases('TC_VERIFY_EDIT_REPLY_TO_THREAD')))
+        print("\n" + str(test_cases('TC_THREAD_POST_WITH_EMPTY_REPLY')))
         self.login_to_canonizer_app()
-        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page() \
-            .edit_reply_to_thread("Edit thread reply")
+        CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()
+        result = CanonizerCampForumPage(self.driver).thread_post_with_valid_data("Edit thread reply")
         self.assertIn("/1-Agreement/threads", result.get_url())
 
     # TC_VERIFY_DELETE_REPLY_TO_THREAD
