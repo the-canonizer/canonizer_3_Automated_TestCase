@@ -789,8 +789,8 @@ class TestPages(unittest.TestCase):
     def test_thread_post_with_valid_data(self):
         print("\n" + str(test_cases('TC_THREAD_POST_WITH_VALID_DATA')))
         self.login_to_canonizer_app()
-        result = CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()\
-            .thread_post_with_valid_data("Test reply to a thread")
+        CanonizerCampForumPage(self.driver).load_camp_forum_page(DEFAULT_TOPIC).load_thread_posts_page()
+        result = CanonizerCampForumPage(self.driver).thread_post_with_valid_data("Test reply to a thread")
         self.assertIn("/1-Agreement/threads", result.get_url())
 
     # TC_THREAD_POST_WITH_EMPTY_REPLY
