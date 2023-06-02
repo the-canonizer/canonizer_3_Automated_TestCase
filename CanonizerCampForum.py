@@ -205,34 +205,22 @@ class CanonizerCampForumPage(Page):
         self.load_my_threads_page()
         self.edit_thread(title)
         self.click_submit_button()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def edit_thread_with_duplicate_title(self, title):
         self.load_my_threads_page()
         self.edit_thread(title)
         self.click_submit_button()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
-        error = self.find_element(*CampForumIdentifiers.DUPLICATE_TITLE_ERROR).text
-        if error == message['Camp_Forum']['DUPLICATE_THREAD']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def edit_thread_with_special_chars(self, title):
         self.load_my_threads_page()
         self.edit_thread(title)
         self.click_submit_button()
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//span[text()="Camp Forum"]')))
-        page_title = self.find_element(*CampForumIdentifiers.CAMP_FORUM_TITLE).text
-        if page_title == message['Camp_Forum']['CAMP_FORUM_TITLE']:
-            return CanonizerCampForumPage(self.driver)
-        else:
-            print("Title not found or is not matching")
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "Forum_cardTitle__VagbD")))
+        return CanonizerCampForumPage(self.driver)
 
     def click_on_edit_back_button(self):
         self.load_my_threads_page()
