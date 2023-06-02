@@ -83,7 +83,7 @@ class CanonizerCampStatementPage(Page):
         self.n = str(self.n)
         self.driver.find_element(*CreateTopicIdentifiers.CREATE_NEW_TOPIC).click()
         self.driver.find_element(*CreateTopicIdentifiers.EDIT_SUMMARY).send_keys("test_new_topic1")
-        self.topic = ("test_new_topic1" + self.n)
+        self.topic = ("New Topic" + self.n)
         self.driver.find_element(*CreateTopicIdentifiers.TOPIC_NAME).send_keys(self.topic)
         if self.driver.find_element(*CampStatementIdentifiers.NAMESPACE):
             self.driver.find_element(*CampStatementIdentifiers.NAMESPACE).click()
