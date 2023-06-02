@@ -1,13 +1,15 @@
 import time
 
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from CanonizerValidationCheckMessages import message
 from CanonizerBase import Page
-from Identifiers import CreateTopicIdentifiers, CampForumIdentifiers, UpdateTopicIdentifiers, CreateCampIdentifiers
+from Identifiers import CreateTopicIdentifiers, CampForumIdentifiers, UpdateTopicIdentifiers, CreateCampIdentifiers, \
+    BrowsePageIdentifiers, CampStatementIdentifiers
 from selenium.webdriver.chrome.service import Service
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -55,10 +57,34 @@ class CanonizerCreateNewTopic(Page):
         self.enter_topic_name(topic_name)
         self.enter_namespace(namespace)
 
+    def scroll_down(self):
+        self.driver.implicitly_wait(20)
+        action = ActionChains(self.driver)
+
+        self.i = 100
+        self.current_name_list = []
+
+        while self.i >= 1:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            self.i = self.i - 1
+            time.sleep(0.4)
+            self.current_name = self.driver.find_element(*CampStatementIdentifiers.SELECTED_NAMESPACE).text
+            if self.current_name == "sandbox testing":
+                print("Got Sandbox")
+                print(self.current_name)
+                time.sleep(10)
+                break
     def create_topic(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
 
         self.entering_data_fields(summary, topic_name, namespace)
+        if self.driver.find_element(*CampStatementIdentifiers.NAMESPACE):
+            self.driver.find_element(*CampStatementIdentifiers.NAMESPACE).click()
+        else:
+            print("Not Found")
+        self.scroll_down()
         self.create_topic_button()
 
     def create_topic_with_valid_data(self, summary, topic_name, namespace):
