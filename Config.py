@@ -252,8 +252,8 @@ DEFAULT_NOTE = "Automated note"
 DUPLICATE_CAMP_NAME = "Levels Of Testing"
 DEFAULT_CAMP_ABOUT_URL = "https://canonizer3.canonizer.com/"
 INVALID_CAMP_ABOUT_URL = "google@com"
-add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
-DEFAULT_CAMP_NAME = "Camp" + add_name,
+add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+DEFAULT_CAMP_NAME = "Selenium Test Camp" + add_name,
 CREATE_CAMP_LIST_1 = [
     DEFAULT_NICK_NAME,
     DEFAULT_PARENT_CAMP,
