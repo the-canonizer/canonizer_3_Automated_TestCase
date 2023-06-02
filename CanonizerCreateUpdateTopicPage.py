@@ -79,7 +79,7 @@ class CanonizerCreateNewTopic(Page):
 
     def create_topic_name_with_trailing_space(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
-        self.create_topic(summary, "     new topic", namespace)
+        self.create_topic(summary, "     New Topic", namespace)
 
         return CanonizerCreateNewTopic(self.driver)
 
