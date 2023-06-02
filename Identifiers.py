@@ -265,7 +265,7 @@ class CampForumIdentifiers(object):
     BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')
     SEARCH_TOPIC = (By.XPATH, '//input[@placeholder="Search by topic name"]')
     SEARCH_ICON = (By.XPATH, '(//span[@class="ant-input-group-addon"]//button)[2]')
-    TOPIC_CLICK = (By.XPATH, '//li[@class="ant-list-item topicsList_item__toE6c"]//a[1]')
+    TOPIC_CLICK = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]')
 
     CAMP_FORUM_TITLE = (By.CLASS_NAME, 'Forum_cardTitle__VagbD')
     MY_PARTICIPATION = (By.ID, 'participate-btn')
