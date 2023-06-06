@@ -1,6 +1,5 @@
 from builtins import object
 
-import urllib3.packages.six
 from selenium.webdriver.common.by import By
 
 """
