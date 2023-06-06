@@ -1,16 +1,26 @@
+import time
+
 from CanonizerBase import Page
 from Identifiers import ForgotPasswordIdentifiers
 from selenium import webdriver
 from CanonizerValidationCheckMessages import message
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
 
 
 class CanonizerForgotPasswordPage(Page):
 
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def click_forgot_password_link(self):
+        self.driver.implicitly_wait(20)
         self.find_element(*ForgotPasswordIdentifiers.LOGIN).click()
         self.hover(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_LINK)
         self.find_element(*ForgotPasswordIdentifiers.FORGOT_PASSWORD_LINK).click()
         return CanonizerForgotPasswordPage(self.driver)
+
 
     def login_and_forgot_password(self):
         self.hover(*ForgotPasswordIdentifiers.LOGIN)
@@ -93,9 +103,6 @@ class CanonizerForgotPasswordPage(Page):
     def cross_icon_on_forgot_page(self):
         self.find_element(*ForgotPasswordIdentifiers.CROSS_ICON_FORGOT_MODAL).click()
         return CanonizerForgotPasswordPage(self.driver)
-
-
-
 
 
 
