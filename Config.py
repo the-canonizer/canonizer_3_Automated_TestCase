@@ -242,7 +242,7 @@ add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
 DEFAULT_UPDATE_TOPIC_NAME = "Camp" + add_name,
 
 # Camp Forum Configuration Parameters
-DEFAULT_TOPIC = "Automated Topic"
+DEFAULT_TOPIC = "Test"
 DUPLICATE_THREAD_TITLE = "Automated thread"
 
 # Create New Camp Configuration Parameters
