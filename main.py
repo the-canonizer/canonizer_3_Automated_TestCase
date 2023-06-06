@@ -1,6 +1,6 @@
 import unittest
 from subprocess import run
-import HtmlTestRunner
+#import HtmlTestRunner
 import requests
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
@@ -2054,8 +2054,8 @@ class TestPages(unittest.TestCase):
 
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(TestPages)
-    #unittest.TextTestRunner(verbosity=2).run(suite)
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test'))
+    unittest.TextTestRunner(verbosity=2).run(suite)
+    #unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='test'))
 
 
 
