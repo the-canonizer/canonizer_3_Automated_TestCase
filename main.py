@@ -59,8 +59,8 @@ class TestPages(unittest.TestCase):
 
         options.add_argument("--start-maximized")
 
-        #self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        #self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get(DEFAULT_BASE_URL)
 
     def driver(self):
