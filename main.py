@@ -2051,7 +2051,8 @@ class TestPages(unittest.TestCase):
     def test_refresh_supported_camps(self):
         print("\n" + str(test_cases('TC_VERIFYING_SUPPORTED_CHANGES')))
         self.login_to_canonizer_app()
-        result = CanonizerAccountSettingPage(self.driver).refresh_supported_camps().get_url
+        CanonizerAccountSettingPage(self.driver).refresh_supported_camps()
+        result = self.driver.current_url
         self.assertIn("https://canonizer3.canonizer.com/settings?tab=supported_camps", result)
 
     def tearDown(self):
