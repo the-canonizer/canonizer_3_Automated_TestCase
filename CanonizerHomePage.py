@@ -1,5 +1,10 @@
 from CanonizerBase import Page
 from Identifiers import *
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CanonizerHomePage(Page):
@@ -38,6 +43,8 @@ class CanonizerHomePage(Page):
 
 class CanonizerTermsAndPrivacyPolicy(Page):
 
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     def verify_privacy_policy_page(self):
         self.hover(*HomePageIdentifiers.PRIVACY_POLICY)
         self.find_element(*HomePageIdentifiers.PRIVACY_POLICY).click()
@@ -97,3 +104,29 @@ class CanonizerTermsAndPrivacyPolicy(Page):
         self.hover(*HomePageIdentifiers.ALGORITHM_DROP_DOWN)
         self.find_element(*HomePageIdentifiers.ALGORITHM_DROP_DOWN).click()
         return CanonizerTermsAndPrivacyPolicy(self.driver)
+    def tree_toggle_button(self, topic_name):
+
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'siteHeader_navWrap__yilWi false')))
+        except TimeoutException:
+            pass
+
+        # Browse to Browse Page
+        self.hover(*CampForumIdentifiers.BROWSE)
+        self.find_element(*CampForumIdentifiers.BROWSE).click()
+
+        # Click on Search Topic
+        self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
+        self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys("Test")
+        self.hover(*CampForumIdentifiers.SEARCH_ICON)
+        self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
+        self.hover(*CampForumIdentifiers.TOPIC_CLICK)
+        self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
+        # Click on Manage/edit Topic
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, 'ant-btn ant-btn-default btn-green')))
+        except TimeoutException:
+            pass
+        return CanonizerHomePage(self.driver)
