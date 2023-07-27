@@ -4,9 +4,15 @@ from selenium.webdriver.common.keys import Keys
 from CanonizerBase import Page
 from Identifiers import ProfileInfoIdentifiersPage
 from CanonizerValidationCheckMessages import message
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.remote.webelement import *
+from selenium import webdriver
 
 
 class CanonizerAccountSettingPage(Page):
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     def click_account_settings_page_button(self):
         """
@@ -76,6 +82,10 @@ class CanonizerAccountSettingPage(Page):
             return CanonizerAccountSettingPage(self.driver)
         else:
             print("Title not found or not matching")
+
+    def refresh_supported_camps(self):
+        self.driver.get("https://canonizer3.canonizer.com/settings?tab=supported_camps")
+        self.driver.refresh()
 
     def check_the_validation_for_phone_number_field(self, number):
         self.click_account_settings_page_button()
