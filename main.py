@@ -2048,6 +2048,11 @@ class TestPages(unittest.TestCase):
            result = self.driver.current_url
 
         self.assertIn("https://canonizer3.canonizer.com/topic/6-Canonizer-Jobs/1-Agreement", result)
+    def test_refresh_supported_camps(self):
+        print("\n" + str(test_cases('TC_VERIFYING_SUPPORTED_CHANGES')))
+        self.login_to_canonizer_app()
+        result = CanonizerAccountSettingPage(self.driver).refresh_supported_camps().get_url
+        self.assertIn("https://canonizer3.canonizer.com/settings?tab=supported_camps", result)
 
     def tearDown(self):
         self.driver.close()
