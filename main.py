@@ -2054,6 +2054,11 @@ class TestPages(unittest.TestCase):
         CanonizerAccountSettingPage(self.driver).refresh_supported_camps()
         result = self.driver.current_url
         self.assertIn("https://canonizer3.canonizer.com/settings?tab=supported_camps", result)
+    def test_tree_toggle_button(self):
+        self.login_to_canonizer_app()
+        CanonizerTermsAndPrivacyPolicy(self.driver).tree_toggle_button(DEFAULT_TOPIC)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div/div/div[1]/div/div").text
+        self.assertIn("Consensus Tree", result)
 
     def tearDown(self):
         self.driver.close()
