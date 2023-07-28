@@ -2059,6 +2059,22 @@ class TestPages(unittest.TestCase):
         CanonizerTermsAndPrivacyPolicy(self.driver).tree_toggle_button(DEFAULT_TOPIC)
         result = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div/div/div[1]/div/div").text
         self.assertIn("Consensus Tree", result)
+    def test_exclude_sandbox_topic_from_sitemap(self):
+        self.driver.implicitly_wait(20)
+        mark = requests.get("https://canonizer.com/sitemap_topic.xml")
+        from bs4 import BeautifulSoup
+        d = BeautifulSoup(mark.content, "xml")
+        result = d.find_all("loc")
+        for x in result:
+            self.driver.get(x.text)
+            self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[3]/div/div/span").click()
+            if self.driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[2]/td/div/span[2]").text == "sandbox testing":
+               break
+               check = "failed"
+            else:
+                pass
+                check = "passed"
+        self.assertIn("passed", check)
 
     def tearDown(self):
         self.driver.close()
