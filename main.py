@@ -42,6 +42,7 @@ import string
 import random
 import time
 from Identifiers import *
+from bs4 import BeautifulSoup
 
 
 
@@ -1879,7 +1880,6 @@ class TestPages(unittest.TestCase):
         if "200" == self.res:
             self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
             self.resf = requests.get("https://canonizer3.canonizer.com/sitemap.xml").text
-            from bs4 import BeautifulSoup
             soup = BeautifulSoup(self.resf, "html.parser")
         else:
             self.driver.get("https://canonizer3.canonizer.com/sitemap.xml")
@@ -2062,7 +2062,6 @@ class TestPages(unittest.TestCase):
     def test_exclude_sandbox_topic_from_sitemap(self):
         self.driver.implicitly_wait(20)
         mark = requests.get("https://canonizer.com/sitemap_topic.xml")
-        from bs4 import BeautifulSoup
         d = BeautifulSoup(mark.content, "xml")
         result = d.find_all("loc")
         for x in result:
