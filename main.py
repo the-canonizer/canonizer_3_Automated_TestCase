@@ -2074,6 +2074,27 @@ class TestPages(unittest.TestCase):
                 pass
                 check = "passed"
         self.assertIn("passed", check)
+    def test_recent_activity_and_news_feed_in_topic_detail(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/div[1]/div[1]/div/div"):
+           result = "failed"
+        else:
+           result = "passed"
+
+        self.assertIn("passed", result)
+
+    def test_recent_activity_and_news_feed_in_camp_detail(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/10-Test-camp-2-dec-2021?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/div[1]/div[1]/div/div"):
+           result = "failed"
+        else:
+           result = "passed"
+
+        self.assertIn("passed", result)
 
     def tearDown(self):
         self.driver.close()
