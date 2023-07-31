@@ -2102,6 +2102,12 @@ class TestPages(unittest.TestCase):
         result = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/span[1]").text()
 
         self.assertIn("Filter", result)
+    def test_upload_file_url_redirection(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.get("http://canonizer3.canonizer.com/secure/upload.asp")
+        result = self.driver.current_url
+        self.assertIn("/UploadFile", result)
 
     def tearDown(self):
         self.driver.close()
