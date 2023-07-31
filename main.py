@@ -2095,6 +2095,13 @@ class TestPages(unittest.TestCase):
            result = "passed"
 
         self.assertIn("passed", result)
+    def test_filter_present_in_drawer(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        CanonizerUpdateTopicPage(self.driver).load_topic_history_page(DEFAULT_TOPIC)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[2]/div/span[1]").text()
+
+        self.assertIn("Filter", result)
 
     def tearDown(self):
         self.driver.close()
