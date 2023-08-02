@@ -216,7 +216,7 @@ class CreateTopicIdentifiers(object):
     TOPIC_NAME = (By.ID, 'create_new_topic_topic_name')
     NICK_NAME = (By.ID, 'create_new_topic_nick_name')
     NAMESPACE = (By.ID, 'create_new_topic_namespace')
-    EDIT_SUMMARY = (By.XPATH, "/html/body/div/div/div[2]/div/div/div/div/div/div[2]/form/div[1]/div[2]/div/div/div[2]/div/div/textarea")
+    EDIT_SUMMARY = (By.ID, 'create_new_topic_edit_summary')
     CREATE_TOPIC_BUTTON = (By.ID, 'create-topic-btn')
     TOPIC_PAGE = (By.XPATH, '//h3[text()="Canonizer Sorted Camp Tree"]')
     BLANK_TOPIC_ERROR = (By.ID, "create_new_topic_topic_name_help")
