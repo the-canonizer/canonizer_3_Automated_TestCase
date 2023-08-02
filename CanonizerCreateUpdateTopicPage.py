@@ -70,18 +70,16 @@ class CanonizerCreateNewTopic(Page):
             action.key_down(Keys.ENTER).perform()
             self.i = self.i - 1
             time.sleep(0.4)
-            self.current_name = self.driver.find_element(*CampStatementIdentifiers.SELECTED_NAMESPACE).text
+            self.current_name = self.driver.find_element(*CreateTopicIdentifiers.SELECTED_NAMESPACE).text
             if self.current_name == "sandbox testing":
-                print("Got Sandbox")
-                print(self.current_name)
                 time.sleep(10)
                 break
     def create_topic(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
 
         self.entering_data_fields(summary, topic_name, namespace)
-        if self.driver.find_element(*CampStatementIdentifiers.NAMESPACE):
-            self.driver.find_element(*CampStatementIdentifiers.NAMESPACE).click()
+        if self.driver.find_element(*CreateTopicIdentifiers.NAMESPACE):
+            self.driver.find_element(*CreateTopicIdentifiers.NAMESPACE).click()
         else:
             print("Not Found")
         self.scroll_down()
