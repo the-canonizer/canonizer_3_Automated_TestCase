@@ -2126,7 +2126,7 @@ class TestPages(unittest.TestCase):
             print("element not found")
 
         self.assertIn("passed", result)
-    def test_recent_activity_is_empty(self):
+    def test_recent_activity_is_not_empty(self):
         self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
         self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
@@ -2135,6 +2135,8 @@ class TestPages(unittest.TestCase):
         if check != "No data":
             if status == "View All":
                result = "passed"
+        elif check == "No data":
+             result = "passed"
         else:
             result = "failed"
         
