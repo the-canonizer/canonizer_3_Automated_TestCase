@@ -2109,6 +2109,37 @@ class TestPages(unittest.TestCase):
         result = self.driver.current_url
         self.assertIn("/UploadFile", result)
 
+    def test_recent_activity_is_empty(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
+        check = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[1]/div/div/div/div/div[2]").text
+        status = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[2]/a/span").text
+        if check != "No data":
+            if status == "View All":
+               result = "passed"
+        elif check == "No data" and status == "View All":
+             result = "failed"
+        elif check == "No data" and status != "View All":
+             result = "passed"
+        else:
+            print("element not found")
+
+        self.assertIn("passed", result)
+    def test_recent_activity_is_empty(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
+        check = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[1]/div/div/div/div/div[2]").text
+        status = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[2]/a/span").text
+        if check != "No data":
+            if status == "View All":
+               result = "passed"
+        else:
+            result = "failed"
+        
+        self.assertIn("passed", result)
+
     def tearDown(self):
         self.driver.close()
 
