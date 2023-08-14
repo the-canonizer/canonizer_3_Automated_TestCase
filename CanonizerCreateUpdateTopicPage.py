@@ -74,6 +74,25 @@ class CanonizerCreateNewTopic(Page):
             if self.current_name == "sandbox testing":
                 time.sleep(10)
                 break
+    def scroll_down_edit(self):
+        self.driver.implicitly_wait(20)
+        action = ActionChains(self.driver)
+
+        self.i = 100
+        self.current_name_list = []
+
+        while self.i >= 1:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            self.i = self.i - 1
+            time.sleep(0.4)
+            #self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div/div/span[2]").text
+            self.current_name = self.driver.find_element(*CreateTopicIdentifiers.SELECTED_NAMESPACE).text
+            if self.current_name == "sandbox testing":
+                break
+            if self.current_name == "Testingcanon1":
+               return CanonizerCreateNewTopic(self.driver)
     def create_topic(self, summary, topic_name, namespace):
         self.driver.implicitly_wait(30)
 
