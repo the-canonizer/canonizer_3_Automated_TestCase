@@ -2142,6 +2142,25 @@ class TestPages(unittest.TestCase):
         
         self.assertIn("passed", result)
 
+    def test_change_canon_other_to_sandbox(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/history/1000-automated-topic")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div/div/span[2]").click()
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div"):
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div").click()
+        else:
+            print("Not Found")
+        CanonizerCreateNewTopic(self.driver).scroll_down_edit()
+
+
+        #self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div/div/span[2]").send_keys("sandbox")
+        if self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[3]/div/div/div[2]/div/div/div/div/span[2]").text == "sandbox":
+            result = "failed"
+        else:
+           result = "passed"
+        self.assertIn("passed", result)
     def tearDown(self):
         self.driver.close()
 
