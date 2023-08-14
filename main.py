@@ -2161,6 +2161,19 @@ class TestPages(unittest.TestCase):
         else:
            result = "passed"
         self.assertIn("passed", result)
+    def test_saperate_sitemap_url_for_videos(self):
+        self.driver.implicitly_wait(20)
+        mark = requests.get("https://canonizer.com/sitemap_videos.xml")
+        from bs4 import BeautifulSoup
+        d = BeautifulSoup(mark.content, "xml")
+        result = d.find_all("loc")
+        for x in result:
+            self.driver.get(x.text)
+            if "videos" in self.driver.current_url:
+               check = "passed"
+            else:
+               check = "failed"
+        self.assertIn("passed", check)
     def tearDown(self):
         self.driver.close()
 
