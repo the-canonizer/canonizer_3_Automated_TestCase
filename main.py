@@ -2180,6 +2180,12 @@ class TestPages(unittest.TestCase):
         CanonizerBrowsePage(self.driver).search_archived_camp()
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/span/div/div").text
         self.assertNotEqual("This camp has been archived", result)
+    def test_create_topic_heading_is_same_evrywhere(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/create/topic")
+        topic_name_1 = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[1]/div/a").text
+        topic_name_2 = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div/div[1]/div/div/span").text
+        self.assertIn(topic_name_1, topic_name_2)
     def tearDown(self):
         self.driver.close()
 
