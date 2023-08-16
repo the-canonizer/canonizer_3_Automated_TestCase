@@ -2174,6 +2174,12 @@ class TestPages(unittest.TestCase):
             else:
                check = "failed"
         self.assertIn("passed", check)
+    def test_search_archived_camp(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        CanonizerBrowsePage(self.driver).search_archived_camp()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/span/div/div").text
+        self.assertIn("This camp has been archived", result)
     def tearDown(self):
         self.driver.close()
 
