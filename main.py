@@ -2191,6 +2191,10 @@ class TestPages(unittest.TestCase):
         algo_info = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[4]/div/div[1]/span/h5").text
         result = '''( Based on: "One Person One Vote" )'''
         self.assertIn(algo_info, result)
+    def test_show_camp_score_is_numeric(self):
+        self.driver.get("https://canonizer3.canonizer.com/browse?score=50&algo=blind_popularity&asof=default&canon=1")
+        score = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[4]/input").get_attribute("value")
+        self.assertIn("50", score)
     def tearDown(self):
         self.driver.close()
 
