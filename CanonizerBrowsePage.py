@@ -114,4 +114,5 @@ class CanonizerBrowsePage(Page):
 
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[6]/div/label/span[1]/input").click()
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[3]/div[2]/label/span[1]/input").click()
         return CanonizerBrowsePage(self.driver)
