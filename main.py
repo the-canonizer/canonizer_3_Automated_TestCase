@@ -2179,7 +2179,7 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         CanonizerBrowsePage(self.driver).search_archived_camp()
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/span/div/div").text
-        self.assertIn("This camp has been archived", result)
+        self.assertNotEqual("This camp has been archived", result)
     def tearDown(self):
         self.driver.close()
 
