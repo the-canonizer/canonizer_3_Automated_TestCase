@@ -53,6 +53,25 @@ class CanonizerBrowsePage(Page):
         self.find_element(*BrowsePageIdentifiers.NAMESPACE).click()
         return CanonizerBrowsePage(self.driver)
 
+    def scroll_sandbox(self):
+        print("came in scroll down")
+        self.driver.implicitly_wait(20)
+        action = ActionChains(self.driver)
+
+        self.i = 100
+        self.current_name_list = []
+
+        while self.i >= 1:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            print(self.i)
+            self.i = self.i - 1
+            time.sleep(0.4)
+            self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div/div/span[2]").text
+            if self.current_name == "sandbox testing":
+                time.sleep(10)
+                break
     def scroll_namespaces(self):
         self.driver.implicitly_wait(20)
         action = ActionChains(self.driver)
@@ -75,8 +94,6 @@ class CanonizerBrowsePage(Page):
                self.current_name_list.append(self.current_name)
                break
             self.current_name_list.append(self.current_name)
-            print(self.current_name_list)
-
 
     def select_all_namespaces(self):
         self.driver.implicitly_wait(20)
@@ -86,4 +103,15 @@ class CanonizerBrowsePage(Page):
             self.scroll_namespaces()
         else:
             print("Not Found")
+        return CanonizerBrowsePage(self.driver)
+    def search_archived_camp(self):
+        self.driver.implicitly_wait(20)
+        if self.driver.find_element(By.ID, "name-space-dropdown"):
+            self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div").click()
+            self.scroll_sandbox()
+        else:
+            print("Not Found")
+
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[6]/div/label/span[1]/input").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]").click()
         return CanonizerBrowsePage(self.driver)
