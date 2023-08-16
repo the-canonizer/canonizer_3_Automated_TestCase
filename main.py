@@ -2181,20 +2181,32 @@ class TestPages(unittest.TestCase):
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/span/div/div").text
         self.assertNotEqual("This camp has been archived", result)
     def test_create_topic_heading_is_same_evrywhere(self):
+        self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
         self.driver.get("https://canonizer3.canonizer.com/create/topic")
         topic_name_1 = self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[1]/div/a").text
         topic_name_2 = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div/div[1]/div/div/span").text
         self.assertIn(topic_name_1, topic_name_2)
     def test_algorithm_info_in_topic_detail(self):
+        self.driver.implicitly_wait(20)
         self.driver.get("https://canonizer3.canonizer.com/topic/350-test-updated-2-dec-2021/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
         algo_info = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[4]/div/div[1]/span/h5").text
         result = '''( Based on: "One Person One Vote" )'''
         self.assertIn(algo_info, result)
     def test_show_camp_score_is_numeric(self):
+        self.driver.implicitly_wait(20)
         self.driver.get("https://canonizer3.canonizer.com/browse?score=50&algo=blind_popularity&asof=default&canon=1")
         score = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[4]/input").get_attribute("value")
         self.assertIn("50", score)
+    def test_footer_upload_button_redirection_to_site_xml(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[1]/ul/li[4]/a/span").click()
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[1]/ul/li[3]").click()
+        result = self.driver.current_url
+        self.assertIn("https://canonizer3.canonizer.com/uploadFile", result)
     def tearDown(self):
         self.driver.close()
 
