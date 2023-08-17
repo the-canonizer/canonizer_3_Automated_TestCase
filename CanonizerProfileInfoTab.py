@@ -182,3 +182,23 @@ class CanonizerAccountSettingPage(Page):
         self.find_element(*ProfileInfoIdentifiersPage.LOGOUT).click()
 
         return CanonizerAccountSettingPage(self.driver)
+    def scroll_algo_preferences(self):
+        self.driver.implicitly_wait(20)
+        action = ActionChains(self.driver)
+
+        self.i = 100
+        self.current_name_list = []
+
+        while self.i >= 1:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            print("element selected")
+            print(self.i)
+            self.i = self.i - 1
+            time.sleep(0.4)
+            self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[3]/div[2]/div/div/div[2]/div/div/div/div/span[2]").text
+            if self.current_name == "Computer Science Experts":
+                time.sleep(10)
+                break
+         return CanonizerAccountSettingPage
