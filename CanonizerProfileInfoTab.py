@@ -202,3 +202,28 @@ class CanonizerAccountSettingPage(Page):
                 time.sleep(10)
                 break
          return CanonizerAccountSettingPage
+    def scroll_algo_data(self):
+        print("came in scroll down")
+        self.driver.implicitly_wait(20)
+        action = ActionChains(self.driver)
+
+        self.i = 100
+        self.current_name_list = []
+
+        while self.i >= 1:
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.DOWN).perform()
+            action.key_down(Keys.ENTER).perform()
+            print("element selected")
+            print(self.i)
+            self.i = self.i - 1
+            time.sleep(0.4)
+            print("Clicking on Namespace Dropdown")
+            self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[2]/div/span[2]").text
+            print(self.current_name)
+            if self.current_name == "Computer Science Experts":
+                print("Got Sandbox")
+                print(self.current_name)
+                time.sleep(10)
+                break
+            return CanonizerAccountSettingPage
