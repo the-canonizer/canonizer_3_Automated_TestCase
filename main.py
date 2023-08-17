@@ -2217,6 +2217,13 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.ID, "profileUpdate").click()
         check = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div/div/div/div/span[2]").text
         self.assertIn("Profile updated successfully.", check)
+    def test_algo_name_is_not_listing(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[2]").click()
+        CanonizerAccountSettingPage(self.driver).scroll_algo_data()
+        check = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[2]/div/span[2]").text
+        self.assertIn("Computer Science Experts", check)
     def tearDown(self):
         self.driver.close()
 
