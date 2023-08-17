@@ -2207,6 +2207,16 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div/div/footer/div[1]/div/div[2]/div/div/div[1]/ul/li[3]").click()
         result = self.driver.current_url
         self.assertIn("https://canonizer3.canonizer.com/uploadFile", result)
+    def test_getting_error_while_changing_preference(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/settings")
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[3]/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
+        CanonizerAccountSettingPage(self.driver).scroll_algo_preferences()
+        self.driver.find_element(By.ID, "profileUpdate").click()
+        check = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div/div/div/div/span[2]").text
+        self.assertIn("Profile updated successfully.", check)
     def tearDown(self):
         self.driver.close()
 
