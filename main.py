@@ -2224,6 +2224,12 @@ class TestPages(unittest.TestCase):
         CanonizerAccountSettingPage(self.driver).scroll_algo_data()
         check = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[2]/div/span[2]").text
         self.assertIn("Computer Science Experts", check)
+    def test_topic_detail_page_crash(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
+        result = requests.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
+        result = str(result.status_code)
+        self.assertIn("200", result)
     def tearDown(self):
         self.driver.close()
 
