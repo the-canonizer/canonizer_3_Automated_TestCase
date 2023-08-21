@@ -2225,11 +2225,22 @@ class TestPages(unittest.TestCase):
         check = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[1]/div[2]/div/div[2]/div/span[2]").text
         self.assertIn("Computer Science Experts", check)
     def test_topic_detail_page_crash(self):
+        self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
         self.driver.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
         result = requests.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
         result = str(result.status_code)
         self.assertIn("200", result)
+    def test_camp_update_activity(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/manage/camp/8445")
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]/span").click()
+        self.driver.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[1]/div/div/div/div/div[2]").text
+        self.assertNotEqual("No data", result)
     def tearDown(self):
         self.driver.close()
 
