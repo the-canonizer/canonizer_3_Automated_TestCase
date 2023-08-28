@@ -38,8 +38,8 @@ class CanonizerCreateCampPage(Page):
             pass
 
         # Click on Create New Camp Button
-        self.hover(*CreateCampIdentifiers.CREATE_NEW_CAMP_BUTTON)
-        self.find_element(*CreateCampIdentifiers.CREATE_NEW_CAMP_BUTTON).click()
+        self.hover(*CreateCampIdentifiers.CREATE_CAMP_TOPIC_DETAIL)
+        self.find_element(*CreateCampIdentifiers.CREATE_CAMP_TOPIC_DETAIL).click()
         try:
             WebDriverWait(self.driver, 5).until(
                 EC.visibility_of_element_located(
