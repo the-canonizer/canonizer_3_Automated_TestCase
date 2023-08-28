@@ -344,6 +344,7 @@ class CreateCampIdentifiers(object):
     KEYWORDS = (By.ID, 'create_new_camp_key_words')
     CAMP_ABOUT_NICK_NAME = (By.XPATH, '(//div[@class="ant-select-selector"])[3]')
     CREATE_CAMP_BUTTON = (By.ID, 'crate-camp-btn')
+    CREATE_CAMP_TOPIC_DETAIL = (By.XPATH, "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[5]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/p/a")
     CAMP_CANCEL_BUTTON = (By.ID, 'cancel-btn')
     TOPIC_PAGE_TITLE = (By.XPATH, '//span[text()="Camp created successfully."]')
     BLANK_CAMP_NAME_ERROR = (By.XPATH, '//div[@class="ant-form-item-explain ant-form-item-explain-connected"]//div[1]')
