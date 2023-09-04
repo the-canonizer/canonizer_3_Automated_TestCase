@@ -2241,13 +2241,23 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://canonizer3.canonizer.com/topic/2989-New-opuereoifhdiohfjd/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=9&is_tree_open=0")
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[7]/div[1]/div/div/div[2]/div/div[1]/div/div/div/div/div[2]").text
         self.assertNotEqual("No data", result)
-def test_camp_update_commit(self):
+    def test_camp_update_commit(self):
+        self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
         self.driver.get("https://canonizer3.canonizer.com/manage/camp/8445")
         self.driver.find_element(By.ID, "update-submit-btn").click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
         result = self.driver.current_url
         self.assertIn("https://canonizer3.canonizer.com/camp/history/861-can-1462-test/3-camp-2", result)
+    def test_dashboard_topic_pagination(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        previous_topic = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div[1]/div[2]/div[1]/div[2]/div/div/a/span").click()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        current_topic  = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
+        self.assertNotEqual(previous_topic, current_topic)
     def tearDown(self):
         self.driver.close()
 
