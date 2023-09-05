@@ -2258,6 +2258,16 @@ class TestPages(unittest.TestCase):
         self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
         current_topic  = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
         self.assertNotEqual(previous_topic, current_topic)
+    def test_recent_activity_at_dashboard(self):
+        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_VALID_DATA')))
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
+        self.driver.get("https://canonizer3.canonizer.com")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div/ul/li[1]/a/span[1]").text
+        self.assertNotEqual("Anickname created a topic", result)
     def tearDown(self):
         self.driver.close()
 
