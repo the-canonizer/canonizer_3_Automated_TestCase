@@ -44,6 +44,7 @@ class CanonizerAddNewsPage(Page):
                     (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
         except TimeoutException:
             pass
+        self.find_element(*BrowsePageIdentifiers.DRAWER_CLOSE).click()
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
         self.find_element(*AddNewsIdentifiers.ADD_NEWS_LINK).click()
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "ant-card-head-title")))
@@ -149,6 +150,7 @@ class CanonizerEditNewsPage(Page):
             self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
             self.hover(*CampForumIdentifiers.TOPIC_CLICK)
             self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
+            self.find_element(*BrowsePageIdentifiers.DRAWER_CLOSE).click()
             # Click on Edit News
             self.hover(*AddNewsIdentifiers.EDIT_NEWS)
             self.find_element(*AddNewsIdentifiers.EDIT_NEWS).click()
