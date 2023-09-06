@@ -387,7 +387,7 @@ class CreateCampIdentifiers(object):
     CANCEL_TITLE = (By.XPATH, '/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/span/h3')
 
 class AddNewsIdentifiers(object):
-    ADD_NEWS_LINK = (By.XPATH, '/html/body/div[2]/div/div/ul/li[1]/span')
+    ADD_NEWS_LINK = (By.XPATH, '/html/body/div[3]/div/div/ul/li[1]/span/a')
     ADD_NEWS_PAGE_TITLE = (By.XPATH, '//div[text()="Add News"]')
     DISPLAY_TEXT = (By.ID, 'display_text')
     LINK = (By.ID, 'link')
