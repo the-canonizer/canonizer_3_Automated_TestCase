@@ -2268,6 +2268,19 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://canonizer3.canonizer.com")
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div/ul/li[1]/a/span[1]").text
         self.assertNotEqual("Anickname created a topic", result)
+    def test_search_new_created_topic(self):
+        print("\n" + str(test_cases('TC_CREATE_NEWS_WITH_VALID_DATA')))
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic () " + add_name, DEFAULT_NAMESPACE)
+        self.driver.get("https://canonizer3.canonizer.com/browse?score=0&algo=blind_popularity&asof=default&canon=19")
+
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/span[1]/input").send_keys("test new")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/span[2]/button/span").click()
+        self.driver.get("https://canonizer3.canonizer.com/")
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div/ul/li[1]/a/span[2]").text
+        self.assertNotEqual("No Data", result)
     def tearDown(self):
         self.driver.close()
 
