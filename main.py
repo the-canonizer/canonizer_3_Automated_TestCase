@@ -2259,7 +2259,6 @@ class TestPages(unittest.TestCase):
         current_topic  = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
         self.assertNotEqual(previous_topic, current_topic)
     def test_recent_activity_at_dashboard(self):
-        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_VALID_DATA')))
         self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
         add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
@@ -2281,6 +2280,20 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://canonizer3.canonizer.com/")
         result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div/ul/li[1]/a/span[2]").text
         self.assertNotEqual("No Data", result)
+    def test_do_archive_camp(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/manage/camp/2407")
+        self.driver.find_element(By.ID, "is_archive" ).click()
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]").click()
+        self.driver.get("https://canonizer3.canonizer.com/manage/camp/2407")
+        a = ActionChains(self.driver)
+        m = self.driver.find_element(By.ID, "is_archive" )
+        # hover over element
+        a.move_to_element(m).perform()
+        result = self.driver.find_element(By.CLASS_NAME, "ant-tooltip-inner").text
+        self.assertIn("Unarchive the camp.", result)
     def tearDown(self):
         self.driver.close()
 
