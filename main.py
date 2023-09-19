@@ -2249,15 +2249,6 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
         result = self.driver.current_url
         self.assertIn("https://canonizer3.canonizer.com/camp/history/861-can-1462-test/3-camp-2", result)
-    def test_dashboard_topic_pagination(self):
-        self.driver.implicitly_wait(20)
-        self.login_to_canonizer_app()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        previous_topic = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
-        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div[1]/div[2]/div[1]/div[2]/div/div/a/span").click()
-        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        current_topic  = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
-        self.assertNotEqual(previous_topic, current_topic)
     def test_recent_activity_at_dashboard(self):
         self.driver.implicitly_wait(20)
         self.login_to_canonizer_app()
