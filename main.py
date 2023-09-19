@@ -2294,6 +2294,16 @@ class TestPages(unittest.TestCase):
         a.move_to_element(m).perform()
         result = self.driver.find_element(By.CLASS_NAME, "ant-tooltip-inner").text
         self.assertIn("Unarchive the camp.", result)
+    def test_dashboard_topic_pagination(self):
+        self.login_to_canonizer_app()
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.get("https://canonizer3.canonizer.com/browse?score=0&algo=blind_popularity&asof=default&canon=19&viewversion=1")
+        self.driver.find_element(By.XPATH,"/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[2]/div/div/button").click()
+        previous_topic = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[15]/a/span[1]").text
+        self.driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[2]/div/div/button/span").click()
+        current_topic = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[16]/a/span[1]").text
+        self.assertNotEqual(previous_topic, current_topic)
     def tearDown(self):
         self.driver.close()
 
