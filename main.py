@@ -2305,6 +2305,13 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[2]/div/div/button/span").click()
         current_topic = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[16]/a/span[1]").text
         self.assertNotEqual(previous_topic, current_topic)
+    def test_drawer_close_arrow(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/1432-Regression-testing-11-JAN-23/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=19")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button").text
+        self.assertIn("Consensus Tree", result)
+    
     def tearDown(self):
         self.driver.close()
 
