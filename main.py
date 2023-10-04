@@ -2312,6 +2312,31 @@ class TestPages(unittest.TestCase):
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button").text
         self.assertIn("Consensus Tree", result)
     
+    def test_only_my_topic_search_refresh(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/browse?score=0&algo=blind_popularity&asof=default&canon=19")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/label/span[1]/input").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/input").send_keys("test")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/span[2]/button").click()
+        self.driver.refresh()
+        if self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/span[1]/span/span/span"):
+           result = "passed"
+        else:
+           result = "failed"
+        self.assertIn("passed", result)
+    def test_edit_topic_camp_submit_disable(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/manage/topic/3284")
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        el = self.driver.find_element(By.ID, "update-submit-btn")
+        print(el.get_attribute('disabled'))
+
+
+    def test_old_url_redirection(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/secure/support.asp?topic_num=97&camp_num=1")
+        status = str(requests.get("https://development.canonizer.com/secure/support.asp?topic_num=97&camp_num=1").status_code)
+        self.assertIn("200", status)
     def tearDown(self):
         self.driver.close()
 
