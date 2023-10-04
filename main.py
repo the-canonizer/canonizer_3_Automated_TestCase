@@ -2329,7 +2329,8 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://development.canonizer.com/manage/topic/3284")
         self.driver.find_element(By.ID, "update-submit-btn").click()
         el = self.driver.find_element(By.ID, "update-submit-btn")
-        print(el.get_attribute('disabled'))
+        result = str(el.get_attribute("disabled"))
+        self.assertIn("true", result)
 
 
     def test_old_url_redirection(self):
