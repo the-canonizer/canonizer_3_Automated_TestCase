@@ -2338,6 +2338,18 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://development.canonizer.com/secure/support.asp?topic_num=97&camp_num=1")
         status = str(requests.get("https://development.canonizer.com/secure/support.asp?topic_num=97&camp_num=1").status_code)
         self.assertIn("200", status)
+    def test_new_updated_topic_search(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/manage/topic/3284")
+        self.driver.find_element(By.ID, "topic_name").send_keys("te")
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]").click()
+        self.driver.get("https://development.canonizer.com/browse?score=0&algo=blind_popularity&asof=default&canon=19")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/label/span[1]/input").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/input").send_keys("test")
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[1]/div[2]/span/span/span[2]/button").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]").text
+        self.assertIn("Regression testing 11 JAN 23te", result)
     def tearDown(self):
         self.driver.close()
 
