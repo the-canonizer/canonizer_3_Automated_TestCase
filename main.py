@@ -2885,6 +2885,14 @@ class TestPages(unittest.TestCase):
         result = self.driver.current_url
         self.assertNotEqual("num", result)
     
+    def test_click_submit_post_multiple_times(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/forum/88-Camp2DSFVAL/1-Agreement/threads/732")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[1]/div/div/div[2]/div[2]/div").send_keys("test")
+        self.driver.find_element(By.ID, "submit-btn").click()
+        self.driver.find_element(By.ID, "submit-btn").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[1]/div/span").text
+        self.assertIn(result, "The reply field is required.")
     def tearDown(self):
         self.driver.close()
 
