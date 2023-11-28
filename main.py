@@ -2879,6 +2879,12 @@ class TestPages(unittest.TestCase):
             DEFAULT_TOPIC).camp_archived_cancel_button()
         result = self.driver.current_url
         self.assertIn("/topic/", result)
+    def test_remove_topic_num_from_support_url(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/user/supports/85?topicnum=10&campnum=1&canon=8")
+        result = self.driver.current_url
+        self.assertNotEqual("num", result)
+    
     def tearDown(self):
         self.driver.close()
 
