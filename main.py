@@ -2331,8 +2331,6 @@ class TestPages(unittest.TestCase):
         el = self.driver.find_element(By.ID, "update-submit-btn")
         result = str(el.get_attribute("disabled"))
         self.assertIn("true", result)
-
-
     def test_old_url_redirection(self):
         self.login_to_canonizer_app()
         self.driver.get("https://development.canonizer.com/secure/support.asp?topic_num=97&camp_num=1")
@@ -2363,7 +2361,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.get("https://canonizer3.canonizer.com/eventline/88-Theories-of-Consciousness/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=1")
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div/span").click()
-
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/div[1]/div/div/div[2]/div/div[1]/div/div/span[2]").click()
         action = ActionChains(self.driver)
         action.key_down(Keys.DOWN).perform()
@@ -2394,8 +2391,6 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button").click()
         self.driver.back()
         self.driver.back()
-
-
         current_button = self.driver.find_element(By.ID, "camp-forum-btn").text
         self.assertNotEqual("Camp Forum", current_button)
 
@@ -2463,12 +2458,9 @@ class TestPages(unittest.TestCase):
         action.key_down(Keys.DOWN).perform()
         action.key_down(Keys.DOWN).perform()
         action.key_down(Keys.DOWN).perform()
-
-        action.key_down(Keys.DOWN).perform()
-
         action.key_down(Keys.DOWN).perform()
         action.key_down(Keys.DOWN).perform()
-
+        action.key_down(Keys.DOWN).perform()
         action.key_down(Keys.ENTER).perform()
         score = self.driver.find_elements(By.TAG_NAME, "text")
         for x in score:
@@ -2490,7 +2482,6 @@ class TestPages(unittest.TestCase):
         self.assertNotEqual("Anickname created a new topic Event Test", result)
     def test_score(self):
         self.driver.get("https://development.canonizer.com/eventline/88-Theories-of-Consciousness/1-Agreement?score=0&algo=blind_popularity&asof=default&canon=1")
-
         score = self.driver.find_elements(By.TAG_NAME, "text")
         for x in score:
             print(x.text)
@@ -2501,6 +2492,126 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://development.canonizer.com/topic/54-Religious-Preference/1-Agreement?score=0&algo=mormon&asofdate=1697447192.493&asof=bydate&canon=1&filter=undefined&is_tree_open=0")
         camp_button = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[2]/div/div/div/div[1]/button/span").text
         self.assertIn("Create New Camp", camp_button)
+    def test_topic_as_of_date_before_created(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/browse?canon=")
+        self.driver.get("https://development.canonizer.com/topic/44-Human-Gen-Eng-is-Wrong/1-Agreement?canon=&asof=bydate&asofdate=1700132976.545&is_tree_open=1")
+        self.driver.find_element(By.ID, "date_input").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-year-btn").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-decade-btn").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-cell-inner").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-cell-inner").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-cell-inner").click()
+        self.driver.find_element(By.CLASS_NAME, "ant-picker-cell-inner").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/nav/ul/li[2]/a").click()
+    def test_account_setting_address(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        time.sleep(5)
+        self.driver.find_element(By.ID, "selectAddress_1").send_keys(Keys.CONTROL, "a")
+        self.driver.find_element(By.ID, "selectAddress_1").send_keys(Keys.BACKSPACE)
+        self.driver.find_element(By.ID, "selectAddress_1").send_keys("100")
+        time.sleep(10)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div/div/div[1]").text
+        time.sleep(10)
+        print(result)
+        if result == "100 Mile House, BC, Canada" :
+           rlt = "passed"
+        else:
+           rlt = "failed"
+        self.assertIn(rlt, "passed")
+
+    def test_create_camp_statement_history(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/camp/create/1405-Warning-message-issue/1-Agreement")
+        N = 7
+        res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+        self.driver.find_element(By.ID, "create_new_camp_camp_name").send_keys(res)
+        self.driver.find_element(By.ID, "crate-camp-btn").click()
+        title = self.driver.find_element(By.TAG_NAME, "h3").text
+        title = str(title)
+
+        self.assertNotEqual(title, "Camp")
+    def test_create_topic_tree_algorithm(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
+        time.sleep(10)
+        topic = self.driver.current_url
+        self.driver.get(topic)
+        self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[5]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span").click()
+        N = 7
+        res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+        self.driver.find_element(By.ID, "create_new_camp_camp_name").send_keys(res)
+        time.sleep(5)
+        self.driver.find_element(By.ID, "crate-camp-btn").click()
+        time.sleep(5)
+        title = self.driver.find_element(By.TAG_NAME, "h5").text
+        title = str(title)
+        time.sleep(10)
+        self.assertNotEqual(title, "One Person One Vote")
+    def test_create_camp_name_on_history(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name,
+                                                                          DEFAULT_NAMESPACE)
+        topic = self.driver.current_url
+        self.driver.get(topic)
+        self.driver.find_element(By.XPATH,
+                                 "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[5]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span").click()
+        N = 7
+        res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+        self.driver.find_element(By.ID, "create_new_camp_camp_name").send_keys(res)
+        self.driver.find_element(By.ID, "crate-camp-btn").click()
+        #topic_url = self.driver.current_url
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[6]/div/div[1]/div/span").click()
+        #event_url = topic_url.replace("topic", "camp/history")
+        #self.driver.get(topic_url)
+        camp_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[6]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td/div/span[2]").text
+        self.assertIn(res, camp_name)
+
+    def test_first_three_camp_name_in_history(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/camp/history/88-Camp2DSFVAL/14-SCVR")
+        name1 = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[1]/div[2]/div/h5/span").text
+        name2 = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[1]/div[2]/div/h5/span").text
+        name3 = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[3]/div/div/div/div[1]/div[2]/div/h5/span").text
+
+        if name1 != "":
+           if name2 != "":
+               if name3 != "":
+                   result = "passed"
+        else:
+            result = "failed"
+        print(result)
+        self.assertIn(result, "passed")
+    def test_search_parent_in_camp_edit(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/camp/history/2648-zcxdv-s/2-camp1")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[2]/div/div/div[2]/div/div/div/div/span[1]").send_keys("ag")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[5]/div/div/div/div/div/div[2]").text
+        self.assertNotEqual(result, "No data")
+    def test_adding_support(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/1766-New1/2-new-camp-again?filter=10&score=0&algo=blind_popularity&asof=default&canon=19&is_tree_open=0")
+        self.driver.find_element(By.ID, "manage-support-btn").click()
+        self.driver.find_element(By.ID, "uploadBtn").click()
+        result = self.driver.find_element(By.ID, "manage-support-btn").text
+        self.assertIn(result, "Manage Support")
+    def test_created_camp_scvr(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/eventline/88-Camp2DSFVAL/1-Agreement?canon=&filter=90&is_tree_open=0")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div/div/div[2]/div/div[2]/div[4]").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/div[2]/div[2]/div/div/div/li[943]/div/div[2]/h4/div/a").text
+        self.assertIn(result, "created a new Camp SCVR")
     def tearDown(self):
         self.driver.close()
 
