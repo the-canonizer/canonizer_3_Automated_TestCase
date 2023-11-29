@@ -2901,6 +2901,11 @@ class TestPages(unittest.TestCase):
         self.driver.get(statement_url)
         result = self.driver.find_element(By.TAG_NAME, "h3").text
         self.assertIn(result, "Camp not found")
+    def test_alphanumeric_keywords_in_statement(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/create/statement/klasdlkashdlkhaskdjhas973492837498237498")
+        result = self.driver.find_element(By.TAG_NAME, "h2").text
+        self.assertIn(result, "404")
     def tearDown(self):
         self.driver.close()
 
