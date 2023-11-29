@@ -2893,6 +2893,14 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.ID, "submit-btn").click()
         result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/form/div/div[1]/div/span").text
         self.assertIn(result, "The reply field is required.")
+    def test_alphanumeric_keywords_in_camp(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/statement/history/369-Regression-25-JAN-2022/8-camp3")
+        statement_url = self.driver.current_url
+        statement_url = statement_url.replace("8-camp3", "asjkdkjs92037409327490327498732984732894")
+        self.driver.get(statement_url)
+        result = self.driver.find_element(By.TAG_NAME, "h3").text
+        self.assertIn(result, "Camp not found")
     def tearDown(self):
         self.driver.close()
 
