@@ -12,40 +12,25 @@ from CanonizerValidationCheckMessages import message
 
 class CanonizerCreateCampPage(Page):
 
-    def load_create_camp_page(self, topic_name):
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.CLASS_NAME, 'siteHeader_navWrap__yilWi false')))
-        except TimeoutException:
-            pass
+    def driver(self):
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-        # Browse to Browse Page
-        self.hover(*CampForumIdentifiers.BROWSE)
-        self.find_element(*CampForumIdentifiers.BROWSE).click()
+    def load_create_camp_page(self, topic_name):
+        #self.hover(*CampForumIdentifiers.BROWSE)
+        #self.find_element(*CampForumIdentifiers.BROWSE).click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/header/div[2]/nav/ul/li[2]/a").click()
 
         # Click on Search Topic
-        self.hover(*CampForumIdentifiers.SEARCH_TOPIC)
         self.find_element(*CampForumIdentifiers.SEARCH_TOPIC).send_keys(topic_name)
         self.hover(*CampForumIdentifiers.SEARCH_ICON)
         self.find_element(*CampForumIdentifiers.SEARCH_ICON).click()
-        self.hover(*CampForumIdentifiers.TOPIC_CLICK)
-        self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
-        try:
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'ant-btn ant-btn-default ant-btn-lg btn')))
-        except TimeoutException:
-            pass
-
+        #self.hover(*CampForumIdentifiers.TOPIC_CLICK)
+        #self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]").click()
         # Click on Create New Camp Button
         self.hover(*CreateCampIdentifiers.CREATE_CAMP_TOPIC_DETAIL)
         self.find_element(*CreateCampIdentifiers.CREATE_CAMP_TOPIC_DETAIL).click()
-        try:
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
-                    (By.XPATH, '//div[text()="sania_talentelgia"]')))
-        except TimeoutException:
-            pass
+
         self.hover(*CreateCampIdentifiers.NEW_CAMP_TITLE)
         page_title = self.find_element(*CreateCampIdentifiers.NEW_CAMP_TITLE).text
         if page_title == message['Create_Camp']['CREATE_CAMP_TITLE']:
