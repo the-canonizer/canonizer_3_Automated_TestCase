@@ -2508,14 +2508,10 @@ class TestPages(unittest.TestCase):
     def test_account_setting_address(self):
         self.login_to_canonizer_app()
         self.driver.get("https://development.canonizer.com/settings")
-        time.sleep(5)
         self.driver.find_element(By.ID, "selectAddress_1").send_keys(Keys.CONTROL, "a")
         self.driver.find_element(By.ID, "selectAddress_1").send_keys(Keys.BACKSPACE)
         self.driver.find_element(By.ID, "selectAddress_1").send_keys("100")
-        time.sleep(10)
-        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div/div/div[1]").text
-        time.sleep(10)
-        print(result)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[2]/div[1]/div[1]/div[1]/div/div[2]/div/div/div/div/div/div[1]").text
         if result == "100 Mile House, BC, Canada" :
            rlt = "passed"
         else:
