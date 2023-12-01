@@ -468,17 +468,6 @@ class CampHistoryIdentifiers(object):
     ARCHIEVED_STATUS = (By.XPATH, "/html/body/div/div/div[2]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[1]/h5[8]/span")
     ARCHIVED_SCORE = (By.XPATH, "/html/body/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span/div/div/span[3]/div/div/div/span")
     CAMP_EDIT_SUBMIT = (By.ID, "update-submit-btn")
-
-
-class CampForumIdentifiers(object):
-    VIEW_ALL = (By.XPATH, '//*[@id="__next"]/div/div[2]/div/div/div/div[1]/div/div[1]/div/div/div[3]/div/div/a/span')
-    CAMP_FORUM_BUTTON = (By.ID, 'camp-forum-btn')
-    BROWSE = (By.XPATH, '/html/body/div[1]/div/header/div[2]/nav/ul/li[1]/a')
-    SEARCH_TOPIC = (By.XPATH, '//input[@placeholder="Search by topic name"]')
-    SEARCH_ICON = (By.XPATH, '(//span[@class="ant-input-group-addon"]//button)[2]')
-    TOPIC_CLICK = (By.XPATH, '/html/body/div/div/div[2]/div/div/div/div/div/div[1]/div[2]/div/ul/li/a/span[1]')
-    CAMP_FORUM_TITLE = (By.XPATH, '/html/body/div/div/div[2]/div/div/div[2]/div/div/div[1]/div/div[1]/span')
-    THREAD_BUTTON = (By.ID, 'all-thread-btn')
     
     
 class CreateTopicIdentifiers(object):
