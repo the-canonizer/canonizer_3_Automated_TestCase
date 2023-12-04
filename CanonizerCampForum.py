@@ -92,7 +92,6 @@ class CanonizerCampForumPage(Page):
     def click_create_thread_button(self):
         self.driver.implicitly_wait(20)
         self.driver.find_element(By.ID, "create-btn").click()
-        time.sleep(10)
         return CanonizerCampForumPage(self.driver)
 
     def enter_thread_title(self, title):
