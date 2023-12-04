@@ -1757,11 +1757,9 @@ class TestPages(unittest.TestCase):
         self.driver.implicitly_wait(30)
         self.n = random.randint(0, 10000)
         self.n = str(self.n)
-        self.driver.get("http://canonizer3.canonizer.com/topic.asp/" + self.n)
+        self.driver.get("http://development.canonizer.com/topic.asp/" + self.n)
         resp = self.driver.current_url
         reslt = ("/topic/" + self.n)
-        print(resp)
-        print(reslt)
         if resp == reslt:
             pass
         else:
