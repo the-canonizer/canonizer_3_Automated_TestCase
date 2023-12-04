@@ -337,7 +337,9 @@ class TestPages(unittest.TestCase):
     # TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN
     def test_click_create_topic_without_user_login(self):
         print("\n" + str(test_cases('TC_CLICK_CREATE_TOPIC_WITHOUT_USER_LOGIN')))
-        result = CanonizerCreateNewTopic(self.driver).click_create_topic_without_user_login().get_url()
+        self.driver.maximize_window()
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        result = self.driver.current_url
         self.assertIn("/login?returnUrl=%2Fcreate%2Ftopic", result)
 
     # TC_CREATE_TOPIC_WITH_BLANK_TOPIC_NAME
