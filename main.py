@@ -2696,10 +2696,10 @@ class TestPages(unittest.TestCase):
         self.assertNotEqual("No event found", event_one)
     def test_archive_camp_event(self):
         self.login_to_canonizer_app()
-        self.driver.get("https://canonizer3.canonizer.com/manage/camp/8561")
+        self.driver.get("https://development.canonizer.com/manage/camp/8561")
         self.driver.find_element(By.ID, "is_archive").click()
         self.driver.find_element(By.ID, "update-submit-btn").click()
-        self.driver.get("https://canonizer3.canonizer.com/eventline/8561")
+        self.driver.get("https://development.canonizer.com/eventline/8561")
         event_one = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/div[2]/div[2]/div/div/div/li/div/div[2]/h4/div/a").text
         self.assertNotEqual("No event found", event_one)
 
