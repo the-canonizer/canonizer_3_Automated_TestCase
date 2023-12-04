@@ -38,13 +38,8 @@ class CanonizerAddNewsPage(Page):
         self.find_element(*CampForumIdentifiers.TOPIC_CLICK).click()
 
         # Click on Add News Link
-        try:
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
-                    (By.CLASS_NAME, 'ant-btn ant-btn-primary topicDetails_btnCampForum__xiKmO')))
-        except TimeoutException:
-            pass
-        self.find_element(*BrowsePageIdentifiers.DRAWER_CLOSE).click()
+        #self.find_element(*BrowsePageIdentifiers.DRAWER_CLOSE).click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button/span").click()
         self.find_element(*CampHistoryIdentifiers.THREEDOTS).click()
         self.find_element(*AddNewsIdentifiers.ADD_NEWS_LINK).click()
         WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((By.CLASS_NAME, "ant-card-head-title")))
