@@ -2768,7 +2768,7 @@ class TestPages(unittest.TestCase):
             self.driver.get("http://canonizer3.canonizer.com/topic.asp/88-Theories-of-Consciousness/1-Agreement")
             resp = self.driver.current_url
         else:
-            print("url does not exist
+            print("url does not exist)
 
         self.assertIn("/topic/88-Theories-of-Consciousness/1-Agreement", resp)
 
