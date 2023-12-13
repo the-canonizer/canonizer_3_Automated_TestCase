@@ -64,21 +64,15 @@ class CanonizerSupportValue(Page):
         while self.i >= 1:
             action.key_down(Keys.DOWN).perform()
             action.key_down(Keys.ENTER).perform()
-            print("element selected")
-            print(self.i)
             self.i = self.i - 1
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CreateTopicIdentifiers.SELECTED_TITLE).text
             if self.current_name == "sandbox testing":
-                print("Got Sandbox")
-                print(self.current_name)
-                time.sleep(10)
                 break
 
     def support_value_new_topic(self):
         self.driver.implicitly_wait(30)
         self.driver.get("https://canonizer3.canonizer.com/browse")
-        print("Getting Dropdown")
         self.create_new_topic()
         return CanonizerSupportValue(self.driver)
 
