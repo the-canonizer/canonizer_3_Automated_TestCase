@@ -2535,19 +2535,15 @@ class TestPages(unittest.TestCase):
         add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
         CanonizerCreateNewTopic(self.driver).click_create_topic_button()
         CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
-        time.sleep(10)
         topic = self.driver.current_url
         self.driver.get(topic)
         self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[5]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span").click()
         N = 7
         res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
         self.driver.find_element(By.ID, "create_new_camp_camp_name").send_keys(res)
-        time.sleep(5)
         self.driver.find_element(By.ID, "crate-camp-btn").click()
-        time.sleep(5)
         title = self.driver.find_element(By.TAG_NAME, "h5").text
         title = str(title)
-        time.sleep(10)
         self.assertNotEqual(title, "One Person One Vote")
     def test_create_camp_name_on_history(self):
         self.driver.implicitly_wait(20)
@@ -2585,7 +2581,6 @@ class TestPages(unittest.TestCase):
                    result = "passed"
         else:
             result = "failed"
-        print(result)
         self.assertIn(result, "passed")
     def test_search_parent_in_camp_edit(self):
         self.login_to_canonizer_app()
@@ -2618,7 +2613,6 @@ class TestPages(unittest.TestCase):
         self.login_to_canonizer_app()
         self.driver.get("https://development.canonizer.com/statement/history/2626-Supporter-count-testing-1/1-Agreement")
         self.driver.get("https://development.canonizer.com/statement/history/8888888-Supporter-count-testing-1/1-Agreement")
-        time.sleep(10)
         result = self.driver.find_element(By.TAG_NAME, "h3").text
         self.assertNotEqual("Topic Not Found", result)
 
