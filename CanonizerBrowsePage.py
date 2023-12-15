@@ -70,7 +70,7 @@ class CanonizerBrowsePage(Page):
             time.sleep(0.4)
             self.current_name = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[1]/div/div/span[2]").text
             if self.current_name == "sandbox testing":
-                time.sleep(10)
+                #time.sleep(10)
                 break
     def scroll_namespaces(self):
         self.driver.implicitly_wait(20)
