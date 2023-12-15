@@ -72,7 +72,7 @@ class CanonizerCreateNewTopic(Page):
             time.sleep(0.4)
             self.current_name = self.driver.find_element(*CreateTopicIdentifiers.SELECTED_NAMESPACE).text
             if self.current_name == "sandbox testing":
-                time.sleep(10)
+                #time.sleep(10)
                 break
     def scroll_down_edit(self):
         self.driver.implicitly_wait(20)
