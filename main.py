@@ -2896,6 +2896,157 @@ class TestPages(unittest.TestCase):
         self.driver.get("https://development.canonizer.com/create/statement/klasdlkashdlkhaskdjhas973492837498237498")
         result = self.driver.find_element(By.TAG_NAME, "h2").text
         self.assertIn(result, "404")
+
+    def test_remove_filter_from_eventline(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/eventline/350-test-updated-2-dec-2021/1-Agreement")
+        try:
+          result = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[4]/div[2]/div[1]/div/div/div[2]/label/span[2]")
+        except NoSuchElementException:
+          result = "Failed"
+
+        self.assertIn( "Failed", result)
+    def test_filter_value_url(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/66-Global-Warming/1-Aggreement?is_tree_open=1&viewversion=1")
+        self.driver.find_element(By.ID, "filter_input").send_keys("10")
+
+        result = self.driver.current_url
+        self.assertIn("https://development.canonizer.com/topic/66-Global-Warming/1-Aggreement?is_tree_open=1&viewversion=1&score=010" , result)
+    def test_global_search_all_tab_click(self):
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys("hello")
+        action = ActionChains(self.driver)
+        action.key_down(Keys.ENTER).perform()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div/button[1]").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/ul/li/span").text
+        self.assertIn( "sandbox" ,  result)
+    def test_post_back_button(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/forum/3021-Topic-count-test-4-up22222/1-Agreement/threads/1069?asof=bydate&asofdate=1702637994&viewversion=1")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button").click()
+        result = self.driver.find_element(By.ID, "all-thread-btn").text
+        self.assertIn( "All Threads", result)
+
+    def test_post_cancel_button(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/forum/3021-Topic-count-test-4-up22222/1-Agreement/threads/1069?asof=bydate&asofdate=1702637994&viewversion=1")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div[2]/button").click()
+        self.driver.find_element(By.ID, "back-btn").click()
+
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div[2]/button").text
+        self.assertIn("Create Post", result)
+    def test_thread_detail_topic_click(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/forum/3021-Topic-count-test-4-up22222/1-Agreement/threads?filter=10&score=0&algo=blind_popularity&asofdate=1702637994&asof=bydate&canon=19&viewversion=1&is_tree_open=0")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]/a").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/aside/button").click()
+        self.driver.find_element(By.CLASS_NAME, " font-weight-bold forumActive topicDetails_activeCamp__QYGbO").click()
+        self.driver.back()
+        result = self.driver.current_url
+        self.assertIn("https://development.canonizer.com/forum/3021-Topic-count-test-4-up22222/1-Agreement/threads?filter=10&score=0&algo=blind_popularity&asofdate=1702637994&asof=bydate&canon=19&viewversion=1&is_tree_open=0", result)
+    def test_create_thread_post_log_out(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/forum/2811-Test1234/1-Agreement/threads")
+        self.driver.find_element(By.ID, "create-btn").click()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        new_thread = "Test Thread"+add_name
+
+        self.driver.find_element(By.ID, "create_new_thread_thread_title").send_keys(new_thread)
+        self.driver.find_element(By.ID, "submit-btn").click()
+        self.driver.find_element(By.ID, "thread-label-1").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[2]/div[1]/div[2]/button/span").click()
+        self.driver.find_element(By.CLASS_NAME, "ck-placeholder").send_keys("test post"+add_name)
+        self.driver.find_element(By.ID, "submit-btn").click()
+        result = self.driver.current_url
+        self.assertIn("thread", result)
+    def test_profile_algo_change(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://canonizer3.canonizer.com/settings")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[2]/div[2]/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
+        action = ActionChains(self.driver)
+        action.key_down(Keys.ENTER).perform()
+        time.sleep(10)
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[2]/div[2]/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
+        action = ActionChains(self.driver)
+        action.key_down(Keys.ENTER).perform()
+        time.sleep(10)
+    def test_camp_leader_at_camp_history(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/camp/history/350-test-updated-2-dec-2021/1-Agreement")
+        result = self.driver.find_elements(By.TAG_NAME, "h5")
+        ele = []
+        c = 11
+        for x in result:
+           ele.append(x.text)
+           c = c-1
+           if c == 0:
+              break
+           n = len(ele)
+        self.assertIn("Camp Leader : ", ele[10])
+    def test_no_direct_supporters(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/4013-No-Supporter/1-Agreement?canon=19&is_tree_open=0")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[4]/div/div[2]/div/p").text
+        self.assertIn("No direct supporters of this camp", result)
+    def test_camp_support_citation_link(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC) \
+            .create_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button/span").click()
+        self.driver.find_element(By.ID, "manage-support-btn").click()
+        self.driver.find_element(By.ID, "removed_support_form_citation_link").send_keys("https://www.google.com")
+        self.driver.find_element(By.ID, "uploadBtn").click()
+        result = self.driver.find_element(By.ID, "supportTreeRemoveSupport").text
+        self.assertIn("Remove Your Support" in result)
+
+    def test_only_my_topic_checked_after_refresh(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/browse")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/label/span[1]/input").click()
+        self.driver.refresh()
+        ele = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/label/span[1]/input").get_attribute("checked")
+        self.assertIn("true", ele)
+    def test_canonizer_logo_on_dashboard(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/?asof=bydate&asofdate=1708326244&viewversion=1&canon=19")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[1]/a/span/img").click()
+        result = self.driver.current_url
+        self.assertIn("https://development.canonizer.com/", result)
+    def test_global_search_fake_topic(self):
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys("mamura")
+        result = self.driver.find_element(By.CLASS_NAME, "ant-empty-description").text
+        self.assertIn("No Data Found", result)
+    def test_logout_archive(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/4132-Archive-Log-Out/1-Agreement?canon=19&is_tree_open=0")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[3]/div[1]/div/div/div[2]/div/div[2]/span/svg").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[3]/div[1]/div/div/div[2]/div/div[2]/span/svg").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/span/div/div").text
+        self.assertIn("This camp is archive", result)
+    def test_disable_deleget_support_button_for_archive(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/4132-Archive-Log-Out/1-Agreement?canon=19&is_tree_open=0")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[4]/div/div[2]/div/p").text
+        self.assertIn("No direct supporters of this camp", result)
+    def test_canon_name_in_global_search(self):
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys("hello")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/ul/li[1]/span").text
+        self.assertIn("sandbox testing", result)
+    def test_close_notification_panel_after_clicking_on_any_notification(self):
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[3]/div[1]/div/div/div[1]/div/span/span").click()
+        self.driver.find_element(By.LINK_TEXT, "Anickname has just added support to the Camp - C1-3").click()
+        if self.driver.find_element(By.XPATH, "/html/body/div[6]/div/div/div/div[1]/div/div/h4"):
+           result = "element exist"
+        else:
+           result = "element does not exist"
+
+        self.assertIn("element does not exist", result)
     def tearDown(self):
         self.driver.close()
 
