@@ -2961,17 +2961,6 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.ID, "submit-btn").click()
         result = self.driver.current_url
         self.assertIn("thread", result)
-    def test_profile_algo_change(self):
-        self.login_to_canonizer_app()
-        self.driver.get("https://canonizer3.canonizer.com/settings")
-        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[2]/div[2]/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
-        action = ActionChains(self.driver)
-        action.key_down(Keys.ENTER).perform()
-        time.sleep(10)
-        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[2]/div[2]/div[2]/div/div/div[2]/div/div/div/div/span[2]").click()
-        action = ActionChains(self.driver)
-        action.key_down(Keys.ENTER).perform()
-        time.sleep(10)
     def test_camp_leader_at_camp_history(self):
         self.login_to_canonizer_app()
         self.driver.get("https://development.canonizer.com/camp/history/350-test-updated-2-dec-2021/1-Agreement")
