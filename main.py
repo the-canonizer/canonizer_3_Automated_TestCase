@@ -3033,7 +3033,6 @@ class TestPages(unittest.TestCase):
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
         self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
         self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[1]/div/div/div/div[2]/div/a[1]/span[2]").click()
-        print("agreement clicked")
         result = self.driver.find_element(By.ID, "supportTreeRemoveSupport")
         result = result.get_attribute("disabled")
         self.assertIn("true", result)
