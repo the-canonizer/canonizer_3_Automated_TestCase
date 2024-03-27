@@ -2897,6 +2897,169 @@ class TestPages(unittest.TestCase):
         result = self.driver.find_element(By.TAG_NAME, "h2").text
         self.assertIn(result, "404")
 
+    def test_view_profile_picture(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[1]/div/div/span[1]/div/div[1]/div/span/a/span").click()
+        result = self.driver.find_element(By.ID, "rc_unique_0").text
+        self.assertIn("Profile picture", result)
+    def test_delete_profile_picture(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[1]/div/div/span[1]/div/div[1]/div/span/button").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[5]/div/div/div/div/div/span[1]").text
+        self.assertIn("Image deleted succesfully",result)
+    def test_delete_profile_picture_multiple_click(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[1]/div/span/div/div[1]/div/span/a/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[1]/div/span/div/div[1]/div/span/a/span").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div/div/span[2]").text
+        self.assertIn("/html/body/div[4]/div/div/div/div/div/span[2]", result)
+
+    def test_alphabets_for_no_profile_image(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        result = self.driver.find_element(By.CLASS_NAME, "/html/body/div[1]/div/header/div[3]/div[1]/div/div/div[2]/div/div[1]/span/span").text
+        self.assertIn("RC", result)
+
+    def test_global_search_result(self):
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.CLASS_NAME, "ant-input ant-input-lg").send_keys("talent")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/div/div/div/div[2]/div/div/div/ul/li/a").text
+        self.assertIn(result, "sania_talentelgia")
+
+    def test_global_search_refresh(self):
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys("talent")
+        self.driver.refresh()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/div/div/div/div[2]/div/div/div/ul/li/a/label").text
+        self.assertIn(result, "sania_talentelgia")
+
+    def test_support_user_url(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/topic/202-Testing11/2-Camp-2?filter=10&score=0&algo=blind_popularity&asofdate=1577903399&asof=bydate&canon=19&is_tree_open=0")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[4]/div/div[2]/div/div[2]/div[3]/div/div/div/div/span[3]/span/div/a[1]").click()
+        url = self.driver.current_url
+        self.assertIn("https://development.canonizer.com/user/supports/351?canon=19", url)
+
+    def test_elastic_search_for_new_camp(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC).create_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        self.driver.get("https://development.canonizer.com/?canon=sandbox+testing&asof=bydate&asofdate=1577903399")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys(DEFAULT_CAMP_NAME)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/div/div/div/div[4]/div/div/div/ul/li/div/a[2,]").text
+        self.assertIn(result, DEFAULT_CAMP_NAME)
+
+    def test_elastic_search_for_new_topic(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
+        topic_name = ("New Topic " + add_name)
+        self.driver.get("https://development.canonizer.com/?canon=sandbox+testing&asof=bydate&asofdate=1577903399")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys(topic_name)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/div/div/div/div[4]/div/div/div/ul/li/div/a[2,]").text
+        self.assertIn(result, topic_name)
+    def test_elastic_search_for_new_camp_click_on_drawer_tree(self):
+        self.driver.implicitly_wait(30)
+        self.login_to_canonizer_app()
+        self.driver.maximize_window()
+        CanonizerCreateCampPage(self.driver).load_create_camp_page(DEFAULT_TOPIC).create_camp_with_valid_data(CREATE_CAMP_LIST_1)
+        self.driver.get("https://development.canonizer.com/?canon=sandbox+testing&asof=bydate&asofdate=1577903399")
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys(DEFAULT_CAMP_NAME)
+        actions = ActionChains(self.driver)
+
+        actions.send_keys(Keys.ENTER).perform()
+
+        #actions.perform()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div/button[3]").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[1]/h4").text
+        self.assertIn(result, "Camp")
+
+    def test_unarchive_camp_for_no_supporter(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/manage/camp/13135")
+        self.driver.find_element(By.ID, "is_archive").click()
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
+        result = self.driver.current_url
+        self.assertIn(result, "https://development.canonizer.com/camp/history/3718-test-topic-support/2-Test-Camp-Support")
+    def test_phd_algo_empty_topic_list(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/browse?algo=PhD&asof=bydate&asofdate=1706002813")
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[2]/div[1]/div[1]/div/ul/li[1]/a/span[1]").text
+        self.assertIn(result, "Theories of Mind and Conscious")
+    def test_edit_profile_hover_click(self):
+        self.login_to_canonizer_app()
+        self.driver.get("https://development.canonizer.com/settings")
+        a = ActionChains(self.driver)
+        m = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div[2]/section/form/div[1]/div[1]/div/div/span[2]/div/span/button")
+        a.move_to_element(m).perform()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div/div[2]").text
+        self.assertIn(result, "Update")
+    def test_incorrect_warning_while_supporting_camp(self):
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name,
+                                                                          DEFAULT_NAMESPACE)
+        topic = self.driver.current_url
+        self.driver.get(topic)
+        self.driver.find_element(By.XPATH,
+                                 "/html/body/div[2]/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div/div[5]/div/div/div/div[2]/div/div/div[3]/div/div/div/div[2]/span[3]/span").click()
+        N = 7
+        res = ''.join(random.choices(string.ascii_uppercase + string.digits, k=N))
+        self.driver.find_element(By.ID, "create_new_camp_camp_name").send_keys(res)
+        self.driver.find_element(By.ID, "crate-camp-btn").click()
+
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/aside/button/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[2]/div/div/div/div[2]/div/a/span").click()
+
+        self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/ul/li[5]/span/a").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(By.ID, "is_archive").click()
+        self.driver.find_element(By.ID, "update-submit-btn").click()
+
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
+
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[1]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div/button[2]/span").click()
+        self.driver.find_element(By.XPATH, "/html/body/div/div/div[3]/div/div/div[3]/div[2]/div/div/div[1]/div/div/div/div[2]/div[2]/button[2]").click()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div[1]/div/div[1]/div/div/div/div[2]/div/a[1]/span[2]").click()
+        print("agreement clicked")
+        result = self.driver.find_element(By.ID, "supportTreeRemoveSupport")
+        result = result.get_attribute("disabled")
+        self.assertIn("true", result)
+    def test_create_topic_name_with_as_of_date(self):
+        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_VALID_DATA')))
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[2]/div[2]/div/div[1]/div/div[3]/label/span[2]").click()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
+        result = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[3]/div/div/div[1]/div/div").text
+        self.assertIn("Consensus Tree",result)
+    def test_create_topic_name_and_search_in_global_seacrh(self):
+        print("\n" + str(test_cases('TC_CREATE_TOPIC_WITH_VALID_DATA')))
+        self.driver.implicitly_wait(20)
+        self.login_to_canonizer_app()
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/aside/div/div/div[2]/div[2]/div/div[1]/div/div[3]/label/span[2]").click()
+        add_name = ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+        topic_name = "New Topic " + add_name
+        CanonizerCreateNewTopic(self.driver).click_create_topic_button()
+        CanonizerCreateNewTopic(self.driver).create_topic_with_valid_data("new summary", "New Topic " + add_name, DEFAULT_NAMESPACE)
+        self.driver.find_element(By.XPATH, "/html/body/div[1]/div/header/div[2]/div[2]/div/div/span[1]/div/input").send_keys(topic_name)
+        self.driver.find_element(By.XPATH, "/html/body/div[4]/div/div/div/div[2]/div/div/div/div[10]/div/div/footer/a").click()
+        result = self.driver.find_element(By.XPATH, "/html/body/div[1]/div/div[3]/div/div/div/div/div[1]/ul/li[1]/span").text
+        self.assertIn("sandbox testing", result)
     def test_remove_filter_from_eventline(self):
         self.login_to_canonizer_app()
         self.driver.get("https://development.canonizer.com/eventline/350-test-updated-2-dec-2021/1-Agreement")
